@@ -9,5 +9,5 @@ export const contactRatelimit = new Ratelimit({
 });
 
 export async function limitContactByIp(ip: string) {
-  return contactRatelimit.limit(`contact:${ip}:dev`);
+  return contactRatelimit.limit(`contact:${ip}`);
 }
