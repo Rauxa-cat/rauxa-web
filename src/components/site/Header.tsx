@@ -1,0 +1,24 @@
+import { DesktopNav } from './DesktopNav';
+import { MobileNav } from './MobileNav';
+import { Logo } from './Logo';
+
+export function SiteHeader() {
+  return (
+    <header className="sticky top-0 z-50 border-b backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-6xl items-center px-6">
+        <Logo />
+
+        <DesktopNav />
+
+        <div className="ml-auto flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
+            {/* <LanguageSelector /> */}
+            {/* <ThemeToggle /> */}
+          </div>
+
+          <MobileNav />
+        </div>
+      </div>
+    </header>
+  );
+}

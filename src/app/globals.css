@@ -1,0 +1,231 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-footer: var(--background-footer);
+  --color-background-steel: var(--background-steel);
+  /* Roboto – lectura / UI */
+  --font-sans: var(--font-rauxa-body);
+
+  /* Alfredino – identidad / headings */
+  --font-brand: var(--font-rauxa-primary);
+
+  /* VT323 – acentos */
+  --font-accent: var(--font-rauxa-secondary);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+}
+
+:root {
+  /* =========================
+     RAUXA brand tokens (OKLCH)
+     =========================
+     Steel Gray  #A7ABB0 -> oklch(0.7395 0.0085 253.87)
+     Electric    #004CFF -> oklch(0.5186 0.2690 263.27)
+     Pearl White #F7F4EF -> oklch(0.9681 0.0074  80.72)
+     Elegant Blk #0A0A0D -> oklch(0.1462 0.0064 285.58)
+  */
+  --rauxa-steel: oklch(0.7395 0.0085 253.87);
+  --rauxa-electric: oklch(0.5186 0.269 263.27);
+  --rauxa-pearl: oklch(0.9681 0.0074 80.72);
+  --rauxa-black: oklch(0.1462 0.0064 285.58);
+  --rauxa-footer: oklch(0.92 0.01 80);
+
+  /* Radius: el logo/isotipo es redondeado → suavidad controlada */
+  --radius: 0.625rem;
+
+  /* Base UI (light) */
+  --background: var(--rauxa-pearl);
+  --foreground: var(--rauxa-black);
+
+  /* Background alternativo (header/footer) */
+  --background-steel: var(--rauxa-steel);
+  --background-footer: var(--rauxa-footer);
+
+  --card: oklch(0.99 0.002 80.72);
+  /* un pelín más “papel” que blanco puro */
+  --card-foreground: var(--rauxa-black);
+
+  --popover: oklch(0.99 0.002 80.72);
+  --popover-foreground: var(--rauxa-black);
+
+  /* Primary/Accent = Blau elèctric */
+  --primary: var(--rauxa-electric);
+  --primary-foreground: var(--rauxa-pearl);
+
+  /* Secondary = tint del gris acer (para superficies suaves) */
+  --secondary: oklch(0.92 0.004 253.87);
+  --secondary-foreground: var(--rauxa-black);
+
+  /* Muted = respiración/perla */
+  --muted: oklch(0.945 0.004 80.72);
+  --muted-foreground: oklch(0.46 0.01 285.58);
+
+  /* Accent: mantenemos electric (botones secundarios/links/hover) */
+  --accent: var(--rauxa-electric);
+  --accent-foreground: var(--rauxa-pearl);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  /* Borders/Inputs: derivados del gris acero para look “metal limpio” */
+  --border: oklch(0.86 0.006 253.87);
+  --input: oklch(0.86 0.006 253.87);
+  --ring: var(--rauxa-electric);
+
+  /* Charts (si las usas) alineadas con la paleta */
+  --chart-1: var(--rauxa-electric);
+  --chart-2: var(--rauxa-steel);
+  --chart-3: var(--rauxa-black);
+  --chart-4: var(--rauxa-pearl);
+  --chart-5: oklch(0.769 0.188 70.08);
+  /* naranja/mandarina “extra” si lo necesitas */
+
+  /* Sidebar (light) */
+  --sidebar: oklch(0.99 0.002 80.72);
+  --sidebar-foreground: var(--rauxa-black);
+  --sidebar-primary: var(--rauxa-electric);
+  --sidebar-primary-foreground: var(--rauxa-pearl);
+  --sidebar-accent: oklch(0.92 0.004 253.87);
+  --sidebar-accent-foreground: var(--rauxa-black);
+  --sidebar-border: oklch(0.86 0.006 253.87);
+  --sidebar-ring: var(--rauxa-electric);
+}
+
+.dark {
+  /* Base UI (dark) */
+  --background: var(--rauxa-black);
+  --foreground: var(--rauxa-pearl);
+
+  --background-steel: var(--rauxa-steel);
+  --background-footer: oklch(0.19 0.006 285.58);
+
+  --card: oklch(0.19 0.006 285.58);
+  --card-foreground: var(--rauxa-pearl);
+
+  --popover: oklch(0.19 0.006 285.58);
+  --popover-foreground: var(--rauxa-pearl);
+
+  /* En dark, primary sigue siendo electric */
+  --primary: var(--rauxa-electric);
+  --primary-foreground: var(--rauxa-pearl);
+
+  /* Secondary: acero oscuro */
+  --secondary: oklch(0.3 0.01 253.87);
+  --secondary-foreground: var(--rauxa-pearl);
+
+  --muted: oklch(0.24 0.006 285.58);
+  --muted-foreground: oklch(0.78 0.008 80.72);
+
+  --accent: var(--rauxa-electric);
+  --accent-foreground: var(--rauxa-pearl);
+
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.32 0.008 285.58);
+  --input: oklch(0.32 0.008 285.58);
+  --ring: var(--rauxa-electric);
+
+  --chart-1: var(--rauxa-electric);
+  --chart-2: var(--rauxa-steel);
+  --chart-3: var(--rauxa-pearl);
+  --chart-4: oklch(0.62 0.02 285.58);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  /* Sidebar (dark) */
+  --sidebar: oklch(0.19 0.006 285.58);
+  --sidebar-foreground: var(--rauxa-pearl);
+  --sidebar-primary: var(--rauxa-electric);
+  --sidebar-primary-foreground: var(--rauxa-pearl);
+  --sidebar-accent: oklch(0.3 0.01 253.87);
+  --sidebar-accent-foreground: var(--rauxa-pearl);
+  --sidebar-border: oklch(0.32 0.008 285.58);
+  --sidebar-ring: var(--rauxa-electric);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-brand);
+  }
+
+  .font-accent {
+    font-family: var(--font-accent);
+  }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-animated-gradient {
+  background-size: 400% 400%;
+  animation: gradient-move 18s ease infinite;
+}
