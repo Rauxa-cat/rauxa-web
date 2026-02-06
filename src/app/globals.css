@@ -8,8 +8,9 @@
   --color-foreground: var(--foreground);
   --color-footer: var(--background-footer);
   --color-background-steel: var(--background-steel);
-  /* Roboto – lectura / UI */
-  --font-sans: var(--font-rauxa-body);
+  /* Helvetica neue / Helvetica / Inter – lectura / UI */
+  --font-sans:
+    'Helvetica Neue', Helvetica, var(--font-rauxa-body-inter), sans-serif;
 
   /* Alfredino – identidad / headings */
   --font-brand: var(--font-rauxa-primary);

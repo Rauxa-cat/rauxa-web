@@ -20,7 +20,7 @@ const rauxaSecondary = localFont({
 const rauxaBody = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '700'],
-  variable: '--font-rauxa-body',
+  variable: '--font-rauxa-body-inter',
   display: 'swap',
 });
 
