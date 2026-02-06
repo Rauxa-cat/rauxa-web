@@ -9,8 +9,7 @@
   --color-footer: var(--background-footer);
   --color-background-steel: var(--background-steel);
   /* Helvetica neue / Helvetica / Inter – lectura / UI */
-  --font-sans:
-    'Helvetica Neue', Helvetica, var(--font-rauxa-body-inter), sans-serif;
+  --font-sans: 'Helvetica Neue', var(--font-rauxa-body-inter), sans-serif;
 
   /* Alfredino – identidad / headings */
   --font-brand: var(--font-rauxa-primary);
