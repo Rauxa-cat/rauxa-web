@@ -26,7 +26,6 @@ export function ServicesOverview() {
               key={s.id}
               title={s.title}
               desc={s.desc}
-              icon={s.emoji}
               href={s.formUrl}
               ctaLabel="Contacta con RAUXA"
             />

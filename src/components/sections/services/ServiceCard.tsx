@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 type ServiceCardProps = {
   title: string;
   desc: string;
-  icon?: React.ReactNode;
   href?: string;
   ctaLabel?: string;
   className?: string;
@@ -13,7 +12,6 @@ type ServiceCardProps = {
 export function ServiceCard({
   title,
   desc,
-  icon,
   href,
   ctaLabel = 'Ver detalles',
   className,
@@ -33,9 +31,6 @@ export function ServiceCard({
         <div className="mb-3 h-px w-10 bg-primary/60 transition-all duration-200 group-hover:w-14" />
 
         <CardTitle className="flex text-lg leading-snug">
-          {icon ? (
-            <span className="mr-2 inline-flex align-middle">{icon}</span>
-          ) : null}
           <p className="">{title}</p>
         </CardTitle>
       </CardHeader>
