@@ -1,11 +1,11 @@
 'use client';
-
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/navigation';
 import { NAV_ITEMS } from '@/lib/content/nav';
 
 export function DesktopNav() {
   const pathname = usePathname();
+  const t = useTranslations('nav');
 
   return (
     <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 md:flex">
@@ -26,7 +26,7 @@ export function DesktopNav() {
                 : 'text-foreground/80 hover:text-primary after:scale-x-0 hover:after:scale-x-100',
             ].join(' ')}
           >
-            {item.label}
+            {t(item.href)}
           </Link>
         );
       })}

@@ -7,16 +7,21 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { NAV_ITEMS } from '@/lib/content/nav';
 import { Logo } from './Logo';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { useTranslations } from 'next-intl';
 
 export function MobileNav() {
+  const tNav = useTranslations('nav');
+  const t = useTranslations('mobileNav');
+
   return (
     <div className="md:hidden">
       <Sheet>
@@ -24,7 +29,7 @@ export function MobileNav() {
           <Button
             variant="ghost"
             size="icon"
-            aria-label="Abrir menú"
+            aria-label={t('openMenu')}
             className="
       hover:bg-transparent
       hover:text-current
@@ -42,14 +47,17 @@ export function MobileNav() {
         >
           <SheetHeader className="flex flex-row items-center justify-between">
             <VisuallyHidden>
-              <SheetTitle>Menú principal</SheetTitle>
+              <SheetTitle>{t('mainMenu')}</SheetTitle>
+              <SheetDescription>{t('mainMenuDescription')}</SheetDescription>
             </VisuallyHidden>
+
             <Logo />
+
             <SheetClose asChild>
               <Button
                 variant="ghost"
                 size="icon"
-                aria-label="Cerrar menú"
+                aria-label={t('closeMenu')}
                 className="
                     h-11 w-11
         hover:bg-transparent
@@ -66,12 +74,8 @@ export function MobileNav() {
           <nav className="ml-4 flex flex-col gap-4">
             {NAV_ITEMS.map((item) => (
               <SheetClose asChild key={item.href}>
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-base hover:text-primary"
-                >
-                  {item.label}
+                <Link href={item.href} className="text-base hover:text-primary">
+                  {tNav(item.href)}
                 </Link>
               </SheetClose>
             ))}

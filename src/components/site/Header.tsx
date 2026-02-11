@@ -4,7 +4,7 @@ import { Logo } from './Logo';
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 border-b backdrop-blur">
+    <header className="sticky top-0 z-50 bg-background border-b backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center px-6">
         <Logo />
 
