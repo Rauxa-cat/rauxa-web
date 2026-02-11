@@ -6,10 +6,7 @@ export const FOOTER_NAV = NAV_ITEMS;
 export const FOOTER_CONTACT = CONTACT;
 
 export const FOOTER_LEGAL = [
-  { href: '/privacidad', label: 'Privacidad' },
-  { href: '/cookies', label: 'Cookies' },
-  { href: '/aviso-legal', label: 'Aviso legal' },
+  { href: '/privacy' },
+  { href: '/cookies' },
+  { href: '/legal-notice' },
 ] as const;
-
-export const FOOTER_COPY =
-  'Comunidad gastronómica y cultural. Experiencias donde la gastronomía, la música y el arte se encuentran.';

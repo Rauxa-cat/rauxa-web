@@ -14,5 +14,20 @@
     "closeMenu": "Cerrar menú",
     "mainMenu": "Menú principal",
     "mainMenuDescription": "Navegación principal del sitio"
+  },
+  "footer": {
+    "copy": "Comunidad gastronómica y cultural. Experiencias donde la gastronomía, la música y el arte se encuentran.",
+    "navigation": "NAVEGACIÓN",
+    "contact": "CONTACTO",
+    "copyright": "© {year} RAUXA. Todos los derechos reservados."
+  },
+  "contactDetails": {
+    "lookingFor": "¿Buscas algo concreto?",
+    "viewServices": "Ver servicios"
+  },
+  "legal": {
+    "/privacy": "Privacidad",
+    "/cookies": "Cookies",
+    "/legal-notice": "Aviso legal"
   }
 }

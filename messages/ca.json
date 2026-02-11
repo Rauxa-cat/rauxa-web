@@ -14,5 +14,20 @@
     "closeMenu": "Tancar el menú",
     "mainMenu": "Menú principal",
     "mainMenuDescription": "Navegació principal del lloc web"
+  },
+  "footer": {
+    "copy": "Comunitat gastronòmica i cultural. Experiències on la gastronomia, la música i l'art es troben.",
+    "navigation": "NAVEGACIÓ",
+    "contact": "CONTACTE",
+    "copyright": "© {year} RAUXA. Tots els drets reservats."
+  },
+  "contactDetails": {
+    "lookingFor": "Busques alguna cosa concreta?",
+    "viewServices": "Veure serveis"
+  },
+  "legal": {
+    "/privacy": "Privacitat",
+    "/cookies": "Cookies",
+    "/legal-notice": "Avís legal"
   }
 }

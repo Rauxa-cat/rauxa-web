@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SocialActions } from '@/components/common/SocialActions';
+import { useTranslations } from 'next-intl';
 
 type ContactDetailsProps = {
   email: string;
@@ -28,6 +31,7 @@ export function ContactDetails({
   servicesLink = true,
   socialSize = 'default',
 }: ContactDetailsProps) {
+  const t = useTranslations('contactDetails');
   return (
     <div className={cn('space-y-6', className)}>
       <div className="space-y-3">
@@ -58,12 +62,12 @@ export function ContactDetails({
 
         {servicesLink && (
           <div className="pt-2">
-            ¿Buscas algo concreto?{' '}
+            {t('lookingFor')}{' '}
             <Link
               href="/servicios"
               className="inline-flex items-center gap-2 underline-offset-4 hover:underline"
             >
-              Ver servicios <span aria-hidden>→</span>
+              {t('viewServices')} <span aria-hidden>→</span>
             </Link>
           </div>
         )}
