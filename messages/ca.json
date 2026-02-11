@@ -1,0 +1,18 @@
+{
+  "logo": {
+    "ariaLabel": "RAUXA - Inici",
+    "alt": "Logo rauxa"
+  },
+  "nav": {
+    "/": "Inici",
+    "/services": "Serveis",
+    "/team": "Equip",
+    "/contact": "Contacte"
+  },
+  "mobileNav": {
+    "openMenu": "Obrir el menú",
+    "closeMenu": "Tancar el menú",
+    "mainMenu": "Menú principal",
+    "mainMenuDescription": "Navegació principal del lloc web"
+  }
+}

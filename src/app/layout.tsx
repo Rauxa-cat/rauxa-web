@@ -1,9 +1,8 @@
+import { headers } from 'next/headers';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { Footer } from '@/components/site/footer/Footer';
-import { Toaster } from 'sonner';
 
 const rauxaPrimary = localFont({
   src: './fonts/AlfredinoSemirounded.ttf',
@@ -47,11 +46,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
+  const headersList = await headers();
+  const locale = headersList.get('x-next-intl-locale') ?? 'es';
+
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={[
           rauxaPrimary.variable,
@@ -61,8 +65,6 @@ export default function RootLayout({
         ].join(' ')}
       >
         {children}
-        <Toaster position="top-right" richColors />
-        <Footer />
       </body>
     </html>
   );

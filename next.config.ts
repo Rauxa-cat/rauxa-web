@@ -1,22 +1,6 @@
 import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: '/servicios',
-        destination: '/services',
-      },
-      {
-        source: '/equipo',
-        destination: '/team',
-      },
-      {
-        source: '/contacto',
-        destination: '/contact',
-      },
-    ];
-  },
-};
-
-export default nextConfig;
+const nextConfig: NextConfig = {};
+const withNextIntl = createNextIntlPlugin();
+export default withNextIntl(nextConfig);
