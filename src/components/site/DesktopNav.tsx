@@ -18,7 +18,7 @@ export function DesktopNav() {
             href={item.href}
             aria-current={isActive ? 'page' : undefined}
             className={[
-              'relative transition-colors duration-100',
+              'relative transition-colors duration-100 font-medium',
               'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full',
               'after:origin-left after:bg-current after:transition-transform after:duration-150',
               isActive
