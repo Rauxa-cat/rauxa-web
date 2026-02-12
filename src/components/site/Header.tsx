@@ -1,6 +1,7 @@
 import { DesktopNav } from './DesktopNav';
 import { MobileNav } from './MobileNav';
 import { Logo } from './Logo';
+import { LanguageSelector } from './LanguageSelector';
 
 export function SiteHeader() {
   return (
@@ -12,7 +13,7 @@ export function SiteHeader() {
 
         <div className="ml-auto flex items-center gap-2">
           <div className="hidden md:flex items-center gap-2">
-            {/* <LanguageSelector /> */}
+            <LanguageSelector />
             {/* <ThemeToggle /> */}
           </div>
 

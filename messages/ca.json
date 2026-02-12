@@ -40,6 +40,10 @@
     "mainMenu": "Menú principal",
     "mainMenuDescription": "Navegació principal del lloc web"
   },
+  "locale": {
+    "es": "ES",
+    "ca": "CA"
+  },
   "footer": {
     "copy": "Comunitat gastronòmica i cultural. Experiències on la gastronomia, la música i l'art es troben.",
     "navigation": "NAVEGACIÓ",

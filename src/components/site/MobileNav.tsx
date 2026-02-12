@@ -17,6 +17,7 @@ import { NAV_ITEMS } from '@/lib/content/nav';
 import { Logo } from './Logo';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { useTranslations } from 'next-intl';
+import { LanguageSelector } from './LanguageSelector';
 
 export function MobileNav() {
   const tNav = useTranslations('nav');
@@ -80,6 +81,10 @@ export function MobileNav() {
               </SheetClose>
             ))}
           </nav>
+
+          <div className="ml-2">
+            <LanguageSelector />
+          </div>
         </SheetContent>
       </Sheet>
     </div>
