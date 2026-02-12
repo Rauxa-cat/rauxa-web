@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { TeamSection } from '@/components/sections/team/TeamSection';
+import { getTranslations } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'Equipo — RAUXA',
@@ -22,15 +23,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function TeamPage() {
+export default async function TeamPage() {
+  const t = await getTranslations('team');
   return (
     <>
       <HeroSection
         // backgroundImage="/images/rauxa-team-hero.jpg"
-        eyebrow="EQUIPO"
-        title="Las personas detrás de"
-        highlightedTitle="la experiencia."
-        subtitle="Gastronomía, música y arte se cruzan gracias a personas con mirada creativa y sensibilidad por el detalle."
+        eyebrow={t('hero.eyebrow')}
+        title={t('hero.title')}
+        highlightedTitle={t('hero.highlightedTitle')}
+        subtitle={t('hero.subtitle')}
         ctas={[]}
       />
 
