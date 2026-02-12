@@ -19,11 +19,20 @@ export async function generateMetadata({
         title: t('ogTitle'),
         description: t('ogDescription'),
         type: 'website',
+        images: [
+          {
+            url: '/images/og/og.jpg',
+            width: 1200,
+            height: 630,
+            alt: `${t('ogTitle')} — Open Graph image`,
+          },
+        ],
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         title: t('ogTitle'),
         description: t('ogDescription'),
+        images: ['/images/og/og.jpg'],
       },
     },
   });
