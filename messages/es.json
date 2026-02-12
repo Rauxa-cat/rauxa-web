@@ -29,5 +29,23 @@
     "/privacy": "Privacidad",
     "/cookies": "Cookies",
     "/legal-notice": "Aviso legal"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "COMUNIDAD GASTRONÓMICA Y CULTURAL",
+      "title": "Experiencias que se viven, ",
+      "highlightedTitle": " no se explican",
+      "subtitle": "Gastronomía, música y arte convergen en momentos diseñados para emocionar.",
+      "ctaPrimary": "Únete a la lista de espera",
+      "ctaSecondary": "SERVICIOS"
+    },
+    "whatIsRauxa": {
+      "eyebrow": "QUÉ HACEMOS",
+      "title": "Experiencias gastronómicas y culturales",
+      "titleHighlight": "hechas a medida",
+      "p1": "En RAUXA organizamos cenas experienciales propias y creamos experiencias para particulares, empresas y marcas.",
+      "p2": "No somos un catering tradicional: diseñamos el concepto completo (gastronomía, música y arte) para que cada evento se sienta único.",
+      "cta": "Descubre nuestros servicios"
+    }
   }
 }

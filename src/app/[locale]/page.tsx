@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { WhatIsRauxa } from '@/components/sections/WhatIsRauxa';
+import { getTranslations } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'RAUXA — Experiencias gastronómicas y culturales en Barcelona',
@@ -8,23 +9,28 @@ export const metadata: Metadata = {
     'Rauxa crea experiencias únicas donde gastronomía, música y arte se encuentran. Comunidad cultural en Barcelona.',
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const t = await getTranslations('home');
   return (
     <>
       <HeroSection
         backgroundImage="/images/rauxa-hero-bg.jpg"
-        eyebrow="COMUNIDAD GASTRONÓMICA Y CULTURAL"
-        title="Experiencias que se viven, "
-        highlightedTitle=" no se explican"
-        subtitle="Gastronomía, música y arte convergen en momentos diseñados para emocionar."
+        eyebrow={t('hero.eyebrow')}
+        title={t('hero.title')}
+        highlightedTitle={t('hero.highlightedTitle')}
+        subtitle={t('hero.subtitle')}
         ctas={[
           {
-            label: 'Únete a la lista de espera',
+            label: t('hero.ctaPrimary'),
             href: 'https://form.typeform.com/to/nMlilHvx',
             withArrow: true,
             external: true,
           },
-          { label: 'SERVICIOS', href: '/servicios', variant: 'outline' },
+          {
+            label: t('hero.ctaSecondary'),
+            href: '/services',
+            variant: 'outline',
+          },
         ]}
       />
       <WhatIsRauxa />

@@ -1,10 +1,21 @@
-export interface HeroCTA {
+import type { AppHref } from '@/i18n/navigation';
+
+type HeroCTACommon = {
   label: string;
-  href: string;
   variant?: 'default' | 'outline';
   withArrow?: boolean;
-  external?: boolean;
+};
+interface HeroCTAExternal extends HeroCTACommon {
+  external: true;
+  href: string;
 }
+
+interface HeroCTAInternal extends HeroCTACommon {
+  external?: false;
+  href: AppHref;
+}
+
+export type HeroCTA = HeroCTAExternal | HeroCTAInternal;
 
 export interface HeroSectionProps {
   backgroundImage?: string;

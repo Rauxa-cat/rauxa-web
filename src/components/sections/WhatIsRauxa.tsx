@@ -1,9 +1,11 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { ServiceCard } from '@/components/sections/services/ServiceCard';
 import { SERVICES } from '@/lib/content/services';
+import { getTranslations } from 'next-intl/server';
 
-export function WhatIsRauxa() {
+export async function WhatIsRauxa() {
+  const t = await getTranslations('home.whatIsRauxa');
   const featured = SERVICES.filter((s) => s.featured).slice(0, 3);
 
   return (
@@ -11,24 +13,17 @@ export function WhatIsRauxa() {
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
         {/* Header */}
         <div className="max-w-2xl">
-          <p className="font-mono text-sm tracking-[0.35em] text-foreground/60 md:text-md">
-            QUÉ HACEMOS
+          <p className="font-accent text-md tracking-[0.35em] text-foreground/60 md:text-md">
+            {t('eyebrow')}
           </p>
 
           <h2 className="mt-4 text-2xl font-semibold leading-tight tracking-tight md:text-4xl">
-            Experiencias gastronómicas y culturales{' '}
-            <span className="text-primary">hechas a medida</span>.
+            {t('title')}{' '}
+            <span className="text-primary">{t('titleHighlight')}</span>.
           </h2>
 
-          <p className="mt-5 text-foreground/70">
-            En RAUXA organizamos cenas experienciales propias y creamos
-            experiencias para particulares, empresas y marcas.
-          </p>
-
-          <p className="mt-3 text-foreground/70">
-            No somos un catering tradicional: diseñamos el concepto completo
-            (gastronomía, música y arte) para que cada evento se sienta único.
-          </p>
+          <p className="mt-5 text-foreground/70">{t('p1')}</p>
+          <p className="mt-3 text-foreground/70">{t('p2')}</p>
         </div>
 
         {/* Cards */}
@@ -41,8 +36,8 @@ export function WhatIsRauxa() {
         {/* CTA */}
         <div className="mt-12 flex justify-start">
           <Button asChild size="lg" variant="outline">
-            <Link href="/servicios" className="inline-flex items-center gap-2">
-              Descubre nuestros servicios
+            <Link href="/services" className="inline-flex items-center gap-2">
+              {t('cta')}
               <span aria-hidden className="text-lg leading-none">
                 →
               </span>

@@ -29,5 +29,23 @@
     "/privacy": "Privacitat",
     "/cookies": "Cookies",
     "/legal-notice": "Avís legal"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "COMUNITAT GASTRONÒMICA I CULTURAL",
+      "title": "Experiències que es viuen, ",
+      "highlightedTitle": " no s'expliquen",
+      "subtitle": "Gastronomia, música i art convergeixen en moments dissenyats per emocionar.",
+      "ctaPrimary": "Uneix-te a la llista d'espera",
+      "ctaSecondary": "SERVEIS"
+    },
+    "whatIsRauxa": {
+      "eyebrow": "QUÈ FEM",
+      "title": "Experiències gastronòmiques i culturals",
+      "titleHighlight": "fetes a mida",
+      "p1": "A RAUXA organitzem sopars experiencials propis i creem experiències per a particulars, empreses i marques.",
+      "p2": "No som un càtering tradicional: dissenyem el concepte complet (gastronomia, música i art) perquè cada esdeveniment se senti únic.",
+      "cta": "Descobreix els nostres serveis"
+    }
   }
 }
