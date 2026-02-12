@@ -6,10 +6,10 @@ export type TeamMember = {
 export const TEAM = [
   {
     id: 'carles',
-    image: '/images/team/member-1.webp',
+    image: '/images/team/member-carles-v2.webp',
   },
   {
     id: 'dani',
-    image: '/images/team/member-2.webp',
+    image: '/images/team/member-dani-v2.webp',
   },
 ] as const;
