@@ -129,6 +129,25 @@
       "buttons": {
         "send": "ENVIAR",
         "sending": "ENVIANT…"
+      },
+      "errors": {
+        "name": {
+          "tooShort": "Nom massa curt",
+          "tooLong": "Nom massa llarg"
+        },
+        "email": {
+          "invalid": "Email invàlid"
+        },
+        "phone": {
+          "invalid": "Telèfon invàlid"
+        },
+        "subject": {
+          "tooLong": "Assumpte massa llarg"
+        },
+        "message": {
+          "tooShort": "Missatge massa curt",
+          "tooLong": "Missatge massa llarg"
+        }
       }
     }
   }

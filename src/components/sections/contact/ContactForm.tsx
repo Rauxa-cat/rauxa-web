@@ -36,6 +36,9 @@ export function ContactForm() {
     mode: 'onBlur',
   });
 
+  const errorText = (msg?: string) =>
+    msg ? t(msg as Parameters<typeof t>[0]) : undefined;
+
   const { submit } = useContactSubmit(setError);
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (values) => {
@@ -55,11 +58,11 @@ export function ContactForm() {
         />
 
         <div className="grid gap-4 md:grid-cols-2">
-          <Field error={errors.name?.message}>
+          <Field error={errorText(errors.name?.message)}>
             <Input placeholder={t('placeholders.name')} {...register('name')} />
           </Field>
 
-          <Field error={errors.email?.message}>
+          <Field error={errorText(errors.email?.message)}>
             <Input
               placeholder={t('placeholders.email')}
               type="email"
@@ -67,14 +70,14 @@ export function ContactForm() {
             />
           </Field>
 
-          <Field error={errors.phone?.message}>
+          <Field error={errorText(errors.phone?.message)}>
             <Input
               placeholder={t('placeholders.phone')}
               {...register('phone')}
             />
           </Field>
 
-          <Field error={errors.subject?.message}>
+          <Field error={errorText(errors.subject?.message)}>
             <Input
               placeholder={t('placeholders.subject')}
               {...register('subject')}
@@ -82,7 +85,7 @@ export function ContactForm() {
           </Field>
         </div>
 
-        <Field error={errors.message?.message}>
+        <Field error={errorText(errors.message?.message)}>
           <Textarea
             placeholder={t('placeholders.message')}
             className="min-h-40"

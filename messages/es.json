@@ -129,6 +129,25 @@
       "buttons": {
         "send": "ENVIAR",
         "sending": "ENVIANDO…"
+      },
+      "errors": {
+        "name": {
+          "tooShort": "Nombre demasiado corto",
+          "tooLong": "Nombre demasiado largo"
+        },
+        "email": {
+          "invalid": "Email inválido"
+        },
+        "phone": {
+          "invalid": "Teléfono inválido"
+        },
+        "subject": {
+          "tooLong": "Asunto demasiado largo"
+        },
+        "message": {
+          "tooShort": "Mensaje demasiado corto",
+          "tooLong": "Mensaje demasiado largo"
+        }
       }
     }
   }
