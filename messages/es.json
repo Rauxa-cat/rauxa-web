@@ -111,5 +111,25 @@
         "bio": "Dani Molins es un joven chef con una sólida trayectoria en la alta cocina nacional e internacional. Ha desarrollado su carrera aprendiendo junto a algunos de los cocineros más influyentes de nuestro país como Martín Berasategui o Paco Pérez y uno de los chefs más importantes actualmente en Francia como Jean Imbert. Apasionado por la técnica y el producto, combina creatividad y rigor en cada plato. Su cocina refleja una visión contemporánea con raíces bien definidas. Dani representa una nueva generación de chefs comprometidos con la excelencia y la innovación."
       }
     }
+  },
+  "contact": {
+    "info": {
+      "eyebrow": "CONTACTO",
+      "title": "Hablemos",
+      "subtitle": "¿Tienes un proyecto en mente? ¿Quieres unirte a la comunidad?"
+    },
+    "form": {
+      "placeholders": {
+        "name": "Nombre",
+        "email": "Email",
+        "phone": "Teléfono",
+        "subject": "Asunto",
+        "message": "Tu mensaje..."
+      },
+      "buttons": {
+        "send": "ENVIAR",
+        "sending": "ENVIANDO…"
+      }
+    }
   }
 }

@@ -111,5 +111,25 @@
         "bio": "Dani Molins és un jove xef amb una sòlida trajectòria en l'alta cuina nacional i internacional. Ha desenvolupat la seva carrera aprenent al costat d'alguns dels cuiners més influents del nostre país, com Martín Berasategui o Paco Pérez, i d'un dels xefs més importants actualment a França, com Jean Imbert. Apassionat per la tècnica i el producte, combina creativitat i rigor en cada plat. La seva cuina reflecteix una visió contemporània amb arrels ben definides. Dani representa una nova generació de xefs compromesos amb l'excel·lència i la innovació."
       }
     }
+  },
+  "contact": {
+    "info": {
+      "eyebrow": "CONTACTE",
+      "title": "Parlem",
+      "subtitle": "Tens un projecte al cap? Vols unir-te a la comunitat?"
+    },
+    "form": {
+      "placeholders": {
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Telèfon",
+        "subject": "Assumpte",
+        "message": "El teu missatge..."
+      },
+      "buttons": {
+        "send": "ENVIAR",
+        "sending": "ENVIANT…"
+      }
+    }
   }
 }
