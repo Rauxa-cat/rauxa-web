@@ -38,7 +38,7 @@ export function TeamMemberCard({
 
       <CardContent className="space-y-2 p-6">
         {/* Hidden role: awaiting required data  */}
-        <p className="hidden font-mono text-xs tracking-[0.35em] text-foreground/60">
+        <p className="hidden font-accent text-xs tracking-[0.35em] text-foreground/60">
           {role.toUpperCase()}
         </p>
 
