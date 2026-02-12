@@ -1,17 +1,15 @@
-'use client';
-
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/site/Logo';
 import { FOOTER_NAV, FOOTER_CONTACT, FOOTER_LEGAL } from './footer.constants';
 import { FooterSocial } from './FooterSocial';
 import { ContactDetails } from '@/components/common/ContactDetails';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export function Footer() {
-  const tFooter = useTranslations('footer');
-  const tNav = useTranslations('nav');
-  const tLegal = useTranslations('legal');
+export async function Footer() {
+  const tFooter = await getTranslations('footer');
+  const tNav = await getTranslations('nav');
+  // const tLegal = await getTranslations('legal');
   const year = new Date().getFullYear();
 
   return (

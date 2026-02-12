@@ -1,10 +1,8 @@
-'use client';
-
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SocialActions } from '@/components/common/SocialActions';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 type ContactDetailsProps = {
   email: string;
@@ -20,7 +18,7 @@ type ContactDetailsProps = {
   socialSize?: 'default' | 'lg';
 };
 
-export function ContactDetails({
+export async function ContactDetails({
   email,
   phoneDisplay,
   phoneE164,
@@ -31,7 +29,7 @@ export function ContactDetails({
   servicesLink = true,
   socialSize = 'default',
 }: ContactDetailsProps) {
-  const t = useTranslations('contactDetails');
+  const t = await getTranslations('contactDetails');
   return (
     <div className={cn('space-y-6', className)}>
       <div className="space-y-3">
@@ -64,7 +62,7 @@ export function ContactDetails({
           <div className="pt-2">
             {t('lookingFor')}{' '}
             <Link
-              href="/servicios"
+              href="/services"
               className="inline-flex items-center gap-2 underline-offset-4 hover:underline"
             >
               {t('viewServices')} <span aria-hidden>→</span>
