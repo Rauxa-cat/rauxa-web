@@ -2,26 +2,32 @@ import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { TeamSection } from '@/components/sections/team/TeamSection';
 import { getTranslations } from 'next-intl/server';
+import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Equipo — RAUXA',
-  description:
-    'El equipo detrás de Rauxa: personas unidas por la gastronomía, la cultura y la creación de experiencias únicas.',
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata.team' });
 
-  openGraph: {
-    title: 'Equipo — RAUXA',
-    description:
-      'Conoce al equipo detrás de RAUXA, una comunidad donde gastronomía, cultura y creatividad se unen para crear experiencias únicas.',
-    type: 'website',
-  },
-
-  twitter: {
-    card: 'summary',
-    title: 'Equipo — RAUXA',
-    description:
-      'El equipo detrás de RAUXA: personas unidas por la gastronomía, la cultura y la creatividad.',
-  },
-};
+  return generatePageMetadata({
+    locale,
+    namespace: 'metadata.team',
+    path: { es: '/equipo', ca: '/equip' },
+    overrides: {
+      openGraph: {
+        title: t('ogTitle'),
+        description: t('ogDescription'),
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary',
+        title: t('ogTitle'),
+        description: t('ogDescription'),
+      },
+    },
+  });
+}
 
 export default async function TeamPage() {
   const t = await getTranslations('team');

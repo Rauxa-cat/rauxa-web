@@ -1,4 +1,29 @@
 {
+  "metadata": {
+    "siteName": "RAUXA",
+    "title": "RAUXA — Experiencias gastronómicas y culturales en Barcelona",
+    "description": "Rauxa es una comunidad gastronómica y cultural que crea experiencias donde la gastronomía, la música y el arte se encuentran. Barcelona.",
+    "home": {
+      "title": "RAUXA — Experiencias gastronómicas y culturales en Barcelona",
+      "description": "Rauxa crea experiencias únicas donde gastronomía, música y arte se encuentran. Comunidad cultural en Barcelona."
+    },
+    "services": {
+      "title": "Servicios",
+      "description": "RAUXA crea cenas privadas, experiencias gastronómicas, catering, eventos culturales, servicios de DJ y colaboraciones con marcas. Propuestas únicas donde gastronomía, música y arte se encuentran.",
+      "ogTitle": "Servicios — RAUXA",
+      "ogDescription": "Cenas privadas, experiencias gastronómicas, catering, eventos culturales, DJs y colaboraciones con marcas."
+    },
+    "team": {
+      "title": "Equipo",
+      "description": "El equipo detrás de Rauxa: personas unidas por la gastronomía, la cultura y la creación de experiencias únicas.",
+      "ogTitle": "Equipo — RAUXA",
+      "ogDescription": "Conoce al equipo detrás de RAUXA, una comunidad donde gastronomía, cultura y creatividad se unen para crear experiencias únicas."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Contacta con RAUXA para crear una experiencia gastronómica y cultural a medida. Escríbenos y cuéntanos qué tienes en mente."
+    }
+  },
   "logo": {
     "ariaLabel": "RAUXA - Inicio",
     "alt": "Logo rauxa"

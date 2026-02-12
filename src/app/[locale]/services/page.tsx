@@ -3,26 +3,32 @@ import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { ServicesOverview } from '@/components/sections/services/ServicesOverview';
 // import { ServicesDetails } from '@/components/sections/services/ServicesDetails';
 import { getTranslations } from 'next-intl/server';
+import { generatePageMetadata, PageProps } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'Servicios — RAUXA',
-  description:
-    'RAUXA crea cenas privadas, experiencias gastronómicas, catering, eventos culturales, servicios de DJ y colaboraciones con marcas. Propuestas únicas donde gastronomía, música y arte se encuentran.',
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'metadata.services' });
 
-  openGraph: {
-    title: 'Servicios — RAUXA',
-    description:
-      'Cenas privadas, experiencias gastronómicas, catering, eventos culturales, DJs y colaboraciones con marcas',
-    type: 'website',
-  },
-
-  twitter: {
-    card: 'summary',
-    title: 'Servicios — RAUXA',
-    description:
-      'Cenas privadas, experiencias gastronómicas, catering, eventos culturales, DJs y colaboraciones con marcas.',
-  },
-};
+  return generatePageMetadata({
+    locale,
+    namespace: 'metadata.services',
+    path: { es: '/servicios', ca: '/serveis' },
+    overrides: {
+      openGraph: {
+        title: t('ogTitle'),
+        description: t('ogDescription'),
+        type: 'website',
+      },
+      twitter: {
+        card: 'summary',
+        title: t('ogTitle'),
+        description: t('ogDescription'),
+      },
+    },
+  });
+}
 
 export default async function ServicesPage() {
   const t = await getTranslations('services');

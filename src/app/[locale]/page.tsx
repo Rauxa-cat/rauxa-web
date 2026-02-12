@@ -2,12 +2,14 @@ import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { WhatIsRauxa } from '@/components/sections/WhatIsRauxa';
 import { getTranslations } from 'next-intl/server';
+import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'RAUXA — Experiencias gastronómicas y culturales en Barcelona',
-  description:
-    'Rauxa crea experiencias únicas donde gastronomía, música y arte se encuentran. Comunidad cultural en Barcelona.',
-};
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  return generatePageMetadata({ locale, namespace: 'metadata.home' });
+}
 
 export default async function HomePage() {
   const t = await getTranslations('home');

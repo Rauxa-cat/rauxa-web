@@ -23,29 +23,6 @@ const rauxaBody = Inter({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: 'RAUXA',
-  description:
-    'Rauxa es una comunidad gastronómica y cultural que crea experiencias donde la gastronomía, la música y el arte se encuentran. Barcelona.',
-
-  openGraph: {
-    type: 'website',
-    siteName: 'RAUXA',
-    title: 'RAUXA',
-    description:
-      'Experiencias gastronómicas y culturales donde se unen gastronomía, música y arte.',
-    // sin images
-  },
-
-  twitter: {
-    card: 'summary',
-    title: 'RAUXA',
-    description:
-      'Experiencias gastronómicas y culturales donde se unen gastronomía, música y arte.',
-    // sin images
-  },
-};
-
 export default async function RootLayout({
   children,
 }: {
