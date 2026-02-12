@@ -148,6 +148,15 @@
           "tooShort": "Mensaje demasiado corto",
           "tooLong": "Mensaje demasiado largo"
         }
+      },
+      "api": {
+        "contact": {
+          "rateLimited": "Demasiadas solicitudes. Inténtalo más tarde.",
+          "invalidData": "Datos inválidos.",
+          "misconfigured": "No se pudo enviar el mensaje. Inténtalo más tarde.",
+          "unknown": "No se pudo enviar el mensaje. Inténtalo más tarde.",
+          "success": "¡Mensaje enviado!"
+        }
       }
     }
   }

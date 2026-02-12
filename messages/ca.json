@@ -148,6 +148,15 @@
           "tooShort": "Missatge massa curt",
           "tooLong": "Missatge massa llarg"
         }
+      },
+      "api": {
+        "contact": {
+          "rateLimited": "Massa sol·licituds. Torna-ho a provar més tard.",
+          "invalidData": "Dades invàlides.",
+          "misconfigured": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
+          "unknown": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
+          "success": "Missatge enviat!"
+        }
       }
     }
   }
