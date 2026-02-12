@@ -10,10 +10,11 @@ export async function POST(req: Request) {
     const { success } = await limitContactByIp(ip);
     if (!success) {
       return NextResponse.json(
-        { ok: false, error: 'Demasiadas solicitudes. Inténtalo más tarde.' },
+        { ok: false, errorKey: 'api.contact.rateLimited' },
         { status: 429 },
       );
     }
+
     const body = await req.json();
     const parsed = contactSchema.safeParse(body);
 
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
       return NextResponse.json(
         {
           ok: false,
-          error: firstIssue.message || 'Datos inválidos',
+          errorKey: firstIssue.message || 'api.contact.invalidData',
           field: firstIssue?.path?.[0],
         },
         { status: 400 },
@@ -42,10 +43,7 @@ export async function POST(req: Request) {
     const templateId = Number(process.env.BREVO_CONTACT_TEMPLATE_ID);
     if (!Number.isFinite(templateId) || templateId <= 0) {
       return NextResponse.json(
-        {
-          ok: false,
-          error: 'No se pudo enviar el mensaje. Inténtalo más tarde.',
-        },
+        { ok: false, errorKey: 'api.contact.misconfigured' },
         { status: 500 },
       );
     }
@@ -66,9 +64,9 @@ export async function POST(req: Request) {
   } catch (error: unknown) {
     console.log(error);
     const status = (error as { status?: number })?.status ?? 500;
-    const message =
-      error instanceof Error ? error.message : 'No se pudo enviar el mensaje';
-
-    return NextResponse.json({ ok: false, error: message }, { status });
+    return NextResponse.json(
+      { ok: false, errorKey: 'api.contact.unknown' },
+      { status },
+    );
   }
 }

@@ -1,0 +1,192 @@
+{
+  "metadata": {
+    "siteName": "RAUXA",
+    "title": "RAUXA — Experiències gastronòmiques i culturals a Barcelona",
+    "description": "Rauxa és una comunitat gastronòmica i cultural que crea experiències on la gastronomia, la música i l'art es troben. Barcelona.",
+    "home": {
+      "title": "RAUXA — Experiències gastronòmiques i culturals a Barcelona",
+      "description": "Rauxa crea experiències úniques on gastronomia, música i art es troben. Comunitat cultural a Barcelona."
+    },
+    "services": {
+      "title": "Serveis",
+      "description": "RAUXA crea sopars privats, experiències gastronòmiques, càtering, esdeveniments culturals, serveis de DJ i col·laboracions amb marques. Propostes úniques on gastronomia, música i art es troben.",
+      "ogTitle": "RAUXA — Serveis",
+      "ogDescription": "Sopars privats, experiències gastronòmiques, càtering, esdeveniments culturals, DJs i col·laboracions amb marques."
+    },
+    "team": {
+      "title": "Equip",
+      "description": "L'equip darrere de Rauxa: persones unides per la gastronomia, la cultura i la creació d'experiències úniques.",
+      "ogTitle": "Equip — RAUXA",
+      "ogDescription": "Coneix l'equip darrere de RAUXA, una comunitat on gastronomia, cultura i creativitat s'uneixen per crear experiències úniques."
+    },
+    "contact": {
+      "title": "Contacte",
+      "description": "Contacta amb RAUXA per crear una experiència gastronòmica i cultural a mida. Escriu-nos i explica'ns què tens en ment."
+    }
+  },
+  "logo": {
+    "ariaLabel": "RAUXA - Inici",
+    "alt": "Logo rauxa"
+  },
+  "nav": {
+    "/": "Inici",
+    "/services": "Serveis",
+    "/team": "Equip",
+    "/contact": "Contacte"
+  },
+  "mobileNav": {
+    "openMenu": "Obrir el menú",
+    "closeMenu": "Tancar el menú",
+    "mainMenu": "Menú principal",
+    "mainMenuDescription": "Navegació principal del lloc web"
+  },
+  "locale": {
+    "es": "ES",
+    "ca": "CA"
+  },
+  "footer": {
+    "copy": "Comunitat gastronòmica i cultural. Experiències on la gastronomia, la música i l'art es troben.",
+    "navigation": "NAVEGACIÓ",
+    "contact": "CONTACTE",
+    "copyright": "© {year} RAUXA. Tots els drets reservats."
+  },
+  "contactDetails": {
+    "lookingFor": "Busques alguna cosa concreta?",
+    "viewServices": "Veure serveis"
+  },
+  "legal": {
+    "/privacy": "Privacitat",
+    "/cookies": "Cookies",
+    "/legal-notice": "Avís legal"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "COMUNITAT GASTRONÒMICA I CULTURAL",
+      "title": "Experiències que es viuen, ",
+      "highlightedTitle": " no s'expliquen",
+      "subtitle": "Gastronomia, música i art convergeixen en moments dissenyats per emocionar.",
+      "ctaPrimary": "Uneix-te a la llista d'espera",
+      "ctaSecondary": "SERVEIS"
+    },
+    "whatIsRauxa": {
+      "eyebrow": "QUÈ FEM",
+      "title": "Experiències gastronòmiques i culturals",
+      "titleHighlight": "fetes a mida",
+      "p1": "A RAUXA organitzem sopars experiencials propis i creem experiències per a particulars, empreses i marques.",
+      "p2": "No som un càtering tradicional: dissenyem el concepte complet (gastronomia, música i art) perquè cada esdeveniment se senti únic.",
+      "cta": "Descobreix els nostres serveis"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "SERVEIS · EXPERIÈNCIES · ESDEVENIMENTS",
+      "title": "Cada projecte és una oportunitat per",
+      "highlightedTitle": " crear quelcom memorable.",
+      "subtitle": "Des de sopars íntims fins a esdeveniments a gran escala."
+    },
+    "overview": {
+      "title": "Tria la teva experiència",
+      "subtitle": "Escriu-nos i et proposem la millor opció.",
+      "cta": "Contacta amb RAUXA"
+    },
+    "items": {
+      "cenas-rauxa": {
+        "title": "Sopars RAUXA",
+        "desc": "Sopars privats on s'uneixen gastronomia, música i art. Accés exclusiu per a la comunitat oficial."
+      },
+      "cenas-privadas": {
+        "title": "Sopars privats",
+        "desc": "Explica'ns què tens al cap i ho fem realitat. Experiències a mida per a la teva ocasió."
+      },
+      "eventos": {
+        "title": "Organització d'esdeveniments",
+        "desc": "Esdeveniments complets: gastronomia, música, DJ, animació i espais. Ens n'encarreguem de tot."
+      },
+      "catering": {
+        "title": "Càtering",
+        "desc": "Només menjar. Preparem i entreguem el càtering llest per servir, sense producció addicional."
+      },
+      "dj": {
+        "title": "Serveis de DJ",
+        "desc": "Sessions adaptades a cada esdeveniment. Trobem el DJ i l'estil que encaixi amb el teu vibe."
+      },
+      "marcas": {
+        "title": "Col·laboracions amb marques",
+        "desc": "Pop-ups, esdeveniments, shootings i llançaments. Propostes alineades amb identitat i objectius."
+      }
+    }
+  },
+  "team": {
+    "hero": {
+      "eyebrow": "EQUIP",
+      "title": "Les persones darrere de",
+      "highlightedTitle": "l'experiència.",
+      "subtitle": "Gastronomia, música i art es creuen gràcies a persones amb una mirada creativa i sensibilitat pel detall."
+    },
+    "section": {
+      "eyebrow": "EQUIP",
+      "title": "Persones darrere de l'experiència.",
+      "description": "RAUXA neix de la col·laboració entre gastronomia, música i art. Dissenyem i produïm experiències amb intenció i cura pel detall."
+    },
+    "members": {
+      "carles": {
+        "name": "Carles Serrano",
+        "role": "Direcció creativa",
+        "bio": "Carles és cuiner, fundador i director creatiu de Rauxa. Format en restaurants i equips d'alt nivell a Espanya i a l'estranger, avui combina cuina i visió de projecte amb una mirada contemporània. Rauxa neix com una comunitat que explora la innovació gastronòmica des d'un lloc diferent, incorporant art, show i música electrònica com a part essencial de l'experiència. Un concepte que no busca canviar la gastronomia, sinó crear un camí paral·lel a ella, on conviuen llenguatges que rarament es troben i on l'avantguarda es redefineix des de la llibertat creativa."
+      },
+      "dani": {
+        "name": "Dani Molins",
+        "role": "Producció i esdeveniments",
+        "bio": "Dani Molins és un jove xef amb una sòlida trajectòria en l'alta cuina nacional i internacional. Ha desenvolupat la seva carrera aprenent al costat d'alguns dels cuiners més influents del nostre país, com Martín Berasategui o Paco Pérez, i d'un dels xefs més importants actualment a França, com Jean Imbert. Apassionat per la tècnica i el producte, combina creativitat i rigor en cada plat. La seva cuina reflecteix una visió contemporània amb arrels ben definides. Dani representa una nova generació de xefs compromesos amb l'excel·lència i la innovació."
+      }
+    }
+  },
+  "contact": {
+    "info": {
+      "eyebrow": "CONTACTE",
+      "title": "Parlem",
+      "subtitle": "Tens un projecte al cap? Vols unir-te a la comunitat?"
+    },
+    "form": {
+      "placeholders": {
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Telèfon",
+        "subject": "Assumpte",
+        "message": "El teu missatge..."
+      },
+      "buttons": {
+        "send": "ENVIAR",
+        "sending": "ENVIANT…"
+      },
+      "errors": {
+        "name": {
+          "tooShort": "Nom massa curt",
+          "tooLong": "Nom massa llarg"
+        },
+        "email": {
+          "invalid": "Email invàlid"
+        },
+        "phone": {
+          "invalid": "Telèfon invàlid"
+        },
+        "subject": {
+          "tooLong": "Assumpte massa llarg"
+        },
+        "message": {
+          "tooShort": "Missatge massa curt",
+          "tooLong": "Missatge massa llarg"
+        }
+      },
+      "api": {
+        "contact": {
+          "rateLimited": "Massa sol·licituds. Torna-ho a provar més tard.",
+          "invalidData": "Dades invàlides.",
+          "misconfigured": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
+          "unknown": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
+          "success": "Missatge enviat!"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "metadata": {
+    "siteName": "RAUXA",
+    "title": "RAUXA — Experiencias gastronómicas y culturales en Barcelona",
+    "description": "Rauxa es una comunidad gastronómica y cultural que crea experiencias donde la gastronomía, la música y el arte se encuentran. Barcelona.",
+    "home": {
+      "title": "RAUXA — Experiencias gastronómicas y culturales en Barcelona",
+      "description": "Rauxa crea experiencias únicas donde gastronomía, música y arte se encuentran. Comunidad cultural en Barcelona."
+    },
+    "services": {
+      "title": "Servicios",
+      "description": "RAUXA crea cenas privadas, experiencias gastronómicas, catering, eventos culturales, servicios de DJ y colaboraciones con marcas. Propuestas únicas donde gastronomía, música y arte se encuentran.",
+      "ogTitle": "Servicios — RAUXA",
+      "ogDescription": "Cenas privadas, experiencias gastronómicas, catering, eventos culturales, DJs y colaboraciones con marcas."
+    },
+    "team": {
+      "title": "Equipo",
+      "description": "El equipo detrás de Rauxa: personas unidas por la gastronomía, la cultura y la creación de experiencias únicas.",
+      "ogTitle": "Equipo — RAUXA",
+      "ogDescription": "Conoce al equipo detrás de RAUXA, una comunidad donde gastronomía, cultura y creatividad se unen para crear experiencias únicas."
+    },
+    "contact": {
+      "title": "Contacto",
+      "description": "Contacta con RAUXA para crear una experiencia gastronómica y cultural a medida. Escríbenos y cuéntanos qué tienes en mente."
+    }
+  },
+  "logo": {
+    "ariaLabel": "RAUXA - Inicio",
+    "alt": "Logo rauxa"
+  },
+  "nav": {
+    "/": "Inicio",
+    "/services": "Servicios",
+    "/team": "Equipo",
+    "/contact": "Contacto"
+  },
+  "mobileNav": {
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mainMenu": "Menú principal",
+    "mainMenuDescription": "Navegación principal del sitio"
+  },
+  "locale": {
+    "es": "ES",
+    "ca": "CA"
+  },
+  "footer": {
+    "copy": "Comunidad gastronómica y cultural. Experiencias donde la gastronomía, la música y el arte se encuentran.",
+    "navigation": "NAVEGACIÓN",
+    "contact": "CONTACTO",
+    "copyright": "© {year} RAUXA. Todos los derechos reservados."
+  },
+  "contactDetails": {
+    "lookingFor": "¿Buscas algo concreto?",
+    "viewServices": "Ver servicios"
+  },
+  "legal": {
+    "/privacy": "Privacidad",
+    "/cookies": "Cookies",
+    "/legal-notice": "Aviso legal"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "COMUNIDAD GASTRONÓMICA Y CULTURAL",
+      "title": "Experiencias que se viven, ",
+      "highlightedTitle": " no se explican",
+      "subtitle": "Gastronomía, música y arte convergen en momentos diseñados para emocionar.",
+      "ctaPrimary": "Únete a la lista de espera",
+      "ctaSecondary": "SERVICIOS"
+    },
+    "whatIsRauxa": {
+      "eyebrow": "QUÉ HACEMOS",
+      "title": "Experiencias gastronómicas y culturales",
+      "titleHighlight": "hechas a medida",
+      "p1": "En RAUXA organizamos cenas experienciales propias y creamos experiencias para particulares, empresas y marcas.",
+      "p2": "No somos un catering tradicional: diseñamos el concepto completo (gastronomía, música y arte) para que cada evento se sienta único.",
+      "cta": "Descubre nuestros servicios"
+    }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "SERVICIOS · EXPERIENCIAS · EVENTOS",
+      "title": "Cada proyecto es una oportunidad de",
+      "highlightedTitle": " crear algo memorable.",
+      "subtitle": "Desde cenas íntimas hasta eventos a gran escala."
+    },
+    "overview": {
+      "title": "Elige tu experiencia",
+      "subtitle": "Escríbenos y te proponemos la mejor opción.",
+      "cta": "Contacta con RAUXA"
+    },
+    "items": {
+      "cenas-rauxa": {
+        "title": "Cenas RAUXA",
+        "desc": "Cenas privadas donde se unen gastronomía, música y arte. Acceso exclusivo para la comunidad oficial."
+      },
+      "cenas-privadas": {
+        "title": "Cenas privadas",
+        "desc": "Cuéntanos qué tienes en mente y lo hacemos realidad. Experiencias a medida para tu ocasión."
+      },
+      "eventos": {
+        "title": "Organización de eventos",
+        "desc": "Eventos completos: gastronomía, música, DJs, animación y espacios. Nos encargamos de todo."
+      },
+      "catering": {
+        "title": "Catering",
+        "desc": "Solo comida. Preparamos y entregamos el catering listo para servir, sin producción adicional."
+      },
+      "dj": {
+        "title": "Servicios de DJ",
+        "desc": "Sesiones adaptadas a cada evento. Encontramos el DJ y el estilo que encaje con tu vibe."
+      },
+      "marcas": {
+        "title": "Colaboraciones con marcas",
+        "desc": "Pop-ups, eventos, shootings y lanzamientos. Propuestas alineadas con identidad y objetivos."
+      }
+    }
+  },
+  "team": {
+    "hero": {
+      "eyebrow": "EQUIPO",
+      "title": "Las personas detrás de",
+      "highlightedTitle": "la experiencia.",
+      "subtitle": "Gastronomía, música y arte se cruzan gracias a personas con mirada creativa y sensibilidad por el detalle."
+    },
+    "section": {
+      "eyebrow": "EQUIPO",
+      "title": "Personas detrás de la experiencia.",
+      "description": "RAUXA nace de la colaboración entre gastronomía, música y arte. Diseñamos y producimos experiencias con intención y detalle."
+    },
+    "members": {
+      "carles": {
+        "name": "Carles Serrano",
+        "role": "Dirección creativa",
+        "bio": "Carles es cocinero, fundador y director creativo de Rauxa. Formado en restaurantes y equipos de alto nivel en España y en el extranjero, hoy combina cocina y visión de proyecto con una mirada contemporánea. Rauxa nace como una comunidad que explora la innovación gastronómica desde un lugar distinto, incorporando arte, show y música electrónica como parte esencial de la experiencia. Un concepto que no busca cambiar la gastronomía, sino crear un camino paralelo a ella, donde conviven lenguajes que rara vez se encuentran y donde la vanguardia se redefine desde la libertad creativa."
+      },
+      "dani": {
+        "name": "Dani Molins",
+        "role": "Producción & eventos",
+        "bio": "Dani Molins es un joven chef con una sólida trayectoria en la alta cocina nacional e internacional. Ha desarrollado su carrera aprendiendo junto a algunos de los cocineros más influyentes de nuestro país como Martín Berasategui o Paco Pérez y uno de los chefs más importantes actualmente en Francia como Jean Imbert. Apasionado por la técnica y el producto, combina creatividad y rigor en cada plato. Su cocina refleja una visión contemporánea con raíces bien definidas. Dani representa una nueva generación de chefs comprometidos con la excelencia y la innovación."
+      }
+    }
+  },
+  "contact": {
+    "info": {
+      "eyebrow": "CONTACTO",
+      "title": "Hablemos",
+      "subtitle": "¿Tienes un proyecto en mente? ¿Quieres unirte a la comunidad?"
+    },
+    "form": {
+      "placeholders": {
+        "name": "Nombre",
+        "email": "Email",
+        "phone": "Teléfono",
+        "subject": "Asunto",
+        "message": "Tu mensaje..."
+      },
+      "buttons": {
+        "send": "ENVIAR",
+        "sending": "ENVIANDO…"
+      },
+      "errors": {
+        "name": {
+          "tooShort": "Nombre demasiado corto",
+          "tooLong": "Nombre demasiado largo"
+        },
+        "email": {
+          "invalid": "Email inválido"
+        },
+        "phone": {
+          "invalid": "Teléfono inválido"
+        },
+        "subject": {
+          "tooLong": "Asunto demasiado largo"
+        },
+        "message": {
+          "tooShort": "Mensaje demasiado corto",
+          "tooLong": "Mensaje demasiado largo"
+        }
+      },
+      "api": {
+        "contact": {
+          "rateLimited": "Demasiadas solicitudes. Inténtalo más tarde.",
+          "invalidData": "Datos inválidos.",
+          "misconfigured": "No se pudo enviar el mensaje. Inténtalo más tarde.",
+          "unknown": "No se pudo enviar el mensaje. Inténtalo más tarde.",
+          "success": "¡Mensaje enviado!"
+        }
+      }
+    }
+  }
+}

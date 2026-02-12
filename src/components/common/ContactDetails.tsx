@@ -1,7 +1,8 @@
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { SocialActions } from '@/components/common/SocialActions';
+import { getTranslations } from 'next-intl/server';
 
 type ContactDetailsProps = {
   email: string;
@@ -17,7 +18,7 @@ type ContactDetailsProps = {
   socialSize?: 'default' | 'lg';
 };
 
-export function ContactDetails({
+export async function ContactDetails({
   email,
   phoneDisplay,
   phoneE164,
@@ -28,6 +29,7 @@ export function ContactDetails({
   servicesLink = true,
   socialSize = 'default',
 }: ContactDetailsProps) {
+  const t = await getTranslations('contactDetails');
   return (
     <div className={cn('space-y-6', className)}>
       <div className="space-y-3">
@@ -58,12 +60,12 @@ export function ContactDetails({
 
         {servicesLink && (
           <div className="pt-2">
-            ¿Buscas algo concreto?{' '}
+            {t('lookingFor')}{' '}
             <Link
-              href="/servicios"
+              href="/services"
               className="inline-flex items-center gap-2 underline-offset-4 hover:underline"
             >
-              Ver servicios <span aria-hidden>→</span>
+              {t('viewServices')} <span aria-hidden>→</span>
             </Link>
           </div>
         )}

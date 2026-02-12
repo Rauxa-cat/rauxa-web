@@ -12,8 +12,11 @@ import {
   useContactSubmit,
   type ContactFormValues,
 } from '@/hooks/useContactSubmit';
+import { useTranslations } from 'next-intl';
 
 export function ContactForm() {
+  const t = useTranslations('contact.form');
+
   const {
     register,
     handleSubmit,
@@ -32,6 +35,9 @@ export function ContactForm() {
     },
     mode: 'onBlur',
   });
+
+  const errorText = (msg?: string) =>
+    msg ? t(msg as Parameters<typeof t>[0]) : undefined;
 
   const { submit } = useContactSubmit(setError);
 
@@ -52,26 +58,36 @@ export function ContactForm() {
         />
 
         <div className="grid gap-4 md:grid-cols-2">
-          <Field error={errors.name?.message}>
-            <Input placeholder="Nombre" {...register('name')} />
+          <Field error={errorText(errors.name?.message)}>
+            <Input placeholder={t('placeholders.name')} {...register('name')} />
           </Field>
 
-          <Field error={errors.email?.message}>
-            <Input placeholder="Email" type="email" {...register('email')} />
+          <Field error={errorText(errors.email?.message)}>
+            <Input
+              placeholder={t('placeholders.email')}
+              type="email"
+              {...register('email')}
+            />
           </Field>
 
-          <Field error={errors.phone?.message}>
-            <Input placeholder="Teléfono" {...register('phone')} />
+          <Field error={errorText(errors.phone?.message)}>
+            <Input
+              placeholder={t('placeholders.phone')}
+              {...register('phone')}
+            />
           </Field>
 
-          <Field error={errors.subject?.message}>
-            <Input placeholder="Asunto" {...register('subject')} />
+          <Field error={errorText(errors.subject?.message)}>
+            <Input
+              placeholder={t('placeholders.subject')}
+              {...register('subject')}
+            />
           </Field>
         </div>
 
-        <Field error={errors.message?.message}>
+        <Field error={errorText(errors.message?.message)}>
           <Textarea
-            placeholder="Tu mensaje..."
+            placeholder={t('placeholders.message')}
             className="min-h-40"
             {...register('message')}
           />
@@ -84,10 +100,10 @@ export function ContactForm() {
           disabled={isSubmitting}
         >
           {isSubmitting ? (
-            'ENVIANDO…'
+            t('buttons.sending')
           ) : (
             <>
-              ENVIAR <span className="ml-2">→</span>
+              {t('buttons.send')} <span className="ml-2">→</span>
             </>
           )}
         </Button>
