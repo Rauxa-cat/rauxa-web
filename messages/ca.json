@@ -47,5 +47,44 @@
       "p2": "No som un càtering tradicional: dissenyem el concepte complet (gastronomia, música i art) perquè cada esdeveniment se senti únic.",
       "cta": "Descobreix els nostres serveis"
     }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "SERVEIS · EXPERIÈNCIES · ESDEVENIMENTS",
+      "title": "Cada projecte és una oportunitat per",
+      "highlightedTitle": " crear quelcom memorable.",
+      "subtitle": "Des de sopars íntims fins a esdeveniments a gran escala."
+    },
+    "overview": {
+      "title": "Tria la teva experiència",
+      "subtitle": "Escriu-nos i et proposem la millor opció.",
+      "cta": "Contacta amb RAUXA"
+    },
+    "items": {
+      "cenas-rauxa": {
+        "title": "Sopars RAUXA",
+        "desc": "Sopars privats on s'uneixen gastronomia, música i art. Accés exclusiu per a la comunitat oficial."
+      },
+      "cenas-privadas": {
+        "title": "Sopars privats",
+        "desc": "Explica'ns què tens al cap i ho fem realitat. Experiències a mida per a la teva ocasió."
+      },
+      "eventos": {
+        "title": "Organització d'esdeveniments",
+        "desc": "Esdeveniments complets: gastronomia, música, DJ, animació i espais. Ens n'encarreguem de tot."
+      },
+      "catering": {
+        "title": "Càtering",
+        "desc": "Només menjar. Preparem i entreguem el càtering llest per servir, sense producció addicional."
+      },
+      "dj": {
+        "title": "Serveis de DJ",
+        "desc": "Sessions adaptades a cada esdeveniment. Trobem el DJ i l'estil que encaixi amb el teu vibe."
+      },
+      "marcas": {
+        "title": "Col·laboracions amb marques",
+        "desc": "Pop-ups, esdeveniments, shootings i llançaments. Propostes alineades amb identitat i objectius."
+      }
+    }
   }
 }

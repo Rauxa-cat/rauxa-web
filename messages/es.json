@@ -47,5 +47,44 @@
       "p2": "No somos un catering tradicional: diseñamos el concepto completo (gastronomía, música y arte) para que cada evento se sienta único.",
       "cta": "Descubre nuestros servicios"
     }
+  },
+  "services": {
+    "hero": {
+      "eyebrow": "SERVICIOS · EXPERIENCIAS · EVENTOS",
+      "title": "Cada proyecto es una oportunidad de",
+      "highlightedTitle": " crear algo memorable.",
+      "subtitle": "Desde cenas íntimas hasta eventos a gran escala."
+    },
+    "overview": {
+      "title": "Elige tu experiencia",
+      "subtitle": "Escríbenos y te proponemos la mejor opción.",
+      "cta": "Contacta con RAUXA"
+    },
+    "items": {
+      "cenas-rauxa": {
+        "title": "Cenas RAUXA",
+        "desc": "Cenas privadas donde se unen gastronomía, música y arte. Acceso exclusivo para la comunidad oficial."
+      },
+      "cenas-privadas": {
+        "title": "Cenas privadas",
+        "desc": "Cuéntanos qué tienes en mente y lo hacemos realidad. Experiencias a medida para tu ocasión."
+      },
+      "eventos": {
+        "title": "Organización de eventos",
+        "desc": "Eventos completos: gastronomía, música, DJs, animación y espacios. Nos encargamos de todo."
+      },
+      "catering": {
+        "title": "Catering",
+        "desc": "Solo comida. Preparamos y entregamos el catering listo para servir, sin producción adicional."
+      },
+      "dj": {
+        "title": "Servicios de DJ",
+        "desc": "Sesiones adaptadas a cada evento. Encontramos el DJ y el estilo que encaje con tu vibe."
+      },
+      "marcas": {
+        "title": "Colaboraciones con marcas",
+        "desc": "Pop-ups, eventos, shootings y lanzamientos. Propuestas alineadas con identidad y objetivos."
+      }
+    }
   }
 }
