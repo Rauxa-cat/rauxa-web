@@ -86,5 +86,30 @@
         "desc": "Pop-ups, eventos, shootings y lanzamientos. Propuestas alineadas con identidad y objetivos."
       }
     }
+  },
+  "team": {
+    "hero": {
+      "eyebrow": "EQUIPO",
+      "title": "Las personas detrás de",
+      "highlightedTitle": "la experiencia.",
+      "subtitle": "Gastronomía, música y arte se cruzan gracias a personas con mirada creativa y sensibilidad por el detalle."
+    },
+    "section": {
+      "eyebrow": "EQUIPO",
+      "title": "Personas detrás de la experiencia.",
+      "description": "RAUXA nace de la colaboración entre gastronomía, música y arte. Diseñamos y producimos experiencias con intención y detalle."
+    },
+    "members": {
+      "carles": {
+        "name": "Carles Serrano",
+        "role": "Dirección creativa",
+        "bio": "Carles es cocinero, fundador y director creativo de Rauxa. Formado en restaurantes y equipos de alto nivel en España y en el extranjero, hoy combina cocina y visión de proyecto con una mirada contemporánea. Rauxa nace como una comunidad que explora la innovación gastronómica desde un lugar distinto, incorporando arte, show y música electrónica como parte esencial de la experiencia. Un concepto que no busca cambiar la gastronomía, sino crear un camino paralelo a ella, donde conviven lenguajes que rara vez se encuentran y donde la vanguardia se redefine desde la libertad creativa."
+      },
+      "dani": {
+        "name": "Dani Molins",
+        "role": "Producción & eventos",
+        "bio": "Dani Molins es un joven chef con una sólida trayectoria en la alta cocina nacional e internacional. Ha desarrollado su carrera aprendiendo junto a algunos de los cocineros más influyentes de nuestro país como Martín Berasategui o Paco Pérez y uno de los chefs más importantes actualmente en Francia como Jean Imbert. Apasionado por la técnica y el producto, combina creatividad y rigor en cada plato. Su cocina refleja una visión contemporánea con raíces bien definidas. Dani representa una nueva generación de chefs comprometidos con la excelencia y la innovación."
+      }
+    }
   }
 }
