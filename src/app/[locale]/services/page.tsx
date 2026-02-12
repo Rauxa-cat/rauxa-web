@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { ServicesOverview } from '@/components/sections/services/ServicesOverview';
 // import { ServicesDetails } from '@/components/sections/services/ServicesDetails';
+import { getTranslations } from 'next-intl/server';
 
 export const metadata: Metadata = {
   title: 'Servicios — RAUXA',
@@ -23,15 +24,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const t = await getTranslations('services');
   return (
     <>
       <HeroSection
         backgroundImage="/images/rauxa-services-hero-bg.jpg"
-        eyebrow="SERVICIOS · EXPERIENCIAS · EVENTOS"
-        title="Cada proyecto es una oportunidad de"
-        highlightedTitle=" crear algo memorable."
-        subtitle="Desde cenas íntimas hasta eventos a gran escala."
+        eyebrow={t('hero.eyebrow')}
+        title={t('hero.title')}
+        highlightedTitle={t('hero.highlightedTitle')}
+        subtitle={t('hero.subtitle')}
       />
       <ServicesOverview />
       {/* Fase 2: <ServicesDetails />  //  */}
