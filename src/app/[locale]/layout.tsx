@@ -31,13 +31,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('description'),
       locale: locale,
       alternateLocale: routing.locales.filter((l) => l !== locale),
-      // sin images
+      images: [
+        {
+          url: '/images/og/og.jpg',
+          width: 1200,
+          height: 630,
+          alt: `${t('siteName')} — Open Graph image`,
+        },
+      ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      // sin images
+      images: ['/images/og/og.jpg'],
     },
     alternates: {
       canonical: `${BASE_URL}/${locale}`,
