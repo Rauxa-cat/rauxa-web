@@ -6,6 +6,7 @@ import { getTranslations } from 'next-intl/server';
 
 export async function WhatIsRauxa() {
   const t = await getTranslations('home.whatIsRauxa');
+  const tItems = await getTranslations('services.items');
   const featured = SERVICES.filter((s) => s.featured).slice(0, 3);
 
   return (
@@ -29,7 +30,11 @@ export async function WhatIsRauxa() {
         {/* Cards */}
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
           {featured.map((item) => (
-            <ServiceCard key={item.title} title={item.title} desc={item.desc} />
+            <ServiceCard
+              key={item.id}
+              title={tItems(`${item.id}.title`)}
+              desc={tItems(`${item.id}.desc`)}
+            />
           ))}
         </div>
 
