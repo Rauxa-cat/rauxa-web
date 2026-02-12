@@ -9,7 +9,7 @@ export async function TeamSection() {
     <section className="border-t bg-background">
       <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
         <div className="max-w-2xl">
-          <p className="font-accent text-xs tracking-[0.35em] text-foreground/60 md:text-sm">
+          <p className="font-accent tracking-[0.35em] text-foreground/60">
             {t('eyebrow')}
           </p>
 
