@@ -43,7 +43,7 @@ export default async function TeamPage() {
   return (
     <>
       <HeroSection
-        backgroundImage="/images/team/rauxa-team-hero.webp"
+        background="/images/team/rauxa-team-hero.webp"
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}
         highlightedTitle={t('hero.highlightedTitle')}

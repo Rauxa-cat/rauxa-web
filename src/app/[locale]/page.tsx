@@ -16,7 +16,7 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection
-        backgroundImage="/images/rauxa-hero-bg-v2.webp"
+        background="/video/hero-home.mp4"
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}
         highlightedTitle={t('hero.highlightedTitle')}

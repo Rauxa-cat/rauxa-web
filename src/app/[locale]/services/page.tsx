@@ -44,7 +44,7 @@ export default async function ServicesPage() {
   return (
     <>
       <HeroSection
-        backgroundImage="/images/rauxa-services-hero-bg-v2.webp"
+        background="/images/rauxa-services-hero-bg-v2.webp"
         eyebrow={t('hero.eyebrow')}
         title={t('hero.title')}
         highlightedTitle={t('hero.highlightedTitle')}
