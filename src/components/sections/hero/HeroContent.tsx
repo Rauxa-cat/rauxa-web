@@ -23,7 +23,7 @@ export function HeroContent({
   return (
     <div
       className={cn(
-        'mx-auto flex min-h-[78vh] max-w-6xl flex-col items-center justify-center px-6 py-24 text-center',
+        'mx-auto flex min-h-[78svh] max-w-6xl flex-col items-center justify-center px-6 py-24 text-center',
         className,
       )}
     >
