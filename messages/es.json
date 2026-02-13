@@ -125,7 +125,8 @@
     },
     "section": {
       "eyebrow": "EQUIPO",
-      "title": "Personas detrás de la experiencia.",
+      "title": "Personas detrás de",
+      "titleHighlight": "la experiencia",
       "description": "RAUXA nace de la colaboración entre gastronomía, música y arte. Diseñamos y producimos experiencias con intención y detalle."
     },
     "members": {
