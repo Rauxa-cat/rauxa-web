@@ -15,7 +15,7 @@ export function HeroSection({
   contentClassName,
 }: HeroSectionProps) {
   return (
-    <section className={cn('relative isolate min-h-dvh', className)}>
+    <section className={cn('relative isolate min-h-svh', className)}>
       <HeroBackground src={backgroundImage} alt={backgroundAlt} />
       <HeroContent
         eyebrow={eyebrow}
