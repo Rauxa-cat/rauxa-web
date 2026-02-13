@@ -1,8 +1,9 @@
 import { Link } from '@/i18n/navigation';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SocialActions } from '@/components/common/SocialActions';
+import { SocialActions } from './SocialActions';
 import { getTranslations } from 'next-intl/server';
+import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 type ContactDetailsProps = {
   email: string;
@@ -65,7 +66,7 @@ export async function ContactDetails({
               href="/services"
               className="inline-flex items-center gap-2 underline-offset-4 hover:underline"
             >
-              {t('viewServices')} <span aria-hidden>→</span>
+              {t('viewServices')} <ArrowIcon />
             </Link>
           </div>
         )}
