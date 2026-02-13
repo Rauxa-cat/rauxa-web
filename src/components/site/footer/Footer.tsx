@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { Logo } from '@/components/site/Logo';
 import { FOOTER_NAV, FOOTER_CONTACT, FOOTER_LEGAL } from './footer.constants';
 import { FooterSocial } from './FooterSocial';
-import { ContactDetails } from '@/components/common/ContactDetails';
+import { ContactDetails } from '@/components/contact/ContactDetails';
 import { getTranslations } from 'next-intl/server';
 
 export async function Footer() {

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
-import { WhatIsRauxa } from '@/components/sections/WhatIsRauxa';
+import { WhatIsRauxa } from '@/components/sections/home/WhatIsRauxa';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
