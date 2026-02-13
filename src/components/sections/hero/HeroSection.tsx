@@ -4,7 +4,7 @@ import { HeroContent } from './HeroContent';
 import type { HeroSectionProps } from './types';
 
 export function HeroSection({
-  backgroundImage,
+  background,
   backgroundAlt = '',
   eyebrow,
   title,
@@ -16,7 +16,7 @@ export function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className={cn('relative isolate min-h-svh', className)}>
-      <HeroBackground src={backgroundImage} alt={backgroundAlt} />
+      <HeroBackground src={background} alt={backgroundAlt} />
       <HeroContent
         eyebrow={eyebrow}
         title={title}

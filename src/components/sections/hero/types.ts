@@ -18,7 +18,7 @@ interface HeroCTAInternal extends HeroCTACommon {
 export type HeroCTA = HeroCTAExternal | HeroCTAInternal;
 
 export interface HeroSectionProps {
-  backgroundImage?: string;
+  background?: string;
   backgroundAlt?: string;
 
   eyebrow?: string;
