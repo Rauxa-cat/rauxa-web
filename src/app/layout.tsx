@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const rauxaPrimary = localFont({
   src: './fonts/AlfredinoSemirounded.ttf',
@@ -42,6 +44,8 @@ export default async function RootLayout({
         ].join(' ')}
       >
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
