@@ -6,6 +6,10 @@ interface HeroBackgroundProps {
   priority?: boolean;
 }
 
+function isVideo(src: string): boolean {
+  return /\.(mp4|webm|ogg)$/i.test(src);
+}
+
 export function HeroBackground({
   src,
   alt = '',
@@ -29,14 +33,27 @@ export function HeroBackground({
   }
   return (
     <div className="absolute inset-0 -z-10">
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        priority={priority}
-        className="object-cover"
-        sizes="100vw"
-      />
+      {isVideo(src) ? (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src={src.replace(/\.\w+$/, '.webm')} type="video/webm" />
+          <source src={src.replace(/\.\w+$/, '.mp4')} type="video/mp4" />
+        </video>
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          className="object-cover"
+          sizes="100vw"
+        />
+      )}
       <div className="absolute inset-0 bg-black/25" />
       <div className="absolute inset-0 bg-linear-to-t from-black/35 via-black/25 to-black/35" />
     </div>
