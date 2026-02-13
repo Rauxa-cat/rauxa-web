@@ -1,5 +1,5 @@
 import { CONTACT } from './contact.constants';
-import { ContactDetails } from '@/components/common/ContactDetails';
+import { ContactDetails } from '@/components/contact/ContactDetails';
 import { getTranslations } from 'next-intl/server';
 
 export async function ContactInfo() {

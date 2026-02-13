@@ -1,3 +1,4 @@
+import { ArrowIcon } from '@/components/icons/ArrowIcon';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
@@ -49,12 +50,7 @@ export function ServiceCard({
             )}
           >
             {ctaLabel}
-            <span
-              aria-hidden
-              className="transition-transform group-hover:translate-x-0.5"
-            >
-              →
-            </span>
+            <ArrowIcon animate className="group-hover:translate-x-0.5" />
           </a>
         ) : null}
       </CardContent>

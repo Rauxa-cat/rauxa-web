@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SocialActions } from '@/components/common/SocialActions';
+import { SocialActions } from '@/components/contact/SocialActions';
 
 type FooterSocialProps = {
   email: string;

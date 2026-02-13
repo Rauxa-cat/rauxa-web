@@ -2,6 +2,7 @@ import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import type { HeroCTA } from './types';
+import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 interface HeroContentProps {
   eyebrow?: string;
@@ -23,7 +24,7 @@ export function HeroContent({
   return (
     <div
       className={cn(
-        'mx-auto flex min-h-[78vh] max-w-6xl flex-col items-center justify-center px-6 py-24 text-center',
+        'mx-auto flex min-h-[78dvh] max-w-6xl flex-col items-center justify-center px-6 py-24 text-center',
         className,
       )}
     >
@@ -33,7 +34,7 @@ export function HeroContent({
         </p>
       )}
 
-      <h1 className="font-brand mt-6 text-5xl font-semibold leading-[1.05] text-white md:text-7xl">
+      <h1 className="font-brand mt-6 text-4xl text-balance font-semibold leading-[1.05] text-white md:text-6xl">
         {title}
         {highlightedTitle && (
           <span className="block text-primary">{highlightedTitle}</span>
@@ -41,13 +42,13 @@ export function HeroContent({
       </h1>
 
       {subtitle && (
-        <p className="font-accent mt-6 max-w-2xl leading-7 text-white/75 md:text-2xl md:leading-8">
+        <p className="font-accent mt-6 max-w-2xl text-pretty leading-7 text-white/85 md:text-2xl md:leading-8">
           {subtitle}
         </p>
       )}
 
       {ctas.length > 0 && (
-        <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+        <div className="mt-10 flex flex-col items-center gap-4 md:flex-row md:gap-6">
           {ctas.map((cta) => (
             <Button
               key={`${cta.href}-${cta.label}`}
@@ -55,11 +56,11 @@ export function HeroContent({
               size="lg"
               variant={cta.variant ?? 'default'}
               className={cn(
-                'h-12 min-w-35 rounded-none px-8 font-semibold',
+                'group h-12 min-w-35 rounded-none px-8 font-semibold transition-colors tracking-wide',
                 (cta.variant ?? 'default') === 'default' &&
-                  'bg-white/95 text-black hover:bg-white',
+                  'bg-primary hover:bg-primary',
                 cta.variant === 'outline' &&
-                  'border-white/70 bg-transparent px-10 text-white hover:bg-white/10 hover:text-white',
+                  'border-white/70 bg-transparent px-10 text-white hover:border-white hover:bg-white/15 hover:text-white',
               )}
             >
               {cta.external ? (
@@ -73,11 +74,7 @@ export function HeroContent({
                   )}
                 >
                   {cta.label}
-                  {cta.withArrow && (
-                    <span aria-hidden className="text-lg leading-none">
-                      →
-                    </span>
-                  )}
+                  {cta.withArrow && <ArrowIcon animate />}
                 </a>
               ) : (
                 <Link
