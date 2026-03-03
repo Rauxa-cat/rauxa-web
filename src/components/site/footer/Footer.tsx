@@ -9,7 +9,7 @@ import { getTranslations } from 'next-intl/server';
 export async function Footer() {
   const tFooter = await getTranslations('footer');
   const tNav = await getTranslations('nav');
-  // const tLegal = await getTranslations('legal');
+  const tLegal = await getTranslations('legal');
   const year = new Date().getFullYear();
 
   return (
@@ -51,7 +51,7 @@ export async function Footer() {
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
           <p className="text-sm">{tFooter('copyright', { year })}</p>
 
-          {/* <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             {FOOTER_LEGAL.map((item) => (
               <Link
                 key={item.href}
@@ -61,7 +61,7 @@ export async function Footer() {
                 {tLegal(item.href)}
               </Link>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </footer>
