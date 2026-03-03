@@ -97,8 +97,9 @@
       "subtitle": "Desde cenas íntimas hasta eventos a gran escala."
     },
     "overview": {
-      "title": "Elige tu experiencia",
-      "subtitle": "Escríbenos y te proponemos la mejor opción.",
+      "title": "Elige tu",
+      "titleHighlight": "experiencia",
+      "description": "Escríbenos y te proponemos la mejor opción.",
       "cta": "Contacta con RAUXA"
     },
     "items": {

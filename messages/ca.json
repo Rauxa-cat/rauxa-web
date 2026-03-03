@@ -97,8 +97,9 @@
       "subtitle": "Des de sopars íntims fins a esdeveniments a gran escala."
     },
     "overview": {
-      "title": "Tria la teva experiència",
-      "subtitle": "Escriu-nos i et proposem la millor opció.",
+      "title": "Tria la teva",
+      "titleHighlight": "experiència",
+      "description": "Escriu-nos i et proposem la millor opció.",
       "cta": "Contacta amb RAUXA"
     },
     "items": {
