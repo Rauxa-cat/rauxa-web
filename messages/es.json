@@ -22,6 +22,18 @@
     "contact": {
       "title": "Contacto",
       "description": "Contacta con RAUXA para crear una experiencia gastronómica y cultural a medida. Escríbenos y cuéntanos qué tienes en mente."
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "description": "Política de privacidad de RAUXA. Información sobre protección de datos personales."
+    },
+    "cookies": {
+      "title": "Política de Cookies",
+      "description": "Información sobre el uso de cookies en el sitio web de RAUXA."
+    },
+    "legal": {
+      "title": "Aviso Legal",
+      "description": "Aviso legal e información corporativa de RAUXA."
     }
   },
   "logo": {
@@ -189,5 +201,169 @@
         }
       }
     }
+  },
+  "company": {
+    "name": "Titular",
+    "nif": "NIF",
+    "address": "Dirección",
+    "email": "Email"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "intro": "En cumplimiento del Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales, informamos sobre el tratamiento de datos personales que realizamos.",
+
+    "responsible": {
+      "title": "Responsable del tratamiento",
+      "intro": "El responsable del tratamiento de sus datos personales es:",
+      "name": "Responsable",
+      "nif": "NIF",
+      "address": "Dirección",
+      "email": "Email de contacto"
+    },
+
+    "dataCollected": {
+      "title": "Datos que recopilamos",
+      "intro": "Recopilamos y tratamos los siguientes datos personales:",
+      "contact": {
+        "title": "Formulario de contacto",
+        "content": "Nombre, correo electrónico y mensaje. Estos datos se envían directamente a info@rauxa.cat y se utilizan únicamente para responder a su consulta."
+      },
+      "typeform": {
+        "title": "Formularios de servicios (Typeform)",
+        "content": "Los datos solicitados en los formularios de servicios se gestionan a través de Typeform y se utilizan para procesar su solicitud de información o servicio."
+      }
+    },
+
+    "purpose": {
+      "title": "Finalidad del tratamiento",
+      "intro": "Tratamos sus datos personales para las siguientes finalidades:",
+      "point1": "Responder a sus consultas y solicitudes de información",
+      "point2": "Gestionar solicitudes de servicios y eventos",
+      "point3": "Enviar comunicaciones relacionadas con nuestros servicios (solo si ha dado su consentimiento)"
+    },
+
+    "legal": {
+      "title": "Base legal",
+      "content": "La base legal para el tratamiento de sus datos es el consentimiento que nos otorga al enviarnos sus datos a través de los formularios de contacto o al aceptar expresamente nuestras condiciones."
+    },
+
+    "retention": {
+      "title": "Conservación de datos",
+      "content": "Conservaremos sus datos personales durante el tiempo necesario para gestionar su solicitud o consulta, y posteriormente durante el plazo legalmente establecido para atender posibles responsabilidades. Una vez finalizado este periodo, sus datos serán eliminados de forma segura."
+    },
+
+    "recipients": {
+      "title": "Destinatarios de los datos",
+      "intro": "Sus datos pueden ser comunicados a los siguientes destinatarios:",
+      "typeform": "Plataforma utilizada para la gestión de formularios de servicios. Typeform cumple con el RGPD y cuenta con medidas de seguridad adecuadas.",
+      "vercel": "Proveedor de hosting y analytics. Vercel Analytics no utiliza cookies ni almacena datos personales identificables."
+    },
+
+    "rights": {
+      "title": "Sus derechos",
+      "intro": "Como titular de los datos, tiene derecho a:",
+      "access": "Acceso",
+      "accessDesc": "Solicitar información sobre los datos que tratamos",
+      "rectification": "Rectificación",
+      "rectificationDesc": "Corregir datos inexactos o incompletos",
+      "deletion": "Supresión",
+      "deletionDesc": "Solicitar la eliminación de sus datos",
+      "opposition": "Oposición",
+      "oppositionDesc": "Oponerse al tratamiento de sus datos",
+      "portability": "Portabilidad",
+      "portabilityDesc": "Recibir sus datos en formato estructurado",
+      "contact": "Para ejercer estos derechos, puede contactarnos en cserranobiosca@gmail.com. También tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es)."
+    },
+
+    "security": {
+      "title": "Seguridad de los datos",
+      "content": "Hemos adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad de sus datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizado."
+    },
+
+    "updates": {
+      "title": "Modificaciones",
+      "content": "Nos reservamos el derecho a modificar esta Política de Privacidad para adaptarla a cambios legislativos o en nuestros servicios. Le recomendamos revisar esta página periódicamente."
+    },
+
+    "lastUpdated": "Última actualización: {date}"
+  },
+  "cookies": {
+    "title": "Política de Cookies",
+    "intro": "En RAUXA utilizamos cookies y tecnologías similares para mejorar la experiencia de navegación y analizar el rendimiento de nuestro sitio web. A continuación explicamos qué cookies utilizamos y para qué.",
+    "whatAreCookies": {
+      "title": "¿Qué son las cookies?",
+      "content": "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Permiten que el sitio recuerde tus preferencias y mejoran tu experiencia de navegación."
+    },
+    "cookiesWeUse": {
+      "title": "Cookies que utilizamos",
+      "intro": "En RAUXA utilizamos únicamente las siguientes cookies y herramientas de análisis:",
+      "essential": {
+        "title": "Cookies esenciales",
+        "nextLocale": "Almacena tu preferencia de idioma (español o catalán) para mostrar el sitio en el idioma seleccionado en futuras visitas."
+      },
+      "analytics": {
+        "title": "Herramientas de análisis",
+        "content": "Utilizamos herramientas de Vercel que nos ayudan a entender cómo se usa nuestro sitio web. Estas herramientas son respetuosas con tu privacidad:",
+        "vercelAnalytics": "Recoge datos anónimos y agregados sobre visitas a la web (páginas vistas, país, dispositivo). No utiliza cookies ni rastrea usuarios individuales.",
+        "vercelInsights": "Mide el rendimiento técnico del sitio (velocidad de carga, métricas web). No utiliza cookies ni almacena información personal."
+      }
+    },
+    "table": {
+      "name": "Nombre",
+      "purpose": "Finalidad",
+      "duration": "Duración"
+    },
+    "duration": {
+      "1year": "1 año"
+    },
+    "disableCookies": {
+      "title": "Cómo desactivar las cookies",
+      "content": "Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento. Ten en cuenta que desactivar las cookies puede afectar a la funcionalidad del sitio y a tu experiencia de navegación, como por ejemplo el idioma que has seleccionado."
+    },
+    "moreInfo": {
+      "title": "Más información",
+      "content": "Para saber más sobre cómo gestionar las cookies en tu navegador, consulta la ayuda de:"
+    },
+    "lastUpdated": "Última actualización: {date}"
+  },
+  "legal-notice": {
+    "title": "Aviso Legal",
+    "intro": "En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, se informa de los siguientes datos:",
+    "ownership": {
+      "title": "Titularidad del sitio web",
+      "intro": "El presente sitio web es titularidad de:",
+      "name": "Titular",
+      "nif": "NIF",
+      "address": "Dirección",
+      "email": "Email",
+      "website": "Sitio web"
+    },
+    "purpose": {
+      "title": "Objeto",
+      "content": "Este sitio web tiene como objetivo proporcionar información sobre RAUXA, una comunidad gastronómica y cultural que crea experiencias donde la gastronomía, la música y el arte se encuentran. A través de este sitio, ofrecemos información sobre nuestros servicios, eventos y formas de contacto."
+    },
+    "terms": {
+      "title": "Condiciones de uso",
+      "content": "El acceso y uso de este sitio web implica la aceptación de estas condiciones de uso. El usuario se compromete a hacer un uso correcto del sitio web, de conformidad con la ley, y a no utilizarlo para realizar actividades ilícitas o contrarias a la buena fe y al orden público."
+    },
+    "intellectualProperty": {
+      "title": "Propiedad intelectual e industrial",
+      "content1": "Todos los contenidos de este sitio web (textos, imágenes, diseño gráfico, código fuente, logotipos, marcas y cualquier otro elemento) son propiedad de RAUXA o de terceros que han autorizado su uso, y están protegidos por derechos de propiedad intelectual e industrial.",
+      "content2": "Queda prohibida la reproducción, distribución, comunicación pública o transformación de estos contenidos sin autorización expresa del titular de los derechos."
+    },
+    "liability": {
+      "title": "Limitación de responsabilidad",
+      "content1": "RAUXA no se responsabiliza de los daños y perjuicios que puedan derivarse del uso de la información contenida en este sitio web, ni de la falta de disponibilidad o continuidad del mismo.",
+      "content2": "RAUXA se reserva el derecho a modificar, suspender o interrumpir, temporal o permanentemente, el acceso al sitio web sin necesidad de previo aviso."
+    },
+    "links": {
+      "title": "Enlaces externos",
+      "content": "Este sitio web puede contener enlaces a sitios web de terceros. RAUXA no se responsabiliza del contenido de estos sitios ni de las condiciones de uso y políticas de privacidad que apliquen."
+    },
+    "applicable": {
+      "title": "Legislación aplicable",
+      "content": "Las presentes condiciones se rigen por la legislación española. Para cualquier controversia que pudiera derivarse del acceso o uso de este sitio web, las partes se someten expresamente a los Juzgados y Tribunales de España."
+    },
+    "lastUpdated": "Última actualización: {date}"
   }
 }
