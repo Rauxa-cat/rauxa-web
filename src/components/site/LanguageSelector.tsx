@@ -31,6 +31,7 @@ export function LanguageSelector({ className }: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
+        suppressHydrationWarning
         className={cn(
           'inline-flex items-center gap-1.5 font-medium',
           'px-2 py-1 rounded-md',
