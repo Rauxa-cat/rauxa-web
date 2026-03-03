@@ -4,6 +4,10 @@ export const routing = defineRouting({
   locales: ['es', 'ca'],
   defaultLocale: 'es',
   localePrefix: 'always',
+  localeCookie: {
+    name: 'NEXT_LOCALE',
+    maxAge: 60 * 60 * 24 * 365,
+  },
   pathnames: {
     '/': '/',
     '/services': { es: '/servicios', ca: '/serveis' },
