@@ -9,13 +9,13 @@ const pageConfig: Record<
   PathKey,
   {
     lastModified: string;
-    changeFrequency: 'weekly' | 'monthly';
+    changeFrequency: 'weekly' | 'monthly' | 'yearly';
     priority: number;
   }
 > = {
   '/': { lastModified: '2026-02-12', changeFrequency: 'weekly', priority: 1 },
   '/services': {
-    lastModified: '2026-02-12',
+    lastModified: '2026-02-22',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
@@ -28,6 +28,21 @@ const pageConfig: Record<
     lastModified: '2026-02-12',
     changeFrequency: 'monthly',
     priority: 0.8,
+  },
+  '/privacy': {
+    lastModified: '2026-03-03',
+    changeFrequency: 'yearly',
+    priority: 0.3,
+  },
+  '/cookies': {
+    lastModified: '2026-03-03',
+    changeFrequency: 'yearly',
+    priority: 0.3,
+  },
+  '/legal-notice': {
+    lastModified: '2026-03-03',
+    changeFrequency: 'yearly',
+    priority: 0.3,
   },
 };
 
