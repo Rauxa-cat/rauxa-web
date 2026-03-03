@@ -1,20 +1,35 @@
+'use client';
+
+import { motion, type HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { ReactNode } from 'react';
+import { fadeInUp } from '@/lib/animations';
 
 type SectionHeaderProps = {
   eyebrow?: string;
-  title: React.ReactNode;
-  description?: React.ReactNode;
+  title: ReactNode;
+  description?: ReactNode;
   className?: string;
-};
+  animate?: boolean;
+} & Omit<HTMLMotionProps<'div'>, 'children' | 'title'>;
 
 export function SectionHeader({
   eyebrow,
   title,
   description,
   className,
+  animate = true,
+  ...motionProps
 }: SectionHeaderProps) {
+  const defaultAnimation = animate ? fadeInUp : {};
+
   return (
-    <div className={cn('max-w-2xl', className)}>
+    <motion.div
+      className={cn('max-w-2xl', className)}
+      {...defaultAnimation}
+      transition={{ duration: 0.6 }}
+      {...motionProps}
+    >
       {eyebrow && (
         <p className="font-accent tracking-[0.35em] text-foreground/60">
           {eyebrow}
@@ -28,6 +43,6 @@ export function SectionHeader({
       {description && (
         <div className="mt-5 space-y-3 text-foreground/70">{description}</div>
       )}
-    </div>
+    </motion.div>
   );
 }

@@ -13,19 +13,19 @@ const pageConfig: Record<
     priority: number;
   }
 > = {
-  '/': { lastModified: '2026-02-12', changeFrequency: 'weekly', priority: 1 },
+  '/': { lastModified: '2026-03-03', changeFrequency: 'weekly', priority: 1 },
   '/services': {
-    lastModified: '2026-02-22',
+    lastModified: '2026-03-03',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
   '/team': {
-    lastModified: '2026-02-12',
+    lastModified: '2026-03-03',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
   '/contact': {
-    lastModified: '2026-02-12',
+    lastModified: '2026-03-03',
     changeFrequency: 'monthly',
     priority: 0.8,
   },

@@ -1,12 +1,16 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import { TEAM } from '@/lib/content/team';
 import { TeamMemberCard } from './TeamMemberCard';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { SectionShell } from '@/components/sections/shared/SectionShell';
 import { SectionHeader } from '@/components/sections/shared/SectionHeader';
+import { staggerContainerSlow, staggerItemSlow } from '@/lib/animations';
 
-export async function TeamSection() {
-  const t = await getTranslations('team.section');
-  const tMembers = await getTranslations('team.members');
+export function TeamSection() {
+  const t = useTranslations('team.section');
+  const tMembers = useTranslations('team.members');
   return (
     <SectionShell>
       <SectionHeader
@@ -20,17 +24,24 @@ export async function TeamSection() {
         description={<p>{t('description')}</p>}
       />
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <motion.div
+        className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        variants={staggerContainerSlow}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-200px' }}
+      >
         {TEAM.map((m) => (
-          <TeamMemberCard
-            key={m.id}
-            name={tMembers(`${m.id}.name`)}
-            role={tMembers(`${m.id}.role`)}
-            bio={tMembers(`${m.id}.bio`)}
-            image={m.image}
-          />
+          <motion.div key={m.id} variants={staggerItemSlow}>
+            <TeamMemberCard
+              name={tMembers(`${m.id}.name`)}
+              role={tMembers(`${m.id}.role`)}
+              bio={tMembers(`${m.id}.bio`)}
+              image={m.image}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </SectionShell>
   );
 }
