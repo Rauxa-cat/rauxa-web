@@ -2,6 +2,7 @@
 
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Link } from '@/i18n/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,6 +14,7 @@ import {
   type ContactFormValues,
 } from '@/hooks/useContactSubmit';
 import { useTranslations } from 'next-intl';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export function ContactForm() {
   const t = useTranslations('contact.form');
@@ -22,6 +24,8 @@ export function ContactForm() {
     handleSubmit,
     reset,
     setError,
+    watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -32,6 +36,7 @@ export function ContactForm() {
       subject: '',
       message: '',
       company: '',
+      acceptPrivacy: false,
     },
     mode: 'onBlur',
   });
@@ -45,6 +50,8 @@ export function ContactForm() {
     const result = await submit(values);
     if (result.ok) reset();
   };
+
+  const acceptPrivacy = watch('acceptPrivacy');
 
   return (
     <div className="rounded-3xl border bg-card p-6 md:p-8">
@@ -91,6 +98,31 @@ export function ContactForm() {
             className="min-h-40"
             {...register('message')}
           />
+        </Field>
+
+        <Field error={errorText(errors.acceptPrivacy?.message)}>
+          <div className="flex items-center gap-2">
+            <Checkbox
+              id="acceptPrivacy"
+              checked={acceptPrivacy}
+              onCheckedChange={(checked) =>
+                setValue('acceptPrivacy', checked === true)
+              }
+            />
+            <label
+              htmlFor="acceptPrivacy"
+              className="text-sm leading-relaxed cursor-pointer"
+            >
+              {t('privacy.accept')}{' '}
+              <Link
+                href="/privacy"
+                className="text-primary underline underline-offset-4 hover:opacity-80"
+                target="_blank"
+              >
+                {t('privacy.link')}
+              </Link>
+            </label>
+          </div>
         </Field>
 
         <Button

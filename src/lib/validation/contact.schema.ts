@@ -33,6 +33,9 @@ export const contactSchema = z.object({
     .min(10, { message: 'errors.message.tooShort' })
     .max(5000, { message: 'errors.message.tooLong' }),
 
+  acceptPrivacy: z.boolean().refine((val) => val === true, {
+    message: 'errors.acceptPrivacy',
+  }),
   // honeypot
   company: z.string().max(0).optional(),
 });

@@ -168,6 +168,10 @@
         "subject": "Assumpte",
         "message": "El teu missatge..."
       },
+      "privacy": {
+        "accept": "Accepto la",
+        "link": "Política de Privacitat"
+      },
       "buttons": {
         "send": "ENVIAR",
         "sending": "ENVIANT…"
@@ -189,7 +193,8 @@
         "message": {
           "tooShort": "Missatge massa curt",
           "tooLong": "Missatge massa llarg"
-        }
+        },
+        "acceptPrivacy": "Has d'acceptar la política de privacitat"
       },
       "api": {
         "contact": {
