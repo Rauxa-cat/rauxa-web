@@ -1,4 +1,6 @@
-export const routing = {
+import { defineRouting } from 'next-intl/routing';
+
+export const routing = defineRouting({
   locales: ['es', 'ca'],
   defaultLocale: 'es',
   localePrefix: 'always',
@@ -11,4 +13,4 @@ export const routing = {
     '/cookies': { es: '/cookies', ca: '/cookies' },
     '/legal-notice': { es: '/aviso-legal', ca: '/avis-legal' },
   },
-} as const;
+});
