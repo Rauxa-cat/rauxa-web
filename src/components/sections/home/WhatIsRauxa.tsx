@@ -1,16 +1,26 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
-import { ServiceCard } from '@/components/sections/services/ServiceCard';
 import { SERVICES } from '@/lib/content/services';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { SectionShell } from '@/components/sections/shared/SectionShell';
 import { SectionHeader } from '@/components/sections/shared/SectionHeader';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
+import { fadeInUp } from '@/lib/animations';
+import { ServicesList } from '../services/ServicesList';
 
-export async function WhatIsRauxa() {
-  const t = await getTranslations('home.whatIsRauxa');
-  const tItems = await getTranslations('services.items');
+export function WhatIsRauxa() {
+  const t = useTranslations('home.whatIsRauxa');
+  const tItems = useTranslations('services.items');
   const featured = SERVICES.filter((s) => s.featured).slice(0, 3);
+
+  const services = featured.map((item) => ({
+    id: item.id,
+    title: tItems(`${item.id}.title`),
+    desc: tItems(`${item.id}.desc`),
+  }));
 
   return (
     <SectionShell>
@@ -30,24 +40,20 @@ export async function WhatIsRauxa() {
         }
       />
 
-      <div className="mt-12 grid gap-6 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
-        {featured.map((item) => (
-          <ServiceCard
-            key={item.id}
-            title={tItems(`${item.id}.title`)}
-            desc={tItems(`${item.id}.desc`)}
-          />
-        ))}
-      </div>
+      <ServicesList services={services} />
 
-      <div className="mt-12 flex justify-start">
+      <motion.div
+        className="mt-12 flex justify-start"
+        {...fadeInUp}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         <Button asChild size="lg" variant="outline">
           <Link href="/services">
             <p>{t('cta')}</p>
             <ArrowIcon />
           </Link>
         </Button>
-      </div>
+      </motion.div>
     </SectionShell>
   );
 }
