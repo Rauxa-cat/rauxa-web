@@ -74,9 +74,7 @@ export default async function LegalNoticePage() {
         </LegalSection>
 
         <div className="pt-8 border-t">
-          <p className="text-sm text-muted-foreground">
-            {t('lastUpdated', { date: '22 de febrero de 2026' })}
-          </p>
+          <p className="text-sm text-muted-foreground">{t('lastUpdated')}</p>
         </div>
       </div>
     </div>
