@@ -18,7 +18,7 @@ export function SectionShell({
       className={cn('bg-background', withBorder && 'border-t', className)}
     >
       <div
-        className={cn('mx-auto max-w-6xl px-6 py-20 md:py-24', innerClassName)}
+        className={cn('mx-auto max-w-6xl px-6 py-16 md:py-20', innerClassName)}
       >
         {children}
       </div>
