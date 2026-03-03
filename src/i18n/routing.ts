@@ -1,7 +1,13 @@
-export const routing = {
+import { defineRouting } from 'next-intl/routing';
+
+export const routing = defineRouting({
   locales: ['es', 'ca'],
   defaultLocale: 'es',
   localePrefix: 'always',
+  localeCookie: {
+    name: 'NEXT_LOCALE',
+    maxAge: 60 * 60 * 24 * 365,
+  },
   pathnames: {
     '/': '/',
     '/services': { es: '/servicios', ca: '/serveis' },
@@ -11,4 +17,4 @@ export const routing = {
     '/cookies': { es: '/cookies', ca: '/cookies' },
     '/legal-notice': { es: '/aviso-legal', ca: '/avis-legal' },
   },
-} as const;
+});
