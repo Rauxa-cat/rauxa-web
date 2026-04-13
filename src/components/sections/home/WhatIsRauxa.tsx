@@ -45,7 +45,7 @@ export function WhatIsRauxa() {
       <motion.div
         className="mt-12 flex justify-start"
         {...fadeInUp}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.5 }}
       >
         <Button asChild size="lg" variant="outline">
           <Link href="/services">
