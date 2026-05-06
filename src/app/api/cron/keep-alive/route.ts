@@ -10,12 +10,19 @@ export async function GET(request: Request) {
   }
 
   try {
-    const result = await redis.ping();
-    console.log('Keep-alive ping successful:', result);
+    const key = 'keepalive:last-run';
+    const value = new Date().toISOString();
+
+    await redis.set(key, value, { ex: 600 });
+
+    const result = await redis.get(key);
+
+    console.log('Keep-alive successful:', result);
 
     return NextResponse.json({
       success: true,
-      result,
+      key,
+      value: result,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {
