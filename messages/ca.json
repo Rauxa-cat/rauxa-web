@@ -87,6 +87,12 @@
       "p1": "A RAUXA organitzem sopars experiencials propis i creem experiències per a particulars, empreses i marques.",
       "p2": "No som un càtering tradicional: dissenyem el concepte complet (gastronomia, música i art) perquè cada esdeveniment se senti únic.",
       "cta": "Descobreix els nostres serveis"
+    },
+    "gallery": {
+      "eyebrow": "GALERIA",
+      "title": "Així viu",
+      "titleHighlight": "RAUXA",
+      "imageAlt": "Experiència RAUXA, fotografia {n}"
     }
   },
   "services": {

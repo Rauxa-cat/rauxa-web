@@ -229,3 +229,65 @@
   background-size: 400% 400%;
   animation: gradient-move 18s ease infinite;
 }
+
+/* ── Gallery masonry ────────────────────────────────────────── */
+.gallery-masonry {
+  columns: 2;
+  column-gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .gallery-masonry {
+    columns: 3;
+    column-gap: 1rem;
+  }
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .gallery-item {
+    margin-bottom: 1rem;
+  }
+}
+
+@keyframes gallery-fade-up {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+    scale: 0.95;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes gallery-scroll-scale {
+  from {
+    scale: 1;
+  }
+  to {
+    scale: 1.08;
+  }
+}
+
+/* Scroll-driven animations — Chrome/Firefox only, degrades gracefully in Safari */
+@supports (animation-timeline: view()) {
+  .gallery-item {
+    animation: gallery-fade-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 75%;
+  }
+
+  .gallery-item img {
+    animation: gallery-scroll-scale linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+  }
+}

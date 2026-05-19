@@ -87,6 +87,12 @@
       "p1": "En RAUXA organizamos cenas experienciales propias y creamos experiencias para particulares, empresas y marcas.",
       "p2": "No somos un catering tradicional: diseñamos el concepto completo (gastronomía, música y arte) para que cada evento se sienta único.",
       "cta": "Descubre nuestros servicios"
+    },
+    "gallery": {
+      "eyebrow": "GALERÍA",
+      "title": "Así vive",
+      "titleHighlight": "RAUXA",
+      "imageAlt": "Experiencia RAUXA, fotografía {n}"
     }
   },
   "services": {

@@ -13,7 +13,7 @@ const pageConfig: Record<
     priority: number;
   }
 > = {
-  '/': { lastModified: '2026-03-03', changeFrequency: 'weekly', priority: 1 },
+  '/': { lastModified: '2026-05-19', changeFrequency: 'weekly', priority: 1 },
   '/services': {
     lastModified: '2026-03-03',
     changeFrequency: 'monthly',
