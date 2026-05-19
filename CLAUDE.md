@@ -58,7 +58,10 @@ Static content (nav links, services, team members) is defined as data in `src/li
 
 ### Animations
 
-Reusable Framer Motion variants live in `src/lib/animations.ts` (`fadeInUp`, `staggerContainer`, `staggerItem`, etc.). Use these rather than inline variants to stay consistent.
+Animations are pure CSS — no Framer Motion. Two patterns defined in `src/app/globals.css`:
+
+- **Hero / time-based**: `.hero-fade` + `.hero-delay-{1–4}` — `fade-up` keyframe with staggered `animation-delay` for page-load entrance.
+- **Scroll-driven**: `.view-animate` — uses `animation-timeline: view()` (Chrome/Safari; degrades gracefully in Firefox). Wrap a grid in `.stagger-grid` to offset each child's `animation-range` automatically via `nth-child`.
 
 ### Contact form flow
 

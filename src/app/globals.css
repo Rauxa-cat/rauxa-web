@@ -262,7 +262,7 @@
   animation-delay: 0.8s;
 }
 
-/* Scroll-driven fade-up — Chrome/Firefox only, degrades gracefully in Safari */
+/* Scroll-driven fade-up — Chrome/Safari only, degrades gracefully in Firefox */
 @supports (animation-timeline: view()) {
   .view-animate {
     animation-name: fade-up;
@@ -338,7 +338,7 @@
   }
 }
 
-/* Scroll-driven animations — Chrome/Firefox only, degrades gracefully in Safari */
+/* Scroll-driven animations — Chrome/Safari only, degrades gracefully in Firefox */
 @supports (animation-timeline: view()) {
   .gallery-item {
     animation: gallery-fade-up linear both;
