@@ -230,6 +230,67 @@
   animation: gradient-move 18s ease infinite;
 }
 
+/* ── Shared entrance keyframe ───────────────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    translate: 0 20px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Hero: time-based cascade on page load */
+.hero-fade {
+  animation-name: fade-up;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+.hero-delay-1 {
+  animation-delay: 0.2s;
+}
+.hero-delay-2 {
+  animation-delay: 0.4s;
+}
+.hero-delay-3 {
+  animation-delay: 0.6s;
+}
+.hero-delay-4 {
+  animation-delay: 0.8s;
+}
+
+/* Scroll-driven fade-up — Chrome/Firefox only, degrades gracefully in Safari */
+@supports (animation-timeline: view()) {
+  .view-animate {
+    animation-name: fade-up;
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-duration: auto;
+    animation-timeline: view();
+    animation-range: cover 0% cover 30%;
+  }
+
+  /* Grid stagger: shifts each child's animation-range start by ~8% */
+  .stagger-grid > .view-animate:nth-child(2) {
+    animation-range: cover 8% cover 38%;
+  }
+  .stagger-grid > .view-animate:nth-child(3) {
+    animation-range: cover 16% cover 46%;
+  }
+  .stagger-grid > .view-animate:nth-child(4) {
+    animation-range: cover 0% cover 30%;
+  }
+  .stagger-grid > .view-animate:nth-child(5) {
+    animation-range: cover 8% cover 38%;
+  }
+  .stagger-grid > .view-animate:nth-child(6) {
+    animation-range: cover 16% cover 46%;
+  }
+}
+
 /* ── Gallery masonry ────────────────────────────────────────── */
 .gallery-masonry {
   columns: 2;

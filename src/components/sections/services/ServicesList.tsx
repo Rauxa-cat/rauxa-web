@@ -1,12 +1,4 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { ServiceCard } from './ServiceCard';
-import {
-  scrollViewport,
-  staggerContainer,
-  staggerItem,
-} from '@/lib/animations';
 import { cn } from '@/lib/utils';
 
 type Service = {
@@ -29,28 +21,24 @@ export function ServicesList({
   className,
 }: ServicesListProps) {
   return (
-    <motion.div
+    <div
       className={cn(
-        'mt-12 grid gap-6',
+        'stagger-grid mt-12 grid gap-6',
         columns === 2 && 'md:grid-cols-2 lg:grid-cols-2',
         columns === 3 && 'md:grid-cols-2 lg:grid-cols-3',
         className,
       )}
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={scrollViewport}
     >
       {services.map((service) => (
-        <motion.div key={service.id} variants={staggerItem}>
+        <div key={service.id} className="view-animate">
           <ServiceCard
             title={service.title}
             desc={service.desc}
             href={service.href}
             ctaLabel={service.ctaLabel}
           />
-        </motion.div>
+        </div>
       ))}
-    </motion.div>
+    </div>
   );
 }
