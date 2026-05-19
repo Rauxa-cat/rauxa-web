@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function localeLayout({
+export default async function Layout({
   children,
   params,
 }: {
