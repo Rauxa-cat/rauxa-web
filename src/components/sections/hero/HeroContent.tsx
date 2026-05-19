@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -15,11 +12,6 @@ interface HeroContentProps {
   ctas?: HeroCTA[];
   className?: string;
 }
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-};
 
 export function HeroContent({
   eyebrow,
@@ -37,54 +29,30 @@ export function HeroContent({
       )}
     >
       {eyebrow && (
-        <motion.p
-          className="font-accent tracking-[0.35em] text-white/70  md:text-2xl"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <p className="hero-fade hero-delay-1 font-accent tracking-[0.35em] text-white/70 md:text-2xl">
           {eyebrow}
-        </motion.p>
+        </p>
       )}
 
-      <motion.h1
-        className="font-brand mt-6 text-4xl text-balance font-semibold leading-[1.05] text-white md:text-6xl"
-        {...fadeInUp}
-        transition={{ duration: 0.6, delay: 0.4 }}
-      >
+      <h1 className="hero-fade hero-delay-2 font-brand mt-6 text-4xl text-balance font-semibold leading-[1.05] text-white md:text-6xl">
         {title}
         {highlightedTitle && (
           <span className="block text-primary">{highlightedTitle}</span>
         )}
-      </motion.h1>
+      </h1>
 
       {subtitle && (
-        <motion.p
-          className="font-accent mt-6 max-w-2xl text-pretty leading-7 text-white/85 md:text-2xl md:leading-8"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
+        <p className="hero-fade hero-delay-3 font-accent mt-6 max-w-2xl text-pretty leading-7 text-white/85 md:text-2xl md:leading-8">
           {subtitle}
-        </motion.p>
+        </p>
       )}
 
       {ctas.length > 0 && (
-        <motion.div
-          className="mt-10 flex flex-col items-center gap-4 md:flex-row md:gap-6"
-          {...fadeInUp}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          {ctas.map((cta, index) => (
-            <motion.div
+        <div className="hero-fade hero-delay-4 mt-10 flex flex-col items-center gap-4 md:flex-row md:gap-6">
+          {ctas.map((cta) => (
+            <div
               key={`${cta.href}-${cta.label}`}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                opacity: { duration: 0.4, delay: 0.8 + index * 0.1 },
-                scale: { duration: 0.15, ease: 'easeOut' },
-              }}
-              whileHover={{
-                scale: 1.05,
-              }}
+              className="transition-transform hover:scale-105"
             >
               <Button
                 asChild
@@ -128,9 +96,9 @@ export function HeroContent({
                   </Link>
                 )}
               </Button>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       )}
     </div>
   );
