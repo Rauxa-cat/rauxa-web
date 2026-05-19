@@ -23,7 +23,7 @@ export function ServicesList({
   return (
     <div
       className={cn(
-        'mt-12 grid gap-6',
+        'stagger-grid mt-12 grid gap-6',
         columns === 2 && 'md:grid-cols-2 lg:grid-cols-2',
         columns === 3 && 'md:grid-cols-2 lg:grid-cols-3',
         className,
