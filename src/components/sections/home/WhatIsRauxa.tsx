@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { SERVICES } from '@/lib/content/services';
@@ -8,7 +7,6 @@ import { useTranslations } from 'next-intl';
 import { SectionShell } from '@/components/sections/shared/SectionShell';
 import { SectionHeader } from '@/components/sections/shared/SectionHeader';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
-import { fadeInUp } from '@/lib/animations';
 import { ServicesList } from '../services/ServicesList';
 
 export function WhatIsRauxa() {
@@ -42,18 +40,14 @@ export function WhatIsRauxa() {
 
       <ServicesList services={services} />
 
-      <motion.div
-        className="mt-12 flex justify-start"
-        {...fadeInUp}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="view-animate mt-12 flex justify-start">
         <Button asChild size="lg" variant="outline">
           <Link href="/services">
             <p>{t('cta')}</p>
             <ArrowIcon />
           </Link>
         </Button>
-      </motion.div>
+      </div>
     </SectionShell>
   );
 }
