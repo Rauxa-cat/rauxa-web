@@ -308,6 +308,7 @@
   break-inside: avoid;
   margin-bottom: 0.75rem;
   overflow: hidden;
+  position: relative;
 }
 
 @media (min-width: 768px) {
