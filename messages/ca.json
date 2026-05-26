@@ -56,6 +56,10 @@
     "es": "ES",
     "ca": "CA"
   },
+  "themeToggle": {
+    "toDark": "Canviar a mode fosc",
+    "toLight": "Canviar a mode clar"
+  },
   "footer": {
     "copy": "Comunitat gastronòmica i cultural. Experiències on la gastronomia, la música i l'art es troben.",
     "navigation": "NAVEGACIÓ",

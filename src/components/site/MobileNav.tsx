@@ -18,6 +18,7 @@ import { Logo } from './Logo';
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 import { useTranslations } from 'next-intl';
 import { LanguageSelector } from './LanguageSelector';
+import { ThemeToggle } from './ThemeToggle';
 
 export function MobileNav() {
   const tNav = useTranslations('nav');
@@ -82,8 +83,9 @@ export function MobileNav() {
             ))}
           </nav>
 
-          <div className="ml-2">
+          <div className="ml-2 flex items-center gap-0">
             <LanguageSelector />
+            <ThemeToggle />
           </div>
         </SheetContent>
       </Sheet>
