@@ -2,6 +2,7 @@ import { headers } from 'next/headers';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import { Inter } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -43,7 +44,14 @@ export default async function RootLayout({
           'antialiased',
         ].join(' ')}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
