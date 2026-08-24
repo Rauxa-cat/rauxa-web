@@ -1,6 +1,7 @@
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true
+  iframe-resizer: false
   sharp: true
   unrs-resolver: true
 
