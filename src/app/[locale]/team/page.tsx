@@ -45,10 +45,12 @@ export default async function TeamPage() {
       <HeroSection
         backgroundImage="/images/team/rauxa-team-hero.webp"
         eyebrow={t('hero.eyebrow')}
-        title={t('hero.title')}
-        highlightedTitle={t('hero.highlightedTitle')}
+        bands={[
+          { variant: 'lead', text: t('hero.bandLead') },
+          { variant: 'bridge', text: t('hero.bandBridge') },
+          { variant: 'punch', text: t('hero.bandPunch') },
+        ]}
         subtitle={t('hero.subtitle')}
-        ctas={[]}
       />
 
       <TeamSection />

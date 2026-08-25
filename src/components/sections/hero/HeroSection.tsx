@@ -7,20 +7,23 @@ export function HeroSection({
   backgroundImage,
   backgroundAlt = '',
   eyebrow,
-  title,
-  highlightedTitle,
+  bands,
   subtitle,
   ctas = [],
   className,
   contentClassName,
 }: HeroSectionProps) {
   return (
-    <section className={cn('relative isolate min-h-svh', className)}>
+    <section
+      className={cn(
+        'relative isolate min-h-svh overflow-hidden bg-[var(--rauxa-black)]',
+        className,
+      )}
+    >
       <HeroBackground src={backgroundImage} alt={backgroundAlt} />
       <HeroContent
         eyebrow={eyebrow}
-        title={title}
-        highlightedTitle={highlightedTitle}
+        bands={bands}
         subtitle={subtitle}
         ctas={ctas}
         className={contentClassName}
