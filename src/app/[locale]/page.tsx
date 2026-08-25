@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { WhatIsRauxa } from '@/components/sections/home/WhatIsRauxa';
 import { GallerySection } from '@/components/sections/home/GallerySection';
+import { ServicesTicker } from '@/components/site/ServicesTicker';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
@@ -39,6 +40,7 @@ export default async function HomePage() {
           },
         ]}
       />
+      <ServicesTicker />
       <WhatIsRauxa />
       <GallerySection />
     </>

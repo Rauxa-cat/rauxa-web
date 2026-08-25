@@ -274,6 +274,17 @@
   animation: gradient-move 18s ease infinite;
 }
 
+/* Services ticker loop. -50% because the row renders the list twice (seamless wrap).
+   The scroll-velocity reactivity lands later in feat/redesign-motion. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* ── Shared entrance keyframe ───────────────────────────────────────── */
 @keyframes fade-up {
   from {
