@@ -4,21 +4,17 @@ type SectionShellProps = {
   children: React.ReactNode;
   className?: string;
   innerClassName?: string;
-  withBorder?: boolean;
 };
 
 export function SectionShell({
   children,
   className,
   innerClassName,
-  withBorder = true,
 }: SectionShellProps) {
   return (
-    <section
-      className={cn('bg-background', withBorder && 'border-t', className)}
-    >
+    <section className={cn('bg-background', className)}>
       <div
-        className={cn('mx-auto max-w-6xl px-6 py-16 md:py-20', innerClassName)}
+        className={cn('mx-auto max-w-page px-6 py-16 md:py-24', innerClassName)}
       >
         {children}
       </div>

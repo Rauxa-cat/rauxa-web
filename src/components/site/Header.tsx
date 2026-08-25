@@ -7,7 +7,7 @@ import { ThemeToggle } from './ThemeToggle';
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-background border-b backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center px-6">
+      <div className="mx-auto flex h-16 max-w-page items-center px-6">
         <Logo />
 
         <DesktopNav />
