@@ -5,7 +5,7 @@ export async function CookiesTable() {
 
   return (
     <div className="mb-8">
-      <h3 className="text-xl font-semibold mb-4">
+      <h3 className="font-sans text-xl font-semibold mb-4">
         {t('cookiesWeUse.essential.title')}
       </h3>
 

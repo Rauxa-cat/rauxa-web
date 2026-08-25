@@ -5,7 +5,7 @@ export async function AnalyticsTools() {
 
   return (
     <div>
-      <h3 className="text-xl font-semibold mb-4">
+      <h3 className="font-sans text-xl font-semibold mb-4">
         {t('cookiesWeUse.analytics.title')}
       </h3>
       <p className="text-muted-foreground leading-relaxed mb-4">

@@ -35,15 +35,16 @@ export default async function RootLayout({
   const locale = headersList.get('x-next-intl-locale') ?? 'es';
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body
-        className={[
-          rauxaPrimary.variable,
-          rauxaSecondary.variable,
-          rauxaBody.variable,
-          'antialiased',
-        ].join(' ')}
-      >
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={[
+        rauxaPrimary.variable,
+        rauxaSecondary.variable,
+        rauxaBody.variable,
+      ].join(' ')}
+    >
+      <body className="antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
