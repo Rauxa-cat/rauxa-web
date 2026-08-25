@@ -168,6 +168,12 @@
       }
     }
   },
+  "cta": {
+    "eyebrow": "CONTACTE",
+    "title": "Parlem",
+    "subtitle": "Tens un projecte en ment? Vols unir-te a la comunitat?",
+    "button": "Uneix-te a la llista d'espera"
+  },
   "contact": {
     "info": {
       "eyebrow": "CONTACTE",

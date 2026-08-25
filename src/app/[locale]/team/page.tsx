@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { TeamSection } from '@/components/sections/team/TeamSection';
+import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
@@ -54,6 +55,7 @@ export default async function TeamPage() {
       />
 
       <TeamSection />
+      <CtaBand />
     </>
   );
 }
