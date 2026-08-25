@@ -36,6 +36,14 @@
   --color-input: var(--input);
   --color-border: var(--border);
 
+  --color-rauxa-blue-100: var(--rauxa-blue-100);
+  --color-rauxa-blue-300: var(--rauxa-blue-300);
+  --color-rauxa-blue-700: var(--rauxa-blue-700);
+  --color-rauxa-blue-800: var(--rauxa-blue-800);
+  --color-rauxa-blue-900: var(--rauxa-blue-900);
+  --color-blue-ink: var(--blue-ink);
+  --color-blue-ink-hover: var(--blue-ink-hover);
+
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -78,6 +86,19 @@
   --rauxa-pearl: oklch(0.9681 0.0074 80.72);
   --rauxa-black: oklch(0.1462 0.0064 285.58);
   --rauxa-footer: oklch(0.92 0.01 80);
+
+  /* Same hue as --rauxa-electric (263.27); extends the scale, does not replace it.
+     Hex per weight: 100 #B2D1FF, 300 #5891FF, 700 #0027B4, 800 #001785, 900 #000C55. */
+  --rauxa-blue-100: oklch(0.86 0.09 263.27);
+  --rauxa-blue-300: oklch(0.68 0.19 263.27);
+  --rauxa-blue-700: oklch(0.38 0.22 263.27);
+  --rauxa-blue-800: oklch(0.3 0.18 263.27);
+  --rauxa-blue-900: oklch(0.22 0.13 263.27);
+
+  /* Blue for small text/links. electric is 5.50:1 on pearl (AA at any size);
+     on black it drops to 3.27:1, so dark mode swaps in blue-300 (6.53:1) below. */
+  --blue-ink: var(--rauxa-electric);
+  --blue-ink-hover: var(--rauxa-blue-700);
 
   /* Radius: el logo/isotipo es redondeado → suavidad controlada */
   --radius: 0.625rem;
@@ -145,6 +166,9 @@
   --background: var(--rauxa-black);
   --foreground: var(--rauxa-pearl);
 
+  --blue-ink: var(--rauxa-blue-300);
+  --blue-ink-hover: var(--rauxa-electric);
+
   --background-steel: var(--rauxa-steel);
   --background-footer: oklch(0.19 0.006 285.58);
 
@@ -210,6 +234,23 @@
 
   .font-accent {
     font-family: var(--font-accent);
+  }
+
+  /* Single focus ring for everything interactive. :where() keeps specificity
+     low so components can override it. --ring is electric: 3.27:1 on black and
+     5.50:1 on pearl, both above the 3:1 that 1.4.11 requires for non-text. */
+  :where(
+      a,
+      button,
+      [role='button'],
+      input,
+      textarea,
+      select,
+      summary,
+      [tabindex]
+    ):not([tabindex='-1']):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
