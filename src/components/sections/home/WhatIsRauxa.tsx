@@ -1,28 +1,18 @@
-'use client';
-
-import { Link } from '@/i18n/navigation';
-import { Button } from '@/components/ui/button';
+import { getTranslations } from 'next-intl/server';
 import { SERVICES } from '@/lib/content/services';
-import { useTranslations } from 'next-intl';
-import { SectionShell } from '@/components/sections/shared/SectionShell';
-import { SectionHeader } from '@/components/sections/shared/SectionHeader';
+import { SectionHeader } from '../shared/SectionHeader';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
-import { ServicesList } from '../services/ServicesList';
 
-export function WhatIsRauxa() {
-  const t = useTranslations('home.whatIsRauxa');
-  const tItems = useTranslations('services.items');
-  const featured = SERVICES.filter((s) => s.featured).slice(0, 3);
-
-  const services = featured.map((item) => ({
-    id: item.id,
-    title: tItems(`${item.id}.title`),
-    desc: tItems(`${item.id}.desc`),
-  }));
+export async function WhatIsRauxa() {
+  const t = await getTranslations('home.whatIsRauxa');
+  const tItems = await getTranslations('services.items');
 
   return (
-    <SectionShell>
+    <section className="bg-background pt-24 md:pt-32">
       <SectionHeader
+        className="mx-auto max-w-page px-6"
+        hairline
+        size="lg"
         eyebrow={t('eyebrow')}
         title={
           <>
@@ -38,16 +28,42 @@ export function WhatIsRauxa() {
         }
       />
 
-      <ServicesList services={services} />
-
-      <div className="view-animate mt-12 flex justify-start">
-        <Button asChild size="lg" variant="outline">
-          <Link href="/services">
-            <p>{t('cta')}</p>
-            <ArrowIcon />
-          </Link>
-        </Button>
-      </div>
-    </SectionShell>
+      <ul className="mt-16 border-t border-foreground/15 md:mt-20">
+        {SERVICES.map((service, i) => (
+          <li key={service.id}>
+            <a
+              href={service.formUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative block border-b border-foreground/15"
+            >
+              <span
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 [background:linear-gradient(90deg,rgba(0,76,255,0.16)_0%,rgba(0,76,255,0.02)_62%,transparent_100%)]"
+                aria-hidden
+              />
+              <div className="relative mx-auto flex min-h-30 max-w-page items-center gap-6 px-6 transition-[min-height] duration-300 group-hover:min-h-40 md:gap-8">
+                <span
+                  className="absolute left-0 top-0 h-full w-0.75 origin-top scale-y-0 bg-primary transition-transform duration-300 group-hover:scale-y-100 group-focus-visible:scale-y-100 motion-reduce:transition-none"
+                  aria-hidden
+                />
+                <span className="w-10 shrink-0 font-accent text-lg tracking-[0.2em] text-blue-ink md:w-14 md:text-[22px]">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="flex-1 font-normal leading-none text-foreground text-[clamp(1.75rem,4.5vw,3.25rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_rgba(0,76,255,0.5)]">
+                  {tItems(`${service.id}.title`)}
+                </h3>
+                <p className="hidden w-90 shrink-0 text-[13.5px] leading-[1.72] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/80 lg:block">
+                  {tItems(`${service.id}.desc`)}
+                </p>
+                <ArrowIcon
+                  animate
+                  className="w-10 shrink-0 text-right text-2xl text-foreground/45 transition-all duration-300 group-hover:text-blue-ink md:w-12"
+                />
+              </div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

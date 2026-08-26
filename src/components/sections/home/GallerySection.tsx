@@ -1,58 +1,72 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { SectionShell } from '../shared/SectionShell';
 import { SectionHeader } from '../shared/SectionHeader';
 
-const GALLERY_ITEMS = [
-  { id: '_MG_4011', aspect: 'aspect-[3/4]' },
-  { id: '_MG_4015', aspect: 'aspect-square' },
-  { id: '_MG_4016', aspect: 'aspect-[3/4]' },
-  { id: '_MG_4019', aspect: 'aspect-[4/5]' },
-  { id: '_MG_4022', aspect: 'aspect-[4/3]' },
-  { id: '_MG_4065', aspect: 'aspect-[2/3]' },
-  { id: '_MG_4125', aspect: 'aspect-[3/4]' },
-  { id: '_MG_4129', aspect: 'aspect-[4/3]' },
-  { id: '_MG_4137', aspect: 'aspect-[3/4]' },
-  { id: '_MG_4199', aspect: 'aspect-square' },
-  { id: '_MG_4238', aspect: 'aspect-[4/5]' },
-  { id: '_MG_4268', aspect: 'aspect-[3/4]' },
-  { id: '_MG_4280', aspect: 'aspect-[4/3]' },
-  { id: '_MG_4501', aspect: 'aspect-[3/4]' },
-  { id: '_MG_4555', aspect: 'aspect-square' },
+const GALLERY_STRIP = [
+  { id: '_MG_4011', w: 300, h: 420, mt: 0 },
+  { id: '_MG_4015', w: 240, h: 340, mt: 200 },
+  { id: '_MG_4016', w: 340, h: 470, mt: 70, overlay: true },
+  { id: '_MG_4019', w: 220, h: 220, mt: 330 },
+  { id: '_MG_4022', w: 380, h: 280, mt: 140 },
+  { id: '_MG_4065', w: 260, h: 380, mt: 210 },
+  { id: '_MG_4125', w: 300, h: 420, mt: 30 },
 ];
 
 export async function GallerySection() {
   const t = await getTranslations('home.gallery');
 
   return (
-    <SectionShell>
+    <section className="bg-background pt-24 pb-28 md:pt-32">
       <SectionHeader
+        className="mx-auto max-w-page px-6"
+        hairline
+        size="lg"
         eyebrow={t('eyebrow')}
         title={
           <>
             {t('title')}{' '}
-            <span className="text-primary">{t('titleHighlight')}</span>
+            <span className="text-primary [text-shadow:0_0_60px_rgba(0,76,255,0.55)]">
+              {t('titleHighlight')}
+            </span>
           </>
         }
-        className="mb-10"
       />
 
-      <div className="gallery-masonry">
-        {GALLERY_ITEMS.map(({ id, aspect }, i) => (
-          <div
-            key={id}
-            className={`gallery-item rounded-sm relative ${aspect}`}
-          >
-            <Image
-              src={`/images/gallery/${id}-1600.webp`}
-              alt={t('imageAlt', { n: i + 1 })}
-              fill
-              sizes="(max-width: 768px) 50vw, 33vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
+      <div className="mt-10 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex h-150 w-max items-start gap-4.5 pr-6">
+          {GALLERY_STRIP.map(({ id, w, h, mt, overlay }, i) => (
+            <div
+              key={id}
+              className="relative shrink-0 overflow-hidden"
+              style={{ width: w, height: h, marginTop: mt }}
+            >
+              <Image
+                src={`/images/gallery/${id}-1600.webp`}
+                alt={t('imageAlt', { n: i + 1 })}
+                fill
+                sizes="(max-width: 768px) 60vw, 380px"
+                className="object-cover"
+              />
+              {overlay && (
+                <div
+                  className="absolute inset-0 [background:linear-gradient(180deg,rgba(0,76,255,0.42)_0%,rgba(10,10,13,0.2)_100%)]"
+                  aria-hidden
+                />
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    </SectionShell>
+
+      <div className="mx-auto mt-5 flex max-w-page items-center justify-end gap-4 px-6">
+        <span
+          className="h-px w-13.5 [background:linear-gradient(90deg,rgba(0,76,255,0),var(--rauxa-electric))]"
+          aria-hidden
+        />
+        <span className="font-accent text-[19px] tracking-[0.3em] text-foreground/40">
+          {t('drag')} →
+        </span>
+      </div>
+    </section>
   );
 }
