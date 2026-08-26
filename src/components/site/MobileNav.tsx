@@ -30,12 +30,7 @@ export function MobileNav() {
             variant="ghost"
             size="icon"
             aria-label={t('openMenu')}
-            className="
-      hover:bg-transparent
-      hover:text-current
-      focus-visible:bg-transparent
-      cursor-pointer
-    "
+            className="size-11 cursor-pointer hover:bg-transparent hover:text-current focus-visible:bg-transparent"
           >
             <Menu className="size-6" />
           </Button>
@@ -80,7 +75,6 @@ export function MobileNav() {
               </SheetClose>
             ))}
           </nav>
-
         </SheetContent>
       </Sheet>
     </div>
