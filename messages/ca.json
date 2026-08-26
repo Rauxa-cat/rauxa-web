@@ -97,7 +97,8 @@
       "eyebrow": "GALERIA",
       "title": "Així viu",
       "titleHighlight": "RAUXA",
-      "imageAlt": "Experiència RAUXA, fotografia {n}"
+      "imageAlt": "Experiència RAUXA, fotografia {n}",
+      "drag": "ARROSSEGA"
     }
   },
   "services": {
