@@ -17,6 +17,7 @@ type SectionHeaderProps = {
   description?: ReactNode;
   size?: SectionHeaderSize;
   hairline?: boolean;
+  as?: 'h1' | 'h2';
   className?: string;
   animate?: boolean;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'children' | 'title'>;
@@ -27,6 +28,7 @@ export function SectionHeader({
   description,
   size = 'md',
   hairline = false,
+  as: Heading = 'h2',
   className,
   animate = true,
   ...rest
@@ -42,9 +44,11 @@ export function SectionHeader({
         </div>
       )}
 
-      <h2 className={cn('mt-4 font-normal tracking-tight', titleSize[size])}>
+      <Heading
+        className={cn('mt-4 font-normal tracking-tight', titleSize[size])}
+      >
         {title}
-      </h2>
+      </Heading>
 
       {description && (
         <div className="mt-5 max-w-2xl space-y-3 text-foreground/70">
