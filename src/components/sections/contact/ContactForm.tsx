@@ -1,12 +1,14 @@
 'use client';
 
-import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useForm, useWatch, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from '@/i18n/navigation';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
+import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 import { contactSchema } from '@/lib/validation/contact.schema';
 import {
@@ -14,7 +16,13 @@ import {
   type ContactFormValues,
 } from '@/hooks/useContactSubmit';
 import { useTranslations } from 'next-intl';
-import { Checkbox } from '@/components/ui/checkbox';
+
+const SHORT_FIELDS = [
+  { name: 'name', type: 'text' },
+  { name: 'email', type: 'email' },
+  { name: 'phone', type: 'tel' },
+  { name: 'subject', type: 'text' },
+] as const;
 
 export function ContactForm() {
   const t = useTranslations('contact.form');
@@ -24,7 +32,7 @@ export function ContactForm() {
     handleSubmit,
     reset,
     setError,
-    watch,
+    control,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
@@ -51,10 +59,10 @@ export function ContactForm() {
     if (result.ok) reset();
   };
 
-  const acceptPrivacy = watch('acceptPrivacy');
+  const acceptPrivacy = useWatch({ control, name: 'acceptPrivacy' });
 
   return (
-    <div className="rounded-3xl border bg-card p-6 md:p-8">
+    <div className="rounded-[22px] border border-foreground/15 bg-foreground/3 p-6 md:p-9">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
         <input
           tabIndex={-1}
@@ -64,59 +72,62 @@ export function ContactForm() {
           {...register('company')}
         />
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <Field error={errorText(errors.name?.message)}>
-            <Input placeholder={t('placeholders.name')} {...register('name')} />
-          </Field>
-
-          <Field error={errorText(errors.email?.message)}>
-            <Input
-              placeholder={t('placeholders.email')}
-              type="email"
-              {...register('email')}
-            />
-          </Field>
-
-          <Field error={errorText(errors.phone?.message)}>
-            <Input
-              placeholder={t('placeholders.phone')}
-              {...register('phone')}
-            />
-          </Field>
-
-          <Field error={errorText(errors.subject?.message)}>
-            <Input
-              placeholder={t('placeholders.subject')}
-              {...register('subject')}
-            />
-          </Field>
+        <div className="grid gap-5 md:grid-cols-2">
+          {SHORT_FIELDS.map((f) => {
+            const label = t(`placeholders.${f.name}`);
+            const error = errorText(errors[f.name]?.message);
+            return (
+              <Field key={f.name} id={f.name} error={error}>
+                <Input
+                  id={f.name}
+                  type={f.type}
+                  placeholder={label}
+                  aria-label={label}
+                  aria-invalid={errors[f.name] ? true : undefined}
+                  aria-describedby={error ? `${f.name}-error` : undefined}
+                  className="h-11"
+                  {...register(f.name)}
+                />
+              </Field>
+            );
+          })}
         </div>
 
-        <Field error={errorText(errors.message?.message)}>
+        <Field id="message" error={errorText(errors.message?.message)}>
           <Textarea
+            id="message"
             placeholder={t('placeholders.message')}
-            className="min-h-40"
+            aria-label={t('placeholders.message')}
+            aria-invalid={errors.message ? true : undefined}
+            aria-describedby={errors.message ? 'message-error' : undefined}
+            className="min-h-52"
             {...register('message')}
           />
         </Field>
 
-        <Field error={errorText(errors.acceptPrivacy?.message)}>
-          <div className="flex items-center gap-2">
+        <Field
+          id="acceptPrivacy"
+          error={errorText(errors.acceptPrivacy?.message)}
+        >
+          <div className="flex items-center gap-2.5">
             <Checkbox
               id="acceptPrivacy"
               checked={acceptPrivacy}
+              aria-describedby={
+                errors.acceptPrivacy ? 'acceptPrivacy-error' : undefined
+              }
               onCheckedChange={(checked) =>
                 setValue('acceptPrivacy', checked === true)
               }
             />
             <label
               htmlFor="acceptPrivacy"
-              className="text-sm leading-relaxed cursor-pointer"
+              className="cursor-pointer text-sm leading-relaxed"
             >
               {t('privacy.accept')}{' '}
               <Link
                 href="/privacy"
-                className="text-primary underline underline-offset-4 hover:opacity-80"
+                className="text-blue-ink underline underline-offset-4 hover:opacity-80"
                 target="_blank"
               >
                 {t('privacy.link')}
@@ -128,14 +139,14 @@ export function ContactForm() {
         <Button
           type="submit"
           size="lg"
-          className="w-full rounded-none"
           disabled={isSubmitting}
+          className="h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_rgba(0,76,255,0.9)] motion-reduce:transition-none"
         >
           {isSubmitting ? (
             t('buttons.sending')
           ) : (
             <>
-              {t('buttons.send')} <span className="ml-2">→</span>
+              {t('buttons.send')} <ArrowIcon className="ml-2" />
             </>
           )}
         </Button>
@@ -145,16 +156,22 @@ export function ContactForm() {
 }
 
 function Field({
+  id,
   children,
   error,
 }: {
+  id: string;
   children: React.ReactNode;
   error?: string;
 }) {
   return (
     <div className="space-y-1.5">
       {children}
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && (
+        <p id={`${id}-error`} role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
