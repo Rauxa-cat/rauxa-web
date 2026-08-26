@@ -12,11 +12,13 @@ interface HeroContentProps {
   className?: string;
 }
 
+// Mobile needs a bigger floor (~60/46/50 at 390px); the desktop scale kicks in at lg.
 const bandVariant: Record<HeroBandVariant, string> = {
-  lead: 'text-white text-[clamp(1.7rem,8.7vw,8.5rem)]',
-  bridge: 'text-white/50 text-[clamp(0.9rem,3.95vw,3.87rem)] leading-[0.92]',
+  lead: 'text-white text-[clamp(2.75rem,15vw,4.5rem)] lg:text-[clamp(1.7rem,8.7vw,8.5rem)]',
+  bridge:
+    'text-white/50 leading-[0.92] text-[clamp(2rem,11.8vw,3.4rem)] lg:text-[clamp(0.9rem,3.95vw,3.87rem)]',
   punch:
-    'text-[var(--rauxa-electric)] text-[clamp(1.42rem,7.1vw,7.1rem)] [text-shadow:0_0_90px_rgba(0,76,255,0.6)]',
+    'text-[var(--rauxa-electric)] [text-shadow:0_0_90px_rgba(0,76,255,0.6)] text-[clamp(2.4rem,12.8vw,3.6rem)] lg:text-[clamp(1.42rem,7.1vw,7.1rem)]',
 };
 
 export function HeroContent({
@@ -60,7 +62,7 @@ export function HeroContent({
       )}
 
       {ctas.length > 0 && (
-        <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:gap-5">
+        <div className="mt-10 flex w-full flex-col gap-4 sm:flex-row sm:gap-5">
           {ctas.map((cta) => (
             <Button
               key={`${cta.href}-${cta.label}`}
@@ -68,7 +70,7 @@ export function HeroContent({
               size="lg"
               variant={cta.variant ?? 'default'}
               className={cn(
-                'h-14 rounded-none px-8 font-semibold tracking-wide',
+                'h-14 w-full rounded-none px-8 font-semibold tracking-wide sm:w-auto',
                 (cta.variant ?? 'default') === 'default' &&
                   'bg-[var(--rauxa-electric)] text-white shadow-[0_20px_54px_-14px_rgba(0,76,255,0.9)] hover:bg-[var(--rauxa-electric)]',
                 cta.variant === 'outline' &&

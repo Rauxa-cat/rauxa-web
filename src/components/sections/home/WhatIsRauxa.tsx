@@ -43,20 +43,24 @@ export async function WhatIsRauxa() {
                 className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 [background:linear-gradient(90deg,rgba(0,76,255,0.16)_0%,rgba(0,76,255,0.02)_62%,transparent_100%)]"
                 aria-hidden
               />
-              <div className="relative mx-auto flex min-h-30 max-w-page items-center gap-6 px-6 transition-[min-height] duration-300 group-hover:min-h-40 md:gap-8">
+              <div className="relative mx-auto flex max-w-page items-center gap-4 px-6 py-6 transition-[min-height] duration-300 md:min-h-30 md:gap-8 md:py-0 md:group-hover:min-h-40">
                 <ActiveBar />
-                <RowIndex className="w-10 text-lg md:w-14 md:text-[22px]">
-                  {String(i + 1).padStart(2, '0')}
-                </RowIndex>
-                <h3 className="flex-1 font-normal leading-none text-foreground text-[clamp(1.75rem,4.5vw,3.25rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_rgba(0,76,255,0.5)]">
-                  {tItems(`${service.id}.title`)}
-                </h3>
-                <p className="hidden w-90 shrink-0 text-sm leading-[1.72] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/80 lg:block">
-                  {tItems(`${service.id}.desc`)}
-                </p>
+                <div className="flex min-w-0 flex-1 flex-col gap-2 md:flex-row md:items-center md:gap-8">
+                  <div className="flex items-baseline gap-4 md:contents">
+                    <RowIndex className="text-lg md:w-14 md:text-[22px]">
+                      {String(i + 1).padStart(2, '0')}
+                    </RowIndex>
+                    <h3 className="min-w-0 flex-1 font-normal leading-none text-foreground text-[clamp(1.75rem,4.5vw,3.25rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_rgba(0,76,255,0.5)]">
+                      {tItems(`${service.id}.title`)}
+                    </h3>
+                  </div>
+                  <p className="text-sm leading-[1.72] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/80 md:w-90 md:shrink-0">
+                    {tItems(`${service.id}.desc`)}
+                  </p>
+                </div>
                 <ArrowIcon
                   animate
-                  className="w-10 shrink-0 text-right text-2xl text-foreground/45 transition-all duration-300 group-hover:text-blue-ink md:w-12"
+                  className="shrink-0 text-right text-2xl text-foreground/45 transition-all duration-300 group-hover:text-blue-ink md:w-12"
                 />
               </div>
             </a>
