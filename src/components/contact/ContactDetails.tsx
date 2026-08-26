@@ -13,7 +13,6 @@ type ContactDetailsProps = {
   whatsappUrl: string;
   instagramUrl: string;
 
-  /** Opcionales */
   className?: string;
   servicesLink?: boolean;
   socialSize?: 'default' | 'lg';
@@ -32,10 +31,10 @@ export async function ContactDetails({
 }: ContactDetailsProps) {
   const t = await getTranslations('contactDetails');
   return (
-    <div className={cn('space-y-6', className)}>
-      <div className="space-y-3">
-        <div className="flex items-center gap-3">
-          <Mail className="size-4" />
+    <div className={cn('flex flex-col items-start gap-8', className)}>
+      <div className="flex flex-col gap-5 text-[17px]">
+        <div className="flex items-center gap-3.5">
+          <Mail className="size-5 shrink-0 text-blue-ink" aria-hidden />
           <a
             href={`mailto:${email}`}
             className="underline-offset-4 hover:underline"
@@ -44,8 +43,8 @@ export async function ContactDetails({
           </a>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Phone className="size-4" />
+        <div className="flex items-center gap-3.5">
+          <Phone className="size-5 shrink-0 text-blue-ink" aria-hidden />
           <a
             href={`tel:${phoneE164}`}
             className="underline-offset-4 hover:underline"
@@ -54,23 +53,23 @@ export async function ContactDetails({
           </a>
         </div>
 
-        <div className="flex items-center gap-3">
-          <MapPin className="size-4" />
+        <div className="flex items-center gap-3.5 text-foreground/80">
+          <MapPin className="size-5 shrink-0 text-blue-ink" aria-hidden />
           <span>{location}</span>
         </div>
-
-        {servicesLink && (
-          <div className="pt-2">
-            {t('lookingFor')}{' '}
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 underline-offset-4 hover:underline"
-            >
-              {t('viewServices')} <ArrowIcon />
-            </Link>
-          </div>
-        )}
       </div>
+
+      {servicesLink && (
+        <p className="flex flex-wrap items-center gap-2 text-sm text-foreground/70">
+          {t('lookingFor')}{' '}
+          <Link
+            href="/services"
+            className="inline-flex items-center gap-2 text-blue-ink underline-offset-4 hover:underline"
+          >
+            {t('viewServices')} <ArrowIcon />
+          </Link>
+        </p>
+      )}
 
       <SocialActions
         whatsappUrl={whatsappUrl}
