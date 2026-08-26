@@ -1,6 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { SERVICES } from '@/lib/content/services';
 import { SectionHeader } from '../shared/SectionHeader';
+import { ActiveBar } from '../shared/ActiveBar';
+import { RowIndex } from '../shared/RowIndex';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 export async function WhatIsRauxa() {
@@ -42,17 +44,14 @@ export async function WhatIsRauxa() {
                 aria-hidden
               />
               <div className="relative mx-auto flex min-h-30 max-w-page items-center gap-6 px-6 transition-[min-height] duration-300 group-hover:min-h-40 md:gap-8">
-                <span
-                  className="absolute left-0 top-0 h-full w-0.75 origin-top scale-y-0 bg-primary transition-transform duration-300 group-hover:scale-y-100 group-focus-visible:scale-y-100 motion-reduce:transition-none"
-                  aria-hidden
-                />
-                <span className="w-10 shrink-0 font-accent text-lg tracking-[0.2em] text-blue-ink md:w-14 md:text-[22px]">
+                <ActiveBar />
+                <RowIndex className="w-10 text-lg md:w-14 md:text-[22px]">
                   {String(i + 1).padStart(2, '0')}
-                </span>
+                </RowIndex>
                 <h3 className="flex-1 font-normal leading-none text-foreground text-[clamp(1.75rem,4.5vw,3.25rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_rgba(0,76,255,0.5)]">
                   {tItems(`${service.id}.title`)}
                 </h3>
-                <p className="hidden w-90 shrink-0 text-[13.5px] leading-[1.72] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/80 lg:block">
+                <p className="hidden w-90 shrink-0 text-sm leading-[1.72] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/80 lg:block">
                   {tItems(`${service.id}.desc`)}
                 </p>
                 <ArrowIcon
