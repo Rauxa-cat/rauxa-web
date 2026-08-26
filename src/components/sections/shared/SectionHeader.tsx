@@ -16,6 +16,7 @@ type SectionHeaderProps = {
   title: ReactNode;
   description?: ReactNode;
   size?: SectionHeaderSize;
+  hairline?: boolean;
   className?: string;
   animate?: boolean;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, 'children' | 'title'>;
@@ -25,6 +26,7 @@ export function SectionHeader({
   title,
   description,
   size = 'md',
+  hairline = false,
   className,
   animate = true,
   ...rest
@@ -32,9 +34,12 @@ export function SectionHeader({
   return (
     <div className={cn(animate && 'view-animate', className)} {...rest}>
       {eyebrow && (
-        <p className="font-accent tracking-[0.35em] text-foreground/60">
-          {eyebrow}
-        </p>
+        <div className="flex items-center gap-3.5">
+          {hairline && <span className="h-px w-7.5 bg-primary" aria-hidden />}
+          <span className="font-accent tracking-[0.35em] text-foreground/60">
+            {eyebrow}
+          </span>
+        </div>
       )}
 
       <h2 className={cn('mt-4 font-normal tracking-tight', titleSize[size])}>
