@@ -1,39 +1,40 @@
-'use client';
-
+import { getTranslations } from 'next-intl/server';
 import { TEAM } from '@/lib/content/team';
-import { TeamMemberCard } from './TeamMemberCard';
-import { useTranslations } from 'next-intl';
-import { SectionShell } from '@/components/sections/shared/SectionShell';
-import { SectionHeader } from '@/components/sections/shared/SectionHeader';
+import { SectionHeader } from '../shared/SectionHeader';
+import { TeamMember } from './TeamMember';
 
-export function TeamSection() {
-  const t = useTranslations('team.section');
-  const tMembers = useTranslations('team.members');
+export async function TeamSection() {
+  const t = await getTranslations('team.section');
+  const tMembers = await getTranslations('team.members');
+
   return (
-    <SectionShell>
+    <section className="bg-background">
       <SectionHeader
+        className="mx-auto max-w-page px-6 pt-24 pb-20 md:pt-32"
+        hairline
+        size="lg"
         eyebrow={t('eyebrow')}
         title={
           <>
-            {t('title')}{' '}
-            <span className="text-primary">{t('titleHighlight')}</span>
+            <span className="block">{t('title')}</span>
+            <span className="block text-primary">{t('titleHighlight')}</span>
           </>
         }
         description={<p>{t('description')}</p>}
       />
 
-      <div className="stagger-grid mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {TEAM.map((m) => (
-          <div key={m.id} className="view-animate">
-            <TeamMemberCard
-              name={tMembers(`${m.id}.name`)}
-              role={tMembers(`${m.id}.role`)}
-              bio={tMembers(`${m.id}.bio`)}
-              image={m.image}
-            />
-          </div>
+      <ul className="border-t border-foreground/15">
+        {TEAM.map((member, i) => (
+          <TeamMember
+            key={member.id}
+            index={String(i + 1).padStart(2, '0')}
+            name={tMembers(`${member.id}.name`)}
+            bio={tMembers(`${member.id}.bio`)}
+            image={member.image}
+            reversed={i % 2 === 1}
+          />
         ))}
-      </div>
-    </SectionShell>
+      </ul>
+    </section>
   );
 }
