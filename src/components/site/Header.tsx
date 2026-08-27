@@ -3,10 +3,11 @@ import { MobileNav } from './MobileNav';
 import { Logo } from './Logo';
 import { LanguageSelector } from './LanguageSelector';
 import { ThemeToggle } from './ThemeToggle';
+import { ScrollProgress } from './ScrollProgress';
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-background border-b backdrop-blur">
+    <header className="sticky top-0 z-50 border-b bg-background backdrop-blur">
       <div className="mx-auto flex h-16 max-w-page items-center px-6">
         <Logo />
 
@@ -21,6 +22,8 @@ export function SiteHeader() {
           <MobileNav />
         </div>
       </div>
+
+      <ScrollProgress />
     </header>
   );
 }
