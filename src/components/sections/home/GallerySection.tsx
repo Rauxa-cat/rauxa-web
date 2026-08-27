@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { SectionHeader } from '../shared/SectionHeader';
+import { SectionShell } from '../shared/SectionShell';
 import { DragScroll } from '@/components/motion/DragScroll';
 
 type Dims = { w: number; h: number; mt: number };
@@ -77,7 +78,7 @@ export async function GallerySection() {
   const alt = (n: number) => t('imageAlt', { n });
 
   return (
-    <section className="bg-background pt-24 pb-28 md:pt-32">
+    <SectionShell className="pb-28">
       <SectionHeader
         className="mx-auto max-w-page px-6"
         hairline
@@ -130,6 +131,6 @@ export async function GallerySection() {
           {t('drag')} →
         </span>
       </div>
-    </section>
+    </SectionShell>
   );
 }

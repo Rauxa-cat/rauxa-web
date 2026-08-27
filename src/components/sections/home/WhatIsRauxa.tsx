@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { SERVICES } from '@/lib/content/services';
 import { SectionHeader } from '../shared/SectionHeader';
+import { SectionShell } from '../shared/SectionShell';
 import { ActiveBar } from '../shared/ActiveBar';
 import { RowIndex } from '../shared/RowIndex';
 import { RevealList, RevealItem } from '@/components/motion/Reveal';
@@ -11,7 +12,7 @@ export async function WhatIsRauxa() {
   const tItems = await getTranslations('services.items');
 
   return (
-    <section className="bg-background pt-24 md:pt-32">
+    <SectionShell>
       <SectionHeader
         className="mx-auto max-w-page px-6"
         hairline
@@ -68,6 +69,6 @@ export async function WhatIsRauxa() {
           </RevealItem>
         ))}
       </RevealList>
-    </section>
+    </SectionShell>
   );
 }
