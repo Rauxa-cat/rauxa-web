@@ -10,7 +10,6 @@ export async function ContactInfo() {
       <SectionHeader
         as="h1"
         size="display"
-        animate={false}
         eyebrow={t('eyebrow')}
         title={
           <span className="text-primary [text-shadow:0_0_62px_rgba(0,76,255,0.55)]">

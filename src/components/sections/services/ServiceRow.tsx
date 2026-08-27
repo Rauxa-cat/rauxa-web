@@ -2,6 +2,8 @@ import { Button } from '@/components/ui/button';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
 import { ActiveBar } from '../shared/ActiveBar';
 import { RowIndex } from '../shared/RowIndex';
+import { RevealItem } from '@/components/motion/Reveal';
+import { Pressable } from '@/components/motion/Pressable';
 
 type ServiceRowProps = {
   index: string;
@@ -19,7 +21,7 @@ export function ServiceRow({
   href,
 }: ServiceRowProps) {
   return (
-    <li className="group relative border-b border-foreground/15">
+    <RevealItem className="group relative border-b border-foreground/15">
       <span
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [background:linear-gradient(90deg,rgba(0,76,255,0.16)_0%,rgba(0,76,255,0.02)_62%,transparent_100%)]"
         aria-hidden
@@ -34,18 +36,20 @@ export function ServiceRow({
           <p className="text-base leading-[1.75] text-foreground/70">
             {description}
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="h-13 rounded-none px-7 tracking-wider transition-shadow duration-300 group-hover:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)] group-focus-within:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)]"
-          >
-            <a href={href} target="_blank" rel="noopener noreferrer">
-              {ctaLabel}
-              <ArrowIcon className="ml-1" />
-            </a>
-          </Button>
+          <Pressable>
+            <Button
+              asChild
+              size="lg"
+              className="h-13 rounded-none px-7 tracking-wider transition-shadow duration-300 group-hover:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)] group-focus-within:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)]"
+            >
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {ctaLabel}
+                <ArrowIcon className="ml-1" />
+              </a>
+            </Button>
+          </Pressable>
         </div>
       </div>
-    </li>
+    </RevealItem>
   );
 }

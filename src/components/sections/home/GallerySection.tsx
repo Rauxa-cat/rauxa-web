@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { SectionHeader } from '../shared/SectionHeader';
+import { DragScroll } from '@/components/motion/DragScroll';
 
 type Dims = { w: number; h: number; mt: number };
 
@@ -57,6 +58,7 @@ function GalleryFig({
         src={`/images/gallery/${id}-1600.webp`}
         alt={alt}
         fill
+        draggable={false}
         sizes="(max-width: 768px) 55vw, 380px"
         className="object-cover"
       />
@@ -91,7 +93,7 @@ export async function GallerySection() {
         }
       />
 
-      <div className="mt-10 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <DragScroll className="mt-10 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {/* Mobile: cropped strip of four. */}
         <div className="flex h-90 w-max items-start gap-3 pr-6 md:hidden">
           {GALLERY_STRIP.filter((item) => item.m).map((item, i) => (
@@ -117,7 +119,7 @@ export async function GallerySection() {
             />
           ))}
         </div>
-      </div>
+      </DragScroll>
 
       <div className="mx-auto mt-5 flex max-w-page items-center justify-end gap-4 px-6">
         <span

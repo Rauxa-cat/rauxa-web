@@ -9,6 +9,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
+import { Pressable } from '@/components/motion/Pressable';
 
 import { contactSchema } from '@/lib/validation/contact.schema';
 import {
@@ -136,20 +137,22 @@ export function ContactForm() {
           </div>
         </Field>
 
-        <Button
-          type="submit"
-          size="lg"
-          disabled={isSubmitting}
-          className="h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_rgba(0,76,255,0.9)] motion-reduce:transition-none"
-        >
-          {isSubmitting ? (
-            t('buttons.sending')
-          ) : (
-            <>
-              {t('buttons.send')} <ArrowIcon className="ml-2" />
-            </>
-          )}
-        </Button>
+        <Pressable className="w-full">
+          <Button
+            type="submit"
+            size="lg"
+            disabled={isSubmitting}
+            className="h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_rgba(0,76,255,0.9)] motion-reduce:transition-none"
+          >
+            {isSubmitting ? (
+              t('buttons.sending')
+            ) : (
+              <>
+                {t('buttons.send')} <ArrowIcon className="ml-2" />
+              </>
+            )}
+          </Button>
+        </Pressable>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import { SERVICES } from '@/lib/content/services';
 import { SectionHeader } from '../shared/SectionHeader';
 import { ActiveBar } from '../shared/ActiveBar';
 import { RowIndex } from '../shared/RowIndex';
+import { RevealList, RevealItem } from '@/components/motion/Reveal';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 export async function WhatIsRauxa() {
@@ -30,9 +31,9 @@ export async function WhatIsRauxa() {
         }
       />
 
-      <ul className="mt-16 border-t border-foreground/15 md:mt-20">
+      <RevealList className="mt-16 border-t border-foreground/15 md:mt-20">
         {SERVICES.map((service, i) => (
-          <li key={service.id}>
+          <RevealItem key={service.id}>
             <a
               href={service.formUrl}
               target="_blank"
@@ -64,9 +65,9 @@ export async function WhatIsRauxa() {
                 />
               </div>
             </a>
-          </li>
+          </RevealItem>
         ))}
-      </ul>
+      </RevealList>
     </section>
   );
 }
