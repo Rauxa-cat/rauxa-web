@@ -1,7 +1,10 @@
 import { Link } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import type { HeroBand, HeroBandVariant, HeroCTA } from './types';
+import type { HeroBand, HeroCTA } from './types';
+import { HeroBands } from './HeroBands';
+import { HeroFade } from './HeroFade';
+import { Pressable } from '@/components/motion/Pressable';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 interface HeroContentProps {
@@ -11,15 +14,6 @@ interface HeroContentProps {
   ctas?: HeroCTA[];
   className?: string;
 }
-
-// Mobile needs a bigger floor (~60/46/50 at 390px); the desktop scale kicks in at lg.
-const bandVariant: Record<HeroBandVariant, string> = {
-  lead: 'text-white text-[clamp(2.75rem,15vw,4.5rem)] lg:text-[clamp(1.7rem,8.7vw,8.5rem)]',
-  bridge:
-    'text-white/50 leading-[0.92] text-[clamp(2rem,11.8vw,3.4rem)] lg:text-[clamp(0.9rem,3.95vw,3.87rem)]',
-  punch:
-    'text-[var(--rauxa-electric)] [text-shadow:0_0_90px_rgba(0,76,255,0.6)] text-[clamp(2.4rem,12.8vw,3.6rem)] lg:text-[clamp(1.42rem,7.1vw,7.1rem)]',
-};
 
 export function HeroContent({
   eyebrow,
@@ -36,79 +30,78 @@ export function HeroContent({
       )}
     >
       {eyebrow && (
-        <p className="font-accent text-[clamp(0.85rem,1.3vw,1.3rem)] tracking-[0.35em] text-white/60">
-          {eyebrow}
-        </p>
+        <HeroFade delay={0}>
+          <p className="font-accent text-[clamp(0.85rem,1.3vw,1.3rem)] tracking-[0.35em] text-white/60">
+            {eyebrow}
+          </p>
+        </HeroFade>
       )}
 
-      <h1 className="font-brand mt-6 font-normal tracking-[-0.012em]">
-        {bands.map((band, i) => (
-          <span
-            key={i}
-            className={cn(
-              'block leading-[0.82] whitespace-pre-line',
-              bandVariant[band.variant],
-            )}
-          >
-            {band.text}
-          </span>
-        ))}
-      </h1>
+      <HeroBands bands={bands} />
 
       {subtitle && (
-        <p className="font-accent mt-8 max-w-[34rem] text-[clamp(1rem,1.5vw,1.6rem)] leading-relaxed text-white/80">
-          {subtitle}
-        </p>
+        <HeroFade delay={0.5}>
+          <p className="font-accent mt-8 max-w-[34rem] text-[clamp(1rem,1.5vw,1.6rem)] leading-relaxed text-white/80">
+            {subtitle}
+          </p>
+        </HeroFade>
       )}
 
       {ctas.length > 0 && (
-        <div className="mt-10 flex w-full flex-col gap-4 sm:flex-row sm:gap-5">
+        <HeroFade
+          delay={0.62}
+          className="mt-10 flex w-full flex-col gap-4 sm:flex-row sm:gap-5"
+        >
           {ctas.map((cta) => (
-            <Button
+            <Pressable
               key={`${cta.href}-${cta.label}`}
-              asChild
-              size="lg"
-              variant={cta.variant ?? 'default'}
-              className={cn(
-                'h-14 w-full rounded-none px-8 font-semibold tracking-wide sm:w-auto',
-                (cta.variant ?? 'default') === 'default' &&
-                  'bg-[var(--rauxa-electric)] text-white shadow-[0_20px_54px_-14px_rgba(0,76,255,0.9)] hover:bg-[var(--rauxa-electric)]',
-                cta.variant === 'outline' &&
-                  'border-white/50 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white',
-              )}
+              className="w-full sm:w-auto"
             >
-              {cta.external ? (
-                <a
-                  href={cta.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    'inline-flex items-center',
-                    cta.withArrow && 'gap-3',
-                  )}
-                >
-                  {cta.label}
-                  {cta.withArrow && <ArrowIcon animate />}
-                </a>
-              ) : (
-                <Link
-                  href={cta.href}
-                  className={cn(
-                    'inline-flex items-center',
-                    cta.withArrow && 'gap-3',
-                  )}
-                >
-                  {cta.label}
-                  {cta.withArrow && (
-                    <span aria-hidden className="text-lg leading-none">
-                      →
-                    </span>
-                  )}
-                </Link>
-              )}
-            </Button>
+              <Button
+                asChild
+                size="lg"
+                variant={cta.variant ?? 'default'}
+                className={cn(
+                  'h-14 w-full rounded-none px-8 font-semibold tracking-wide sm:w-auto',
+                  (cta.variant ?? 'default') === 'default' &&
+                    'bg-[var(--rauxa-electric)] text-white shadow-[0_20px_54px_-14px_rgba(0,76,255,0.9)] hover:bg-[var(--rauxa-electric)]',
+                  cta.variant === 'outline' &&
+                    'border-white/50 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white',
+                )}
+              >
+                {cta.external ? (
+                  <a
+                    href={cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      'inline-flex items-center',
+                      cta.withArrow && 'gap-3',
+                    )}
+                  >
+                    {cta.label}
+                    {cta.withArrow && <ArrowIcon animate />}
+                  </a>
+                ) : (
+                  <Link
+                    href={cta.href}
+                    className={cn(
+                      'inline-flex items-center',
+                      cta.withArrow && 'gap-3',
+                    )}
+                  >
+                    {cta.label}
+                    {cta.withArrow && (
+                      <span aria-hidden className="text-lg leading-none">
+                        →
+                      </span>
+                    )}
+                  </Link>
+                )}
+              </Button>
+            </Pressable>
           ))}
-        </div>
+        </HeroFade>
       )}
     </div>
   );

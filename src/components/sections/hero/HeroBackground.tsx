@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { HeroGlow } from './HeroGlow';
 
 interface HeroBackgroundProps {
   src?: string;
@@ -52,8 +53,8 @@ export function HeroBackground({
         </>
       )}
 
-      {/* Static blue glow behind the punch band (the breathing animation lands in -motion). */}
-      <div className="absolute top-[46%] left-[6%] h-[500px] w-[900px] max-w-[85%] bg-[radial-gradient(ellipse_at_center,rgba(0,76,255,0.30)_0%,rgba(0,76,255,0.06)_46%,transparent_72%)]" />
+      {/* Blue glow behind the punch band; its opacity is scroll-linked (see HeroGlow). */}
+      <HeroGlow />
     </div>
   );
 }
