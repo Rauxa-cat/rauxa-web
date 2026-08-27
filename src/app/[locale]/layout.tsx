@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { SiteHeader } from '@/components/site/Header';
 import { Footer } from '@/components/site/footer/Footer';
+import { MotionProvider } from '@/components/motion/MotionProvider';
 import { Toaster } from 'sonner';
 import { getTranslations } from 'next-intl/server';
 
@@ -72,10 +73,12 @@ export default async function Layout({
   return (
     <>
       <NextIntlClientProvider locale={locale}>
-        <SiteHeader />
-        <main> {children} </main>
-        <Footer />
-        <Toaster position="top-right" richColors />
+        <MotionProvider>
+          <SiteHeader />
+          <main> {children} </main>
+          <Footer />
+          <Toaster position="top-right" richColors />
+        </MotionProvider>
       </NextIntlClientProvider>
     </>
   );
