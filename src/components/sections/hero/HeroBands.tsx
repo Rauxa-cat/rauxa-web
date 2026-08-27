@@ -10,7 +10,7 @@ const bandVariant: Record<HeroBandVariant, string> = {
   bridge:
     'text-white/50 leading-[0.92] text-[clamp(2rem,11.8vw,3.4rem)] lg:text-[clamp(0.9rem,3.95vw,3.87rem)]',
   punch:
-    'text-[var(--rauxa-electric)] [text-shadow:0_0_90px_rgba(0,76,255,0.6)] text-[clamp(2.4rem,12.8vw,3.6rem)] lg:text-[clamp(1.42rem,7.1vw,7.1rem)]',
+    'text-[var(--rauxa-electric)] [text-shadow:0_0_90px_rgba(0,76,255,0.6)] text-[clamp(2.4rem,12.8vw,3.6rem)] lg:text-[clamp(1.42rem,7.1vw,6.7rem)]',
 };
 
 const EASE = [0.22, 1, 0.36, 1] as const;
