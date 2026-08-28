@@ -1,6 +1,6 @@
 'use client';
 
-import { m, useReducedMotion, type Variants } from 'motion/react';
+import { m, type Variants } from 'motion/react';
 import { EASE } from '@/lib/motion';
 
 // `amount: 'some'` fires as soon as any part enters, so a group taller than the
@@ -45,20 +45,14 @@ export function Stagger({
   );
 }
 
-const item = (reduce: boolean, distance: number): Variants =>
-  reduce
-    ? {
-        hidden: { opacity: 0 },
-        show: { opacity: 1, transition: { duration: 0.4 } },
-      }
-    : {
-        hidden: { opacity: 0, y: distance },
-        show: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.55, ease: EASE },
-        },
-      };
+const item = (distance: number): Variants => ({
+  hidden: { opacity: 0, y: distance },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: EASE },
+  },
+});
 
 export function StaggerItem({
   children,
@@ -69,9 +63,8 @@ export function StaggerItem({
   className?: string;
   distance?: number;
 }) {
-  const reduce = useReducedMotion();
   return (
-    <m.div className={className} variants={item(!!reduce, distance)}>
+    <m.div className={className} variants={item(distance)}>
       {children}
     </m.div>
   );

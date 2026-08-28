@@ -1,13 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
-import {
-  m,
-  useScroll,
-  useTransform,
-  useMotionTemplate,
-  useReducedMotion,
-} from 'motion/react';
+import { m, useScroll, useTransform, useMotionTemplate } from 'motion/react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const STATIC_GRADIENT =
   'linear-gradient(112deg, var(--rauxa-blue-900) 0%, var(--rauxa-electric) 56%, var(--rauxa-blue-800) 100%)';
@@ -41,7 +36,7 @@ export function CtaBackdrop() {
       />
       <m.div
         className="absolute -top-40 -right-32 h-[660px] w-[660px] rounded-full bg-[radial-gradient(circle,rgba(247,244,239,0.17)_0%,rgba(247,244,239,0)_66%)]"
-        style={reduce ? undefined : { y: haloY }}
+        style={{ y: reduce ? 0 : haloY }}
       />
     </div>
   );

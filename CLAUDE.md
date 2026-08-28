@@ -85,8 +85,18 @@ Button hover/press is not a Motion primitive: it lives in the base of
 
 Two rules when adding an effect:
 
-- **Always handle `prefers-reduced-motion`.** Every primitive uses `useReducedMotion`
-  and degrades to a plain fade or renders nothing; new effects must do the same.
+- **Never branch rendered output on the reduced-motion preference.** The server
+  cannot know it, so a render-time branch serves one tree and hydrates another,
+  and React throws the whole subtree away. `MotionProvider` sets
+  `MotionConfig reducedMotion="user"`, which snaps transform and layout values
+  instantly for those visitors, so write *one* set of keyframes and always give it
+  an `opacity` leg: that leg is what degrades the effect to a plain fade.
+  Non-transform properties (`clip-path`) need a `motion-reduce:` utility instead.
+  Where the preference really has to reach render (a scroll-linked `style`, a
+  class, whether a decoration mounts at all) use `@/hooks/useReducedMotion`, which
+  reads `false` until hydration and then stays live; never Motion's own
+  `useReducedMotion`. Pin those values to identity rather than dropping them:
+  Motion stops writing a removed `style` entry but never clears what it wrote.
 - **Keep sections as server components.** Animation goes in a `'use client'` child
   that receives data through props, so pages keep fetching translations on the
   server (see `GallerySection` → `GalleryStrip`).

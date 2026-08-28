@@ -1,7 +1,7 @@
 'use client';
 
 import { useForm, useWatch, type SubmitHandler } from 'react-hook-form';
-import { m, useReducedMotion } from 'motion/react';
+import { m } from 'motion/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from '@/i18n/navigation';
 
@@ -33,7 +33,6 @@ const VIEWPORT = { once: true, amount: 0.15 } as const;
 
 export function ContactForm() {
   const t = useTranslations('contact.form');
-  const reduce = useReducedMotion();
 
   const {
     register,
@@ -72,10 +71,10 @@ export function ContactForm() {
   return (
     <m.div
       className="rounded-[22px] border border-foreground/15 bg-foreground/3 p-6 md:p-9"
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, scale: 0.97 }}
+      initial={{ opacity: 0, y: 40, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={VIEWPORT}
-      transition={{ duration: reduce ? 0.4 : 0.7, ease: EASE }}
+      transition={{ duration: 0.7, ease: EASE }}
     >
       {/* The gap here outlasts the grid's own internal cascade below, so the
           form still reveals strictly top-down rather than overlapping rows. */}
