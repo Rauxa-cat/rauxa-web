@@ -8,11 +8,14 @@ import { cn } from '@/lib/utils';
 export function DragScroll({
   children,
   className,
+  scrollRef,
 }: {
   children: React.ReactNode;
   className?: string;
+  scrollRef?: React.RefObject<HTMLDivElement | null>;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const fallbackRef = useRef<HTMLDivElement>(null);
+  const ref = scrollRef ?? fallbackRef;
   const drag = useRef({ active: false, startX: 0, startLeft: 0 });
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
