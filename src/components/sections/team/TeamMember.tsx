@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { RowIndex } from '../shared/RowIndex';
+import { FadeIn } from '@/components/motion/Reveal';
 
 type TeamMemberProps = {
   index: string;
@@ -19,7 +20,7 @@ export function TeamMember({
 }: TeamMemberProps) {
   return (
     <li className="border-b border-foreground/15">
-      <div
+      <FadeIn
         className={cn(
           'mx-auto flex max-w-page flex-col gap-10 px-6 py-20 md:items-start md:gap-20 md:py-24',
           reversed ? 'md:flex-row-reverse' : 'md:flex-row',
@@ -49,7 +50,7 @@ export function TeamMember({
             {bio}
           </p>
         </div>
-      </div>
+      </FadeIn>
     </li>
   );
 }

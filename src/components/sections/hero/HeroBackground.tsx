@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { ParallaxLayer } from '@/components/motion/Parallax';
+import { HeroGlow } from './HeroGlow';
 
 interface HeroBackgroundProps {
   src?: string;
@@ -12,6 +14,10 @@ const blueVeil =
 const sideVeil =
   'bg-[linear-gradient(90deg,rgba(10,10,13,0.96)_0%,rgba(10,10,13,0.72)_26%,rgba(10,10,13,0)_58%)]';
 
+// The photo layers are bled past their frame on both edges, so the parallax drift
+// and the zoom-out never expose an empty strip inside the crop.
+const bleed = 'absolute inset-x-0 -top-[12%] -bottom-[12%]';
+
 export function HeroBackground({
   src,
   alt = '',
@@ -24,14 +30,20 @@ export function HeroBackground({
           {/* Desktop: corner slab aligned to the page container's right edge. */}
           <div className="absolute inset-0 mx-auto hidden max-w-page lg:block">
             <div className="absolute top-0 right-0 h-[52%] w-[44%] max-h-[480px] max-w-[620px] overflow-hidden">
-              <Image
-                src={src}
-                alt={alt}
-                fill
-                priority={priority}
-                className="object-cover object-[54%_36%]"
-                sizes="44vw"
-              />
+              <ParallaxLayer
+                className={bleed}
+                y={['-5%', '8%']}
+                scale={[1.2, 1]}
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  priority={priority}
+                  className="object-cover object-[54%_36%]"
+                  sizes="44vw"
+                />
+              </ParallaxLayer>
               <div className={`absolute inset-0 ${blueVeil}`} />
               <div className={`absolute inset-0 ${sideVeil}`} />
             </div>
@@ -39,21 +51,27 @@ export function HeroBackground({
 
           {/* Mobile: full-bleed photo behind the text. */}
           <div className="absolute inset-0 lg:hidden">
-            <Image
-              src={src}
-              alt={alt}
-              fill
-              priority={priority}
-              className="object-cover object-[54%_36%]"
-              sizes="100vw"
-            />
+            <ParallaxLayer
+              className={bleed}
+              y={['-4%', '8%']}
+              scale={[1.25, 1]}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                priority={priority}
+                className="object-cover object-[54%_36%]"
+                sizes="100vw"
+              />
+            </ParallaxLayer>
             <div className="absolute inset-0 bg-[var(--rauxa-black)]/75" />
           </div>
         </>
       )}
 
-      {/* Static blue glow behind the punch band (the breathing animation lands in -motion). */}
-      <div className="absolute top-[46%] left-[6%] h-[500px] w-[900px] max-w-[85%] bg-[radial-gradient(ellipse_at_center,rgba(0,76,255,0.30)_0%,rgba(0,76,255,0.06)_46%,transparent_72%)]" />
+      {/* Blue glow behind the punch band; its opacity is scroll-linked (see HeroGlow). */}
+      <HeroGlow />
     </div>
   );
 }

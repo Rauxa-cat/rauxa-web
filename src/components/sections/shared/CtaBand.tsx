@@ -2,6 +2,9 @@ import { getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { CONTACT } from '@/components/sections/contact/contact.constants';
 import { SERVICES } from '@/lib/content/services';
+import { CtaBackdrop } from './CtaBackdrop';
+import { MaskReveal } from '@/components/motion/MaskReveal';
+import { Pressable } from '@/components/motion/Pressable';
 
 const waitlistUrl =
   SERVICES.find((s) => s.id === 'cenas-rauxa')?.formUrl ?? '#';
@@ -10,8 +13,8 @@ export async function CtaBand() {
   const t = await getTranslations('cta');
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(112deg,var(--rauxa-blue-900)_0%,var(--rauxa-electric)_56%,var(--rauxa-blue-800)_100%)]">
-      <div className="pointer-events-none absolute -top-40 -right-32 h-[660px] w-[660px] rounded-full bg-[radial-gradient(circle,rgba(247,244,239,0.17)_0%,rgba(247,244,239,0)_66%)]" />
+    <section className="relative overflow-hidden bg-rauxa-blue-900">
+      <CtaBackdrop />
 
       <div className="relative mx-auto max-w-page px-6 py-16 md:py-20">
         <p className="font-accent text-[clamp(0.85rem,1.3vw,1.3rem)] tracking-[0.35em] text-white">
@@ -19,7 +22,7 @@ export async function CtaBand() {
         </p>
         {/* Black only at display size (3.27:1 on electric); everything else stays pearl. */}
         <h2 className="font-brand mt-3 text-[clamp(3rem,15vw,12rem)] leading-[0.86] font-normal text-[var(--rauxa-black)]">
-          {t('title')}
+          <MaskReveal>{t('title')}</MaskReveal>
         </h2>
 
         <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -34,18 +37,20 @@ export async function CtaBand() {
             >
               {CONTACT.email}
             </a>
-            <Button
-              asChild
-              size="lg"
-              className="h-14 rounded-none bg-[var(--rauxa-black)] px-8 font-semibold tracking-wide text-white hover:bg-[var(--rauxa-black)]"
-            >
-              <a href={waitlistUrl} target="_blank" rel="noopener noreferrer">
-                {t('button')}
-                <span aria-hidden className="ml-3 text-lg leading-none">
-                  →
-                </span>
-              </a>
-            </Button>
+            <Pressable>
+              <Button
+                asChild
+                size="lg"
+                className="h-14 rounded-none bg-[var(--rauxa-black)] px-8 font-semibold tracking-wide text-white hover:bg-[var(--rauxa-black)]"
+              >
+                <a href={waitlistUrl} target="_blank" rel="noopener noreferrer">
+                  {t('button')}
+                  <span aria-hidden className="ml-3 text-lg leading-none">
+                    →
+                  </span>
+                </a>
+              </Button>
+            </Pressable>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useForm, useWatch, type SubmitHandler } from 'react-hook-form';
+import { m, useReducedMotion } from 'motion/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from '@/i18n/navigation';
 
@@ -9,6 +10,9 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
+import { Pressable } from '@/components/motion/Pressable';
+import { StaggerItem, staggerContainer } from '@/components/motion/Stagger';
+import { EASE } from '@/lib/motion';
 
 import { contactSchema } from '@/lib/validation/contact.schema';
 import {
@@ -24,8 +28,13 @@ const SHORT_FIELDS = [
   { name: 'subject', type: 'text' },
 ] as const;
 
+// `once` matters here: re-running the entrance while someone is typing would
+// yank focus around, so the card animates in exactly one time.
+const VIEWPORT = { once: true, amount: 0.15 } as const;
+
 export function ContactForm() {
   const t = useTranslations('contact.form');
+  const reduce = useReducedMotion();
 
   const {
     register,
@@ -62,8 +71,24 @@ export function ContactForm() {
   const acceptPrivacy = useWatch({ control, name: 'acceptPrivacy' });
 
   return (
-    <div className="rounded-[22px] border border-foreground/15 bg-foreground/3 p-6 md:p-9">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+    <m.div
+      className="rounded-[22px] border border-foreground/15 bg-foreground/3 p-6 md:p-9"
+      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={VIEWPORT}
+      transition={{ duration: reduce ? 0.4 : 0.7, ease: EASE }}
+    >
+      {/* The gap here outlasts the grid's own internal cascade below, so the
+          form still reveals strictly top-down rather than overlapping rows. */}
+      <m.form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-5"
+        noValidate
+        variants={staggerContainer(0.25, 0.2)}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+      >
         <input
           tabIndex={-1}
           autoComplete="off"
@@ -72,7 +97,10 @@ export function ContactForm() {
           {...register('company')}
         />
 
-        <div className="grid gap-5 md:grid-cols-2">
+        <m.div
+          className="grid gap-5 md:grid-cols-2"
+          variants={staggerContainer(0, 0.06)}
+        >
           {SHORT_FIELDS.map((f) => {
             const label = t(`placeholders.${f.name}`);
             const error = errorText(errors[f.name]?.message);
@@ -91,7 +119,7 @@ export function ContactForm() {
               </Field>
             );
           })}
-        </div>
+        </m.div>
 
         <Field id="message" error={errorText(errors.message?.message)}>
           <Textarea
@@ -136,22 +164,26 @@ export function ContactForm() {
           </div>
         </Field>
 
-        <Button
-          type="submit"
-          size="lg"
-          disabled={isSubmitting}
-          className="h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_rgba(0,76,255,0.9)] motion-reduce:transition-none"
-        >
-          {isSubmitting ? (
-            t('buttons.sending')
-          ) : (
-            <>
-              {t('buttons.send')} <ArrowIcon className="ml-2" />
-            </>
-          )}
-        </Button>
-      </form>
-    </div>
+        <StaggerItem>
+          <Pressable className="w-full">
+            <Button
+              type="submit"
+              size="lg"
+              disabled={isSubmitting}
+              className="h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_rgba(0,76,255,0.9)] motion-reduce:transition-none"
+            >
+              {isSubmitting ? (
+                t('buttons.sending')
+              ) : (
+                <>
+                  {t('buttons.send')} <ArrowIcon className="ml-2" />
+                </>
+              )}
+            </Button>
+          </Pressable>
+        </StaggerItem>
+      </m.form>
+    </m.div>
   );
 }
 
@@ -165,13 +197,13 @@ function Field({
   error?: string;
 }) {
   return (
-    <div className="space-y-1.5">
+    <StaggerItem className="space-y-1.5">
       {children}
       {error && (
         <p id={`${id}-error`} role="alert" className="text-sm text-destructive">
           {error}
         </p>
       )}
-    </div>
+    </StaggerItem>
   );
 }

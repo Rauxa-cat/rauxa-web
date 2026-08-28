@@ -1,6 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { SERVICES } from '@/lib/content/services';
 import { SectionHeader } from '../shared/SectionHeader';
+import { SectionShell } from '../shared/SectionShell';
+import { RevealList } from '@/components/motion/Reveal';
 import { ServiceRow } from './ServiceRow';
 
 export async function ServicesOverview() {
@@ -8,9 +10,9 @@ export async function ServicesOverview() {
   const tItems = await getTranslations('services.items');
 
   return (
-    <section className="bg-background">
+    <SectionShell className="pt-8 md:pt-12">
       <SectionHeader
-        className="mx-auto max-w-page px-6 pt-24 pb-20 md:pt-32"
+        className="mx-auto max-w-page px-6 pb-20"
         hairline
         size="lg"
         eyebrow={t('eyebrow')}
@@ -23,7 +25,7 @@ export async function ServicesOverview() {
         description={<p>{t('description')}</p>}
       />
 
-      <ul className="border-t border-foreground/15">
+      <RevealList className="border-t border-foreground/15">
         {SERVICES.map((service, i) => (
           <ServiceRow
             key={service.id}
@@ -34,7 +36,7 @@ export async function ServicesOverview() {
             href={service.formUrl}
           />
         ))}
-      </ul>
-    </section>
+      </RevealList>
+    </SectionShell>
   );
 }

@@ -1,6 +1,7 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { SectionHeader } from '../shared/SectionHeader';
+import { SectionShell } from '../shared/SectionShell';
+import { GalleryStrip, type GalleryFigure } from './GalleryStrip';
 
 type Dims = { w: number; h: number; mt: number };
 
@@ -37,45 +38,23 @@ const GALLERY_STRIP: {
   { id: '_MG_4125', d: { w: 300, h: 420, mt: 30 } },
 ];
 
-function GalleryFig({
-  id,
-  dims,
-  overlay,
-  alt,
-}: {
-  id: string;
-  dims: Dims;
-  overlay?: boolean;
-  alt: string;
-}) {
-  return (
-    <div
-      className="relative shrink-0 overflow-hidden"
-      style={{ width: dims.w, height: dims.h, marginTop: dims.mt }}
-    >
-      <Image
-        src={`/images/gallery/${id}-1600.webp`}
-        alt={alt}
-        fill
-        sizes="(max-width: 768px) 55vw, 380px"
-        className="object-cover"
-      />
-      {overlay && (
-        <div
-          className="absolute inset-0 [background:linear-gradient(180deg,rgba(0,76,255,0.42)_0%,rgba(10,10,13,0.2)_100%)]"
-          aria-hidden
-        />
-      )}
-    </div>
-  );
-}
-
 export async function GallerySection() {
   const t = await getTranslations('home.gallery');
   const alt = (n: number) => t('imageAlt', { n });
 
+  const figure = (
+    item: (typeof GALLERY_STRIP)[number],
+    dims: Dims,
+    i: number,
+  ): GalleryFigure => ({
+    id: item.id,
+    alt: alt(i + 1),
+    overlay: item.overlay,
+    ...dims,
+  });
+
   return (
-    <section className="bg-background pt-24 pb-28 md:pt-32">
+    <SectionShell className="pb-28">
       <SectionHeader
         className="mx-auto max-w-page px-6"
         hairline
@@ -91,33 +70,12 @@ export async function GallerySection() {
         }
       />
 
-      <div className="mt-10 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {/* Mobile: cropped strip of four. */}
-        <div className="flex h-90 w-max items-start gap-3 pr-6 md:hidden">
-          {GALLERY_STRIP.filter((item) => item.m).map((item, i) => (
-            <GalleryFig
-              key={item.id}
-              id={item.id}
-              dims={item.m!}
-              overlay={item.overlay}
-              alt={alt(i + 1)}
-            />
-          ))}
-        </div>
-
-        {/* Desktop: full strip of seven. */}
-        <div className="hidden h-150 w-max items-start gap-4.5 pr-6 md:flex">
-          {GALLERY_STRIP.map((item, i) => (
-            <GalleryFig
-              key={item.id}
-              id={item.id}
-              dims={item.d}
-              overlay={item.overlay}
-              alt={alt(i + 1)}
-            />
-          ))}
-        </div>
-      </div>
+      <GalleryStrip
+        mobile={GALLERY_STRIP.filter((item) => item.m).map((item, i) =>
+          figure(item, item.m!, i),
+        )}
+        desktop={GALLERY_STRIP.map((item, i) => figure(item, item.d, i))}
+      />
 
       <div className="mx-auto mt-5 flex max-w-page items-center justify-end gap-4 px-6">
         <span
@@ -128,6 +86,6 @@ export async function GallerySection() {
           {t('drag')} →
         </span>
       </div>
-    </section>
+    </SectionShell>
   );
 }

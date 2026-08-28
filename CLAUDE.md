@@ -58,10 +58,42 @@ Static content (nav links, services, team members) is defined as data in `src/li
 
 ### Animations
 
-Animations are pure CSS — no Framer Motion. Two patterns defined in `src/app/globals.css`:
+Animations use [Motion](https://motion.dev) (`motion/react`), not CSS keyframes. The
+previous scroll-driven pattern relied on `animation-timeline: view()`, which Firefox
+does not support, so those reveals never ran there. The only keyframe left in
+`src/app/globals.css` is the services ticker marquee.
 
-- **Hero / time-based**: `.hero-fade` + `.hero-delay-{1–4}` — `fade-up` keyframe with staggered `animation-delay` for page-load entrance.
-- **Scroll-driven**: `.view-animate` — uses `animation-timeline: view()` (Chrome/Safari; degrades gracefully in Firefox). Wrap a grid in `.stagger-grid` to offset each child's `animation-range` automatically via `nth-child`.
+`MotionProvider` (mounted in `src/app/[locale]/layout.tsx`) wraps the app in
+`LazyMotion` with `domAnimation` and `strict`. **Use `m.*`, never `motion.*`**:
+`strict` throws on the latter, which is what keeps the full bundle out.
+
+Shared easing and spring tokens live in `src/lib/motion.ts`; read from those rather
+than hardcoding a curve.
+
+Primitives in `src/components/motion/`:
+
+| Component | Use for |
+|---|---|
+| `Reveal` | `RevealList` / `RevealItem` (clip-path wipe from the left), `FadeIn` |
+| `MaskReveal` | Top-to-bottom mask reveal for headings |
+| `Parallax` | `ParallaxScene` + `ParallaxLayer` for scroll-linked `y` / `scale` / `opacity` |
+| `Stagger` | `Stagger` / `StaggerItem`, plus `staggerContainer` for non-div containers |
+| `Pressable` | Springy hover and press for buttons |
+| `DragScroll` | Native horizontal scroll plus pointer click-and-drag |
+
+Two rules when adding an effect:
+
+- **Always handle `prefers-reduced-motion`.** Every primitive uses `useReducedMotion`
+  and degrades to a plain fade or renders nothing; new effects must do the same.
+- **Keep sections as server components.** Animation goes in a `'use client'` child
+  that receives data through props, so pages keep fetching translations on the
+  server (see `GallerySection` → `GalleryStrip`).
+
+`ParallaxScene` publishes one scroll progress to every layer beneath it, so sibling
+layers share a timeline instead of each measuring its own box. Layers that translate
+or zoom an image need slack around it, or the movement exposes an empty edge: the
+hero photos sit in a `-top-[12%] -bottom-[12%]` bleed wrapper, and the gallery photos
+are `scale-135` inside their frames. Change a crop and that slack has to move with it.
 
 ### Contact form flow
 

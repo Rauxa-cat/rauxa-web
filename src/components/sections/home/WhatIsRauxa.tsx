@@ -1,8 +1,10 @@
 import { getTranslations } from 'next-intl/server';
 import { SERVICES } from '@/lib/content/services';
 import { SectionHeader } from '../shared/SectionHeader';
+import { SectionShell } from '../shared/SectionShell';
 import { ActiveBar } from '../shared/ActiveBar';
 import { RowIndex } from '../shared/RowIndex';
+import { RevealList, RevealItem } from '@/components/motion/Reveal';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 export async function WhatIsRauxa() {
@@ -10,7 +12,7 @@ export async function WhatIsRauxa() {
   const tItems = await getTranslations('services.items');
 
   return (
-    <section className="bg-background pt-24 md:pt-32">
+    <SectionShell>
       <SectionHeader
         className="mx-auto max-w-page px-6"
         hairline
@@ -30,9 +32,9 @@ export async function WhatIsRauxa() {
         }
       />
 
-      <ul className="mt-16 border-t border-foreground/15 md:mt-20">
+      <RevealList className="mt-16 border-t border-foreground/15 md:mt-20">
         {SERVICES.map((service, i) => (
-          <li key={service.id}>
+          <RevealItem key={service.id}>
             <a
               href={service.formUrl}
               target="_blank"
@@ -64,9 +66,9 @@ export async function WhatIsRauxa() {
                 />
               </div>
             </a>
-          </li>
+          </RevealItem>
         ))}
-      </ul>
-    </section>
+      </RevealList>
+    </SectionShell>
   );
 }
