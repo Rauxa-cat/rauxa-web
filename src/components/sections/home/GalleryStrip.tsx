@@ -168,10 +168,7 @@ export function GalleryStrip({
     return () => window.removeEventListener('resize', measure);
   }, []);
 
-  // `reduce` is false on the server, so the swap has to wait for mount or the
-  // hydrated tree disagrees with the served one. A measured viewport doubles as
-  // that mount signal.
-  const still = viewport !== null && reduce;
+  const still = reduce;
   const size = sizeOf(viewport ?? FALLBACK);
 
   const rowX = useTransform(
