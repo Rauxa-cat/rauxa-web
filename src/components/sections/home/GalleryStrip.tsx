@@ -38,10 +38,15 @@ const CARD_OPACITY = [0, 0.32, 1, 0.32, 0];
 const CARD_SCALE = [0.76, 0.76, 1, 0.76, 0.76];
 const BACKDROP_OPACITY = [0, 0, 0.34, 0, 0];
 
+// Built on `--background` so the stage follows the theme: ink in dark, pearl in
+// light. The alphas are what let the blurred photo tint it either way.
 const STAGE_VEIL =
-  '[background:linear-gradient(180deg,rgba(10,10,13,0.94)_0%,rgba(10,10,13,0.72)_34%,rgba(10,10,13,0.86)_100%)]';
+  '[background:linear-gradient(180deg,color-mix(in_oklab,var(--background)_94%,transparent)_0%,color-mix(in_oklab,var(--background)_72%,transparent)_34%,color-mix(in_oklab,var(--background)_86%,transparent)_100%)]';
+
+// Blue adds light over ink but only dirties the edges over pearl, so the halo
+// drops to roughly a third in light mode.
 const STAGE_GLOW =
-  '[background:radial-gradient(ellipse_900px_520px_at_50%_58%,rgba(0,76,255,0.16)_0%,rgba(0,76,255,0)_70%)]';
+  '[background:radial-gradient(ellipse_900px_520px_at_50%_58%,rgba(0,76,255,0.06)_0%,rgba(0,76,255,0)_70%)] dark:[background:radial-gradient(ellipse_900px_520px_at_50%_58%,rgba(0,76,255,0.16)_0%,rgba(0,76,255,0)_70%)]';
 
 const CARD_SIZES = '(max-width: 768px) 78vw, 480px';
 
