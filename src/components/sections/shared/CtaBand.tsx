@@ -4,7 +4,6 @@ import { CONTACT } from '@/components/sections/contact/contact.constants';
 import { SERVICES } from '@/lib/content/services';
 import { CtaBackdrop } from './CtaBackdrop';
 import { MaskReveal } from '@/components/motion/MaskReveal';
-import { Pressable } from '@/components/motion/Pressable';
 
 const waitlistUrl =
   SERVICES.find((s) => s.id === 'cenas-rauxa')?.formUrl ?? '#';
@@ -37,20 +36,18 @@ export async function CtaBand() {
             >
               {CONTACT.email}
             </a>
-            <Pressable>
-              <Button
-                asChild
-                size="lg"
-                className="h-14 rounded-none bg-[var(--rauxa-black)] px-8 font-semibold tracking-wide text-white hover:bg-[var(--rauxa-black)]"
-              >
-                <a href={waitlistUrl} target="_blank" rel="noopener noreferrer">
-                  {t('button')}
-                  <span aria-hidden className="ml-3 text-lg leading-none">
-                    →
-                  </span>
-                </a>
-              </Button>
-            </Pressable>
+            <Button
+              asChild
+              size="lg"
+              className="h-14 rounded-none bg-[var(--rauxa-black)] px-8 font-semibold tracking-wide text-white hover:bg-[var(--rauxa-black)]"
+            >
+              <a href={waitlistUrl} target="_blank" rel="noopener noreferrer">
+                {t('button')}
+                <span aria-hidden className="ml-3 text-lg leading-none">
+                  →
+                </span>
+              </a>
+            </Button>
           </div>
         </div>
       </div>
