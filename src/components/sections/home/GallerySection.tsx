@@ -5,42 +5,68 @@ import { GalleryStrip, type GalleryFigure } from './GalleryStrip';
 
 type Dims = { w: number; h: number; mt: number };
 
-// Single source; each item carries mobile (`m`, first four) and desktop (`d`) dimensions.
+// `m` and `mt` are read only by the reduced-motion strip; the pinned scene
+// takes just the order and sizes itself from the viewport.
 const GALLERY_STRIP: {
   id: string;
-  m?: Dims;
+  m: Dims;
   d: Dims;
   overlay?: boolean;
 }[] = [
   {
-    id: '_MG_4011',
-    m: { w: 180, h: 260, mt: 0 },
-    d: { w: 300, h: 420, mt: 0 },
+    id: '_MG_4199',
+    m: { w: 175, h: 262, mt: 0 },
+    d: { w: 300, h: 450, mt: 0 },
   },
   {
-    id: '_MG_4015',
-    m: { w: 140, h: 200, mt: 120 },
-    d: { w: 240, h: 340, mt: 200 },
+    id: '_MG_4011',
+    m: { w: 140, h: 210, mt: 88 },
+    d: { w: 240, h: 360, mt: 150 },
   },
   {
     id: '_MG_4016',
-    m: { w: 200, h: 280, mt: 60 },
-    d: { w: 340, h: 470, mt: 70 },
-    overlay: true,
+    m: { w: 198, h: 297, mt: 23 },
+    d: { w: 340, h: 510, mt: 40 },
   },
   {
-    id: '_MG_4019',
-    m: { w: 130, h: 130, mt: 200 },
-    d: { w: 220, h: 220, mt: 330 },
+    id: '_MG_4125',
+    m: { w: 128, h: 192, mt: 151 },
+    d: { w: 220, h: 330, mt: 260 },
   },
-  { id: '_MG_4022', d: { w: 380, h: 280, mt: 140 } },
-  { id: '_MG_4065', d: { w: 260, h: 380, mt: 210 } },
-  { id: '_MG_4125', d: { w: 300, h: 420, mt: 30 } },
+  {
+    id: '_MG_4280',
+    m: { w: 163, h: 244, mt: 64 },
+    d: { w: 280, h: 420, mt: 110 },
+  },
+  {
+    id: '_MG_4268',
+    m: { w: 151, h: 226, mt: 17 },
+    d: { w: 260, h: 390, mt: 30 },
+  },
+  {
+    id: '_MG_4555',
+    m: { w: 175, h: 262, mt: 99 },
+    d: { w: 300, h: 450, mt: 170 },
+  },
+  {
+    id: '_MG_4129',
+    m: { w: 140, h: 210, mt: 35 },
+    d: { w: 240, h: 360, mt: 60 },
+  },
+  {
+    id: '_MG_4137',
+    m: { w: 186, h: 279, mt: 82 },
+    d: { w: 320, h: 480, mt: 140 },
+  },
+  {
+    id: '_MG_4501',
+    m: { w: 151, h: 226, mt: 12 },
+    d: { w: 260, h: 390, mt: 20 },
+  },
 ];
 
 export async function GallerySection() {
   const t = await getTranslations('home.gallery');
-  const alt = (n: number) => t('imageAlt', { n });
 
   const figure = (
     item: (typeof GALLERY_STRIP)[number],
@@ -48,7 +74,7 @@ export async function GallerySection() {
     i: number,
   ): GalleryFigure => ({
     id: item.id,
-    alt: alt(i + 1),
+    alt: t('imageAlt', { n: i + 1 }),
     overlay: item.overlay,
     ...dims,
   });
@@ -71,21 +97,9 @@ export async function GallerySection() {
       />
 
       <GalleryStrip
-        mobile={GALLERY_STRIP.filter((item) => item.m).map((item, i) =>
-          figure(item, item.m!, i),
-        )}
+        mobile={GALLERY_STRIP.map((item, i) => figure(item, item.m, i))}
         desktop={GALLERY_STRIP.map((item, i) => figure(item, item.d, i))}
       />
-
-      <div className="mx-auto mt-5 flex max-w-page items-center justify-end gap-4 px-6">
-        <span
-          className="h-px w-13.5 [background:linear-gradient(90deg,rgba(0,76,255,0),var(--rauxa-electric))]"
-          aria-hidden
-        />
-        <span className="font-accent text-[19px] tracking-[0.3em] text-foreground/40">
-          {t('drag')} →
-        </span>
-      </div>
     </SectionShell>
   );
 }
