@@ -2,6 +2,7 @@ import { CONTACT } from './contact.constants';
 import { ContactDetails } from '@/components/contact/ContactDetails';
 import { getTranslations } from 'next-intl/server';
 import { SectionHeader } from '../shared/SectionHeader';
+import { Stagger, StaggerItem } from '@/components/motion/Stagger';
 
 export async function ContactInfo() {
   const t = await getTranslations('contact.info');
@@ -18,11 +19,18 @@ export async function ContactInfo() {
         }
       />
 
-      <p className="mt-8 max-w-140 font-accent text-[clamp(1.25rem,2.5vw,1.75rem)] leading-[1.38] text-foreground/80">
-        {t('subtitle')}
-      </p>
+      {/* Delayed so the column reads top-down: the header's mask reveal lands first. */}
+      <Stagger className="w-full" delay={0.3} gap={0.12}>
+        <StaggerItem>
+          <p className="mt-8 max-w-140 font-accent text-[clamp(1.25rem,2.5vw,1.75rem)] leading-[1.38] text-foreground/80">
+            {t('subtitle')}
+          </p>
+        </StaggerItem>
 
-      <ContactDetails {...CONTACT} className="mt-11" socialSize="lg" />
+        <StaggerItem>
+          <ContactDetails {...CONTACT} className="mt-11" socialSize="lg" />
+        </StaggerItem>
+      </Stagger>
     </div>
   );
 }
