@@ -1,6 +1,7 @@
 'use client';
 
-import { m, useScroll, useSpring, useReducedMotion } from 'motion/react';
+import { m, useScroll, useSpring } from 'motion/react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 export function ScrollProgress() {
   const reduce = useReducedMotion();

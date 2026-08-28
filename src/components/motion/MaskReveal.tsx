@@ -1,8 +1,13 @@
 'use client';
 
-import { m, useReducedMotion, type Variants } from 'motion/react';
+import { m, type Variants } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { EASE } from '@/lib/motion';
+import { maskTransition } from '@/lib/motion';
+
+const inner: Variants = {
+  hidden: { opacity: 0, y: '110%' },
+  show: { opacity: 1, y: 0, transition: maskTransition() },
+};
 
 // Same top-to-bottom mask reveal as the hero bands, for section headings below the fold.
 // The OUTER span drives whileInView (it sits at its real position); the inner span carries
@@ -14,15 +19,6 @@ export function MaskReveal({
   children: React.ReactNode;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
-
-  const inner: Variants = reduce
-    ? { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.4 } } }
-    : {
-        hidden: { y: '110%' },
-        show: { y: 0, transition: { duration: 0.8, ease: EASE } },
-      };
-
   return (
     <m.span
       className={cn('block overflow-hidden', className)}

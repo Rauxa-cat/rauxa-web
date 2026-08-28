@@ -1,6 +1,6 @@
 'use client';
 
-import { m, useReducedMotion } from 'motion/react';
+import { m } from 'motion/react';
 import { EASE } from '@/lib/motion';
 
 // On-load fade-up for the hero's supporting text (eyebrow, subtitle, CTAs),
@@ -15,13 +15,12 @@ export function HeroFade({
   delay?: number;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
   return (
     <m.div
       className={className}
-      initial={reduce ? { opacity: 0 } : { opacity: 0, y: 16 }}
-      animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
-      transition={{ duration: reduce ? 0.4 : 0.7, delay, ease: EASE }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay, ease: EASE }}
     >
       {children}
     </m.div>

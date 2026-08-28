@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
-import { useReducedMotion } from 'motion/react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { DragScroll } from '@/components/motion/DragScroll';
 import { ParallaxLayer } from '@/components/motion/Parallax';
 import { cn } from '@/lib/utils';

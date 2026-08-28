@@ -1,13 +1,8 @@
 'use client';
 
 import { createContext, use, useRef } from 'react';
-import {
-  m,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-  type MotionValue,
-} from 'motion/react';
+import { m, useScroll, useTransform, type MotionValue } from 'motion/react';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 type ScrollOptions = NonNullable<Parameters<typeof useScroll>[0]>;
 
@@ -81,19 +76,19 @@ export function ParallaxLayer({
     ...(opacity ?? [1, 1]),
   ]);
 
+  // The preference is only known after hydration, so the layer always renders
+  // the scroll-linked values first and then pins them to identity. Dropping the
+  // `style` entries instead leaves the last transform stuck on the element:
+  // Motion stops writing the value but never clears what it already wrote.
   return (
     <m.div
       ref={ref}
       className={className}
-      style={
-        reduce
-          ? undefined
-          : {
-              ...(y && { y: yValue }),
-              ...(scale && { scale: scaleValue }),
-              ...(opacity && { opacity: opacityValue }),
-            }
-      }
+      style={{
+        ...(y && { y: reduce ? 0 : yValue }),
+        ...(scale && { scale: reduce ? 1 : scaleValue }),
+        ...(opacity && { opacity: reduce ? 1 : opacityValue }),
+      }}
     >
       {children}
     </m.div>
