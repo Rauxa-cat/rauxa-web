@@ -4,7 +4,6 @@ import { cn } from '@/lib/utils';
 import type { HeroBand, HeroCTA } from './types';
 import { HeroBands } from './HeroBands';
 import { HeroFade } from './HeroFade';
-import { Pressable } from '@/components/motion/Pressable';
 import { ParallaxLayer } from '@/components/motion/Parallax';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
@@ -61,53 +60,49 @@ export function HeroContent({
             className="mt-10 flex w-full flex-col gap-4 sm:flex-row sm:gap-5"
           >
             {ctas.map((cta) => (
-              <Pressable
+              <Button
                 key={`${cta.href}-${cta.label}`}
-                className="w-full sm:w-auto"
+                asChild
+                size="lg"
+                variant={cta.variant ?? 'default'}
+                className={cn(
+                  'h-14 w-full rounded-none px-8 font-semibold tracking-wide sm:w-auto',
+                  (cta.variant ?? 'default') === 'default' &&
+                    'bg-[var(--rauxa-electric)] text-white shadow-[0_20px_54px_-14px_rgba(0,76,255,0.9)] hover:bg-[var(--rauxa-electric)]',
+                  cta.variant === 'outline' &&
+                    'border-white/50 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white',
+                )}
               >
-                <Button
-                  asChild
-                  size="lg"
-                  variant={cta.variant ?? 'default'}
-                  className={cn(
-                    'h-14 w-full rounded-none px-8 font-semibold tracking-wide sm:w-auto',
-                    (cta.variant ?? 'default') === 'default' &&
-                      'bg-[var(--rauxa-electric)] text-white shadow-[0_20px_54px_-14px_rgba(0,76,255,0.9)] hover:bg-[var(--rauxa-electric)]',
-                    cta.variant === 'outline' &&
-                      'border-white/50 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white',
-                  )}
-                >
-                  {cta.external ? (
-                    <a
-                      href={cta.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={cn(
-                        'inline-flex items-center',
-                        cta.withArrow && 'gap-3',
-                      )}
-                    >
-                      {cta.label}
-                      {cta.withArrow && <ArrowIcon animate />}
-                    </a>
-                  ) : (
-                    <Link
-                      href={cta.href}
-                      className={cn(
-                        'inline-flex items-center',
-                        cta.withArrow && 'gap-3',
-                      )}
-                    >
-                      {cta.label}
-                      {cta.withArrow && (
-                        <span aria-hidden className="text-lg leading-none">
-                          →
-                        </span>
-                      )}
-                    </Link>
-                  )}
-                </Button>
-              </Pressable>
+                {cta.external ? (
+                  <a
+                    href={cta.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      'inline-flex items-center',
+                      cta.withArrow && 'gap-3',
+                    )}
+                  >
+                    {cta.label}
+                    {cta.withArrow && <ArrowIcon animate />}
+                  </a>
+                ) : (
+                  <Link
+                    href={cta.href}
+                    className={cn(
+                      'inline-flex items-center',
+                      cta.withArrow && 'gap-3',
+                    )}
+                  >
+                    {cta.label}
+                    {cta.withArrow && (
+                      <span aria-hidden className="text-lg leading-none">
+                        →
+                      </span>
+                    )}
+                  </Link>
+                )}
+              </Button>
             ))}
           </HeroFade>
         )}

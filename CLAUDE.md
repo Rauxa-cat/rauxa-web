@@ -78,8 +78,10 @@ Primitives in `src/components/motion/`:
 | `MaskReveal` | Top-to-bottom mask reveal for headings |
 | `Parallax` | `ParallaxScene` + `ParallaxLayer` for scroll-linked `y` / `scale` / `opacity` |
 | `Stagger` | `Stagger` / `StaggerItem`, plus `staggerContainer` for non-div containers |
-| `Pressable` | Springy hover and press for buttons |
 | `DragScroll` | Native horizontal scroll plus pointer click-and-drag |
+
+Button hover/press is not a Motion primitive: it lives in the base of
+`buttonVariants`, gated behind `motion-safe:`, so every `<Button>` gets it for free.
 
 Two rules when adding an effect:
 

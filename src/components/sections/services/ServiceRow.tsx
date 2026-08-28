@@ -3,7 +3,6 @@ import { ArrowIcon } from '@/components/icons/ArrowIcon';
 import { ActiveBar } from '../shared/ActiveBar';
 import { RowIndex } from '../shared/RowIndex';
 import { RevealItem } from '@/components/motion/Reveal';
-import { Pressable } from '@/components/motion/Pressable';
 import { ParallaxLayer } from '@/components/motion/Parallax';
 
 type ServiceRowProps = {
@@ -46,18 +45,16 @@ export function ServiceRow({
             <p className="text-base leading-[1.75] text-foreground/70">
               {description}
             </p>
-            <Pressable>
-              <Button
-                asChild
-                size="lg"
-                className="h-13 rounded-none px-7 tracking-wider transition-shadow duration-300 group-hover:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)] group-focus-within:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)]"
-              >
-                <a href={href} target="_blank" rel="noopener noreferrer">
-                  {ctaLabel}
-                  <ArrowIcon className="ml-1" />
-                </a>
-              </Button>
-            </Pressable>
+            <Button
+              asChild
+              size="lg"
+              className="h-13 rounded-none px-7 tracking-wider transition-all duration-300 group-hover:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)] group-focus-within:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)]"
+            >
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {ctaLabel}
+                <ArrowIcon className="ml-1" />
+              </a>
+            </Button>
           </div>
         </div>
       </ParallaxLayer>
