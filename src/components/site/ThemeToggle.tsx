@@ -27,7 +27,7 @@ export function ThemeToggle() {
       size="icon"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       aria-label={isDark ? t('toLight') : t('toDark')}
-      className="cursor-pointer hover:bg-transparent hover:text-current focus-visible:bg-transparent"
+      className="cursor-pointer hover:bg-transparent hover:text-primary focus-visible:bg-transparent"
     >
       {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
     </Button>
