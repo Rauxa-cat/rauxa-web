@@ -23,12 +23,12 @@ export function HeroContent({
   className,
 }: HeroContentProps) {
   return (
-    // Slightly faster than the page, so the copy separates from the photo on the way out.
+    // Restrained on purpose: the aperture is the hero's movement, and this only
+    // has to hand the page over.
     <ParallaxLayer
       className="relative z-10"
-      y={['0%', '-4%', '-22%']}
-      scale={[1, 0.99, 0.9]}
-      opacity={[1, 0.9, 0]}
+      y={['0%', '-9%']}
+      opacity={[1, 0.3]}
     >
       <div
         className={cn(

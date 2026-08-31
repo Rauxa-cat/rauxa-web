@@ -103,7 +103,12 @@
   --blue-ink: var(--rauxa-electric);
   --blue-ink-hover: var(--rauxa-blue-700);
 
-  /* Radius: el logo/isotipo es redondeado → suavidad controlada */
+  /* Shared by every layer of the hero aperture, so the frame, the zoom, the
+     colour and the scrim all land together. */
+  --hero-open: 1250ms cubic-bezier(0.65, 0, 0.35, 1) 220ms both;
+
+  /* Echoes the rounding of the isotype, so the UI softens by the same amount
+     the mark does. */
   --radius: 0.625rem;
 
   /* Base UI (light) */
@@ -265,5 +270,38 @@
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* The hero aperture, the one entrance that is CSS and not Motion; see "The hero
+   hold" in CLAUDE.md. Each element carries its resolved state as its base style
+   and these only declare where the move starts, so `motion-reduce` lands on the
+   finished hero. Time-based, not the scroll-driven kind Firefox cannot run. */
+/* Pausing freezes the delay too, so the 220ms beat survives the wait intact. */
+[data-hero-hold] [data-hero-open] {
+  animation-play-state: paused;
+}
+
+@keyframes hero-aperture {
+  from {
+    clip-path: inset(43% 0);
+  }
+}
+
+@keyframes hero-settle {
+  from {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes hero-thaw {
+  from {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-bed {
+  from {
+    opacity: 0;
   }
 }

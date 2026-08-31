@@ -1,6 +1,4 @@
-import Image from 'next/image';
-import { ParallaxLayer } from '@/components/motion/Parallax';
-import { HeroGlow } from './HeroGlow';
+import { HeroAperture } from './HeroAperture';
 
 interface HeroBackgroundProps {
   src?: string;
@@ -8,70 +6,16 @@ interface HeroBackgroundProps {
   priority?: boolean;
 }
 
-// Blue wash + lateral darkening so the blue band never crosses the photo (contrast, not style).
-const blueVeil =
-  'bg-[linear-gradient(178deg,rgba(0,76,255,0.30)_0%,rgba(0,24,90,0.28)_52%,rgba(10,10,13,0.72)_100%)]';
-const sideVeil =
-  'bg-[linear-gradient(90deg,rgba(10,10,13,0.96)_0%,rgba(10,10,13,0.72)_26%,rgba(10,10,13,0)_58%)]';
-
-// The photo layers are bled past their frame on both edges, so the parallax drift
-// and the zoom-out never expose an empty strip inside the crop.
-const bleed = 'absolute inset-x-0 -top-[12%] -bottom-[12%]';
-
 export function HeroBackground({
   src,
   alt = '',
   priority = true,
 }: HeroBackgroundProps) {
+  if (!src) return null;
+
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden={!alt}>
-      {src && (
-        <>
-          {/* Desktop: corner slab aligned to the page container's right edge. */}
-          <div className="absolute inset-0 mx-auto hidden max-w-page lg:block">
-            <div className="absolute top-0 right-0 h-[52%] w-[44%] max-h-[480px] max-w-[620px] overflow-hidden">
-              <ParallaxLayer
-                className={bleed}
-                y={['-5%', '8%']}
-                scale={[1.2, 1]}
-              >
-                <Image
-                  src={src}
-                  alt={alt}
-                  fill
-                  priority={priority}
-                  className="object-cover object-[54%_36%]"
-                  sizes="44vw"
-                />
-              </ParallaxLayer>
-              <div className={`absolute inset-0 ${blueVeil}`} />
-              <div className={`absolute inset-0 ${sideVeil}`} />
-            </div>
-          </div>
-
-          {/* Mobile: full-bleed photo behind the text. */}
-          <div className="absolute inset-0 lg:hidden">
-            <ParallaxLayer
-              className={bleed}
-              y={['-4%', '8%']}
-              scale={[1.25, 1]}
-            >
-              <Image
-                src={src}
-                alt={alt}
-                fill
-                priority={priority}
-                className="object-cover object-[54%_36%]"
-                sizes="100vw"
-              />
-            </ParallaxLayer>
-            <div className="absolute inset-0 bg-[var(--rauxa-black)]/75" />
-          </div>
-        </>
-      )}
-
-      {/* Blue glow behind the punch band; its opacity is scroll-linked (see HeroGlow). */}
-      <HeroGlow />
+      <HeroAperture src={src} alt={alt} priority={priority} />
     </div>
   );
 }
