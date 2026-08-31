@@ -12,3 +12,5 @@ export const maskTransition = (delay = 0) =>
     delay,
     opacity: { duration: 0.3, delay },
   }) as const;
+
+export const IGNITION = { duration: 0.75 } as const;
