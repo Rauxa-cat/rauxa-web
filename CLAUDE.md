@@ -103,8 +103,35 @@ Two rules when adding an effect:
 `ParallaxScene` publishes one scroll progress to every layer beneath it, so sibling
 layers share a timeline instead of each measuring its own box. Layers that translate
 or zoom an image need slack around it, or the movement exposes an empty edge: the
-hero photos sit in a `-top-[12%] -bottom-[12%]` bleed wrapper, and the gallery photos
+hero photo sits in an `-inset-[6%]` bleed wrapper, and the gallery photos
 are `scale-135` inside their frames. Change a crop and that slack has to move with it.
+
+#### The hero hold
+
+The hero aperture is the one entrance that is CSS and not Motion, because it belongs
+to the first paint: driven from JS it would only start at hydration, and until the
+bundle landed the photo band would sit frozen, which reads as a page that failed.
+Every layer runs off `--hero-open` (see `globals.css`) and carries its resolved state
+as its base style, so `motion-reduce` and a visitor with no JS both land on the
+finished hero.
+
+Because it starts on style resolution alone, it can spend its whole travel on an
+empty frame and be over before the photo arrives. So it is paused, via
+`data-hero-hold` on `<html>`, until the photo can be painted. That hold takes **two
+paths, one per way into a hero page**, and both are load-bearing:
+
+| Entry | Held by | Why the other one cannot do it |
+|---|---|---|
+| Cold document | inline script, `src/app/layout.tsx` | An effect only runs at hydration, long after the first paint. |
+| Client navigation | `HeroHold` layout effect | A `<script>` only executes when the parser reaches it. React creates the node without running it, and dev-warns. |
+
+Both write the same attribute and release on the same `decode()`, so where they
+overlap the second is a no-op. The script lives in the root layout, not in the hero,
+because Next does not re-render layouts across a client navigation; move it back into
+`HeroAperture` and React recreates a script node that never runs. It sits first in
+`<body>`, ahead of the hero markup, so the release waits for `DOMContentLoaded` to
+find `img[data-hero-photo]`. On pages with no hero it releases immediately and the
+`[data-hero-hold] [data-hero-open]` rule matches nothing.
 
 ### Contact form flow
 
