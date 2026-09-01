@@ -17,13 +17,21 @@ interface HeroCTAInternal extends HeroCTACommon {
 
 export type HeroCTA = HeroCTAExternal | HeroCTAInternal;
 
+// The three bands read as one continuous phrase: lead → bridge → punch.
+// Nothing is ever inserted between them.
+export type HeroBandVariant = 'lead' | 'bridge' | 'punch';
+
+export interface HeroBand {
+  text: string;
+  variant: HeroBandVariant;
+}
+
 export interface HeroSectionProps {
   backgroundImage?: string;
   backgroundAlt?: string;
 
   eyebrow?: string;
-  title: string;
-  highlightedTitle?: string;
+  bands: HeroBand[];
   subtitle?: string;
 
   ctas?: HeroCTA[];

@@ -1,14 +1,12 @@
 export type Service = {
   id: string;
   formUrl: string;
-  featured?: boolean;
 };
 
 export const SERVICES: Service[] = [
   {
     id: 'cenas-rauxa',
     formUrl: 'https://form.typeform.com/to/nMlilHvx',
-    featured: true,
   },
   {
     id: 'cenas-privadas',
@@ -17,7 +15,6 @@ export const SERVICES: Service[] = [
   {
     id: 'eventos',
     formUrl: 'https://form.typeform.com/to/MHhJPbMT',
-    featured: true,
   },
   {
     id: 'catering',
@@ -30,6 +27,5 @@ export const SERVICES: Service[] = [
   {
     id: 'marcas',
     formUrl: 'https://form.typeform.com/to/RFhbBMfE',
-    featured: true,
   },
 ];

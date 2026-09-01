@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { ServicesOverview } from '@/components/sections/services/ServicesOverview';
+import { CtaBand } from '@/components/sections/shared/CtaBand';
 // import { ServicesDetails } from '@/components/sections/services/ServicesDetails';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, PageProps } from '@/lib/metadata';
@@ -46,12 +47,16 @@ export default async function ServicesPage() {
       <HeroSection
         backgroundImage="/images/rauxa-services-hero-bg-v2.webp"
         eyebrow={t('hero.eyebrow')}
-        title={t('hero.title')}
-        highlightedTitle={t('hero.highlightedTitle')}
+        bands={[
+          { variant: 'lead', text: t('hero.bandLead') },
+          { variant: 'bridge', text: t('hero.bandBridge') },
+          { variant: 'punch', text: t('hero.bandPunch') },
+        ]}
         subtitle={t('hero.subtitle')}
       />
       <ServicesOverview />
       {/* Fase 2: <ServicesDetails />  //  */}
+      <CtaBand />
     </>
   );
 }

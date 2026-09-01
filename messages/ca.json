@@ -78,8 +78,9 @@
   "home": {
     "hero": {
       "eyebrow": "COMUNITAT GASTRONÒMICA I CULTURAL",
-      "title": "Experiències que es viuen, ",
-      "highlightedTitle": " no s'expliquen",
+      "bandLead": "EXPERIÈNCIES",
+      "bandBridge": "que es viuen,",
+      "bandPunch": "NO S'EXPLIQUEN",
       "subtitle": "Gastronomia, música i art convergeixen en moments dissenyats per emocionar.",
       "ctaPrimary": "Uneix-te a la llista d'espera",
       "ctaSecondary": "SERVEIS"
@@ -96,17 +97,20 @@
       "eyebrow": "GALERIA",
       "title": "Així viu",
       "titleHighlight": "RAUXA",
-      "imageAlt": "Experiència RAUXA, fotografia {n}"
+      "imageAlt": "Experiència RAUXA, fotografia {n}",
+      "stripLabel": "Tira de fotografies de RAUXA"
     }
   },
   "services": {
     "hero": {
       "eyebrow": "SERVEIS · EXPERIÈNCIES · ESDEVENIMENTS",
-      "title": "Cada projecte és una oportunitat per",
-      "highlightedTitle": " crear quelcom memorable.",
+      "bandLead": "CADA PROJECTE",
+      "bandBridge": "és una oportunitat per",
+      "bandPunch": "CREAR QUELCOM MEMORABLE",
       "subtitle": "Des de sopars íntims fins a esdeveniments a gran escala."
     },
     "overview": {
+      "eyebrow": "ELS NOSTRES SERVEIS",
       "title": "Tria la teva",
       "titleHighlight": "experiència",
       "description": "Escriu-nos i et proposem la millor opció.",
@@ -142,8 +146,9 @@
   "team": {
     "hero": {
       "eyebrow": "EQUIP",
-      "title": "Les persones darrere de",
-      "highlightedTitle": "l'experiència.",
+      "bandLead": "LES PERSONES",
+      "bandBridge": "darrere de",
+      "bandPunch": "L'EXPERIÈNCIA",
       "subtitle": "Gastronomia, música i art es creuen gràcies a persones amb una mirada creativa i sensibilitat pel detall."
     },
     "section": {
@@ -155,15 +160,19 @@
     "members": {
       "carles": {
         "name": "Carles Serrano",
-        "role": "Direcció creativa",
         "bio": "Carles és cuiner, fundador i director creatiu de Rauxa. Format en restaurants i equips d'alt nivell a Espanya i a l'estranger, avui combina cuina i visió de projecte amb una mirada contemporània. Rauxa neix com una comunitat que explora la innovació gastronòmica des d'un lloc diferent, incorporant art, show i música electrònica com a part essencial de l'experiència. Un concepte que no busca canviar la gastronomia, sinó crear un camí paral·lel a ella, on conviuen llenguatges que rarament es troben i on l'avantguarda es redefineix des de la llibertat creativa."
       },
       "dani": {
         "name": "Dani Molins",
-        "role": "Producció i esdeveniments",
         "bio": "Dani Molins és un jove xef amb una sòlida trajectòria en l'alta cuina nacional i internacional. Ha desenvolupat la seva carrera aprenent al costat d'alguns dels cuiners més influents del nostre país, com Martín Berasategui o Paco Pérez, i d'un dels xefs més importants actualment a França, com Jean Imbert. Apassionat per la tècnica i el producte, combina creativitat i rigor en cada plat. La seva cuina reflecteix una visió contemporània amb arrels ben definides. Dani representa una nova generació de xefs compromesos amb l'excel·lència i la innovació."
       }
     }
+  },
+  "cta": {
+    "eyebrow": "CONTACTE",
+    "title": "Parlem",
+    "subtitle": "Tens un projecte en ment? Vols unir-te a la comunitat?",
+    "button": "Uneix-te a la llista d'espera"
   },
   "contact": {
     "info": {
@@ -227,7 +236,6 @@
   "privacy": {
     "title": "Política de Privacitat",
     "intro": "En compliment del Reglament General de Protecció de Dades (RGPD) i la Llei Orgànica 3/2018 de Protecció de Dades Personals i garantia dels drets digitals, informem sobre el tractament de dades personals que realitzem.",
-
     "responsible": {
       "title": "Responsable del tractament",
       "intro": "El responsable del tractament de les seves dades personals és:",
@@ -236,7 +244,6 @@
       "address": "Adreça",
       "email": "Email de contacte"
     },
-
     "dataCollected": {
       "title": "Dades que recopilem",
       "intro": "Recopilem i tractem les següents dades personals:",
@@ -249,7 +256,6 @@
         "content": "Les dades sol·licitades als formularis de serveis es gestionen a través de Typeform i s'utilitzen per processar la seva sol·licitud d'informació o servei."
       }
     },
-
     "purpose": {
       "title": "Finalitat del tractament",
       "intro": "Tractem les seves dades personals per a les següents finalitats:",
@@ -257,24 +263,20 @@
       "point2": "Gestionar sol·licituds de serveis i esdeveniments",
       "point3": "Enviar comunicacions relacionades amb els nostres serveis (només si ha donat el seu consentiment)"
     },
-
     "legal": {
       "title": "Base legal",
       "content": "La base legal per al tractament de les seves dades és el consentiment que ens atorga en enviar-nos les seves dades a través dels formularis de contacte o en acceptar expressament les nostres condicions."
     },
-
     "retention": {
       "title": "Conservació de dades",
       "content": "Conservarem les seves dades personals durant el temps necessari per gestionar la seva sol·licitud o consulta, i posteriorment durant el termini legalment establert per atendre possibles responsabilitats. Un cop finalitzat aquest període, les seves dades seran eliminades de forma segura."
     },
-
     "recipients": {
       "title": "Destinataris de les dades",
       "intro": "Les seves dades poden ser comunicades als següents destinataris:",
       "typeform": "Plataforma utilitzada per a la gestió de formularis de serveis. Typeform compleix amb el RGPD i compta amb mesures de seguretat adequades.",
       "vercel": "Proveïdor d'hosting i analytics. Vercel Analytics no utilitza cookies ni emmagatzema dades personals identificables."
     },
-
     "rights": {
       "title": "Els seus drets",
       "intro": "Com a titular de les dades, té dret a:",
@@ -290,17 +292,14 @@
       "portabilityDesc": "Rebre les seves dades en format estructurat",
       "contact": "Per exercir aquests drets, pot contactar-nos a cserranobiosca@gmail.com. També té dret a presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (www.aepd.es)."
     },
-
     "security": {
       "title": "Seguretat de les dades",
       "content": "Hem adoptat les mesures tècniques i organitzatives necessàries per garantir la seguretat de les seves dades personals i evitar la seva alteració, pèrdua, tractament o accés no autoritzat."
     },
-
     "updates": {
       "title": "Modificacions",
       "content": "Ens reservem el dret a modificar aquesta Política de Privacitat per adaptar-la a canvis legislatius o en els nostres serveis. Li recomanem revisar aquesta pàgina periòdicament."
     },
-
     "lastUpdated": "Última actualització: 3 de març de 2026"
   },
   "cookies": {
@@ -345,7 +344,6 @@
   "legal-notice": {
     "title": "Avís Legal",
     "intro": "En compliment de la Llei 34/2002, d'11 de juliol, de serveis de la societat de la informació i de comerç electrònic, s'informa de les següents dades:",
-
     "ownership": {
       "title": "Titularitat del lloc web",
       "intro": "El present lloc web és titularitat de:",
@@ -355,39 +353,32 @@
       "email": "Email",
       "website": "Lloc web"
     },
-
     "purpose": {
       "title": "Objecte",
       "content": "Aquest lloc web té com a objectiu proporcionar informació sobre RAUXA, una comunitat gastronòmica i cultural que crea experiències on la gastronomia, la música i l'art es troben. A través d'aquest lloc, oferim informació sobre els nostres serveis, esdeveniments i formes de contacte."
     },
-
     "terms": {
       "title": "Condicions d'ús",
       "content": "L'accés i ús d'aquest lloc web implica l'acceptació d'aquestes condicions d'ús. L'usuari es compromet a fer un ús correcte del lloc web, de conformitat amb la llei, i a no utilitzar-lo per realitzar activitats il·lícites o contràries a la bona fe i a l'ordre públic."
     },
-
     "intellectualProperty": {
       "title": "Propietat intel·lectual i industrial",
       "content1": "Tots els continguts d'aquest lloc web (textos, imatges, disseny gràfic, codi font, logotips, marques i qualsevol altre element) són propietat de RAUXA o de tercers que han autoritzat el seu ús, i estan protegits per drets de propietat intel·lectual i industrial.",
       "content2": "Queda prohibida la reproducció, distribució, comunicació pública o transformació d'aquests continguts sense autorització expressa del titular dels drets."
     },
-
     "liability": {
       "title": "Limitació de responsabilitat",
       "content1": "RAUXA no es responsabilitza dels danys i perjudicis que puguin derivar-se de l'ús de la informació continguda en aquest lloc web, ni de la falta de disponibilitat o continuïtat del mateix.",
       "content2": "RAUXA es reserva el dret a modificar, suspendre o interrompre, temporal o permanentment, l'accés al lloc web sense necessitat de previ avís."
     },
-
     "links": {
       "title": "Enllaços externs",
       "content": "Aquest lloc web pot contenir enllaços a llocs web de tercers. RAUXA no es responsabilitza del contingut d'aquests llocs ni de les condicions d'ús i polítiques de privacitat que apliquin."
     },
-
     "applicable": {
       "title": "Legislació aplicable",
       "content": "Les presents condicions es regeixen per la legislació espanyola. Per a qualsevol controvèrsia que pogués derivar-se de l'accés o ús d'aquest lloc web, les parts se sotmeten expressament als Jutjats i Tribunals de Espanya."
     },
-
     "lastUpdated": "Última actualització: 3 de març de 2026"
   }
 }

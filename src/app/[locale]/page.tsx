@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { WhatIsRauxa } from '@/components/sections/home/WhatIsRauxa';
 import { GallerySection } from '@/components/sections/home/GallerySection';
+import { ServicesTicker } from '@/components/site/ServicesTicker';
+import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
@@ -19,8 +21,11 @@ export default async function HomePage() {
       <HeroSection
         backgroundImage="/images/rauxa-hero-bg-v2.webp"
         eyebrow={t('hero.eyebrow')}
-        title={t('hero.title')}
-        highlightedTitle={t('hero.highlightedTitle')}
+        bands={[
+          { variant: 'lead', text: t('hero.bandLead') },
+          { variant: 'bridge', text: t('hero.bandBridge') },
+          { variant: 'punch', text: t('hero.bandPunch') },
+        ]}
         subtitle={t('hero.subtitle')}
         ctas={[
           {
@@ -36,8 +41,10 @@ export default async function HomePage() {
           },
         ]}
       />
+      <ServicesTicker />
       <WhatIsRauxa />
       <GallerySection />
+      <CtaBand />
     </>
   );
 }
