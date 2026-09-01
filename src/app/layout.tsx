@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { HERO_HOLD_SCRIPT } from '@/components/sections/hero/hold';
 
 const rauxaPrimary = localFont({
   src: './fonts/AlfredinoSemirounded.ttf',
@@ -45,6 +46,10 @@ export default async function RootLayout({
       ].join(' ')}
     >
       <body className="antialiased">
+        {/* Belongs to the hero, but lives here because a layout is not
+            re-rendered on a client navigation; moving it back into the hero
+            breaks it. See "The hero hold" in CLAUDE.md. */}
+        <script dangerouslySetInnerHTML={{ __html: HERO_HOLD_SCRIPT }} />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

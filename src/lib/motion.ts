@@ -5,10 +5,17 @@ export const EASE = [0.22, 1, 0.36, 1] as const;
 // opacity leg is invisible under the mask at full motion, but it is what a
 // reduced-motion visitor gets instead of a hard pop: `reducedMotion: 'user'`
 // snaps the `y` and leaves the fade to play.
+export const MASK_DURATION = 0.8;
+
 export const maskTransition = (delay = 0) =>
   ({
-    duration: 0.8,
+    duration: MASK_DURATION,
     ease: EASE,
     delay,
     opacity: { duration: 0.3, delay },
   }) as const;
+
+// Gap between siblings entering as one group.
+export const STAGGER_GAP = 0.12;
+
+export const IGNITION = { duration: 0.75 } as const;
