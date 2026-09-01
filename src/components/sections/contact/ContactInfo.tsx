@@ -14,7 +14,7 @@ export async function ContactInfo() {
         size="display"
         eyebrow={t('eyebrow')}
         title={
-          <span className="text-primary [text-shadow:0_0_62px_rgba(0,76,255,0.55)]">
+          <span className="text-primary [text-shadow:0_0_62px_--alpha(var(--color-primary)/55%)]">
             {t('title')}
           </span>
         }

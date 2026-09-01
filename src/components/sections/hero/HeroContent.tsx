@@ -66,9 +66,9 @@ export function HeroContent({
                 size="lg"
                 variant={cta.variant ?? 'default'}
                 className={cn(
-                  'h-14 w-full rounded-none px-8 font-semibold tracking-wide sm:w-auto',
+                  'group h-14 w-full rounded-none px-8 font-semibold tracking-wide sm:w-auto',
                   (cta.variant ?? 'default') === 'default' &&
-                    'bg-[var(--rauxa-electric)] text-white shadow-[0_20px_54px_-14px_rgba(0,76,255,0.9)] hover:bg-[var(--rauxa-electric)]',
+                    'bg-[var(--rauxa-electric)] text-white shadow-[0_20px_54px_-14px_--alpha(var(--color-primary)/90%)] hover:bg-[var(--rauxa-electric)]',
                   cta.variant === 'outline' &&
                     'border-white/50 bg-transparent text-white hover:border-white hover:bg-white/10 hover:text-white',
                 )}
@@ -95,11 +95,7 @@ export function HeroContent({
                     )}
                   >
                     {cta.label}
-                    {cta.withArrow && (
-                      <span aria-hidden className="text-lg leading-none">
-                        →
-                      </span>
-                    )}
+                    {cta.withArrow && <ArrowIcon animate />}
                   </Link>
                 )}
               </Button>

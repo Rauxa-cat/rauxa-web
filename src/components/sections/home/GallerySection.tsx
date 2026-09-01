@@ -11,7 +11,6 @@ const GALLERY_STRIP: {
   id: string;
   m: Dims;
   d: Dims;
-  overlay?: boolean;
 }[] = [
   {
     id: '_MG_4199',
@@ -75,7 +74,6 @@ export async function GallerySection() {
   ): GalleryFigure => ({
     id: item.id,
     alt: t('imageAlt', { n: i + 1 }),
-    overlay: item.overlay,
     ...dims,
   });
 
@@ -89,7 +87,7 @@ export async function GallerySection() {
         title={
           <>
             {t('title')}{' '}
-            <span className="text-primary [text-shadow:0_0_60px_rgba(0,76,255,0.55)]">
+            <span className="text-primary [text-shadow:0_0_60px_--alpha(var(--color-primary)/55%)]">
               {t('titleHighlight')}
             </span>
           </>
@@ -97,6 +95,7 @@ export async function GallerySection() {
       />
 
       <GalleryStrip
+        label={t('stripLabel')}
         mobile={GALLERY_STRIP.map((item, i) => figure(item, item.m, i))}
         desktop={GALLERY_STRIP.map((item, i) => figure(item, item.d, i))}
       />

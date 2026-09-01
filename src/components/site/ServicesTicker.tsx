@@ -21,7 +21,9 @@ export async function ServicesTicker() {
   const labels = SERVICES.map((s) => t(`${s.id}.title`));
 
   return (
-    <div className="relative flex h-18 items-center overflow-hidden bg-[var(--rauxa-electric)]">
+    /* `contain-intrinsic-size` has to keep matching `h-18`, or the skipped
+       marquee reserves the wrong height and the page jumps. */
+    <div className="relative flex h-18 items-center overflow-hidden bg-[var(--rauxa-electric)] [contain-intrinsic-size:auto_4.5rem] [content-visibility:auto]">
       <div className="font-accent flex shrink-0 items-center text-[28px] tracking-[0.2em] whitespace-nowrap text-[var(--rauxa-black)] uppercase [animation:marquee_30s_linear_infinite] motion-reduce:[animation:none]">
         <Sequence labels={labels} />
         <Sequence labels={labels} hidden />

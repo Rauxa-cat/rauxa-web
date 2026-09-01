@@ -2,7 +2,7 @@
 
 import { m } from 'motion/react';
 import { ParallaxLayer } from '@/components/motion/Parallax';
-import { EASE } from '@/lib/motion';
+import { EASE, NOJS } from '@/lib/motion';
 
 // Two passes on the same halo: it blooms open on load, then the outer layer
 // sinks and dims as the page scrolls, on the section's own progress.
@@ -16,8 +16,9 @@ export function ContactGlow() {
       opacity={[1, 0.15]}
     >
       <m.div
+        {...NOJS.reset}
         aria-hidden
-        className="h-full w-full [background:radial-gradient(ellipse_at_center,rgba(0,76,255,0.28)_0%,rgba(0,76,255,0.06)_46%,transparent_72%)]"
+        className="h-full w-full [background:radial-gradient(ellipse_at_center,--alpha(var(--color-primary)/28%)_0%,--alpha(var(--color-primary)/6%)_46%,transparent_72%)]"
         initial={{ opacity: 0, scale: 0.7 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, ease: EASE }}

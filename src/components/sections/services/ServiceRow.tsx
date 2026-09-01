@@ -32,13 +32,13 @@ export function ServiceRow({
         opacity={[0.4, 1, 0.7]}
       >
         <span
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [background:linear-gradient(90deg,rgba(0,76,255,0.16)_0%,rgba(0,76,255,0.02)_62%,transparent_100%)]"
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [background:linear-gradient(90deg,--alpha(var(--color-primary)/16%)_0%,--alpha(var(--color-primary)/2%)_62%,transparent_100%)]"
           aria-hidden
         />
         <div className="relative mx-auto flex max-w-page flex-col gap-6 px-6 py-14 md:flex-row md:items-start md:gap-12 md:py-16">
           <ActiveBar />
           <RowIndex className="text-2xl md:w-20">{index}</RowIndex>
-          <h3 className="min-w-0 flex-1 font-normal leading-[1.05] text-foreground text-[clamp(2.25rem,5vw,4rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_rgba(0,76,255,0.5)] md:max-w-155">
+          <h3 className="min-w-0 flex-1 font-normal leading-[1.05] text-foreground text-[clamp(2.25rem,5vw,4rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_--alpha(var(--color-primary)/50%)] md:max-w-155">
             {title}
           </h3>
           <div className="flex shrink-0 flex-col items-start gap-6 md:w-100">
@@ -48,11 +48,11 @@ export function ServiceRow({
             <Button
               asChild
               size="lg"
-              className="h-13 rounded-none px-7 tracking-wider transition-all duration-300 group-hover:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)] group-focus-within:shadow-[0_18px_44px_-16px_rgba(0,76,255,0.9)]"
+              className="h-13 rounded-none px-7 tracking-wider transition-all duration-300 group-hover:shadow-[0_18px_44px_-16px_--alpha(var(--color-primary)/90%)] group-focus-within:shadow-[0_18px_44px_-16px_--alpha(var(--color-primary)/90%)]"
             >
               <a href={href} target="_blank" rel="noopener noreferrer">
                 {ctaLabel}
-                <ArrowIcon className="ml-1" />
+                <ArrowIcon animate className="ml-1" />
               </a>
             </Button>
           </div>

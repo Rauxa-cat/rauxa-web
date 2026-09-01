@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
 import { StaggerItem, staggerContainer } from '@/components/motion/Stagger';
-import { EASE } from '@/lib/motion';
+import { EASE, NOJS } from '@/lib/motion';
 
 import { contactSchema } from '@/lib/validation/contact.schema';
 import {
@@ -70,6 +70,7 @@ export function ContactForm() {
 
   return (
     <m.div
+      {...NOJS.reset}
       className="rounded-[22px] border border-foreground/15 bg-foreground/3 p-6 md:p-9"
       initial={{ opacity: 0, y: 40, scale: 0.97 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -143,7 +144,9 @@ export function ContactForm() {
                 errors.acceptPrivacy ? 'acceptPrivacy-error' : undefined
               }
               onCheckedChange={(checked) =>
-                setValue('acceptPrivacy', checked === true)
+                setValue('acceptPrivacy', checked === true, {
+                  shouldValidate: true,
+                })
               }
             />
             <label
@@ -167,13 +170,13 @@ export function ContactForm() {
             type="submit"
             size="lg"
             disabled={isSubmitting}
-            className="h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_rgba(0,76,255,0.9)] motion-reduce:transition-none"
+            className="group h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_--alpha(var(--color-primary)/90%)] motion-reduce:transition-none"
           >
             {isSubmitting ? (
               t('buttons.sending')
             ) : (
               <>
-                {t('buttons.send')} <ArrowIcon className="ml-2" />
+                {t('buttons.send')} <ArrowIcon animate className="ml-2" />
               </>
             )}
           </Button>

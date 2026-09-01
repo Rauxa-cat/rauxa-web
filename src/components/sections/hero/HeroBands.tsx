@@ -3,19 +3,20 @@
 import { useEffect, useState } from 'react';
 import { m } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { MASK_DURATION, STAGGER_GAP, maskTransition } from '@/lib/motion';
+import { MASK_DURATION, STAGGER_GAP, maskTransition, NOJS } from '@/lib/motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { HeroPunch } from './HeroPunch';
 import { useHeroHeld } from './HeroHold';
 import type { HeroBand, HeroBandVariant } from './types';
 
-// Mobile needs a bigger floor (~60/46/50 at 390px); the desktop scale kicks in at lg.
 const bandVariant: Record<HeroBandVariant, string> = {
-  lead: 'text-white text-[clamp(2.75rem,15vw,4.5rem)] lg:text-[clamp(1.7rem,8.7vw,8.5rem)]',
+  // The leading is what centres the bridge between the two bands, and it stops
+  // at 1.3: accented caps fall back to a serif the reveal mask cuts below ~1.15.
+  lead: 'text-white text-[clamp(2.75rem,15vw,4.5rem)] lg:text-[clamp(1.7rem,8.7vw,8.5rem)] leading-[1.3]',
   bridge:
-    'text-white/60 leading-[0.92] text-[clamp(2rem,11.8vw,3.4rem)] lg:text-[clamp(0.9rem,3.95vw,3.87rem)]',
+    'text-white/60 text-[clamp(1.25rem,6.81vw,2.04rem)] lg:text-[clamp(0.9rem,3.95vw,3.87rem)] leading-[0.92]',
   punch:
-    'text-[clamp(2.4rem,12.8vw,3.6rem)] lg:text-[clamp(1.42rem,7.1vw,6.7rem)]',
+    'text-[clamp(2.24rem,12.24vw,3.67rem)] lg:text-[clamp(1.42rem,7.1vw,6.7rem)]',
 };
 
 export function HeroBands({ bands }: { bands: HeroBand[] }) {
@@ -55,8 +56,9 @@ export function HeroBands({ bands }: { bands: HeroBand[] }) {
           )}
         >
           <m.span
+            {...NOJS.reset}
             className={cn(
-              'block leading-[0.82] whitespace-pre-line',
+              'block whitespace-pre-line',
               bandVariant[band.variant],
             )}
             initial={{ opacity: 0, y: '110%' }}

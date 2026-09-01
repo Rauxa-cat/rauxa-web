@@ -1,7 +1,7 @@
 'use client';
 
 import { m } from 'motion/react';
-import { EASE } from '@/lib/motion';
+import { EASE, NOJS } from '@/lib/motion';
 import { useHeroHeld } from './HeroHold';
 
 // Waits on the hold rather than on mount, so the copy never arrives over a
@@ -19,6 +19,7 @@ export function HeroFade({
 
   return (
     <m.div
+      {...NOJS.reset}
       className={className}
       initial={{ opacity: 0, y: 16 }}
       animate={held ? { opacity: 0, y: 16 } : { opacity: 1, y: 0 }}

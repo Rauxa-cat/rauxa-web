@@ -1,7 +1,7 @@
 'use client';
 
 import { m, type Variants } from 'motion/react';
-import { EASE } from '@/lib/motion';
+import { EASE, NOJS } from '@/lib/motion';
 
 // `amount: 'some'` fires as soon as any part enters, so a group taller than the
 // viewport still triggers. Above-the-fold groups run on mount, since whileInView
@@ -64,7 +64,7 @@ export function StaggerItem({
   distance?: number;
 }) {
   return (
-    <m.div className={className} variants={item(distance)}>
+    <m.div {...NOJS.reset} className={className} variants={item(distance)}>
       {children}
     </m.div>
   );

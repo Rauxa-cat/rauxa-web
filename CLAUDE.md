@@ -60,8 +60,9 @@ Static content (nav links, services, team members) is defined as data in `src/li
 
 Animations use [Motion](https://motion.dev) (`motion/react`), not CSS keyframes. The
 previous scroll-driven pattern relied on `animation-timeline: view()`, which Firefox
-does not support, so those reveals never ran there. The only keyframe left in
-`src/app/globals.css` is the services ticker marquee.
+does not support, so those reveals never ran there. The keyframes left in
+`src/app/globals.css` are the services ticker marquee and the four hero aperture
+ones, which belong to the first paint (see "The hero hold").
 
 `MotionProvider` (mounted in `src/app/[locale]/layout.tsx`) wraps the app in
 `LazyMotion` with `domAnimation` and `strict`. **Use `m.*`, never `motion.*`**:
@@ -81,6 +82,17 @@ Primitives in `src/components/motion/`:
 
 Button hover/press is not a Motion primitive: it lives in the base of
 `buttonVariants`, gated behind `motion-safe:`, so every `<Button>` gets it for free.
+
+Anything that clips while it moves (`RevealItem`, `MaskReveal`, `SectionHeader`,
+`HeroBands`) has to stop clipping when the move lands: Motion leaves its last frame
+in place, and a mask that stays on shears tall glyphs and cuts the glows callers
+hang off the revealed element. `useUnclip` is the shared switch.
+
+Motion serializes each `initial` state into the server HTML as an inline style, and
+with scripts off nothing runs to clear it. Every primitive that ships hidden carries
+a `NOJS` attribute (`src/lib/motion.ts`), and the root layout serves `NO_JS_CSS`
+inside `<noscript>`, which is the only place it can apply. Add the attribute to any
+new primitive that hides itself, or the page ships that part blank.
 
 Two rules when adding an effect:
 
@@ -103,8 +115,19 @@ Two rules when adding an effect:
 `ParallaxScene` publishes one scroll progress to every layer beneath it, so sibling
 layers share a timeline instead of each measuring its own box. Layers that translate
 or zoom an image need slack around it, or the movement exposes an empty edge: the
-hero photo sits in an `-inset-[6%]` bleed wrapper, and the gallery photos
-are `scale-135` inside their frames. Change a crop and that slack has to move with it.
+hero photo sits in an `-inset-[6%]` bleed wrapper. Change a crop and that slack has
+to move with it. A layer inside a scene must not open a scroll subscription of its
+own, which is why `ParallaxLayer` splits into two components: `offset`, `container`
+and `axis` only mean anything on the standalone one.
+
+`GalleryStrip` sizes its cards entirely in CSS (`--card-w` and friends, in `svh`)
+and moves the row through one unitless custom property. Nothing there is measured:
+a JS fallback has to guess a viewport for the server render, and re-measuring
+`innerHeight` on resize slides the strip sideways every time a mobile URL bar
+collapses. Both the pinned scene and the reduced-motion strip are always rendered
+and CSS picks between them, so the six viewport heights the pin needs never appear
+or vanish under someone who has already been scrolled back into the page. The hidden
+half costs no bytes: a lazy image that is never laid out never loads.
 
 #### The hero hold
 
@@ -117,13 +140,20 @@ finished hero.
 
 Because it starts on style resolution alone, it can spend its whole travel on an
 empty frame and be over before the photo arrives. So it is paused, via
-`data-hero-hold` on `<html>`, until the photo can be painted. That hold takes **two
-paths, one per way into a hero page**, and both are load-bearing:
+`data-hero-hold` on `<html>`, until the photo can be painted. There are **two ways
+into a hero page** and both need the hold, but there is only one implementation of
+it, the inline script, which publishes itself as `window.__rauxaHeroHold`:
 
-| Entry | Held by | Why the other one cannot do it |
+| Entry | Arms the hold | Why the other one cannot do it |
 |---|---|---|
-| Cold document | inline script, `src/app/layout.tsx` | An effect only runs at hydration, long after the first paint. |
-| Client navigation | `HeroHold` layout effect | A `<script>` only executes when the parser reaches it. React creates the node without running it, and dev-warns. |
+| Cold document | the script, at parse | An effect only runs at hydration, long after the first paint. |
+| Client navigation | `HeroHold` layout effect, calling back into the script | A `<script>` only executes when the parser reaches it. React creates the node without running it, and dev-warns. |
+
+Every call joins the hold already in flight instead of arming a second one. On a
+cold load the parse-time call and the hydrating provider would otherwise each run
+their own `decode()` and their own stall timer, and release the photo and the copy
+at different moments. Keep it that way: a second hand-written copy of the algorithm
+in TypeScript is what drifted last time.
 
 The script lives in the root layout, not in the hero, because Next does not
 re-render layouts across a client navigation; move it back into `HeroAperture` and

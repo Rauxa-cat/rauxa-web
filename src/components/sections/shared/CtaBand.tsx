@@ -4,6 +4,7 @@ import { CONTACT } from '@/components/sections/contact/contact.constants';
 import { SERVICES } from '@/lib/content/services';
 import { CtaBackdrop } from './CtaBackdrop';
 import { MaskReveal } from '@/components/motion/MaskReveal';
+import { ArrowIcon } from '@/components/icons/ArrowIcon';
 
 const waitlistUrl =
   SERVICES.find((s) => s.id === 'cenas-rauxa')?.formUrl ?? '#';
@@ -39,13 +40,11 @@ export async function CtaBand() {
             <Button
               asChild
               size="lg"
-              className="h-14 rounded-none bg-[var(--rauxa-black)] px-8 font-semibold tracking-wide text-white hover:bg-[var(--rauxa-black)]"
+              className="group h-14 rounded-none bg-[var(--rauxa-black)] px-8 font-semibold tracking-wide text-white hover:bg-[var(--rauxa-black)]"
             >
               <a href={waitlistUrl} target="_blank" rel="noopener noreferrer">
                 {t('button')}
-                <span aria-hidden className="ml-3 text-lg leading-none">
-                  →
-                </span>
+                <ArrowIcon animate className="ml-3" />
               </a>
             </Button>
           </div>
