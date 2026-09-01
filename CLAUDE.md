@@ -125,13 +125,24 @@ paths, one per way into a hero page**, and both are load-bearing:
 | Cold document | inline script, `src/app/layout.tsx` | An effect only runs at hydration, long after the first paint. |
 | Client navigation | `HeroHold` layout effect | A `<script>` only executes when the parser reaches it. React creates the node without running it, and dev-warns. |
 
-Both write the same attribute and release on the same `decode()`, so where they
-overlap the second is a no-op. The script lives in the root layout, not in the hero,
-because Next does not re-render layouts across a client navigation; move it back into
-`HeroAperture` and React recreates a script node that never runs. It sits first in
-`<body>`, ahead of the hero markup, so the release waits for `DOMContentLoaded` to
-find `img[data-hero-photo]`. On pages with no hero it releases immediately and the
-`[data-hero-hold] [data-hero-open]` rule matches nothing.
+The script lives in the root layout, not in the hero, because Next does not
+re-render layouts across a client navigation; move it back into `HeroAperture` and
+React recreates a script node that never runs. It sits first in `<body>`, ahead of
+the hero markup, so the release waits for `DOMContentLoaded` to find
+`img[data-hero-photo]`. Every page therefore holds until `DOMContentLoaded`,
+including the ones with no hero, where the release then fires and the
+`[data-hero-hold] [data-hero-open]` rule had nothing to match anyway. On release it
+marks the photo with a `heroHeld` expando, which is how the effect knows not to
+re-pause an animation already halfway through. An expando rather than an attribute,
+because the script runs before hydration and React treats an unexpected attribute as
+a mismatch.
+
+The attribute only reaches the CSS layers, and the copy animates on Motion, so
+`HeroHoldProvider` (in `HeroSection`, wrapping both halves) publishes the same state
+through context. `HeroBands` and `HeroFade` hold their `animate` target equal to
+`initial` while it is set, which is what keeps the words and the photo on one beat.
+The context starts held and defaults to *not* held outside a provider, so those
+primitives still animate if they are ever used away from a hero.
 
 ### Contact form flow
 
