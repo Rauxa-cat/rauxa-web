@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { ParallaxLayer } from '@/components/motion/Parallax';
-import { HeroHold } from './HeroHold';
 
 interface HeroApertureProps {
   src: string;
@@ -32,23 +31,9 @@ export function HeroAperture({
             priority={priority}
             sizes="100vw"
             data-hero-photo=""
-            className="object-cover object-[54%_38%]"
-          />
-          {/* The same file, so no second request: it only fades the photo in
-              from cold as the band opens. */}
-          <div
-            aria-hidden
             data-hero-open
-            className="absolute inset-0 opacity-0 [animation:hero-thaw_var(--hero-open)] motion-reduce:[animation:none]"
-          >
-            <Image
-              src={src}
-              alt=""
-              fill
-              sizes="100vw"
-              className="object-cover object-[54%_38%] brightness-[0.82] contrast-[1.14] saturate-[0.12]"
-            />
-          </div>
+            className="object-cover object-[54%_38%] [animation:hero-thaw_var(--hero-open)] motion-reduce:[animation:none]"
+          />
         </div>
       </ParallaxLayer>
 
@@ -60,8 +45,6 @@ export function HeroAperture({
         data-hero-open
         className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,13,0.80)_0%,rgba(10,10,13,0.45)_55%,rgba(10,10,13,0.85)_100%)] [animation:hero-bed_var(--hero-open)] md:bg-[linear-gradient(90deg,rgba(10,10,13,0.94)_0%,rgba(10,10,13,0.68)_34%,rgba(10,10,13,0.20)_62%,rgba(10,10,13,0)_84%)] motion-reduce:[animation:none]"
       />
-
-      <HeroHold />
     </div>
   );
 }
