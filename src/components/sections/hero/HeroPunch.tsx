@@ -1,7 +1,7 @@
 'use client';
 
 import { m } from 'motion/react';
-import { EASE, IGNITION } from '@/lib/motion';
+import { EASE, IGNITION, NOJS } from '@/lib/motion';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 const GRADIENT =
@@ -36,6 +36,7 @@ export function HeroPunch({
   return (
     <span className="relative block">
       <m.span
+        {...NOJS.reset}
         aria-hidden
         className="absolute inset-0 -z-10 block text-[var(--rauxa-electric)] blur-[34px] forced-colors:hidden"
         initial={{ opacity: 0 }}
@@ -45,6 +46,7 @@ export function HeroPunch({
         {text}
       </m.span>
       <m.span
+        {...NOJS.reset}
         className={`relative block ${GRADIENT} ${FORCED_COLORS}`}
         initial={{ backgroundPositionX: '100%' }}
         animate={{ backgroundPositionX: ignited ? '0%' : '100%' }}

@@ -7,6 +7,7 @@ import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { HERO_HOLD_SCRIPT } from '@/components/sections/hero/hold';
+import { NO_JS_CSS } from '@/lib/motion';
 
 const rauxaPrimary = localFont({
   src: './fonts/AlfredinoSemirounded.ttf',
@@ -50,6 +51,9 @@ export default async function RootLayout({
             re-rendered on a client navigation; moving it back into the hero
             breaks it. See "The hero hold" in CLAUDE.md. */}
         <script dangerouslySetInnerHTML={{ __html: HERO_HOLD_SCRIPT }} />
+        <noscript>
+          <style>{NO_JS_CSS}</style>
+        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
