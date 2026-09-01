@@ -97,7 +97,8 @@
       "eyebrow": "GALERIA",
       "title": "Així viu",
       "titleHighlight": "RAUXA",
-      "imageAlt": "Experiència RAUXA, fotografia {n}"
+      "imageAlt": "Experiència RAUXA, fotografia {n}",
+      "stripLabel": "Tira de fotografies de RAUXA"
     }
   },
   "services": {
@@ -159,12 +160,10 @@
     "members": {
       "carles": {
         "name": "Carles Serrano",
-        "role": "Direcció creativa",
         "bio": "Carles és cuiner, fundador i director creatiu de Rauxa. Format en restaurants i equips d'alt nivell a Espanya i a l'estranger, avui combina cuina i visió de projecte amb una mirada contemporània. Rauxa neix com una comunitat que explora la innovació gastronòmica des d'un lloc diferent, incorporant art, show i música electrònica com a part essencial de l'experiència. Un concepte que no busca canviar la gastronomia, sinó crear un camí paral·lel a ella, on conviuen llenguatges que rarament es troben i on l'avantguarda es redefineix des de la llibertat creativa."
       },
       "dani": {
         "name": "Dani Molins",
-        "role": "Producció i esdeveniments",
         "bio": "Dani Molins és un jove xef amb una sòlida trajectòria en l'alta cuina nacional i internacional. Ha desenvolupat la seva carrera aprenent al costat d'alguns dels cuiners més influents del nostre país, com Martín Berasategui o Paco Pérez, i d'un dels xefs més importants actualment a França, com Jean Imbert. Apassionat per la tècnica i el producte, combina creativitat i rigor en cada plat. La seva cuina reflecteix una visió contemporània amb arrels ben definides. Dani representa una nova generació de xefs compromesos amb l'excel·lència i la innovació."
       }
     }

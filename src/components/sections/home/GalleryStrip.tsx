@@ -150,9 +150,11 @@ function GalleryCard({
 }
 
 export function GalleryStrip({
+  label,
   mobile,
   desktop,
 }: {
+  label: string;
   mobile: GalleryFigure[];
   desktop: GalleryFigure[];
 }) {
@@ -186,6 +188,8 @@ export function GalleryStrip({
   return (
     <div
       ref={track}
+      role="group"
+      aria-label={label}
       className={cn('relative', still && 'overflow-x-auto')}
       style={
         still
