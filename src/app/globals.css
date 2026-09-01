@@ -244,19 +244,13 @@
     font-family: var(--font-accent);
   }
 
-  /* Single focus ring for everything interactive. :where() keeps specificity
-     low so components can override it. --ring is electric: 3.27:1 on black and
-     5.50:1 on pearl, both above the 3:1 that 1.4.11 requires for non-text. */
-  :where(
-      a,
-      button,
-      [role='button'],
-      input,
-      textarea,
-      select,
-      summary,
-      [tabindex]
-    ):not([tabindex='-1']):focus-visible {
+  /* The shadcn primitives are left out on purpose: they set `outline-none` plus
+     their own `focus-visible:ring`, and a utility beats `base` whatever the
+     specificity, so adding them here only looks like it works. --ring is
+     electric, 3.27:1 on black and 5.50:1 on pearl, both over 1.4.11's 3:1. */
+  :where(a, [role='button'], summary, [tabindex]):not(
+      [tabindex='-1']
+    ):focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
   }
@@ -273,10 +267,9 @@
   }
 }
 
-/* The hero aperture, the one entrance that is CSS and not Motion; see "The hero
-   hold" in CLAUDE.md. Each element carries its resolved state as its base style
-   and these only declare where the move starts, so `motion-reduce` lands on the
-   finished hero. Time-based, not the scroll-driven kind Firefox cannot run. */
+/* The hero aperture; see "The hero hold" in CLAUDE.md. Each layer carries its
+   resolved state as its base style and the keyframes only say where the move
+   starts, so `motion-reduce` lands on the finished hero. */
 /* Pausing freezes the delay too, so the 220ms beat survives the wait intact. */
 [data-hero-hold] [data-hero-open] {
   animation-play-state: paused;
