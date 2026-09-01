@@ -40,6 +40,11 @@ Three CSS variables are available globally:
 - `--font-rauxa-secondary` → VT323 (accent)
 - `--font-rauxa-body-inter` → Inter (body text)
 
+AlfredinoSemirounded carries no accented glyph, so every `È À Í Ñ Ç` in a heading
+falls back to the system serif; it shows in the `ca` copy. That fallback's ink also
+rises above Alfredino's ascender, which is what puts a floor under the `leading-*`
+of any heading inside a reveal mask.
+
 ### Translations
 
 Translation strings live in `messages/es.json` and `messages/ca.json`. Server components use `getTranslations()`; client components use `useTranslations()`. Error message keys in `contactSchema` (e.g. `'errors.name.tooShort'`) map directly to translation keys and are resolved in the form component.
@@ -49,12 +54,15 @@ Translation strings live in `messages/es.json` and `messages/ca.json`. Server co
 ```
 src/components/
   ui/          # shadcn/ui primitives (do not edit directly)
-  site/        # Header, Footer, Nav, Logo, LanguageSelector
-  sections/    # per-page section components
+  site/        # Header, Footer, Nav, Logo, LanguageSelector, ScrollProgress, ServicesTicker
+  sections/    # per-page section components; sections/shared/ holds the ones several pages reuse
+  motion/      # animation primitives (see Animations)
+  contact/     # contact details and social links, shared by the contact page and the footer
   icons/       # custom SVG icon components
 ```
 
 Static content (nav links, services, team members) is defined as data in `src/lib/content/`.
+Hooks live in `src/hooks/` (`useContactSubmit`, `useReducedMotion`).
 
 ### Animations
 
