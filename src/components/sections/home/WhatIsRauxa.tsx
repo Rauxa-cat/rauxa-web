@@ -4,8 +4,10 @@ import { SectionHeader } from '../shared/SectionHeader';
 import { SectionShell } from '../shared/SectionShell';
 import { ActiveBar } from '../shared/ActiveBar';
 import { RowIndex } from '../shared/RowIndex';
-import { RevealList, RevealItem } from '@/components/motion/Reveal';
+import { RevealList, RevealItem, FadeIn } from '@/components/motion/Reveal';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
+import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 
 export async function WhatIsRauxa() {
   const t = await getTranslations('home.whatIsRauxa');
@@ -42,7 +44,7 @@ export async function WhatIsRauxa() {
               className="group relative block border-b border-foreground/15"
             >
               <span
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 [background:linear-gradient(90deg,rgba(0,76,255,0.16)_0%,rgba(0,76,255,0.02)_62%,transparent_100%)]"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [background:linear-gradient(90deg,--alpha(var(--color-primary)/16%)_0%,--alpha(var(--color-primary)/2%)_62%,transparent_100%)]"
                 aria-hidden
               />
               <div className="relative mx-auto flex max-w-page items-center gap-4 px-6 py-6 transition-[min-height] duration-300 md:min-h-30 md:gap-8 md:py-0 md:group-hover:min-h-40">
@@ -52,7 +54,7 @@ export async function WhatIsRauxa() {
                     <RowIndex className="text-lg md:w-14 md:text-[22px]">
                       {String(i + 1).padStart(2, '0')}
                     </RowIndex>
-                    <h3 className="min-w-0 flex-1 font-normal leading-none text-foreground text-[clamp(1.75rem,4.5vw,3.25rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_rgba(0,76,255,0.5)]">
+                    <h3 className="min-w-0 flex-1 font-normal leading-none text-foreground text-[clamp(1.75rem,4.5vw,3.25rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_--alpha(var(--color-primary)/50%)]">
                       {tItems(`${service.id}.title`)}
                     </h3>
                   </div>
@@ -69,6 +71,22 @@ export async function WhatIsRauxa() {
           </RevealItem>
         ))}
       </RevealList>
+
+      {/* The only route from the home page into /services: every row above
+          leaves the site for its booking form. */}
+      <FadeIn className="mx-auto mt-14 max-w-page px-6">
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="group h-13 rounded-none px-7 tracking-wider"
+        >
+          <Link href="/services">
+            {t('cta')}
+            <ArrowIcon animate className="ml-1" />
+          </Link>
+        </Button>
+      </FadeIn>
     </SectionShell>
   );
 }
