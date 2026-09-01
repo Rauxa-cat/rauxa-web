@@ -3,7 +3,8 @@
 import { ReactNode } from 'react';
 import { m, type Variants } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { EASE, maskTransition } from '@/lib/motion';
+import { EASE, maskTransition, NOJS } from '@/lib/motion';
+import { useUnclip } from '@/components/motion/useUnclip';
 
 type SectionHeaderSize = 'sm' | 'md' | 'lg' | 'display';
 
@@ -54,6 +55,8 @@ export function SectionHeader({
   as: Heading = 'h2',
   className,
 }: SectionHeaderProps) {
+  const [unclipped, unclip] = useUnclip();
+
   return (
     <m.div
       className={className}
@@ -62,7 +65,11 @@ export function SectionHeader({
       viewport={VIEWPORT}
     >
       {eyebrow && (
-        <m.div variants={fade(0)} className="flex items-center gap-3.5">
+        <m.div
+          {...NOJS.reset}
+          variants={fade(0)}
+          className="flex items-center gap-3.5"
+        >
           {hairline && <span className="h-px w-7.5 bg-primary" aria-hidden />}
           <span className="font-accent tracking-[0.35em] text-foreground/60">
             {eyebrow}
@@ -73,8 +80,18 @@ export function SectionHeader({
       <Heading
         className={cn('mt-4 font-normal tracking-tight', titleSize[size])}
       >
-        <span className="block overflow-hidden">
-          <m.span className="block" variants={mask(0.08)}>
+        <span
+          className={cn(
+            'block',
+            unclipped ? 'overflow-visible' : 'overflow-hidden',
+          )}
+        >
+          <m.span
+            {...NOJS.reset}
+            className="block"
+            variants={mask(0.08)}
+            onAnimationComplete={unclip}
+          >
             {title}
           </m.span>
         </span>
@@ -82,6 +99,7 @@ export function SectionHeader({
 
       {description && (
         <m.div
+          {...NOJS.reset}
           variants={fade(0.18)}
           className="mt-5 max-w-2xl space-y-3 text-foreground/70"
         >

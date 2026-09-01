@@ -2,7 +2,8 @@
 
 import { m } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { EASE } from '@/lib/motion';
+import { EASE, NOJS } from '@/lib/motion';
+import { useUnclip } from './useUnclip';
 
 // `amount: 'some'` fires as soon as any part enters, so rows taller than the
 // viewport still trigger (a fractional amount can never be reached there). The
@@ -34,13 +35,24 @@ export function RevealItem({
   children: React.ReactNode;
   className?: string;
 }) {
+  const [unclipped, unclip] = useUnclip();
+
   return (
     <m.li
-      className={cn('motion-reduce:[clip-path:none]!', className)}
+      {...NOJS.reset}
+      // `!` because the settled `inset(0 0 0 0)` Motion leaves behind is an
+      // inline style, and it would keep slicing the row's parallax travel and
+      // the hover glows at the row edge.
+      className={cn(
+        'motion-reduce:[clip-path:none]!',
+        unclipped && '[clip-path:none]!',
+        className,
+      )}
       initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
       whileInView={{ opacity: 1, clipPath: 'inset(0 0 0 0)' }}
       viewport={VIEWPORT}
       transition={{ duration: 0.55, ease: EASE }}
+      onAnimationComplete={unclip}
     >
       {children}
     </m.li>
@@ -57,6 +69,7 @@ export function FadeIn({
 }) {
   return (
     <m.div
+      {...NOJS.reset}
       className={className}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
