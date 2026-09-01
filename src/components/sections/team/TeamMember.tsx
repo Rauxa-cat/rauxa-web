@@ -35,7 +35,7 @@ export function TeamMember({
             className="object-cover"
           />
           <div
-            className="absolute inset-0 [background:linear-gradient(180deg,rgba(0,76,255,0.16)_0%,rgba(10,10,13,0.42)_100%)]"
+            className="absolute inset-0 [background:linear-gradient(180deg,--alpha(var(--color-primary)/16%)_0%,rgba(10,10,13,0.42)_100%)]"
             aria-hidden
           />
         </div>
