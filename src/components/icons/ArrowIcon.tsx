@@ -15,7 +15,9 @@ export function ArrowIcon({
     <span
       aria-hidden
       className={cn(
-        'inline-block leading-none transition-transform',
+        // `[line-height:1]` and not `leading-none`: tailwind-merge drops a
+        // `leading-*` once a font size follows it, and one always does.
+        'inline-block [line-height:1] transition-transform',
         size === 'md' && 'text-lg',
         size === 'sm' && 'text-base',
         animate && 'group-hover:translate-x-1',
