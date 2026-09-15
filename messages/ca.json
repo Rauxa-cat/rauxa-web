@@ -49,7 +49,7 @@
   "nav": {
     "/": "Inici",
     "/services": "Serveis",
-    "/rauxa-lab": "RAUXA LAB",
+    "/rauxa-lab": "Rauxa Lab",
     "/team": "Equip",
     "/contact": "Contacte"
   },
@@ -157,11 +157,21 @@
       "bandLead": "MENJAR, BEURE",
       "bandBridge": "i experimentar a",
       "bandPunch": "RAUXA LAB",
-      "subtitle": "Tapes d'autor i vins naturals a Sant Cugat del Vallès."
+      "subtitle": "Tapes d'autor i vins naturals a Sant Cugat del Vallès.",
+      "ctaBooking": "RESERVAR TAULA",
+      "ctaLocation": "VEURE UBICACIÓ"
     },
     "intro": {
       "eyebrow": "QUÈ ÉS RAUXA LAB",
       "text": "RAUXA LAB és el nostre restaurant i laboratori creatiu a Sant Cugat del Vallès. Una proposta de tapes d'autor i vins naturals on <em>gastronomia, música, art i comunitat</em> conviuen sota un mateix sostre."
+    },
+    "booking": {
+      "eyebrow": "RESERVES",
+      "title": "Reserva la teva",
+      "titleHighlight": "taula",
+      "description": "Tria el dia, l'hora i quants sereu.",
+      "frameTitle": "Reserva de taula a RAUXA LAB",
+      "openExternal": "Reservar en una pestanya nova"
     },
     "location": {
       "eyebrow": "UBICACIÓ",
@@ -304,6 +314,10 @@
       "serviceRequest": {
         "title": "Formulari de sol·licitud de serveis",
         "content": "Nom, correu electrònic, telèfon (opcional), servei d'interès i missatge. Aquestes dades s'envien a info@rauxa.cat i s'utilitzen únicament per gestionar la seva sol·licitud."
+      },
+      "booking": {
+        "title": "Reserves a RAUXA LAB",
+        "content": "Nom, cognoms, correu electrònic, telèfon, data, hora i nombre de persones i, si decideix indicar-los, comentaris sobre la reserva i intoleràncies o al·lèrgies alimentàries. Es recullen a través del motor de reserves de CoverManager integrat a la pàgina de RAUXA LAB i s'utilitzen per gestionar la seva reserva i avisar-lo de qualsevol canvi. Les dades sobre al·lèrgies només s'utilitzen per preparar la seva visita."
       }
     },
     "purpose": {
@@ -311,11 +325,12 @@
       "intro": "Tractem les seves dades personals per a les següents finalitats:",
       "point1": "Respondre a les seves consultes i sol·licituds d'informació",
       "point2": "Gestionar sol·licituds de serveis i esdeveniments",
-      "point3": "Enviar comunicacions relacionades amb els nostres serveis (només si ha donat el seu consentiment)"
+      "point3": "Gestionar les seves reserves a RAUXA LAB",
+      "point4": "Enviar comunicacions relacionades amb els nostres serveis (només si ha donat el seu consentiment)"
     },
     "legal": {
       "title": "Base legal",
-      "content": "La base legal per al tractament de les seves dades és el consentiment que ens atorga en enviar-nos les seves dades a través dels formularis de contacte o en acceptar expressament les nostres condicions."
+      "content": "La base legal per al tractament de les seves dades és el consentiment que ens atorga en enviar-nos les seves dades a través dels formularis de contacte o en acceptar expressament les nostres condicions. En el cas de les reserves, la base legal és la gestió de la reserva que vostè sol·licita (art. 6.1.b RGPD) i, per a les dades sobre al·lèrgies o intoleràncies, el seu consentiment explícit en facilitar-les."
     },
     "retention": {
       "title": "Conservació de dades",
@@ -325,7 +340,8 @@
       "title": "Destinataris de les dades",
       "intro": "Les seves dades poden ser comunicades als següents destinataris:",
       "brevo": "Proveïdor d'enviament de correu electrònic a través del qual els missatges dels formularis arriben a info@rauxa.cat. Brevo compleix amb el RGPD i compta amb mesures de seguretat adequades.",
-      "vercel": "Proveïdor d'hosting i analytics. Vercel Analytics no utilitza cookies ni emmagatzema dades personals identificables."
+      "vercel": "Proveïdor d'hosting i analytics. Vercel Analytics no utilitza cookies ni emmagatzema dades personals identificables.",
+      "coverManager": "Plataforma de gestió de reserves de RAUXA LAB, operada per Restaurant Booking & Distribution Services S.L. Tracta les dades de les reserves com a encarregat del tractament, en virtut d'un contracte amb RAUXA. Segons les condicions de CoverManager, les dades també es poden compartir amb altres restaurants que utilitzen el mateix programari, únicament per detectar reserves duplicades. Si una reserva requereix targeta de garantia, les dades de la targeta les tracta directament la passarel·la de pagament integrada a CoverManager, sense passar per RAUXA. Pot consultar la seva <link>política de privacitat</link>."
     },
     "rights": {
       "title": "Els seus drets",
@@ -371,6 +387,14 @@
         "content": "Utilitzem eines de Vercel que ens ajuden a entendre com s'utilitza el nostre lloc web. Aquestes eines respecten la teva privacitat:",
         "vercelAnalytics": "Recull dades anònimes i agregades sobre visites a la web (pàgines vistes, país, dispositiu). No utilitza cookies ni rastreja usuaris individuals.",
         "vercelInsights": "Mesura el rendiment tècnic del lloc (velocitat de càrrega, mètriques web). No utilitza cookies ni emmagatzema informació personal."
+      },
+      "thirdParty": {
+        "title": "Cookies de tercers a RAUXA LAB",
+        "content": "La pàgina de RAUXA LAB inclou el motor de reserves de CoverManager. Quan es carrega, CoverManager i els serveis que integra poden desar les seves pròpies cookies o dades a l'emmagatzematge local del teu navegador. RAUXA no controla ni accedeix a aquesta informació:",
+        "coverManager": "Funcionament del motor de reserves i del procés de reserva.",
+        "stripe": "Prevenció del frau en els pagaments amb targeta (cookie m).",
+        "newRelic": "Monitoratge tècnic del rendiment i dels errors del motor de reserves (emmagatzematge local).",
+        "more": "Més informació a la <link>política de cookies de CoverManager</link>."
       }
     },
     "table": {
@@ -389,7 +413,7 @@
       "title": "Més informació",
       "content": "Per saber més sobre com gestionar les cookies al teu navegador, consulta l'ajuda de:"
     },
-    "lastUpdated": "Última actualització: 3 de març de 2026"
+    "lastUpdated": "Última actualització: 15 de setembre de 2026"
   },
   "legal-notice": {
     "title": "Avís Legal",

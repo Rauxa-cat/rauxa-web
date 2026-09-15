@@ -1,9 +1,11 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
+import { LabBooking } from '@/components/sections/lab/LabBooking';
 import { LabIntro } from '@/components/sections/lab/LabIntro';
 import { LabLocation } from '@/components/sections/lab/LabLocation';
 import { CtaBand } from '@/components/sections/shared/CtaBand';
+import { LAB } from '@/lib/content/lab';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
 // Stands in for the photo until the space has one; once there is a
@@ -59,8 +61,20 @@ export default async function RauxaLabPage() {
           { variant: 'punch', text: t('bandPunch'), size: 'lg' },
         ]}
         subtitle={t('subtitle')}
+        ctas={[
+          {
+            label: t('ctaBooking'),
+            href: { pathname: '/rauxa-lab', hash: LAB.anchors.booking },
+          },
+          {
+            label: t('ctaLocation'),
+            href: { pathname: '/rauxa-lab', hash: LAB.anchors.location },
+            variant: 'outline',
+          },
+        ]}
       />
       <LabIntro />
+      <LabBooking />
       <LabLocation />
       <CtaBand />
     </>

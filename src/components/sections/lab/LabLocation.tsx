@@ -10,7 +10,7 @@ export async function LabLocation() {
   const { street, postalCode, locality, region } = LAB.address;
 
   return (
-    <SectionShell className="pb-24 md:pb-32">
+    <SectionShell id={LAB.anchors.location} className="pb-24 md:pb-32">
       {/* No column gap: the gutter is what the text leaves free in its half,
           45px beside "Nos vemos en" at the title's 88px cap. A 5/7 split would
           drop "en" onto a line of its own. */}

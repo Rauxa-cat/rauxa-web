@@ -49,7 +49,7 @@
   "nav": {
     "/": "Inicio",
     "/services": "Servicios",
-    "/rauxa-lab": "RAUXA LAB",
+    "/rauxa-lab": "Rauxa Lab",
     "/team": "Equipo",
     "/contact": "Contacto"
   },
@@ -157,11 +157,21 @@
       "bandLead": "COMER, BEBER",
       "bandBridge": "y experimentar en",
       "bandPunch": "RAUXA LAB",
-      "subtitle": "Tapas de autor y vinos naturales en Sant Cugat del Vallès."
+      "subtitle": "Tapas de autor y vinos naturales en Sant Cugat del Vallès.",
+      "ctaBooking": "RESERVAR MESA",
+      "ctaLocation": "VER UBICACIÓN"
     },
     "intro": {
       "eyebrow": "QUÉ ES RAUXA LAB",
       "text": "RAUXA LAB es nuestro restaurante y laboratorio creativo en Sant Cugat del Vallès. Una propuesta de tapas de autor y vinos naturales donde <em>gastronomía, música, arte y comunidad</em> conviven bajo un mismo techo."
+    },
+    "booking": {
+      "eyebrow": "RESERVAS",
+      "title": "Reserva tu",
+      "titleHighlight": "mesa",
+      "description": "Elige el día, la hora y cuántos seréis.",
+      "frameTitle": "Reserva de mesa en RAUXA LAB",
+      "openExternal": "Reservar en una pestaña nueva"
     },
     "location": {
       "eyebrow": "UBICACIÓN",
@@ -304,6 +314,10 @@
       "serviceRequest": {
         "title": "Formulario de solicitud de servicios",
         "content": "Nombre, correo electrónico, teléfono (opcional), servicio de interés y mensaje. Estos datos se envían a info@rauxa.cat y se utilizan únicamente para gestionar su solicitud."
+      },
+      "booking": {
+        "title": "Reservas en RAUXA LAB",
+        "content": "Nombre, apellidos, correo electrónico, teléfono, fecha, hora y número de personas y, si decide indicarlos, comentarios sobre la reserva e intolerancias o alergias alimentarias. Se recogen a través del motor de reservas de CoverManager integrado en la página de RAUXA LAB y se utilizan para gestionar su reserva y avisarle de cualquier cambio. Los datos sobre alergias solo se utilizan para preparar su visita."
       }
     },
     "purpose": {
@@ -311,11 +325,12 @@
       "intro": "Tratamos sus datos personales para las siguientes finalidades:",
       "point1": "Responder a sus consultas y solicitudes de información",
       "point2": "Gestionar solicitudes de servicios y eventos",
-      "point3": "Enviar comunicaciones relacionadas con nuestros servicios (solo si ha dado su consentimiento)"
+      "point3": "Gestionar sus reservas en RAUXA LAB",
+      "point4": "Enviar comunicaciones relacionadas con nuestros servicios (solo si ha dado su consentimiento)"
     },
     "legal": {
       "title": "Base legal",
-      "content": "La base legal para el tratamiento de sus datos es el consentimiento que nos otorga al enviarnos sus datos a través de los formularios de contacto o al aceptar expresamente nuestras condiciones."
+      "content": "La base legal para el tratamiento de sus datos es el consentimiento que nos otorga al enviarnos sus datos a través de los formularios de contacto o al aceptar expresamente nuestras condiciones. En el caso de las reservas, la base legal es la gestión de la reserva que usted solicita (art. 6.1.b RGPD) y, para los datos sobre alergias o intolerancias, su consentimiento explícito al facilitarlos."
     },
     "retention": {
       "title": "Conservación de datos",
@@ -325,7 +340,8 @@
       "title": "Destinatarios de los datos",
       "intro": "Sus datos pueden ser comunicados a los siguientes destinatarios:",
       "brevo": "Proveedor de envío de correo electrónico a través del cual los mensajes de los formularios llegan a info@rauxa.cat. Brevo cumple con el RGPD y cuenta con medidas de seguridad adecuadas.",
-      "vercel": "Proveedor de hosting y analytics. Vercel Analytics no utiliza cookies ni almacena datos personales identificables."
+      "vercel": "Proveedor de hosting y analytics. Vercel Analytics no utiliza cookies ni almacena datos personales identificables.",
+      "coverManager": "Plataforma de gestión de reservas de RAUXA LAB, operada por Restaurant Booking & Distribution Services S.L. Trata los datos de las reservas como encargado del tratamiento, en virtud de un contrato con RAUXA. Según las condiciones de CoverManager, los datos también pueden compartirse con otros restaurantes que usan el mismo software, únicamente para detectar reservas duplicadas. Si una reserva requiere tarjeta de garantía, los datos de la tarjeta los trata directamente la pasarela de pago integrada en CoverManager, sin pasar por RAUXA. Puede consultar su <link>política de privacidad</link>."
     },
     "rights": {
       "title": "Sus derechos",
@@ -371,6 +387,14 @@
         "content": "Utilizamos herramientas de Vercel que nos ayudan a entender cómo se usa nuestro sitio web. Estas herramientas son respetuosas con tu privacidad:",
         "vercelAnalytics": "Recoge datos anónimos y agregados sobre visitas a la web (páginas vistas, país, dispositivo). No utiliza cookies ni rastrea usuarios individuales.",
         "vercelInsights": "Mide el rendimiento técnico del sitio (velocidad de carga, métricas web). No utiliza cookies ni almacena información personal."
+      },
+      "thirdParty": {
+        "title": "Cookies de terceros en RAUXA LAB",
+        "content": "La página de RAUXA LAB incluye el motor de reservas de CoverManager. Cuando se carga, CoverManager y los servicios que integra pueden guardar sus propias cookies o datos en el almacenamiento local de tu navegador. RAUXA no controla ni accede a esta información:",
+        "coverManager": "Funcionamiento del motor de reservas y del proceso de reserva.",
+        "stripe": "Prevención del fraude en los pagos con tarjeta (cookie m).",
+        "newRelic": "Monitorización técnica del rendimiento y de los errores del motor de reservas (almacenamiento local).",
+        "more": "Más información en la <link>política de cookies de CoverManager</link>."
       }
     },
     "table": {
@@ -389,7 +413,7 @@
       "title": "Más información",
       "content": "Para saber más sobre cómo gestionar las cookies en tu navegador, consulta la ayuda de:"
     },
-    "lastUpdated": "Última actualización: 3 de marzo de 2026"
+    "lastUpdated": "Última actualización: 15 de septiembre de 2026"
   },
   "legal-notice": {
     "title": "Aviso Legal",
