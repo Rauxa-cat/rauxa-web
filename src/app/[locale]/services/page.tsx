@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { ServicesOverview } from '@/components/sections/services/ServicesOverview';
 import { CtaBand } from '@/components/sections/shared/CtaBand';
-// import { ServicesDetails } from '@/components/sections/services/ServicesDetails';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, PageProps } from '@/lib/metadata';
 
@@ -55,7 +54,6 @@ export default async function ServicesPage() {
         subtitle={t('hero.subtitle')}
       />
       <ServicesOverview />
-      {/* Fase 2: <ServicesDetails />  //  */}
       <CtaBand />
     </>
   );
