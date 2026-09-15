@@ -11,6 +11,7 @@ export const routing = defineRouting({
   pathnames: {
     '/': '/',
     '/services': { es: '/servicios', ca: '/serveis' },
+    '/rauxa-lab': { es: '/rauxa-lab', ca: '/rauxa-lab' },
     '/team': { es: '/equipo', ca: '/equip' },
     '/contact': { es: '/contacto', ca: '/contacte' },
     '/privacy': { es: '/privacidad', ca: '/privacitat' },
