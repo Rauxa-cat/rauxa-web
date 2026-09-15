@@ -5,6 +5,7 @@ import { LegalHeader } from '@/components/sections/shared/LegalHeader';
 import { LegalSection } from '@/components/sections/shared/LegalSection';
 import { CookiesTable } from '@/components/sections/cookies/CookiesTable';
 import { AnalyticsTools } from '@/components/sections/cookies/AnalyticsTools';
+import { ThirdPartyCookies } from '@/components/sections/cookies/ThirdPartyCookies';
 import { BrowserLinks } from '@/components/sections/cookies/BrowserLinks';
 
 export async function generateMetadata({
@@ -38,6 +39,7 @@ export default async function CookiesPage() {
           </p>
           <CookiesTable />
           <AnalyticsTools />
+          <ThirdPartyCookies />
         </LegalSection>
 
         <LegalSection title={t('disableCookies.title')}>
