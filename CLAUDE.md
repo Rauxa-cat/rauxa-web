@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Rauxa (`rauxa.cat`) is the website for **RAUXA**, a gastronomic and cultural community based in Barcelona. They organize experiential events where gastronomy, music, and art converge. Their services are the dessert show (*Show del postre*), collaborations with brands and artists, full event production, and catering.
+Rauxa (`rauxa.cat`) is the website for **RAUXA**, a gastronomic and cultural community based in Barcelona. They organize experiential events where gastronomy, music, and art converge. They also run **RAUXA LAB**, their restaurant in Sant Cugat del Vallès (`/rauxa-lab`). It is a place, not a service: it has its own nav link and a band on the home (`LabTeaser`), and stays out of the service lists. The services are the dessert show (*Show del postre*), collaborations with brands and artists, full event production, and catering.
 
 The site is a Next.js 15 app with two locales — **`es`** (default) and **`ca`** (Catalan) — deployed to Vercel. Service requests go through an on-site dialog (see "Service request flow"); the service ids live in `src/lib/content/services.ts`. Contact email is `info@rauxa.cat`.
 
@@ -63,7 +63,7 @@ src/components/
   icons/       # custom SVG icon components
 ```
 
-Static content (nav links, services, team members) is defined as data in `src/lib/content/`.
+Static content (nav links, services, team members, the RAUXA LAB address) is defined as data in `src/lib/content/`.
 Hooks live in `src/hooks/` (`useContactSubmit`, `useReducedMotion`).
 
 ### Animations
@@ -210,6 +210,8 @@ change them together.
 → `ServiceRequestDialog` → `useContactSubmit` → `POST /api/service-request` → Brevo
 transactional email via `BREVO_SERVICE_TEMPLATE_ID`, with the service title in Spanish.
 
+- Both lists render the shared `ServiceRow`, `compact` on the home and `large` on `/services`;
+  the whole row is the trigger.
 - The trigger is a real `Link` to `/contact`. It only turns into a dialog opener once
   hydrated and inside the provider, so no-JS visitors and modified clicks still reach a form.
 - The dialog chunk (form, Zod, the strike) is `next/dynamic` with `ssr: false`, preloaded on
@@ -221,6 +223,47 @@ transactional email via `BREVO_SERVICE_TEMPLATE_ID`, with the service title in S
 - The lightning bolt, the screen flash and the panel flicker do not mount under reduced
   motion (the dialog only renders after hydration, so the preference is real by then);
   the frame and the panel keep an opacity leg and degrade to a fade.
+
+### RAUXA LAB map
+
+`/rauxa-lab` shows the restaurant on a MapLibre map drawn from a self-hosted Protomaps
+extract: no key, and no visitor request leaves the domain. Everything it loads lives in
+`public/maps/`:
+
+| Path | Contents | Source |
+|---|---|---|
+| `sant-cugat.pmtiles` | Vector tiles for Sant Cugat, z0 to z15 | `pmtiles extract` from a daily Protomaps build |
+| `fonts/` | Noto Sans glyphs, Latin ranges only | `protomaps/basemaps-assets` |
+| `sprites/` | v4 `light` and `dark` icon sheets | `protomaps/basemaps-assets` |
+| `maplibre/` | The worker and its shared chunk (gitignored) | `scripts/copy-maplibre-worker.mjs`, run by `pnpm dev` and `pnpm build` |
+
+- **Worker.** MapLibre 6 locates its worker through `import.meta.url`, which inside a
+  Next bundle comes out as `new Worker('')`: no error, and a map that never requests a
+  tile. Emitting it as an asset does not work either, because the worker imports a sibling
+  chunk. Following MapLibre's own Turbopack recipe, both files are copied out of
+  `node_modules` and `MapCanvas` calls `setWorkerUrl`. That copy is why the map packages
+  are pinned to exact versions.
+- **Extract.** `MAP_BOUNDS` in `mapStyle.ts` is the bbox the extract was cut with; change
+  one and the other has to follow, or panning runs into bare background. To refresh the
+  street data:
+
+  ```bash
+  pmtiles extract https://build.protomaps.com/<YYYYMMDD>.pmtiles public/maps/sant-cugat.pmtiles \
+    --bbox=2.055,41.455,2.125,41.495 --maxzoom=15
+  ```
+
+  Builds are listed in `https://build-metadata.protomaps.dev/builds.json`. The current
+  extract is tile schema 4.15.2, which `@protomaps/basemaps` 5.7.2 renders; check the
+  schema still matches before swapping in a newer build.
+- **Glyphs.** Only the `0-255`, `256-511`, `512-767`, `7680-7935` and `8192-8447` ranges
+  are hosted. A character outside them has nothing to draw; add its range file if a label
+  ever needs one.
+- **Theme.** The map follows `resolvedTheme` and swaps between two flavors built from the
+  brand palette with `setStyle`, on the same map instance. Labels are Catalan in both
+  locales, matching the street signs and the address.
+- **Loading.** `LabMap` renders an empty frame and mounts the `next/dynamic` canvas only
+  once it comes within 400px of the viewport. With scripts off the frame is hidden
+  (`NOJS.hide`), leaving the address and the directions link.
 
 ### Metadata
 
