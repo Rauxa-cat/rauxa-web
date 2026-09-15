@@ -36,9 +36,11 @@ export function HeroContent({
           className,
         )}
       >
+        {/* Both grow with the bands through `md` (see HeroBands), and `lg`
+            floors at the `md` ceiling so neither shrinks at 1024px. */}
         {eyebrow && (
           <HeroFade delay={0}>
-            <p className="font-accent text-[clamp(0.85rem,1.3vw,1.3rem)] tracking-[0.35em] text-white/60">
+            <p className="font-accent text-[clamp(0.85rem,1.3vw,1.3rem)] tracking-[0.35em] text-white/60 md:text-[clamp(0.85rem,1.77vw,1.05rem)] lg:text-[clamp(1.05rem,1.3vw,1.3rem)]">
               {eyebrow}
             </p>
           </HeroFade>
@@ -48,7 +50,7 @@ export function HeroContent({
 
         {subtitle && (
           <HeroFade delay={0.5}>
-            <p className="font-accent mt-8 max-w-[34rem] text-[clamp(1rem,1.5vw,1.6rem)] leading-relaxed text-white/80">
+            <p className="font-accent mt-8 max-w-[34rem] text-[clamp(1rem,1.5vw,1.6rem)] leading-relaxed text-white/80 md:text-[clamp(1rem,2.083vw,1.24rem)] lg:text-[clamp(1.24rem,1.5vw,1.6rem)]">
               {subtitle}
             </p>
           </HeroFade>

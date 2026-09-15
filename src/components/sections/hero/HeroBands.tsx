@@ -9,14 +9,20 @@ import { HeroPunch } from './HeroPunch';
 import { useHeroHeld } from './HeroHold';
 import type { HeroBand, HeroBandVariant } from './types';
 
+// The leading is what centres the bridge between the two bands, and it stops
+// at 1.3: accented caps fall back to a serif the reveal mask cuts below ~1.15.
+// A `size: 'lg'` punch takes the leading too, so the bridge stays centred.
+// `md` opens at the mobile cap and tops out at the size `lg` opens with, so the
+// scale keeps growing through tablets instead of jumping at 1024px.
+const LEAD_TYPE =
+  'text-[clamp(2.75rem,15vw,4.5rem)] md:text-[clamp(4.5rem,9.375vw,5.57rem)] lg:text-[clamp(1.7rem,8.7vw,8.5rem)] leading-[1.3]';
+
 const bandVariant: Record<HeroBandVariant, string> = {
-  // The leading is what centres the bridge between the two bands, and it stops
-  // at 1.3: accented caps fall back to a serif the reveal mask cuts below ~1.15.
-  lead: 'text-white text-[clamp(2.75rem,15vw,4.5rem)] lg:text-[clamp(1.7rem,8.7vw,8.5rem)] leading-[1.3]',
+  lead: `text-white ${LEAD_TYPE}`,
   bridge:
-    'text-white/60 text-[clamp(1.25rem,6.81vw,2.04rem)] lg:text-[clamp(0.9rem,3.95vw,3.87rem)] leading-[0.92]',
+    'text-white/60 text-[clamp(1.25rem,6.81vw,2.04rem)] md:text-[clamp(2.04rem,4.25vw,2.53rem)] lg:text-[clamp(0.9rem,3.95vw,3.87rem)] leading-[0.92]',
   punch:
-    'text-[clamp(2.24rem,12.24vw,3.67rem)] lg:text-[clamp(1.42rem,7.1vw,6.7rem)]',
+    'text-[clamp(2.24rem,12.24vw,3.67rem)] md:text-[clamp(3.67rem,7.65vw,4.54rem)] lg:text-[clamp(1.42rem,7.1vw,6.7rem)]',
 };
 
 export function HeroBands({ bands }: { bands: HeroBand[] }) {
@@ -59,7 +65,9 @@ export function HeroBands({ bands }: { bands: HeroBand[] }) {
             {...NOJS.reset}
             className={cn(
               'block whitespace-pre-line',
-              bandVariant[band.variant],
+              band.variant === 'punch' && band.size === 'lg'
+                ? LEAD_TYPE
+                : bandVariant[band.variant],
             )}
             initial={{ opacity: 0, y: '110%' }}
             animate={held ? { opacity: 0, y: '110%' } : { opacity: 1, y: 0 }}

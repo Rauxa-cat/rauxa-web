@@ -21,10 +21,11 @@ export type HeroCTA = HeroCTAExternal | HeroCTAInternal;
 // Nothing is ever inserted between them.
 export type HeroBandVariant = 'lead' | 'bridge' | 'punch';
 
-export interface HeroBand {
-  text: string;
-  variant: HeroBandVariant;
-}
+// `size: 'lg'` sets the punch at the lead's size. Only for a punch short enough
+// to hold it, such as a name: a long one wraps.
+export type HeroBand =
+  | { text: string; variant: Exclude<HeroBandVariant, 'punch'> }
+  | { text: string; variant: 'punch'; size?: 'lg' };
 
 export interface HeroSectionProps {
   backgroundImage?: string;
