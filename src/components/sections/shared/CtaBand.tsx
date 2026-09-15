@@ -1,13 +1,9 @@
 import { getTranslations } from 'next-intl/server';
-import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 import { CONTACT } from '@/components/sections/contact/contact.constants';
-import { SERVICES } from '@/lib/content/services';
 import { CtaBackdrop } from './CtaBackdrop';
 import { MaskReveal } from '@/components/motion/MaskReveal';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
-
-const waitlistUrl =
-  SERVICES.find((s) => s.id === 'cenas-rauxa')?.formUrl ?? '#';
 
 export async function CtaBand() {
   const t = await getTranslations('cta');
@@ -30,24 +26,15 @@ export async function CtaBand() {
             {t('subtitle')}
           </p>
 
-          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-7">
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="font-accent text-[clamp(1.1rem,1.6vw,1.4rem)] tracking-[0.2em] text-white uppercase"
-            >
-              {CONTACT.email}
-            </a>
-            <Button
-              asChild
-              size="lg"
-              className="group h-14 rounded-none bg-[var(--rauxa-black)] px-8 font-semibold tracking-wide text-white hover:bg-[var(--rauxa-black)]"
-            >
-              <a href={waitlistUrl} target="_blank" rel="noopener noreferrer">
-                {t('button')}
-                <ArrowIcon animate className="ml-3" />
-              </a>
-            </Button>
-          </div>
+          {/* The address stays as the label, but it leads to the contact page:
+              a mailto is a dead click for anyone without a mail client set up. */}
+          <Link
+            href="/contact"
+            className="group font-accent inline-flex w-fit items-center gap-3 text-[clamp(1.1rem,1.6vw,1.4rem)] tracking-[0.2em] text-white uppercase"
+          >
+            {CONTACT.email}
+            <ArrowIcon animate />
+          </Link>
         </div>
       </div>
     </section>
