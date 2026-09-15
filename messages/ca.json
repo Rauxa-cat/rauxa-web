@@ -13,6 +13,12 @@
       "ogTitle": "RAUXA — Serveis",
       "ogDescription": "Show de les postres, col·laboracions, organització d'esdeveniments i càtering."
     },
+    "lab": {
+      "title": "RAUXA LAB · Restaurant a Sant Cugat",
+      "description": "RAUXA LAB és el restaurant i laboratori creatiu de RAUXA a Sant Cugat del Vallès: tapes d'autor i vins naturals on gastronomia, música i art conviuen.",
+      "ogTitle": "RAUXA LAB · Restaurant a Sant Cugat",
+      "ogDescription": "Tapes d'autor i vins naturals a Sant Cugat del Vallès."
+    },
     "team": {
       "title": "Equip",
       "description": "L'equip darrere de Rauxa: persones unides per la gastronomia, la cultura i la creació d'experiències úniques.",
@@ -43,6 +49,7 @@
   "nav": {
     "/": "Inici",
     "/services": "Serveis",
+    "/rauxa-lab": "RAUXA LAB",
     "/team": "Equip",
     "/contact": "Contacte"
   },
@@ -92,6 +99,12 @@
       "p2": "No som un càtering tradicional: dissenyem el concepte complet (gastronomia, música i art) perquè cada esdeveniment se senti únic.",
       "cta": "Descobreix els nostres serveis"
     },
+    "lab": {
+      "eyebrow": "EL NOSTRE RESTAURANT",
+      "title": "RAUXA LAB",
+      "subtitle": "Tapes d'autor i vins naturals a Sant Cugat del Vallès.",
+      "cta": "Descobrir RAUXA LAB"
+    },
     "gallery": {
       "eyebrow": "GALERIA",
       "title": "Així viu",
@@ -113,7 +126,7 @@
       "title": "Tria la teva",
       "titleHighlight": "experiència",
       "description": "Escriu-nos i et proposem la millor opció.",
-      "cta": "Contacta amb RAUXA"
+      "cta": "Contactar"
     },
     "items": {
       "show-del-postre": {
@@ -136,6 +149,34 @@
         "tagline": "RAUXA on tu vulguis.",
         "desc": "Propostes gastronòmiques personalitzades per a esdeveniments privats, corporatius i celebracions."
       }
+    }
+  },
+  "lab": {
+    "hero": {
+      "eyebrow": "RESTAURANT · LABORATORI CREATIU",
+      "bandLead": "MENJAR, BEURE",
+      "bandBridge": "i experimentar a",
+      "bandPunch": "RAUXA LAB",
+      "subtitle": "Tapes d'autor i vins naturals a Sant Cugat del Vallès."
+    },
+    "intro": {
+      "eyebrow": "QUÈ ÉS RAUXA LAB",
+      "text": "RAUXA LAB és el nostre restaurant i laboratori creatiu a Sant Cugat del Vallès. Una proposta de tapes d'autor i vins naturals on <em>gastronomia, música, art i comunitat</em> conviuen sota un mateix sostre."
+    },
+    "location": {
+      "eyebrow": "UBICACIÓ",
+      "title": "Ens veiem a",
+      "titleHighlight": "Sant Cugat",
+      "directions": "Com arribar-hi"
+    },
+    "map": {
+      "title": "Mapa amb la ubicació de RAUXA LAB",
+      "zoomIn": "Apropar",
+      "zoomOut": "Allunyar",
+      "attribution": "Mostrar l'atribució",
+      "gesturesWindows": "Fes servir Ctrl + roda per fer zoom al mapa",
+      "gesturesMac": "Fes servir ⌘ + roda per fer zoom al mapa",
+      "gesturesMobile": "Fes servir dos dits per moure el mapa"
     }
   },
   "team": {
