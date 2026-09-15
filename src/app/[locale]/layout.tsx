@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import { SiteHeader } from '@/components/site/Header';
 import { Footer } from '@/components/site/footer/Footer';
 import { MotionProvider } from '@/components/motion/MotionProvider';
+import { ServiceRequestProvider } from '@/components/service-request/ServiceRequestProvider';
 import { Toaster } from 'sonner';
 import { getTranslations } from 'next-intl/server';
 
@@ -74,9 +75,11 @@ export default async function Layout({
     <>
       <NextIntlClientProvider locale={locale}>
         <MotionProvider>
-          <SiteHeader />
-          <main> {children} </main>
-          <Footer />
+          <ServiceRequestProvider>
+            <SiteHeader />
+            <main> {children} </main>
+            <Footer />
+          </ServiceRequestProvider>
           <Toaster position="top-right" richColors />
         </MotionProvider>
       </NextIntlClientProvider>

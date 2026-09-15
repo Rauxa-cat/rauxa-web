@@ -41,8 +41,8 @@ export default async function PrivacyPage() {
               {t('dataCollected.contact.content')}
             </li>
             <li>
-              <strong>{t('dataCollected.typeform.title')}:</strong>{' '}
-              {t('dataCollected.typeform.content')}
+              <strong>{t('dataCollected.serviceRequest.title')}:</strong>{' '}
+              {t('dataCollected.serviceRequest.content')}
             </li>
           </ul>
         </LegalSection>
@@ -76,7 +76,7 @@ export default async function PrivacyPage() {
           </p>
           <ul className="space-y-2 text-muted-foreground list-disc list-inside">
             <li>
-              <strong>Typeform:</strong> {t('recipients.typeform')}
+              <strong>Brevo:</strong> {t('recipients.brevo')}
             </li>
             <li>
               <strong>Vercel:</strong> {t('recipients.vercel')}

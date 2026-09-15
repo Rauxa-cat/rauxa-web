@@ -9,9 +9,9 @@
     },
     "services": {
       "title": "Serveis",
-      "description": "RAUXA crea sopars privats, experiències gastronòmiques, càtering, esdeveniments culturals, serveis de DJ i col·laboracions amb marques. Propostes úniques on gastronomia, música i art es troben.",
+      "description": "RAUXA crea shows de postres, col·laboracions gastronòmiques, organització d'esdeveniments i càtering. Propostes úniques on gastronomia, música i art es troben.",
       "ogTitle": "RAUXA — Serveis",
-      "ogDescription": "Sopars privats, experiències gastronòmiques, càtering, esdeveniments culturals, DJs i col·laboracions amb marques."
+      "ogDescription": "Show de les postres, col·laboracions, organització d'esdeveniments i càtering."
     },
     "team": {
       "title": "Equip",
@@ -77,12 +77,11 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "COMUNITAT GASTRONÒMICA I CULTURAL",
-      "bandLead": "EXPERIÈNCIES",
-      "bandBridge": "que es viuen,",
-      "bandPunch": "NO S'EXPLIQUEN",
+      "bandLead": "COMUNITAT",
+      "bandBridge": "gastronòmica i",
+      "bandPunch": "CULTURAL",
       "subtitle": "Gastronomia, música i art convergeixen en moments dissenyats per emocionar.",
-      "ctaPrimary": "Uneix-te a la llista d'espera",
+      "ctaPrimary": "RESERVAR",
       "ctaSecondary": "SERVEIS"
     },
     "whatIsRauxa": {
@@ -117,29 +116,25 @@
       "cta": "Contacta amb RAUXA"
     },
     "items": {
-      "cenas-rauxa": {
-        "title": "Sopars RAUXA",
-        "desc": "Sopars privats on s'uneixen gastronomia, música i art. Accés exclusiu per a la comunitat oficial."
+      "show-del-postre": {
+        "title": "Show de les postres",
+        "tagline": "Convertim les postres en un espectacle.",
+        "desc": "Gastronomia, música, ball i art en shows creats a mida per a cada ocasió."
       },
-      "cenas-privadas": {
-        "title": "Sopars privats",
-        "desc": "Explica'ns què tens al cap i ho fem realitat. Experiències a mida per a la teva ocasió."
+      "colaboraciones": {
+        "title": "Col·laboracions",
+        "tagline": "Creem coses junts.",
+        "desc": "Experiències i projectes gastronòmics desenvolupats amb marques, artistes i projectes amb qui compartim visió."
       },
       "eventos": {
         "title": "Organització d'esdeveniments",
-        "desc": "Esdeveniments complets: gastronomia, música, DJ, animació i espais. Ens n'encarreguem de tot."
+        "tagline": "Dissenyem experiències de principi a fi.",
+        "desc": "Gastronomia, música, art i producció sota un mateix concepte, adaptat a cada ocasió."
       },
       "catering": {
         "title": "Càtering",
-        "desc": "Només menjar. Preparem i entreguem el càtering llest per servir, sense producció addicional."
-      },
-      "dj": {
-        "title": "Serveis de DJ",
-        "desc": "Sessions adaptades a cada esdeveniment. Trobem el DJ i l'estil que encaixi amb el teu vibe."
-      },
-      "marcas": {
-        "title": "Col·laboracions amb marques",
-        "desc": "Pop-ups, esdeveniments, shootings i llançaments. Propostes alineades amb identitat i objectius."
+        "tagline": "RAUXA on tu vulguis.",
+        "desc": "Propostes gastronòmiques personalitzades per a esdeveniments privats, corporatius i celebracions."
       }
     }
   },
@@ -171,8 +166,7 @@
   "cta": {
     "eyebrow": "CONTACTE",
     "title": "Parlem",
-    "subtitle": "Tens un projecte en ment? Vols unir-te a la comunitat?",
-    "button": "Uneix-te a la llista d'espera"
+    "subtitle": "Tens un projecte en ment? Vols unir-te a la comunitat?"
   },
   "contact": {
     "info": {
@@ -214,6 +208,9 @@
           "tooShort": "Missatge massa curt",
           "tooLong": "Missatge massa llarg"
         },
+        "service": {
+          "required": "Tria un servei"
+        },
         "acceptPrivacy": "Has d'acceptar la política de privacitat"
       },
       "api": {
@@ -223,9 +220,21 @@
           "misconfigured": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
           "unknown": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
           "success": "Missatge enviat!"
+        },
+        "serviceRequest": {
+          "success": "Sol·licitud enviada!"
         }
       }
     }
+  },
+  "serviceRequest": {
+    "eyebrow": "SOL·LICITUD",
+    "title": "Parlem de",
+    "titleHighlight": "la teva idea",
+    "description": "Deixa'ns les teves dades i t'escrivim per donar-li forma.",
+    "service": "Servei",
+    "message": "Explica'ns què tens al cap: data, nombre de persones, lloc…",
+    "close": "Tancar"
   },
   "company": {
     "name": "Titular",
@@ -251,9 +260,9 @@
         "title": "Formulari de contacte",
         "content": "Nom, correu electrònic i missatge. Aquestes dades s'envien directament a info@rauxa.cat i s'utilitzen únicament per respondre a la seva consulta."
       },
-      "typeform": {
-        "title": "Formularis de serveis (Typeform)",
-        "content": "Les dades sol·licitades als formularis de serveis es gestionen a través de Typeform i s'utilitzen per processar la seva sol·licitud d'informació o servei."
+      "serviceRequest": {
+        "title": "Formulari de sol·licitud de serveis",
+        "content": "Nom, correu electrònic, telèfon (opcional), servei d'interès i missatge. Aquestes dades s'envien a info@rauxa.cat i s'utilitzen únicament per gestionar la seva sol·licitud."
       }
     },
     "purpose": {
@@ -274,7 +283,7 @@
     "recipients": {
       "title": "Destinataris de les dades",
       "intro": "Les seves dades poden ser comunicades als següents destinataris:",
-      "typeform": "Plataforma utilitzada per a la gestió de formularis de serveis. Typeform compleix amb el RGPD i compta amb mesures de seguretat adequades.",
+      "brevo": "Proveïdor d'enviament de correu electrònic a través del qual els missatges dels formularis arriben a info@rauxa.cat. Brevo compleix amb el RGPD i compta amb mesures de seguretat adequades.",
       "vercel": "Proveïdor d'hosting i analytics. Vercel Analytics no utilitza cookies ni emmagatzema dades personals identificables."
     },
     "rights": {
@@ -300,7 +309,7 @@
       "title": "Modificacions",
       "content": "Ens reservem el dret a modificar aquesta Política de Privacitat per adaptar-la a canvis legislatius o en els nostres serveis. Li recomanem revisar aquesta pàgina periòdicament."
     },
-    "lastUpdated": "Última actualització: 3 de març de 2026"
+    "lastUpdated": "Última actualització: 15 de setembre de 2026"
   },
   "cookies": {
     "title": "Política de Cookies",

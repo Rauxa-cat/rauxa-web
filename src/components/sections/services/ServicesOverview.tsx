@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { SERVICES } from '@/lib/content/services';
+import { SERVICE_IDS } from '@/lib/content/services';
 import { SectionHeader } from '../shared/SectionHeader';
 import { SectionShell } from '../shared/SectionShell';
 import { RevealList } from '@/components/motion/Reveal';
@@ -26,14 +26,15 @@ export async function ServicesOverview() {
       />
 
       <RevealList className="border-t border-foreground/15">
-        {SERVICES.map((service, i) => (
+        {SERVICE_IDS.map((service, i) => (
           <ServiceRow
-            key={service.id}
+            key={service}
             index={String(i + 1).padStart(2, '0')}
-            title={tItems(`${service.id}.title`)}
-            description={tItems(`${service.id}.desc`)}
+            service={service}
+            title={tItems(`${service}.title`)}
+            tagline={tItems(`${service}.tagline`)}
+            description={tItems(`${service}.desc`)}
             ctaLabel={t('cta')}
-            href={service.formUrl}
           />
         ))}
       </RevealList>

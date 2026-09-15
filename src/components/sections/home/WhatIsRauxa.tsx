@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
-import { SERVICES } from '@/lib/content/services';
+import { SERVICE_IDS } from '@/lib/content/services';
+import { ServiceRequestTrigger } from '@/components/service-request/ServiceRequestTrigger';
 import { SectionHeader } from '../shared/SectionHeader';
 import { SectionShell } from '../shared/SectionShell';
 import { ActiveBar } from '../shared/ActiveBar';
@@ -35,16 +36,14 @@ export async function WhatIsRauxa() {
       />
 
       <RevealList className="mt-16 border-t border-foreground/15 md:mt-20">
-        {SERVICES.map((service, i) => (
-          <RevealItem key={service.id}>
-            <a
-              href={service.formUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+        {SERVICE_IDS.map((service, i) => (
+          <RevealItem key={service}>
+            <ServiceRequestTrigger
+              service={service}
               className="group relative block border-b border-foreground/15"
             >
               <span
-                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100 [background:linear-gradient(90deg,--alpha(var(--color-primary)/16%)_0%,--alpha(var(--color-primary)/2%)_62%,transparent_100%)]"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 [background:linear-gradient(90deg,--alpha(var(--color-primary)/16%)_0%,--alpha(var(--color-primary)/2%)_62%,transparent_100%)]"
                 aria-hidden
               />
               <div className="relative mx-auto flex max-w-page items-center gap-4 px-6 py-6 transition-[min-height] duration-300 md:min-h-30 md:gap-8 md:py-0 md:group-hover:min-h-40">
@@ -55,25 +54,30 @@ export async function WhatIsRauxa() {
                       {String(i + 1).padStart(2, '0')}
                     </RowIndex>
                     <h3 className="min-w-0 flex-1 font-normal leading-none text-foreground text-[clamp(1.75rem,4.5vw,3.25rem)] transition-colors duration-300 group-hover:text-primary group-hover:[text-shadow:0_0_60px_--alpha(var(--color-primary)/50%)]">
-                      {tItems(`${service.id}.title`)}
+                      {tItems(`${service}.title`)}
                     </h3>
                   </div>
-                  <p className="text-sm leading-[1.72] text-foreground/60 transition-colors duration-300 group-hover:text-foreground/80 md:w-90 md:shrink-0">
-                    {tItems(`${service.id}.desc`)}
-                  </p>
+                  <div className="text-sm leading-[1.72] md:w-90 md:shrink-0">
+                    <p className="font-medium text-foreground/85">
+                      {tItems(`${service}.tagline`)}
+                    </p>
+                    <p className="text-foreground/60 transition-colors duration-300 group-hover:text-foreground/80">
+                      {tItems(`${service}.desc`)}
+                    </p>
+                  </div>
                 </div>
                 <ArrowIcon
                   animate
                   className="shrink-0 text-right text-2xl text-foreground/45 transition-all duration-300 group-hover:text-blue-ink md:w-12"
                 />
               </div>
-            </a>
+            </ServiceRequestTrigger>
           </RevealItem>
         ))}
       </RevealList>
 
       {/* The only route from the home page into /services: every row above
-          leaves the site for its booking form. */}
+          opens the request dialog instead. */}
       <FadeIn className="mx-auto mt-14 max-w-page px-6">
         <Button
           asChild

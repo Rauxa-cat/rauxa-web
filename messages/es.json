@@ -9,9 +9,9 @@
     },
     "services": {
       "title": "Servicios",
-      "description": "RAUXA crea cenas privadas, experiencias gastronómicas, catering, eventos culturales, servicios de DJ y colaboraciones con marcas. Propuestas únicas donde gastronomía, música y arte se encuentran.",
+      "description": "RAUXA crea shows del postre, colaboraciones gastronómicas, organización de eventos y catering. Propuestas únicas donde gastronomía, música y arte se encuentran.",
       "ogTitle": "Servicios — RAUXA",
-      "ogDescription": "Cenas privadas, experiencias gastronómicas, catering, eventos culturales, DJs y colaboraciones con marcas."
+      "ogDescription": "Show del postre, colaboraciones, organización de eventos y catering."
     },
     "team": {
       "title": "Equipo",
@@ -77,12 +77,11 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "COMUNIDAD GASTRONÓMICA Y CULTURAL",
-      "bandLead": "EXPERIENCIAS",
-      "bandBridge": "que se viven,",
-      "bandPunch": "NO SE EXPLICAN",
+      "bandLead": "COMUNIDAD",
+      "bandBridge": "gastronómica y",
+      "bandPunch": "CULTURAL",
       "subtitle": "Gastronomía, música y arte convergen en momentos diseñados para emocionar.",
-      "ctaPrimary": "Únete a la lista de espera",
+      "ctaPrimary": "RESERVAR",
       "ctaSecondary": "SERVICIOS"
     },
     "whatIsRauxa": {
@@ -117,29 +116,25 @@
       "cta": "Contacta con RAUXA"
     },
     "items": {
-      "cenas-rauxa": {
-        "title": "Cenas RAUXA",
-        "desc": "Cenas privadas donde se unen gastronomía, música y arte. Acceso exclusivo para la comunidad oficial."
+      "show-del-postre": {
+        "title": "Show del postre",
+        "tagline": "Convertimos el postre en un espectáculo.",
+        "desc": "Gastronomía, música, baile y arte en shows creados a medida para cada ocasión."
       },
-      "cenas-privadas": {
-        "title": "Cenas privadas",
-        "desc": "Cuéntanos qué tienes en mente y lo hacemos realidad. Experiencias a medida para tu ocasión."
+      "colaboraciones": {
+        "title": "Colaboraciones",
+        "tagline": "Creamos cosas juntos.",
+        "desc": "Experiencias y proyectos gastronómicos desarrollados junto a marcas, artistas y proyectos con los que compartimos visión."
       },
       "eventos": {
         "title": "Organización de eventos",
-        "desc": "Eventos completos: gastronomía, música, DJs, animación y espacios. Nos encargamos de todo."
+        "tagline": "Diseñamos experiencias de principio a fin.",
+        "desc": "Gastronomía, música, arte y producción bajo un mismo concepto, adaptado a cada ocasión."
       },
       "catering": {
         "title": "Catering",
-        "desc": "Solo comida. Preparamos y entregamos el catering listo para servir, sin producción adicional."
-      },
-      "dj": {
-        "title": "Servicios de DJ",
-        "desc": "Sesiones adaptadas a cada evento. Encontramos el DJ y el estilo que encaje con tu vibe."
-      },
-      "marcas": {
-        "title": "Colaboraciones con marcas",
-        "desc": "Pop-ups, eventos, shootings y lanzamientos. Propuestas alineadas con identidad y objetivos."
+        "tagline": "RAUXA donde tú quieras.",
+        "desc": "Propuestas gastronómicas personalizadas para eventos privados, corporativos y celebraciones."
       }
     }
   },
@@ -171,8 +166,7 @@
   "cta": {
     "eyebrow": "CONTACTO",
     "title": "Hablemos",
-    "subtitle": "¿Tienes un proyecto en mente? ¿Quieres unirte a la comunidad?",
-    "button": "Únete a la lista de espera"
+    "subtitle": "¿Tienes un proyecto en mente? ¿Quieres unirte a la comunidad?"
   },
   "contact": {
     "info": {
@@ -214,6 +208,9 @@
           "tooShort": "Mensaje demasiado corto",
           "tooLong": "Mensaje demasiado largo"
         },
+        "service": {
+          "required": "Elige un servicio"
+        },
         "acceptPrivacy": "Debes aceptar la política de privacidad"
       },
       "api": {
@@ -223,9 +220,21 @@
           "misconfigured": "No se pudo enviar el mensaje. Inténtalo más tarde.",
           "unknown": "No se pudo enviar el mensaje. Inténtalo más tarde.",
           "success": "¡Mensaje enviado!"
+        },
+        "serviceRequest": {
+          "success": "¡Solicitud enviada!"
         }
       }
     }
+  },
+  "serviceRequest": {
+    "eyebrow": "SOLICITUD",
+    "title": "Hablemos de",
+    "titleHighlight": "tu idea",
+    "description": "Déjanos tus datos y te escribimos para darle forma.",
+    "service": "Servicio",
+    "message": "Cuéntanos qué tienes en mente: fecha, número de personas, lugar…",
+    "close": "Cerrar"
   },
   "company": {
     "name": "Titular",
@@ -251,9 +260,9 @@
         "title": "Formulario de contacto",
         "content": "Nombre, correo electrónico y mensaje. Estos datos se envían directamente a info@rauxa.cat y se utilizan únicamente para responder a su consulta."
       },
-      "typeform": {
-        "title": "Formularios de servicios (Typeform)",
-        "content": "Los datos solicitados en los formularios de servicios se gestionan a través de Typeform y se utilizan para procesar su solicitud de información o servicio."
+      "serviceRequest": {
+        "title": "Formulario de solicitud de servicios",
+        "content": "Nombre, correo electrónico, teléfono (opcional), servicio de interés y mensaje. Estos datos se envían a info@rauxa.cat y se utilizan únicamente para gestionar su solicitud."
       }
     },
     "purpose": {
@@ -274,7 +283,7 @@
     "recipients": {
       "title": "Destinatarios de los datos",
       "intro": "Sus datos pueden ser comunicados a los siguientes destinatarios:",
-      "typeform": "Plataforma utilizada para la gestión de formularios de servicios. Typeform cumple con el RGPD y cuenta con medidas de seguridad adecuadas.",
+      "brevo": "Proveedor de envío de correo electrónico a través del cual los mensajes de los formularios llegan a info@rauxa.cat. Brevo cumple con el RGPD y cuenta con medidas de seguridad adecuadas.",
       "vercel": "Proveedor de hosting y analytics. Vercel Analytics no utiliza cookies ni almacena datos personales identificables."
     },
     "rights": {
@@ -300,7 +309,7 @@
       "title": "Modificaciones",
       "content": "Nos reservamos el derecho a modificar esta Política de Privacidad para adaptarla a cambios legislativos o en nuestros servicios. Le recomendamos revisar esta página periódicamente."
     },
-    "lastUpdated": "Última actualización: 3 de marzo de 2026"
+    "lastUpdated": "Última actualización: 15 de septiembre de 2026"
   },
   "cookies": {
     "title": "Política de Cookies",
