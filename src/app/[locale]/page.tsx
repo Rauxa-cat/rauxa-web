@@ -7,9 +7,7 @@ import { ServicesTicker } from '@/components/site/ServicesTicker';
 import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
-
-// Placeholder until the CoverManager booking integration lands.
-const BOOKING_URL = '#';
+import { LAB } from '@/lib/content/lab';
 
 export async function generateMetadata({
   params,
@@ -33,9 +31,8 @@ export default async function HomePage() {
         ctas={[
           {
             label: t('hero.ctaPrimary'),
-            href: BOOKING_URL,
+            href: { pathname: '/rauxa-lab', hash: LAB.anchors.booking },
             withArrow: true,
-            external: true,
           },
           {
             label: t('hero.ctaSecondary'),
