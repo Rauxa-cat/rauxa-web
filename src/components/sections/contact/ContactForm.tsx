@@ -2,15 +2,18 @@
 
 import { useForm, useWatch, type SubmitHandler } from 'react-hook-form';
 import { m } from 'motion/react';
+import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from '@/i18n/navigation';
 
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowIcon } from '@/components/icons/ArrowIcon';
-import { StaggerItem, staggerContainer } from '@/components/motion/Stagger';
+import {
+  FormField,
+  Honeypot,
+  PrivacyConsent,
+  SubmitButton,
+} from '@/components/forms/FormFields';
+import { staggerContainer } from '@/components/motion/Stagger';
 import { EASE, NOJS } from '@/lib/motion';
 
 import { contactSchema } from '@/lib/validation/contact.schema';
@@ -63,7 +66,12 @@ export function ContactForm() {
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (values) => {
     const result = await submit(values);
-    if (result.ok) reset();
+    if (!result.ok) {
+      toast.error(result.message);
+      return;
+    }
+    toast.success(t('api.contact.success'));
+    reset();
   };
 
   const acceptPrivacy = useWatch({ control, name: 'acceptPrivacy' });
@@ -88,13 +96,7 @@ export function ContactForm() {
         whileInView="show"
         viewport={VIEWPORT}
       >
-        <input
-          tabIndex={-1}
-          autoComplete="off"
-          className="hidden"
-          aria-hidden="true"
-          {...register('company')}
-        />
+        <Honeypot {...register('company')} />
 
         <m.div
           className="grid gap-5 md:grid-cols-2"
@@ -104,7 +106,7 @@ export function ContactForm() {
             const label = t(`placeholders.${f.name}`);
             const error = errorText(errors[f.name]?.message);
             return (
-              <Field key={f.name} id={f.name} error={error}>
+              <FormField key={f.name} id={f.name} error={error}>
                 <Input
                   id={f.name}
                   type={f.type}
@@ -115,12 +117,12 @@ export function ContactForm() {
                   className="h-11"
                   {...register(f.name)}
                 />
-              </Field>
+              </FormField>
             );
           })}
         </m.div>
 
-        <Field id="message" error={errorText(errors.message?.message)}>
+        <FormField id="message" error={errorText(errors.message?.message)}>
           <Textarea
             id="message"
             placeholder={t('placeholders.message')}
@@ -130,79 +132,19 @@ export function ContactForm() {
             className="min-h-52"
             {...register('message')}
           />
-        </Field>
+        </FormField>
 
-        <Field
+        <PrivacyConsent
           id="acceptPrivacy"
+          checked={acceptPrivacy}
           error={errorText(errors.acceptPrivacy?.message)}
-        >
-          <div className="flex items-center gap-2.5">
-            <Checkbox
-              id="acceptPrivacy"
-              checked={acceptPrivacy}
-              aria-describedby={
-                errors.acceptPrivacy ? 'acceptPrivacy-error' : undefined
-              }
-              onCheckedChange={(checked) =>
-                setValue('acceptPrivacy', checked === true, {
-                  shouldValidate: true,
-                })
-              }
-            />
-            <label
-              htmlFor="acceptPrivacy"
-              className="cursor-pointer text-sm leading-relaxed"
-            >
-              {t('privacy.accept')}{' '}
-              <Link
-                href="/privacy"
-                className="text-blue-ink underline underline-offset-4 hover:opacity-80"
-                target="_blank"
-              >
-                {t('privacy.link')}
-              </Link>
-            </label>
-          </div>
-        </Field>
+          onCheckedChange={(checked) =>
+            setValue('acceptPrivacy', checked, { shouldValidate: true })
+          }
+        />
 
-        <StaggerItem>
-          <Button
-            type="submit"
-            size="lg"
-            disabled={isSubmitting}
-            className="group h-14.5 w-full rounded-none tracking-[0.14em] shadow-[0_20px_50px_-18px_--alpha(var(--color-primary)/90%)] motion-reduce:transition-none"
-          >
-            {isSubmitting ? (
-              t('buttons.sending')
-            ) : (
-              <>
-                {t('buttons.send')} <ArrowIcon animate className="ml-2" />
-              </>
-            )}
-          </Button>
-        </StaggerItem>
+        <SubmitButton pending={isSubmitting} />
       </m.form>
     </m.div>
-  );
-}
-
-function Field({
-  id,
-  children,
-  error,
-}: {
-  id: string;
-  children: React.ReactNode;
-  error?: string;
-}) {
-  return (
-    <StaggerItem className="space-y-1.5">
-      {children}
-      {error && (
-        <p id={`${id}-error`} role="alert" className="text-sm text-destructive">
-          {error}
-        </p>
-      )}
-    </StaggerItem>
   );
 }
