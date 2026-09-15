@@ -1,28 +1,22 @@
-'use client';
-
-import { Link } from '@/i18n/navigation';
-import { Button } from '@/components/ui/button';
-import { SERVICES } from '@/lib/content/services';
-import { useTranslations } from 'next-intl';
-import { SectionShell } from '@/components/sections/shared/SectionShell';
-import { SectionHeader } from '@/components/sections/shared/SectionHeader';
+import { getTranslations } from 'next-intl/server';
+import { SERVICE_IDS } from '@/lib/content/services';
+import { SectionHeader } from '../shared/SectionHeader';
+import { SectionShell } from '../shared/SectionShell';
+import { ServiceRow } from '../shared/ServiceRow';
+import { RevealList, FadeIn } from '@/components/motion/Reveal';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
-import { ServicesList } from '../services/ServicesList';
+import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 
-export function WhatIsRauxa() {
-  const t = useTranslations('home.whatIsRauxa');
-  const tItems = useTranslations('services.items');
-  const featured = SERVICES.filter((s) => s.featured).slice(0, 3);
-
-  const services = featured.map((item) => ({
-    id: item.id,
-    title: tItems(`${item.id}.title`),
-    desc: tItems(`${item.id}.desc`),
-  }));
+export async function WhatIsRauxa() {
+  const t = await getTranslations('home.whatIsRauxa');
 
   return (
     <SectionShell>
       <SectionHeader
+        className="mx-auto max-w-page px-6"
+        hairline
+        size="lg"
         eyebrow={t('eyebrow')}
         title={
           <>
@@ -38,16 +32,27 @@ export function WhatIsRauxa() {
         }
       />
 
-      <ServicesList services={services} />
+      <RevealList className="mt-16 border-t border-foreground/15 md:mt-20">
+        {SERVICE_IDS.map((service, i) => (
+          <ServiceRow key={service} service={service} position={i} />
+        ))}
+      </RevealList>
 
-      <div className="view-animate mt-12 flex justify-start">
-        <Button asChild size="lg" variant="outline">
+      {/* The only route from the home page into /services: every row above
+          opens the request dialog instead. */}
+      <FadeIn className="mx-auto mt-14 max-w-page px-6">
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="group h-13 rounded-none px-7 tracking-wider"
+        >
           <Link href="/services">
-            <p>{t('cta')}</p>
-            <ArrowIcon />
+            {t('cta')}
+            <ArrowIcon animate className="ml-1" />
           </Link>
         </Button>
-      </div>
+      </FadeIn>
     </SectionShell>
   );
 }

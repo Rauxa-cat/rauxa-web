@@ -4,6 +4,7 @@ import { generatePageMetadata, PageProps } from '@/lib/metadata';
 import { LegalHeader } from '@/components/sections/shared/LegalHeader';
 import { LegalSection } from '@/components/sections/shared/LegalSection';
 import { CompanyInfo } from '@/components/sections/shared/CompanyInfo';
+import { COVERMANAGER } from '@/lib/content/lab';
 
 export async function generateMetadata({
   params,
@@ -41,8 +42,12 @@ export default async function PrivacyPage() {
               {t('dataCollected.contact.content')}
             </li>
             <li>
-              <strong>{t('dataCollected.typeform.title')}:</strong>{' '}
-              {t('dataCollected.typeform.content')}
+              <strong>{t('dataCollected.serviceRequest.title')}:</strong>{' '}
+              {t('dataCollected.serviceRequest.content')}
+            </li>
+            <li>
+              <strong>{t('dataCollected.booking.title')}:</strong>{' '}
+              {t('dataCollected.booking.content')}
             </li>
           </ul>
         </LegalSection>
@@ -55,6 +60,7 @@ export default async function PrivacyPage() {
             <li>{t('purpose.point1')}</li>
             <li>{t('purpose.point2')}</li>
             <li>{t('purpose.point3')}</li>
+            <li>{t('purpose.point4')}</li>
           </ul>
         </LegalSection>
 
@@ -76,10 +82,25 @@ export default async function PrivacyPage() {
           </p>
           <ul className="space-y-2 text-muted-foreground list-disc list-inside">
             <li>
-              <strong>Typeform:</strong> {t('recipients.typeform')}
+              <strong>Brevo:</strong> {t('recipients.brevo')}
             </li>
             <li>
               <strong>Vercel:</strong> {t('recipients.vercel')}
+            </li>
+            <li>
+              <strong>CoverManager:</strong>{' '}
+              {t.rich('recipients.coverManager', {
+                link: (chunks) => (
+                  <a
+                    href={COVERMANAGER.privacyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline underline-offset-4"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
             </li>
           </ul>
         </LegalSection>

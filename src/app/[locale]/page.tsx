@@ -1,9 +1,13 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { WhatIsRauxa } from '@/components/sections/home/WhatIsRauxa';
+import { LabTeaser } from '@/components/sections/home/LabTeaser';
 import { GallerySection } from '@/components/sections/home/GallerySection';
+import { ServicesTicker } from '@/components/site/ServicesTicker';
+import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
+import { LAB } from '@/lib/content/lab';
 
 export async function generateMetadata({
   params,
@@ -18,16 +22,17 @@ export default async function HomePage() {
     <>
       <HeroSection
         backgroundImage="/images/rauxa-hero-bg-v2.webp"
-        eyebrow={t('hero.eyebrow')}
-        title={t('hero.title')}
-        highlightedTitle={t('hero.highlightedTitle')}
+        bands={[
+          { variant: 'lead', text: t('hero.bandLead') },
+          { variant: 'bridge', text: t('hero.bandBridge') },
+          { variant: 'punch', text: t('hero.bandPunch') },
+        ]}
         subtitle={t('hero.subtitle')}
         ctas={[
           {
             label: t('hero.ctaPrimary'),
-            href: 'https://form.typeform.com/to/nMlilHvx',
+            href: { pathname: '/rauxa-lab', hash: LAB.anchors.booking },
             withArrow: true,
-            external: true,
           },
           {
             label: t('hero.ctaSecondary'),
@@ -36,8 +41,11 @@ export default async function HomePage() {
           },
         ]}
       />
+      <ServicesTicker />
       <WhatIsRauxa />
+      <LabTeaser />
       <GallerySection />
+      <CtaBand />
     </>
   );
 }

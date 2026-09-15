@@ -1,12 +1,20 @@
 'use client';
 
-import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useForm, useWatch, type SubmitHandler } from 'react-hook-form';
+import { m } from 'motion/react';
+import { toast } from 'sonner';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from '@/i18n/navigation';
 
-import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import {
+  FormField,
+  Honeypot,
+  PrivacyConsent,
+  SubmitButton,
+} from '@/components/forms/FormFields';
+import { staggerContainer } from '@/components/motion/Stagger';
+import { EASE, NOJS } from '@/lib/motion';
 
 import { contactSchema } from '@/lib/validation/contact.schema';
 import {
@@ -14,7 +22,17 @@ import {
   type ContactFormValues,
 } from '@/hooks/useContactSubmit';
 import { useTranslations } from 'next-intl';
-import { Checkbox } from '@/components/ui/checkbox';
+
+const SHORT_FIELDS = [
+  { name: 'name', type: 'text' },
+  { name: 'email', type: 'email' },
+  { name: 'phone', type: 'tel' },
+  { name: 'subject', type: 'text' },
+] as const;
+
+// `once` matters here: re-running the entrance while someone is typing would
+// yank focus around, so the card animates in exactly one time.
+const VIEWPORT = { once: true, amount: 0.15 } as const;
 
 export function ContactForm() {
   const t = useTranslations('contact.form');
@@ -24,7 +42,7 @@ export function ContactForm() {
     handleSubmit,
     reset,
     setError,
-    watch,
+    control,
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
@@ -48,113 +66,85 @@ export function ContactForm() {
 
   const onSubmit: SubmitHandler<ContactFormValues> = async (values) => {
     const result = await submit(values);
-    if (result.ok) reset();
+    if (!result.ok) {
+      toast.error(result.message);
+      return;
+    }
+    toast.success(t('api.contact.success'));
+    reset();
   };
 
-  const acceptPrivacy = watch('acceptPrivacy');
+  const acceptPrivacy = useWatch({ control, name: 'acceptPrivacy' });
 
   return (
-    <div className="rounded-3xl border bg-card p-6 md:p-8">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-        <input
-          tabIndex={-1}
-          autoComplete="off"
-          className="hidden"
-          aria-hidden="true"
-          {...register('company')}
-        />
+    <m.div
+      {...NOJS.reset}
+      className="rounded-[22px] border border-foreground/15 bg-foreground/3 p-6 md:p-9"
+      initial={{ opacity: 0, y: 40, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={VIEWPORT}
+      transition={{ duration: 0.7, ease: EASE }}
+    >
+      {/* The gap here outlasts the grid's own internal cascade below, so the
+          form still reveals strictly top-down rather than overlapping rows. */}
+      <m.form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-5"
+        noValidate
+        variants={staggerContainer(0.25, 0.2)}
+        initial="hidden"
+        whileInView="show"
+        viewport={VIEWPORT}
+      >
+        <Honeypot {...register('company')} />
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <Field error={errorText(errors.name?.message)}>
-            <Input placeholder={t('placeholders.name')} {...register('name')} />
-          </Field>
+        <m.div
+          className="grid gap-5 md:grid-cols-2"
+          variants={staggerContainer(0, 0.06)}
+        >
+          {SHORT_FIELDS.map((f) => {
+            const label = t(`placeholders.${f.name}`);
+            const error = errorText(errors[f.name]?.message);
+            return (
+              <FormField key={f.name} id={f.name} error={error}>
+                <Input
+                  id={f.name}
+                  type={f.type}
+                  placeholder={label}
+                  aria-label={label}
+                  aria-invalid={errors[f.name] ? true : undefined}
+                  aria-describedby={error ? `${f.name}-error` : undefined}
+                  className="h-11"
+                  {...register(f.name)}
+                />
+              </FormField>
+            );
+          })}
+        </m.div>
 
-          <Field error={errorText(errors.email?.message)}>
-            <Input
-              placeholder={t('placeholders.email')}
-              type="email"
-              {...register('email')}
-            />
-          </Field>
-
-          <Field error={errorText(errors.phone?.message)}>
-            <Input
-              placeholder={t('placeholders.phone')}
-              {...register('phone')}
-            />
-          </Field>
-
-          <Field error={errorText(errors.subject?.message)}>
-            <Input
-              placeholder={t('placeholders.subject')}
-              {...register('subject')}
-            />
-          </Field>
-        </div>
-
-        <Field error={errorText(errors.message?.message)}>
+        <FormField id="message" error={errorText(errors.message?.message)}>
           <Textarea
+            id="message"
             placeholder={t('placeholders.message')}
-            className="min-h-40"
+            aria-label={t('placeholders.message')}
+            aria-invalid={errors.message ? true : undefined}
+            aria-describedby={errors.message ? 'message-error' : undefined}
+            className="min-h-52"
             {...register('message')}
           />
-        </Field>
+        </FormField>
 
-        <Field error={errorText(errors.acceptPrivacy?.message)}>
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="acceptPrivacy"
-              checked={acceptPrivacy}
-              onCheckedChange={(checked) =>
-                setValue('acceptPrivacy', checked === true)
-              }
-            />
-            <label
-              htmlFor="acceptPrivacy"
-              className="text-sm leading-relaxed cursor-pointer"
-            >
-              {t('privacy.accept')}{' '}
-              <Link
-                href="/privacy"
-                className="text-primary underline underline-offset-4 hover:opacity-80"
-                target="_blank"
-              >
-                {t('privacy.link')}
-              </Link>
-            </label>
-          </div>
-        </Field>
+        <PrivacyConsent
+          id="acceptPrivacy"
+          checked={acceptPrivacy}
+          error={errorText(errors.acceptPrivacy?.message)}
+          onCheckedChange={(checked) =>
+            setValue('acceptPrivacy', checked, { shouldValidate: true })
+          }
+        />
 
-        <Button
-          type="submit"
-          size="lg"
-          className="w-full rounded-none"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            t('buttons.sending')
-          ) : (
-            <>
-              {t('buttons.send')} <span className="ml-2">→</span>
-            </>
-          )}
-        </Button>
-      </form>
-    </div>
-  );
-}
-
-function Field({
-  children,
-  error,
-}: {
-  children: React.ReactNode;
-  error?: string;
-}) {
-  return (
-    <div className="space-y-1.5">
-      {children}
-      {error && <p className="text-sm text-red-600">{error}</p>}
-    </div>
+        <SubmitButton pending={isSubmitting} />
+      </m.form>
+    </m.div>
   );
 }
