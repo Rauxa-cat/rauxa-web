@@ -7,6 +7,9 @@ import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
+// Placeholder until the CoverManager booking integration lands.
+const BOOKING_URL = '#';
+
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -20,7 +23,6 @@ export default async function HomePage() {
     <>
       <HeroSection
         backgroundImage="/images/rauxa-hero-bg-v2.webp"
-        eyebrow={t('hero.eyebrow')}
         bands={[
           { variant: 'lead', text: t('hero.bandLead') },
           { variant: 'bridge', text: t('hero.bandBridge') },
@@ -30,7 +32,7 @@ export default async function HomePage() {
         ctas={[
           {
             label: t('hero.ctaPrimary'),
-            href: 'https://form.typeform.com/to/nMlilHvx',
+            href: BOOKING_URL,
             withArrow: true,
             external: true,
           },
