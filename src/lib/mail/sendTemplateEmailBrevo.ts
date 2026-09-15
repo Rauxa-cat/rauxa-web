@@ -3,20 +3,16 @@ import { brevoClient } from './brevoClient';
 
 type ErrorWithStatus = Error & { status?: number };
 
-export async function sendContactEmailBrevo({
-  name,
-  email,
-  phone,
-  subject,
-  message,
+export async function sendTemplateEmailBrevo({
   templateId,
+  replyTo,
+  params,
+  tag,
 }: {
-  name: string;
-  email: string;
-  phone?: string;
-  subject?: string;
-  message: string;
   templateId: number;
+  replyTo: { email: string; name: string };
+  params: Record<string, string>;
+  tag: string;
 }) {
   try {
     const response = await brevoClient.post('/smtp/email', {
@@ -25,19 +21,10 @@ export async function sendContactEmailBrevo({
         name: process.env.BREVO_SENDER_NAME || 'RAUXA web',
       },
       to: [{ email: process.env.CONTACT_TO_EMAIL! }],
-      replyTo: {
-        email,
-        name,
-      },
+      replyTo,
       templateId,
-      params: {
-        name,
-        email,
-        phone: phone || '-',
-        subject: subject || 'Contacto web',
-        message,
-      },
-      tags: ['contact-form'],
+      params,
+      tags: [tag],
     });
 
     return response.data;
