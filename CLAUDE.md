@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Rauxa (`rauxa.cat`) is the website for **RAUXA**, a gastronomic and cultural community based in Barcelona. They organize experiential events where gastronomy, music, and art converge — their own branded dinners (*Cenas RAUXA*), private dinners, full event production, catering, DJ services, and brand collaborations.
+Rauxa (`rauxa.cat`) is the website for **RAUXA**, a gastronomic and cultural community based in Barcelona. They organize experiential events where gastronomy, music, and art converge. Their services are the dessert show (*Show del postre*), collaborations with brands and artists, full event production, and catering.
 
-The site is a Next.js 15 app with two locales — **`es`** (default) and **`ca`** (Catalan) — deployed to Vercel. Service bookings go through external Typeform forms (URLs defined in `src/lib/content/services.ts`). Contact email is `info@rauxa.cat`.
+The site is a Next.js 15 app with two locales — **`es`** (default) and **`ca`** (Catalan) — deployed to Vercel. Service requests go through an on-site dialog (see "Service request flow"); the service ids live in `src/lib/content/services.ts`. Contact email is `info@rauxa.cat`.
 
 ## Commands
 
@@ -31,7 +31,7 @@ Navigation and links must use `@/i18n/navigation` (`Link`, `useRouter`, etc.) �
 
 Two nested layouts:
 - `src/app/layout.tsx` — sets `<html lang>`, loads the three custom fonts, mounts `<Analytics>` and `<SpeedInsights>`.
-- `src/app/[locale]/layout.tsx` — wraps everything in `<NextIntlClientProvider>`, renders `<SiteHeader>`, `<Footer>`, and `<Toaster>`.
+- `src/app/[locale]/layout.tsx` — wraps everything in `<NextIntlClientProvider>`, renders `<SiteHeader>`, `<Footer>`, and `<Toaster>`, and mounts `<ServiceRequestProvider>` around the page.
 
 ### Fonts
 
@@ -58,6 +58,8 @@ src/components/
   sections/    # per-page section components; sections/shared/ holds the ones several pages reuse
   motion/      # animation primitives (see Animations)
   contact/     # contact details and social links, shared by the contact page and the footer
+  forms/       # form parts shared by the contact form and the service request form
+  service-request/  # the service request dialog, its trigger and the lightning entrance
   icons/       # custom SVG icon components
 ```
 
@@ -188,6 +190,38 @@ primitives still animate if they are ever used away from a hero.
 
 The `company` field is a honeypot: if it's filled in, the API silently returns `200 OK` without sending an email.
 
+Both API routes run through `handleFormPost` (`src/lib/http/`), so they share the rate
+limit bucket, the honeypot and the error keys under `contact.form`.
+
+The email HTML lives only in Brevo, not in the repo. What the code owns is the `params`
+each template reads, so renaming or adding a field means editing the template in Brevo too:
+
+| Template | `params` |
+|---|---|
+| `BREVO_CONTACT_TEMPLATE_ID` | `name`, `email`, `phone` (`-` when empty), `subject`, `message` |
+| `BREVO_SERVICE_TEMPLATE_ID` | `name`, `email`, `phone` (`-` when empty), `service` (Spanish title), `message` |
+
+Both templates share one look (black header with an electric rule, pearl message block);
+change them together.
+
+### Service request flow
+
+`ServiceRequestTrigger` (every service row, home and `/services`) → `ServiceRequestProvider`
+→ `ServiceRequestDialog` → `useContactSubmit` → `POST /api/service-request` → Brevo
+transactional email via `BREVO_SERVICE_TEMPLATE_ID`, with the service title in Spanish.
+
+- The trigger is a real `Link` to `/contact`. It only turns into a dialog opener once
+  hydrated and inside the provider, so no-JS visitors and modified clicks still reach a form.
+- The dialog chunk (form, Zod, the strike) is `next/dynamic` with `ssr: false`, preloaded on
+  the trigger's hover or focus. After the first open it stays mounted, which is what keeps
+  a closed dialog's draft; each open only swaps the preselected service.
+- `useContactSubmit` returns the error message instead of toasting it: Radix hides
+  everything outside a modal from assistive tech, so the dialog shows errors inline and
+  raises the success toast only after its exit animation completes.
+- The lightning bolt, the screen flash and the panel flicker do not mount under reduced
+  motion (the dialog only renders after hydration, so the preference is real by then);
+  the frame and the panel keep an opacity leg and degrade to a fade.
+
 ### Metadata
 
 Use `generatePageMetadata()` from `src/lib/metadata.ts` for per-page SEO. It handles canonical URLs and `hreflang` alternates for both locales automatically.
@@ -201,6 +235,10 @@ Use `generatePageMetadata()` from `src/lib/metadata.ts` for per-page SEO. It han
 ```
 BREVO_API_KEY
 BREVO_CONTACT_TEMPLATE_ID
+BREVO_SERVICE_TEMPLATE_ID
+BREVO_SENDER_EMAIL
+BREVO_SENDER_NAME      # optional, defaults to "RAUXA web"
+CONTACT_TO_EMAIL
 UPSTASH_REDIS_REST_URL
 UPSTASH_REDIS_REST_TOKEN
 CRON_SECRET
