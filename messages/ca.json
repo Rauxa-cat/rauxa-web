@@ -9,9 +9,15 @@
     },
     "services": {
       "title": "Serveis",
-      "description": "RAUXA crea sopars privats, experiències gastronòmiques, càtering, esdeveniments culturals, serveis de DJ i col·laboracions amb marques. Propostes úniques on gastronomia, música i art es troben.",
+      "description": "RAUXA crea shows de postres, col·laboracions gastronòmiques, organització d'esdeveniments i càtering. Propostes úniques on gastronomia, música i art es troben.",
       "ogTitle": "RAUXA — Serveis",
-      "ogDescription": "Sopars privats, experiències gastronòmiques, càtering, esdeveniments culturals, DJs i col·laboracions amb marques."
+      "ogDescription": "Show de les postres, col·laboracions, organització d'esdeveniments i càtering."
+    },
+    "lab": {
+      "title": "RAUXA LAB · Restaurant a Sant Cugat",
+      "description": "RAUXA LAB és el restaurant i laboratori creatiu de RAUXA a Sant Cugat del Vallès: tapes d'autor i vins naturals on gastronomia, música i art conviuen.",
+      "ogTitle": "RAUXA LAB · Restaurant a Sant Cugat",
+      "ogDescription": "Tapes d'autor i vins naturals a Sant Cugat del Vallès."
     },
     "team": {
       "title": "Equip",
@@ -43,6 +49,7 @@
   "nav": {
     "/": "Inici",
     "/services": "Serveis",
+    "/rauxa-lab": "Rauxa Lab",
     "/team": "Equip",
     "/contact": "Contacte"
   },
@@ -77,11 +84,11 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "COMUNITAT GASTRONÒMICA I CULTURAL",
-      "title": "Experiències que es viuen, ",
-      "highlightedTitle": " no s'expliquen",
+      "bandLead": "COMUNITAT",
+      "bandBridge": "gastronòmica i",
+      "bandPunch": "CULTURAL",
       "subtitle": "Gastronomia, música i art convergeixen en moments dissenyats per emocionar.",
-      "ctaPrimary": "Uneix-te a la llista d'espera",
+      "ctaPrimary": "RESERVAR",
       "ctaSecondary": "SERVEIS"
     },
     "whatIsRauxa": {
@@ -92,58 +99,102 @@
       "p2": "No som un càtering tradicional: dissenyem el concepte complet (gastronomia, música i art) perquè cada esdeveniment se senti únic.",
       "cta": "Descobreix els nostres serveis"
     },
+    "lab": {
+      "eyebrow": "EL NOSTRE RESTAURANT",
+      "title": "RAUXA LAB",
+      "subtitle": "Tapes d'autor i vins naturals a Sant Cugat del Vallès.",
+      "cta": "Descobrir RAUXA LAB"
+    },
     "gallery": {
       "eyebrow": "GALERIA",
       "title": "Així viu",
       "titleHighlight": "RAUXA",
-      "imageAlt": "Experiència RAUXA, fotografia {n}"
+      "imageAlt": "Experiència RAUXA, fotografia {n}",
+      "stripLabel": "Tira de fotografies de RAUXA"
     }
   },
   "services": {
     "hero": {
       "eyebrow": "SERVEIS · EXPERIÈNCIES · ESDEVENIMENTS",
-      "title": "Cada projecte és una oportunitat per",
-      "highlightedTitle": " crear quelcom memorable.",
+      "bandLead": "CADA PROJECTE",
+      "bandBridge": "és una oportunitat per",
+      "bandPunch": "CREAR QUELCOM MEMORABLE",
       "subtitle": "Des de sopars íntims fins a esdeveniments a gran escala."
     },
     "overview": {
+      "eyebrow": "ELS NOSTRES SERVEIS",
       "title": "Tria la teva",
       "titleHighlight": "experiència",
       "description": "Escriu-nos i et proposem la millor opció.",
-      "cta": "Contacta amb RAUXA"
+      "cta": "Contactar"
     },
     "items": {
-      "cenas-rauxa": {
-        "title": "Sopars RAUXA",
-        "desc": "Sopars privats on s'uneixen gastronomia, música i art. Accés exclusiu per a la comunitat oficial."
+      "show-del-postre": {
+        "title": "Show de les postres",
+        "tagline": "Convertim les postres en un espectacle.",
+        "desc": "Gastronomia, música, ball i art en shows creats a mida per a cada ocasió."
       },
-      "cenas-privadas": {
-        "title": "Sopars privats",
-        "desc": "Explica'ns què tens al cap i ho fem realitat. Experiències a mida per a la teva ocasió."
+      "colaboraciones": {
+        "title": "Col·laboracions",
+        "tagline": "Creem coses junts.",
+        "desc": "Experiències i projectes gastronòmics desenvolupats amb marques, artistes i projectes amb qui compartim visió."
       },
       "eventos": {
         "title": "Organització d'esdeveniments",
-        "desc": "Esdeveniments complets: gastronomia, música, DJ, animació i espais. Ens n'encarreguem de tot."
+        "tagline": "Dissenyem experiències de principi a fi.",
+        "desc": "Gastronomia, música, art i producció sota un mateix concepte, adaptat a cada ocasió."
       },
       "catering": {
         "title": "Càtering",
-        "desc": "Només menjar. Preparem i entreguem el càtering llest per servir, sense producció addicional."
-      },
-      "dj": {
-        "title": "Serveis de DJ",
-        "desc": "Sessions adaptades a cada esdeveniment. Trobem el DJ i l'estil que encaixi amb el teu vibe."
-      },
-      "marcas": {
-        "title": "Col·laboracions amb marques",
-        "desc": "Pop-ups, esdeveniments, shootings i llançaments. Propostes alineades amb identitat i objectius."
+        "tagline": "RAUXA on tu vulguis.",
+        "desc": "Propostes gastronòmiques personalitzades per a esdeveniments privats, corporatius i celebracions."
       }
+    }
+  },
+  "lab": {
+    "hero": {
+      "eyebrow": "RESTAURANT · LABORATORI CREATIU",
+      "bandLead": "MENJAR, BEURE",
+      "bandBridge": "i experimentar a",
+      "bandPunch": "RAUXA LAB",
+      "subtitle": "Tapes d'autor i vins naturals a Sant Cugat del Vallès.",
+      "ctaBooking": "RESERVAR TAULA",
+      "ctaLocation": "VEURE UBICACIÓ"
+    },
+    "intro": {
+      "eyebrow": "QUÈ ÉS RAUXA LAB",
+      "text": "RAUXA LAB és el nostre restaurant i laboratori creatiu a Sant Cugat del Vallès. Una proposta de tapes d'autor i vins naturals on <em>gastronomia, música, art i comunitat</em> conviuen sota un mateix sostre."
+    },
+    "booking": {
+      "eyebrow": "RESERVES",
+      "title": "Reserva la teva",
+      "titleHighlight": "taula",
+      "description": "Tria el dia, l'hora i quants sereu.",
+      "frameTitle": "Reserva de taula a RAUXA LAB",
+      "openExternal": "Reservar en una pestanya nova"
+    },
+    "location": {
+      "eyebrow": "UBICACIÓ",
+      "title": "Ens veiem a",
+      "titleHighlight": "Sant Cugat",
+      "directions": "Com arribar-hi"
+    },
+    "map": {
+      "title": "Mapa amb la ubicació de RAUXA LAB",
+      "zoomIn": "Apropar",
+      "zoomOut": "Allunyar",
+      "attribution": "Mostrar l'atribució",
+      "gesturesWindows": "Fes servir Ctrl + roda per fer zoom al mapa",
+      "gesturesMac": "Fes servir ⌘ + roda per fer zoom al mapa",
+      "gesturesMobile": "Fes servir dos dits per moure el mapa"
     }
   },
   "team": {
     "hero": {
       "eyebrow": "EQUIP",
-      "title": "Les persones darrere de",
-      "highlightedTitle": "l'experiència.",
+      "bandLead": "LES PERSONES",
+      "bandBridge": "darrere de",
+      "bandPunch": "L'EXPERIÈNCIA",
       "subtitle": "Gastronomia, música i art es creuen gràcies a persones amb una mirada creativa i sensibilitat pel detall."
     },
     "section": {
@@ -155,15 +206,18 @@
     "members": {
       "carles": {
         "name": "Carles Serrano",
-        "role": "Direcció creativa",
         "bio": "Carles és cuiner, fundador i director creatiu de Rauxa. Format en restaurants i equips d'alt nivell a Espanya i a l'estranger, avui combina cuina i visió de projecte amb una mirada contemporània. Rauxa neix com una comunitat que explora la innovació gastronòmica des d'un lloc diferent, incorporant art, show i música electrònica com a part essencial de l'experiència. Un concepte que no busca canviar la gastronomia, sinó crear un camí paral·lel a ella, on conviuen llenguatges que rarament es troben i on l'avantguarda es redefineix des de la llibertat creativa."
       },
       "dani": {
         "name": "Dani Molins",
-        "role": "Producció i esdeveniments",
         "bio": "Dani Molins és un jove xef amb una sòlida trajectòria en l'alta cuina nacional i internacional. Ha desenvolupat la seva carrera aprenent al costat d'alguns dels cuiners més influents del nostre país, com Martín Berasategui o Paco Pérez, i d'un dels xefs més importants actualment a França, com Jean Imbert. Apassionat per la tècnica i el producte, combina creativitat i rigor en cada plat. La seva cuina reflecteix una visió contemporània amb arrels ben definides. Dani representa una nova generació de xefs compromesos amb l'excel·lència i la innovació."
       }
     }
+  },
+  "cta": {
+    "eyebrow": "CONTACTE",
+    "title": "Parlem",
+    "subtitle": "Tens un projecte en ment? Vols unir-te a la comunitat?"
   },
   "contact": {
     "info": {
@@ -205,6 +259,9 @@
           "tooShort": "Missatge massa curt",
           "tooLong": "Missatge massa llarg"
         },
+        "service": {
+          "required": "Tria un servei"
+        },
         "acceptPrivacy": "Has d'acceptar la política de privacitat"
       },
       "api": {
@@ -214,9 +271,21 @@
           "misconfigured": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
           "unknown": "No s'ha pogut enviar el missatge. Torna-ho a provar més tard.",
           "success": "Missatge enviat!"
+        },
+        "serviceRequest": {
+          "success": "Sol·licitud enviada!"
         }
       }
     }
+  },
+  "serviceRequest": {
+    "eyebrow": "SOL·LICITUD",
+    "title": "Parlem de",
+    "titleHighlight": "la teva idea",
+    "description": "Deixa'ns les teves dades i t'escrivim per donar-li forma.",
+    "service": "Servei",
+    "message": "Explica'ns què tens al cap: data, nombre de persones, lloc…",
+    "close": "Tancar"
   },
   "company": {
     "name": "Titular",
@@ -227,7 +296,6 @@
   "privacy": {
     "title": "Política de Privacitat",
     "intro": "En compliment del Reglament General de Protecció de Dades (RGPD) i la Llei Orgànica 3/2018 de Protecció de Dades Personals i garantia dels drets digitals, informem sobre el tractament de dades personals que realitzem.",
-
     "responsible": {
       "title": "Responsable del tractament",
       "intro": "El responsable del tractament de les seves dades personals és:",
@@ -236,7 +304,6 @@
       "address": "Adreça",
       "email": "Email de contacte"
     },
-
     "dataCollected": {
       "title": "Dades que recopilem",
       "intro": "Recopilem i tractem les següents dades personals:",
@@ -244,37 +311,38 @@
         "title": "Formulari de contacte",
         "content": "Nom, correu electrònic i missatge. Aquestes dades s'envien directament a info@rauxa.cat i s'utilitzen únicament per respondre a la seva consulta."
       },
-      "typeform": {
-        "title": "Formularis de serveis (Typeform)",
-        "content": "Les dades sol·licitades als formularis de serveis es gestionen a través de Typeform i s'utilitzen per processar la seva sol·licitud d'informació o servei."
+      "serviceRequest": {
+        "title": "Formulari de sol·licitud de serveis",
+        "content": "Nom, correu electrònic, telèfon (opcional), servei d'interès i missatge. Aquestes dades s'envien a info@rauxa.cat i s'utilitzen únicament per gestionar la seva sol·licitud."
+      },
+      "booking": {
+        "title": "Reserves a RAUXA LAB",
+        "content": "Nom, cognoms, correu electrònic, telèfon, data, hora i nombre de persones i, si decideix indicar-los, comentaris sobre la reserva i intoleràncies o al·lèrgies alimentàries. Es recullen a través del motor de reserves de CoverManager integrat a la pàgina de RAUXA LAB i s'utilitzen per gestionar la seva reserva i avisar-lo de qualsevol canvi. Les dades sobre al·lèrgies només s'utilitzen per preparar la seva visita."
       }
     },
-
     "purpose": {
       "title": "Finalitat del tractament",
       "intro": "Tractem les seves dades personals per a les següents finalitats:",
       "point1": "Respondre a les seves consultes i sol·licituds d'informació",
       "point2": "Gestionar sol·licituds de serveis i esdeveniments",
-      "point3": "Enviar comunicacions relacionades amb els nostres serveis (només si ha donat el seu consentiment)"
+      "point3": "Gestionar les seves reserves a RAUXA LAB",
+      "point4": "Enviar comunicacions relacionades amb els nostres serveis (només si ha donat el seu consentiment)"
     },
-
     "legal": {
       "title": "Base legal",
-      "content": "La base legal per al tractament de les seves dades és el consentiment que ens atorga en enviar-nos les seves dades a través dels formularis de contacte o en acceptar expressament les nostres condicions."
+      "content": "La base legal per al tractament de les seves dades és el consentiment que ens atorga en enviar-nos les seves dades a través dels formularis de contacte o en acceptar expressament les nostres condicions. En el cas de les reserves, la base legal és la gestió de la reserva que vostè sol·licita (art. 6.1.b RGPD) i, per a les dades sobre al·lèrgies o intoleràncies, el seu consentiment explícit en facilitar-les."
     },
-
     "retention": {
       "title": "Conservació de dades",
       "content": "Conservarem les seves dades personals durant el temps necessari per gestionar la seva sol·licitud o consulta, i posteriorment durant el termini legalment establert per atendre possibles responsabilitats. Un cop finalitzat aquest període, les seves dades seran eliminades de forma segura."
     },
-
     "recipients": {
       "title": "Destinataris de les dades",
       "intro": "Les seves dades poden ser comunicades als següents destinataris:",
-      "typeform": "Plataforma utilitzada per a la gestió de formularis de serveis. Typeform compleix amb el RGPD i compta amb mesures de seguretat adequades.",
-      "vercel": "Proveïdor d'hosting i analytics. Vercel Analytics no utilitza cookies ni emmagatzema dades personals identificables."
+      "brevo": "Proveïdor d'enviament de correu electrònic a través del qual els missatges dels formularis arriben a info@rauxa.cat. Brevo compleix amb el RGPD i compta amb mesures de seguretat adequades.",
+      "vercel": "Proveïdor d'hosting i analytics. Vercel Analytics no utilitza cookies ni emmagatzema dades personals identificables.",
+      "coverManager": "Plataforma de gestió de reserves de RAUXA LAB, operada per Restaurant Booking & Distribution Services S.L. Tracta les dades de les reserves com a encarregat del tractament, en virtut d'un contracte amb RAUXA. Segons les condicions de CoverManager, les dades també es poden compartir amb altres restaurants que utilitzen el mateix programari, únicament per detectar reserves duplicades. Si una reserva requereix targeta de garantia, les dades de la targeta les tracta directament la passarel·la de pagament integrada a CoverManager, sense passar per RAUXA. Pot consultar la seva <link>política de privacitat</link>."
     },
-
     "rights": {
       "title": "Els seus drets",
       "intro": "Com a titular de les dades, té dret a:",
@@ -290,18 +358,15 @@
       "portabilityDesc": "Rebre les seves dades en format estructurat",
       "contact": "Per exercir aquests drets, pot contactar-nos a cserranobiosca@gmail.com. També té dret a presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (www.aepd.es)."
     },
-
     "security": {
       "title": "Seguretat de les dades",
       "content": "Hem adoptat les mesures tècniques i organitzatives necessàries per garantir la seguretat de les seves dades personals i evitar la seva alteració, pèrdua, tractament o accés no autoritzat."
     },
-
     "updates": {
       "title": "Modificacions",
       "content": "Ens reservem el dret a modificar aquesta Política de Privacitat per adaptar-la a canvis legislatius o en els nostres serveis. Li recomanem revisar aquesta pàgina periòdicament."
     },
-
-    "lastUpdated": "Última actualització: 3 de març de 2026"
+    "lastUpdated": "Última actualització: 15 de setembre de 2026"
   },
   "cookies": {
     "title": "Política de Cookies",
@@ -322,6 +387,14 @@
         "content": "Utilitzem eines de Vercel que ens ajuden a entendre com s'utilitza el nostre lloc web. Aquestes eines respecten la teva privacitat:",
         "vercelAnalytics": "Recull dades anònimes i agregades sobre visites a la web (pàgines vistes, país, dispositiu). No utilitza cookies ni rastreja usuaris individuals.",
         "vercelInsights": "Mesura el rendiment tècnic del lloc (velocitat de càrrega, mètriques web). No utilitza cookies ni emmagatzema informació personal."
+      },
+      "thirdParty": {
+        "title": "Cookies de tercers a RAUXA LAB",
+        "content": "La pàgina de RAUXA LAB inclou el motor de reserves de CoverManager. Quan es carrega, CoverManager i els serveis que integra poden desar les seves pròpies cookies o dades a l'emmagatzematge local del teu navegador. RAUXA no controla ni accedeix a aquesta informació:",
+        "coverManager": "Funcionament del motor de reserves i del procés de reserva.",
+        "stripe": "Prevenció del frau en els pagaments amb targeta (cookie m).",
+        "newRelic": "Monitoratge tècnic del rendiment i dels errors del motor de reserves (emmagatzematge local).",
+        "more": "Més informació a la <link>política de cookies de CoverManager</link>."
       }
     },
     "table": {
@@ -340,12 +413,11 @@
       "title": "Més informació",
       "content": "Per saber més sobre com gestionar les cookies al teu navegador, consulta l'ajuda de:"
     },
-    "lastUpdated": "Última actualització: 3 de març de 2026"
+    "lastUpdated": "Última actualització: 15 de setembre de 2026"
   },
   "legal-notice": {
     "title": "Avís Legal",
     "intro": "En compliment de la Llei 34/2002, d'11 de juliol, de serveis de la societat de la informació i de comerç electrònic, s'informa de les següents dades:",
-
     "ownership": {
       "title": "Titularitat del lloc web",
       "intro": "El present lloc web és titularitat de:",
@@ -355,39 +427,32 @@
       "email": "Email",
       "website": "Lloc web"
     },
-
     "purpose": {
       "title": "Objecte",
       "content": "Aquest lloc web té com a objectiu proporcionar informació sobre RAUXA, una comunitat gastronòmica i cultural que crea experiències on la gastronomia, la música i l'art es troben. A través d'aquest lloc, oferim informació sobre els nostres serveis, esdeveniments i formes de contacte."
     },
-
     "terms": {
       "title": "Condicions d'ús",
       "content": "L'accés i ús d'aquest lloc web implica l'acceptació d'aquestes condicions d'ús. L'usuari es compromet a fer un ús correcte del lloc web, de conformitat amb la llei, i a no utilitzar-lo per realitzar activitats il·lícites o contràries a la bona fe i a l'ordre públic."
     },
-
     "intellectualProperty": {
       "title": "Propietat intel·lectual i industrial",
       "content1": "Tots els continguts d'aquest lloc web (textos, imatges, disseny gràfic, codi font, logotips, marques i qualsevol altre element) són propietat de RAUXA o de tercers que han autoritzat el seu ús, i estan protegits per drets de propietat intel·lectual i industrial.",
       "content2": "Queda prohibida la reproducció, distribució, comunicació pública o transformació d'aquests continguts sense autorització expressa del titular dels drets."
     },
-
     "liability": {
       "title": "Limitació de responsabilitat",
       "content1": "RAUXA no es responsabilitza dels danys i perjudicis que puguin derivar-se de l'ús de la informació continguda en aquest lloc web, ni de la falta de disponibilitat o continuïtat del mateix.",
       "content2": "RAUXA es reserva el dret a modificar, suspendre o interrompre, temporal o permanentment, l'accés al lloc web sense necessitat de previ avís."
     },
-
     "links": {
       "title": "Enllaços externs",
       "content": "Aquest lloc web pot contenir enllaços a llocs web de tercers. RAUXA no es responsabilitza del contingut d'aquests llocs ni de les condicions d'ús i polítiques de privacitat que apliquin."
     },
-
     "applicable": {
       "title": "Legislació aplicable",
       "content": "Les presents condicions es regeixen per la legislació espanyola. Per a qualsevol controvèrsia que pogués derivar-se de l'accés o ús d'aquest lloc web, les parts se sotmeten expressament als Jutjats i Tribunals de Espanya."
     },
-
     "lastUpdated": "Última actualització: 3 de març de 2026"
   }
 }
