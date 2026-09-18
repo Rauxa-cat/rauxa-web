@@ -54,12 +54,18 @@ export function BookingFrame({ src, title, className }: BookingFrameProps) {
   }, [src]);
 
   return (
+    // The scheme has to follow the theme: Firefox derives the booking page's
+    // prefers-color-scheme from it, which is what drives the dark half of the
+    // CSS we host in CoverManager. Chrome reads the visitor's OS instead.
     <iframe
       ref={ref}
       src={src}
       title={title}
       loading="lazy"
-      className={cn('block w-full scroll-mt-20 border-0', className)}
+      className={cn(
+        'block w-full scroll-mt-20 border-0 scheme-light dark:scheme-dark',
+        className,
+      )}
     />
   );
 }
