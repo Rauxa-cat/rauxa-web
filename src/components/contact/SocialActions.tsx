@@ -18,19 +18,19 @@ export function SocialActions({
 }: SocialActionsProps) {
   const baseBtn = cn(
     'rounded-none font-semibold',
-    size === 'lg' ? 'h-12 px-8' : 'h-10 px-6',
+    size === 'lg' ? 'h-13 px-6' : 'h-11 px-5',
   );
 
   return (
     <div className={cn('flex flex-wrap gap-3', className)}>
-      <Button asChild size={size} variant="ghost" className={baseBtn}>
+      <Button asChild size={size} variant="outline" className={baseBtn}>
         <a href={whatsappUrl} target="_blank" rel="noreferrer">
           <MessageCircle className="mr-2 size-4" />
           WhatsApp
         </a>
       </Button>
 
-      <Button asChild size={size} variant="ghost" className={baseBtn}>
+      <Button asChild size={size} variant="outline" className={baseBtn}>
         <a href={instagramUrl} target="_blank" rel="noreferrer">
           <InstagramIcon className="mr-2 size-4" />
           Instagram

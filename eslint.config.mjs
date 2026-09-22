@@ -8,7 +8,13 @@ const eslintConfig = defineConfig([
   ...nextTs,
 
   prettier,
-  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
+  globalIgnores([
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+    'public/maps/maplibre/**',
+  ]),
 ]);
 
 export default eslintConfig;

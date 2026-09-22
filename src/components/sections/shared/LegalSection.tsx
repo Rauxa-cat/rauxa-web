@@ -8,7 +8,7 @@ interface LegalSectionProps {
 export function LegalSection({ title, children }: LegalSectionProps) {
   return (
     <section>
-      <h2 className="text-2xl font-semibold mb-4">{title}</h2>
+      <h2 className="font-sans font-semibold text-2xl mb-4">{title}</h2>
       {children}
     </section>
   );

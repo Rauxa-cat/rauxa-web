@@ -6,6 +6,8 @@ import { ThemeProvider } from 'next-themes';
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { HERO_HOLD_SCRIPT } from '@/components/sections/hero/hold';
+import { NO_JS_CSS } from '@/lib/motion';
 
 const rauxaPrimary = localFont({
   src: './fonts/AlfredinoSemirounded.ttf',
@@ -35,15 +37,23 @@ export default async function RootLayout({
   const locale = headersList.get('x-next-intl-locale') ?? 'es';
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body
-        className={[
-          rauxaPrimary.variable,
-          rauxaSecondary.variable,
-          rauxaBody.variable,
-          'antialiased',
-        ].join(' ')}
-      >
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={[
+        rauxaPrimary.variable,
+        rauxaSecondary.variable,
+        rauxaBody.variable,
+      ].join(' ')}
+    >
+      <body className="antialiased">
+        {/* Belongs to the hero, but lives here because a layout is not
+            re-rendered on a client navigation; moving it back into the hero
+            breaks it. See "The hero hold" in CLAUDE.md. */}
+        <script dangerouslySetInnerHTML={{ __html: HERO_HOLD_SCRIPT }} />
+        <noscript>
+          <style>{NO_JS_CSS}</style>
+        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

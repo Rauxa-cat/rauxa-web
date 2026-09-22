@@ -36,6 +36,14 @@
   --color-input: var(--input);
   --color-border: var(--border);
 
+  --color-rauxa-blue-100: var(--rauxa-blue-100);
+  --color-rauxa-blue-300: var(--rauxa-blue-300);
+  --color-rauxa-blue-700: var(--rauxa-blue-700);
+  --color-rauxa-blue-800: var(--rauxa-blue-800);
+  --color-rauxa-blue-900: var(--rauxa-blue-900);
+  --color-blue-ink: var(--blue-ink);
+  --color-blue-ink-hover: var(--blue-ink-hover);
+
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -62,6 +70,9 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Single source of truth for the page width (header, footer, SectionShell). */
+  --container-page: 72rem;
 }
 
 :root {
@@ -79,7 +90,25 @@
   --rauxa-black: oklch(0.1462 0.0064 285.58);
   --rauxa-footer: oklch(0.92 0.01 80);
 
-  /* Radius: el logo/isotipo es redondeado → suavidad controlada */
+  /* Same hue as --rauxa-electric (263.27); extends the scale, does not replace it.
+     Hex per weight: 100 #B2D1FF, 300 #5891FF, 700 #0027B4, 800 #001785, 900 #000C55. */
+  --rauxa-blue-100: oklch(0.86 0.09 263.27);
+  --rauxa-blue-300: oklch(0.68 0.19 263.27);
+  --rauxa-blue-700: oklch(0.38 0.22 263.27);
+  --rauxa-blue-800: oklch(0.3 0.18 263.27);
+  --rauxa-blue-900: oklch(0.22 0.13 263.27);
+
+  /* Blue for small text/links. electric is 5.50:1 on pearl (AA at any size);
+     on black it drops to 3.27:1, so dark mode swaps in blue-300 (6.53:1) below. */
+  --blue-ink: var(--rauxa-electric);
+  --blue-ink-hover: var(--rauxa-blue-700);
+
+  /* Shared by every layer of the hero aperture, so the frame, the zoom, the
+     colour and the scrim all land together. */
+  --hero-open: 1250ms cubic-bezier(0.65, 0, 0.35, 1) 120ms both;
+
+  /* Echoes the rounding of the isotype, so the UI softens by the same amount
+     the mark does. */
   --radius: 0.625rem;
 
   /* Base UI (light) */
@@ -144,6 +173,9 @@
   /* Base UI (dark) */
   --background: var(--rauxa-black);
   --foreground: var(--rauxa-pearl);
+
+  --blue-ink: var(--rauxa-blue-300);
+  --blue-ink-hover: var(--rauxa-electric);
 
   --background-steel: var(--rauxa-steel);
   --background-footer: oklch(0.19 0.006 285.58);
@@ -211,145 +243,58 @@
   .font-accent {
     font-family: var(--font-accent);
   }
+
+  /* The shadcn primitives are left out on purpose: they set `outline-none` plus
+     their own `focus-visible:ring`, and a utility beats `base` whatever the
+     specificity, so adding them here only looks like it works. --ring is
+     electric, 3.27:1 on black and 5.50:1 on pearl, both over 1.4.11's 3:1. */
+  :where(a, [role='button'], summary, [tabindex]):not(
+      [tabindex='-1']
+    ):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
 }
 
-@keyframes gradient-move {
-  0% {
-    background-position: 0% 50%;
+/* Time- and scroll-based entrance animations were replaced by Motion (feat/redesign-motion),
+   which also covers Firefox. The services ticker stays a plain CSS marquee. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
   }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+  to {
+    transform: translateX(-50%);
   }
 }
 
-.bg-animated-gradient {
-  background-size: 400% 400%;
-  animation: gradient-move 18s ease infinite;
+/* The hero aperture; see "The hero hold" in CLAUDE.md. Each layer carries its
+   resolved state as its base style and the keyframes only say where the move
+   starts, so `motion-reduce` lands on the finished hero. */
+/* Pausing freezes the delay too, so the 220ms beat survives the wait intact. */
+[data-hero-hold] [data-hero-open] {
+  animation-play-state: paused;
 }
 
-/* ── Shared entrance keyframe ───────────────────────────────────────── */
-@keyframes fade-up {
+@keyframes hero-aperture {
+  from {
+    clip-path: inset(43% 0);
+  }
+}
+
+@keyframes hero-settle {
+  from {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes hero-thaw {
+  from {
+    filter: brightness(0.82) contrast(1.14) saturate(0.12);
+  }
+}
+
+@keyframes hero-bed {
   from {
     opacity: 0;
-    translate: 0 20px;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
-
-/* Hero: time-based cascade on page load */
-.hero-fade {
-  animation-name: fade-up;
-  animation-duration: 0.6s;
-  animation-timing-function: ease;
-  animation-fill-mode: both;
-}
-.hero-delay-1 {
-  animation-delay: 0.2s;
-}
-.hero-delay-2 {
-  animation-delay: 0.4s;
-}
-.hero-delay-3 {
-  animation-delay: 0.6s;
-}
-.hero-delay-4 {
-  animation-delay: 0.8s;
-}
-
-/* Scroll-driven fade-up — Chrome/Safari only, degrades gracefully in Firefox */
-@supports (animation-timeline: view()) {
-  .view-animate {
-    animation-name: fade-up;
-    animation-timing-function: linear;
-    animation-fill-mode: both;
-    animation-duration: auto;
-    animation-timeline: view();
-    animation-range: cover 0% cover 30%;
-  }
-
-  /* Grid stagger: shifts each child's animation-range start by ~8% */
-  .stagger-grid > .view-animate:nth-child(2) {
-    animation-range: cover 8% cover 38%;
-  }
-  .stagger-grid > .view-animate:nth-child(3) {
-    animation-range: cover 16% cover 46%;
-  }
-  .stagger-grid > .view-animate:nth-child(4) {
-    animation-range: cover 0% cover 30%;
-  }
-  .stagger-grid > .view-animate:nth-child(5) {
-    animation-range: cover 8% cover 38%;
-  }
-  .stagger-grid > .view-animate:nth-child(6) {
-    animation-range: cover 16% cover 46%;
-  }
-}
-
-/* ── Gallery masonry ────────────────────────────────────────── */
-.gallery-masonry {
-  columns: 2;
-  column-gap: 0.75rem;
-}
-
-@media (min-width: 768px) {
-  .gallery-masonry {
-    columns: 3;
-    column-gap: 1rem;
-  }
-}
-
-.gallery-item {
-  break-inside: avoid;
-  margin-bottom: 0.75rem;
-  overflow: hidden;
-  position: relative;
-}
-
-@media (min-width: 768px) {
-  .gallery-item {
-    margin-bottom: 1rem;
-  }
-}
-
-@keyframes gallery-fade-up {
-  from {
-    opacity: 0;
-    translate: 0 40px;
-    scale: 0.95;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-    scale: 1;
-  }
-}
-
-@keyframes gallery-scroll-scale {
-  from {
-    scale: 1;
-  }
-  to {
-    scale: 1.08;
-  }
-}
-
-/* Scroll-driven animations — Chrome/Safari only, degrades gracefully in Firefox */
-@supports (animation-timeline: view()) {
-  .gallery-item {
-    animation: gallery-fade-up linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 75%;
-  }
-
-  .gallery-item img {
-    animation: gallery-scroll-scale linear both;
-    animation-timeline: view();
-    animation-range: cover 0% cover 100%;
   }
 }
