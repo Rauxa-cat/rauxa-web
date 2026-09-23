@@ -1,7 +1,6 @@
 import { cn } from '@/lib/utils';
 import { ReactNode } from 'react';
 
-// VT323 index label for editorial rows (services index, services overview).
 export function RowIndex({
   children,
   className,
