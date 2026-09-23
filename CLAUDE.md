@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Rauxa (`rauxa.cat`) is the website for **RAUXA**, a gastronomic and cultural community based in Barcelona. They organize experiential events where gastronomy, music, and art converge. They also run **RAUXA LAB**, their restaurant in Sant Cugat del Vallès (`/rauxa-lab`). It is a place, not a service: it has its own nav link and a band on the home (`LabTeaser`), and stays out of the service lists. The services are the dessert show (*Show del postre*), collaborations with brands and artists, full event production, and catering.
 
-The site is a Next.js 15 app with two locales — **`es`** (default) and **`ca`** (Catalan) — deployed to Vercel. Service requests go through an on-site dialog (see "Service request flow"); the service ids live in `src/lib/content/services.ts`. Contact email is `info@rauxa.cat`.
+The site is a Next.js 16 app with two locales — **`es`** (default) and **`ca`** (Catalan) — deployed to Vercel. Service requests go through an on-site dialog (see "Service request flow"); the service ids live in `src/lib/content/services.ts`. Contact email is `info@rauxa.cat`.
 
 ## Commands
 
@@ -23,7 +23,9 @@ No test suite is configured.
 
 ### Routing & i18n
 
-All pages live under `src/app/[locale]/`. Locale detection and redirect is handled by the middleware at `src/proxy.ts` (exported as `middleware`). Localized pathnames are defined in `src/i18n/routing.ts` — e.g. `/services` → `/es/servicios` or `/ca/serveis`. When adding a new page, register its localized paths there.
+All pages live under `src/app/[locale]/`. Locale detection and redirect is handled by next-intl's middleware in `src/proxy.ts` (Next 16's name for `middleware.ts`; it is the default export). Localized pathnames are defined in `src/i18n/routing.ts`, e.g. `/services` → `/es/servicios` or `/ca/serveis`. When adding a new page, register its localized paths there.
+
+`localePrefix` is `'always'`, so an unprefixed path only works if the proxy sees it: `/rauxa-lab?utm_source=...` gets a 307 to `/es/rauxa-lab` (or `/ca/...` from the `NEXT_LOCALE` cookie or `Accept-Language`) with the query kept. The matcher therefore runs on every path except `api`, `_next`, `_vercel` and anything with a dot. Do not narrow it back to `/` plus `/(es|ca)/:path*`: links shared without a prefix, like the ones posted on Instagram, then 404. The 307 is deliberate, because the target depends on the visitor and a cached 308 would pin the first locale.
 
 Navigation and links must use `@/i18n/navigation` (`Link`, `useRouter`, etc.) — never Next.js's built-in ones — so locale is preserved automatically.
 
