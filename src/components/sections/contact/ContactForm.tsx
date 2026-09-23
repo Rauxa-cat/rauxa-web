@@ -88,6 +88,9 @@ export function ContactForm() {
       {/* The gap here outlasts the grid's own internal cascade below, so the
           form still reveals strictly top-down rather than overlapping rows. */}
       <m.form
+        // Without scripts the browser submits natively: POST keeps the visitor's
+        // details out of the URL, history and server logs.
+        method="post"
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-5"
         noValidate
