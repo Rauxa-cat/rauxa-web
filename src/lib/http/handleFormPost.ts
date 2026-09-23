@@ -3,9 +3,12 @@ import type { z } from 'zod';
 import { getClientIp } from './getClientIp';
 import { limitContactByIp } from '@/lib/security/ratelimit';
 
-type TemplateEnv = 'BREVO_CONTACT_TEMPLATE_ID' | 'BREVO_SERVICE_TEMPLATE_ID';
+type TemplateEnv =
+  | 'BREVO_CONTACT_TEMPLATE_ID'
+  | 'BREVO_SERVICE_TEMPLATE_ID'
+  | 'BREVO_JOIN_TEMPLATE_ID';
 
-// The error keys resolve against `contact.form` on the client, which both forms share.
+// The error keys resolve against `contact.form` on the client, which every form shares.
 export async function handleFormPost<S extends z.ZodType>(
   req: Request,
   {
