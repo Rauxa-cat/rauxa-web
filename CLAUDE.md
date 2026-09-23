@@ -192,6 +192,11 @@ primitives still animate if they are ever used away from a hero.
 
 The `company` field is a honeypot: if it's filled in, the API silently returns `200 OK` without sending an email.
 
+`ContactForm` declares `method="post"`. It is server-rendered and stays visible without
+scripts, and the browser then submits it natively: as a GET it would put the visitor's details
+in the URL, history and logs. It still sends nothing without JS. The service request form needs
+no such attribute, because its dialog only ever renders after hydration.
+
 Both API routes run through `handleFormPost` (`src/lib/http/`), so they share the rate
 limit bucket, the honeypot and the error keys under `contact.form`.
 
