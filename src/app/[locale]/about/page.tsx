@@ -1,7 +1,13 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
-import { TeamSection } from '@/components/sections/team/TeamSection';
-import { CtaBand } from '@/components/sections/shared/CtaBand';
+import { BeginningSection } from '@/components/sections/about/BeginningSection';
+import { HouseSection } from '@/components/sections/about/HouseSection';
+import { JoinSection } from '@/components/sections/about/JoinSection';
+import { KitchenSection } from '@/components/sections/about/KitchenSection';
+import { ProjectsSection } from '@/components/sections/about/ProjectsSection';
+import { StartSection } from '@/components/sections/about/StartSection';
+import { StoryClosing } from '@/components/sections/about/StoryClosing';
+import { WhySection } from '@/components/sections/about/WhySection';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
 
@@ -9,12 +15,12 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata.team' });
+  const t = await getTranslations({ locale, namespace: 'metadata.about' });
 
   return generatePageMetadata({
     locale,
-    namespace: 'metadata.team',
-    path: { es: '/equipo', ca: '/equip' },
+    namespace: 'metadata.about',
+    path: { es: '/quienes-somos', ca: '/qui-som' },
     overrides: {
       openGraph: {
         title: t('ogTitle'),
@@ -25,7 +31,7 @@ export async function generateMetadata({
             url: '/images/og/og.jpg',
             width: 1200,
             height: 630,
-            alt: `${t('ogTitle')} — Open Graph image`,
+            alt: t('ogTitle'),
           },
         ],
       },
@@ -39,8 +45,8 @@ export async function generateMetadata({
   });
 }
 
-export default async function TeamPage() {
-  const t = await getTranslations('team');
+export default async function AboutPage() {
+  const t = await getTranslations('about');
   return (
     <>
       <HeroSection
@@ -54,8 +60,14 @@ export default async function TeamPage() {
         subtitle={t('hero.subtitle')}
       />
 
-      <TeamSection />
-      <CtaBand />
+      <BeginningSection />
+      <KitchenSection />
+      <StartSection />
+      <ProjectsSection />
+      <HouseSection />
+      <WhySection />
+      <StoryClosing />
+      <JoinSection />
     </>
   );
 }

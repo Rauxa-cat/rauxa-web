@@ -19,11 +19,11 @@
       "ogTitle": "RAUXA LAB · Restaurante en Sant Cugat",
       "ogDescription": "Tapas de autor y vinos naturales en Sant Cugat del Vallès."
     },
-    "team": {
-      "title": "Equipo",
-      "description": "El equipo detrás de Rauxa: personas unidas por la gastronomía, la cultura y la creación de experiencias únicas.",
-      "ogTitle": "Equipo — RAUXA",
-      "ogDescription": "Conoce al equipo detrás de RAUXA, una comunidad donde gastronomía, cultura y creatividad se unen para crear experiencias únicas."
+    "about": {
+      "title": "Quiénes somos",
+      "description": "La historia de RAUXA, desde la idea que nació en Sant Cugat en 2023 hasta RAUXA LAB: gastronomía, música y arte para una nueva vanguardia catalana.",
+      "ogTitle": "Quiénes somos · La historia de RAUXA",
+      "ogDescription": "De una idea en Sant Cugat a RAUXA LAB. Conoce a quienes lo hacen posible y forma parte de lo que viene."
     },
     "contact": {
       "title": "Contacto",
@@ -50,7 +50,7 @@
     "/": "Inicio",
     "/services": "Servicios",
     "/rauxa-lab": "Rauxa Lab",
-    "/team": "Equipo",
+    "/about": "Quiénes somos",
     "/contact": "Contacto"
   },
   "mobileNav": {
@@ -189,28 +189,172 @@
       "gesturesMobile": "Usa dos dedos para mover el mapa"
     }
   },
-  "team": {
+  "about": {
     "hero": {
-      "eyebrow": "EQUIPO",
-      "bandLead": "LAS PERSONAS",
-      "bandBridge": "detrás de",
-      "bandPunch": "LA EXPERIENCIA",
-      "subtitle": "Gastronomía, música y arte se cruzan gracias a personas con mirada creativa y sensibilidad por el detalle."
+      "eyebrow": "QUIÉNES SOMOS",
+      "bandLead": "RAUXA NACE",
+      "bandBridge": "en Sant Cugat,",
+      "bandPunch": "EN 2023",
+      "subtitle": "Una manera diferente de vivir la gastronomía."
     },
-    "section": {
-      "eyebrow": "EQUIPO",
-      "title": "Personas detrás de",
-      "titleHighlight": "la experiencia",
-      "description": "RAUXA nace de la colaboración entre gastronomía, música y arte. Diseñamos y producimos experiencias con intención y detalle."
+    "beginning": {
+      "eyebrow": "CAPÍTULO 01",
+      "marker": "2023",
+      "title": "EL <hl>PRINCIPIO</hl>",
+      "p1": "RAUXA nace en Sant Cugat a partir de una idea que empezó a tomar forma en 2023: imaginar una manera diferente de vivir la gastronomía.",
+      "p2": "La idea original nació de Carles Serrano y Juan Brill con una visión clara: crear experiencias donde no fueras a un restaurante únicamente a comer. Donde la comida fuera una parte fundamental, pero conviviera con la música, el arte, el espectáculo y, sobre todo, con pasarlo bien.",
+      "p3": "Nuestra visión siempre ha ido más allá del restaurante tradicional. Queremos explorar hasta dónde puede llegar la gastronomía cuando se mezcla con otras disciplinas como el teatro, el baile, la música o la performance, creando experiencias diseñadas para sorprender."
     },
-    "members": {
+    "kitchen": {
+      "eyebrow": "CAPÍTULO 02",
+      "title": "DE LA IDEA A LA <hl>COCINA</hl>",
+      "p1": "Para convertir esa visión en algo real había que empezar por uno de los tres pilares de RAUXA: la gastronomía.",
+      "p2": "Carles, cocinero de vocación, buscó un perfil con el que compartir cocina, proyecto y visión. Ahí entra Dani Molins, que se incorpora como socio y chef de RAUXA.",
+      "closing": "Y empezamos por donde sabíamos empezar: <hl>cocinando.</hl>"
+    },
+    "people": {
       "carles": {
         "name": "Carles Serrano",
-        "bio": "Carles es cocinero, fundador y director creativo de Rauxa. Formado en restaurantes y equipos de alto nivel en España y en el extranjero, hoy combina cocina y visión de proyecto con una mirada contemporánea. Rauxa nace como una comunidad que explora la innovación gastronómica desde un lugar distinto, incorporando arte, show y música electrónica como parte esencial de la experiencia. Un concepto que no busca cambiar la gastronomía, sino crear un camino paralelo a ella, donde conviven lenguajes que rara vez se encuentran y donde la vanguardia se redefine desde la libertad creativa."
+        "bio": "Cocinero de vocación y cofundador de RAUXA. Su perfil combina gastronomía, música y creación de experiencias, impulsando especialmente la parte creativa, de marca y de desarrollo del proyecto."
       },
       "dani": {
         "name": "Dani Molins",
-        "bio": "Dani Molins es un joven chef con una sólida trayectoria en la alta cocina nacional e internacional. Ha desarrollado su carrera aprendiendo junto a algunos de los cocineros más influyentes de nuestro país como Martín Berasategui o Paco Pérez y uno de los chefs más importantes actualmente en Francia como Jean Imbert. Apasionado por la técnica y el producto, combina creatividad y rigor en cada plato. Su cocina refleja una visión contemporánea con raíces bien definidas. Dani representa una nueva generación de chefs comprometidos con la excelencia y la innovación."
+        "bio": "Cocinero, socio y chef de RAUXA. Su trayectoria en alta gastronomía aporta la técnica y la estructura culinaria necesarias para convertir las ideas de RAUXA en una propuesta gastronómica real."
+      }
+    },
+    "start": {
+      "eyebrow": "CAPÍTULO 03",
+      "marker": "FEBRERO 2026",
+      "title": "EMPEZAMOS <hl>COMO PODÍAMOS</hl>",
+      "p1": "En febrero de 2026 RAUXA empezó a operar a través de caterings, eventos y colaboraciones. Empezamos cocinando allí donde podíamos, creando experiencias y ayudando a otras marcas y proyectos a desarrollar sus eventos.",
+      "p2": "En apenas unos meses, aquella idea que llevaba años desarrollándose empezó a convertirse en algo real."
+    },
+    "projects": {
+      "eyebrow": "CAPÍTULO 04",
+      "title": "HASTA <hl>AHORA…</hl>",
+      "count": "{count} proyectos y colaboraciones",
+      "less": "Menos información",
+      "items": {
+        "moda-comidas": {
+          "name": "Comidas en MODA cada sábado",
+          "meta": "Febrero – julio 2026",
+          "summary": "De febrero a julio, Rauxa se encargó de desarrollar la propuesta gastronómica de las comidas de los sábados de MODA, integrando gastronomía dentro de la experiencia del club.",
+          "detail": "Durante varios meses, Rauxa estuvo presente cada sábado en MODA creando una propuesta gastronómica pensada específicamente para convivir con el ambiente, la música y el público del proyecto. Una colaboración recurrente que nos permitió explorar nuestra manera de entender la gastronomía fuera del restaurante y convertir la comida en una parte más de la experiencia."
+        },
+        "street-food": {
+          "name": "Cenas Street Food Rauxa",
+          "meta": "Formato propio",
+          "summary": "Un formato de Rauxa pensado para llevar nuestra cocina a clubes, fiestas y espacios donde normalmente la gastronomía no tiene un papel protagonista.",
+          "detail": "Street Food Rauxa nació como una forma de trasladar nuestra cocina al mundo de la noche y los eventos. Una propuesta más informal y directa, adaptada a cada espacio, pero manteniendo siempre la identidad de Rauxa. El formato se desarrolló en MODA y en otras activaciones y colaboraciones vinculadas a clubes y eventos."
+        },
+        "people-from-atlantic": {
+          "name": "People From Atlantic × Rauxa",
+          "meta": "Atlantic Club · Febrero 2026",
+          "summary": "Una colaboración especial de San Valentín entre People From Atlantic y Rauxa en Atlantic Club.",
+          "detail": "Para San Valentín desarrollamos una experiencia gastronómica dentro de Atlantic Club junto a People From Atlantic. Una acción en la que gastronomía, música y celebración convivían dentro de una misma noche, trasladando el universo Rauxa a un contexto completamente diferente al de un restaurante tradicional."
+        },
+        "benow-83de": {
+          "name": "Benow × 83 DE × Rauxa",
+          "meta": "Chica Club",
+          "summary": "Una colaboración gastronómica desarrollada junto a Benow y 83 DE en Chica Club.",
+          "detail": "Rauxa se sumó al universo de Benow y 83 DE para crear una activación gastronómica dentro de Chica Club. Una colaboración concebida para integrar la comida dentro de la identidad del evento y generar una experiencia en la que gastronomía, música y comunidad compartieran protagonismo."
+        },
+        "audiodise": {
+          "name": "Audiodise × Rauxa",
+          "meta": "Club Nàutic",
+          "summary": "Una colaboración entre Audiodise y Rauxa en Club Nàutic, uniendo gastronomía y música en un mismo espacio.",
+          "detail": "Junto a Audiodise desarrollamos una propuesta gastronómica adaptada a su evento en Club Nàutic. El objetivo fue incorporar Rauxa dentro de la experiencia general del evento, creando una oferta pensada específicamente para el formato, el espacio y su público."
+        },
+        "opposite-synk": {
+          "name": "Opposite × Synk × Rauxa",
+          "meta": "Colaboración",
+          "summary": "Una colaboración con Opposite y Synk en la que Rauxa trasladó su propuesta gastronómica al contexto de un evento.",
+          "detail": "Una nueva interpretación del formato Rauxa fuera de casa. Para la colaboración con Opposite y Synk desarrollamos una propuesta gastronómica integrada dentro del evento, buscando que la comida no funcionara simplemente como un servicio añadido, sino como parte de la experiencia."
+        },
+        "afterwork-estel": {
+          "name": "Afterwork Edificio Estel",
+          "meta": "Edificio Estel, Barcelona",
+          "summary": "Propuesta gastronómica de Rauxa para un afterwork celebrado en el Edificio Estel de Barcelona.",
+          "detail": "Rauxa desarrolló la parte gastronómica de un formato afterwork en el Edificio Estel, adaptando nuestra propuesta a un contexto corporativo y social. Un ejemplo de cómo trasladamos nuestra identidad a formatos de evento muy diferentes sin perder el componente creativo y experiencial."
+        },
+        "villa-san-sebastian": {
+          "name": "Villa San Sebastián × Modo × Rauxa",
+          "meta": "San Sebastián",
+          "summary": "Una experiencia gastronómica privada desarrollada junto a Modo en una villa de San Sebastián.",
+          "detail": "Rauxa trasladó su propuesta a un entorno privado, desarrollando junto a Modo una experiencia gastronómica adaptada completamente al espacio y a los invitados. Cocina, puesta en escena y servicio se diseñaron específicamente para convertir una cena privada en una experiencia Rauxa."
+        },
+        "castillo-montsonis": {
+          "name": "Castillo de Montsonís × Modo × Rauxa",
+          "meta": "Castillo de Montsonís",
+          "summary": "Una experiencia gastronómica desarrollada junto a Modo en un escenario singular: el Castillo de Montsonís.",
+          "detail": "Llevamos Rauxa hasta el Castillo de Montsonís para desarrollar una experiencia gastronómica en un espacio histórico completamente alejado del formato convencional de restaurante. Una intervención creada específicamente para el entorno, combinando gastronomía, puesta en escena y el carácter singular de la localización."
+        },
+        "villa-formentera": {
+          "name": "Villa Formentera × Modo × Rauxa",
+          "meta": "Formentera",
+          "summary": "Una experiencia gastronómica privada desarrollada junto a Modo en una villa de Formentera.",
+          "detail": "En Formentera llevamos nuestra cocina a un formato privado y completamente personalizado. Junto a Modo diseñamos una experiencia adaptada al espacio, al entorno y al ritmo de la isla, llevando la filosofía de Rauxa fuera de Cataluña y demostrando la capacidad del proyecto para transformarse según cada escenario."
+        },
+        "and-friends": {
+          "name": "&Friends × Rauxa",
+          "meta": "Colaboración",
+          "summary": "Una colaboración entre &Friends y Rauxa construida alrededor de gastronomía, comunidad y experiencia.",
+          "detail": "Rauxa colaboró con &Friends desarrollando una propuesta gastronómica específica para su comunidad y formato. Una acción en la que la cocina funcionó como punto de encuentro y como herramienta para conectar personas, manteniendo la filosofía de colaboración que forma parte del ADN de Rauxa."
+        },
+        "mercantic-nits": {
+          "name": "Mercantic Nits",
+          "meta": "Mercantic, Sant Cugat del Vallès",
+          "summary": "Rauxa forma parte de Mercantic Nits con una propuesta de street food basada en algunos de nuestros platos más representativos.",
+          "detail": "Para Mercantic Nits desarrollamos un formato más directo y callejero de nuestra cocina, seleccionando platos capaces de funcionar en un contexto dinámico y de gran afluencia. Bravas, tartar de gamba, brioche de pastrami y croqueta de guanciale forman parte de una propuesta que acerca el universo Rauxa a un público amplio sin perder nuestra identidad."
+        },
+        "studio-stereo": {
+          "name": "Studio Stereo",
+          "meta": "Contenido y gastronomía",
+          "summary": "La entrada de Rauxa en Studio Stereo a través de una colaboración de contenido y gastronomía.",
+          "detail": "Rauxa entra en el universo de Studio Stereo mediante una colaboración centrada en gastronomía y contenido. En lugar de plantearlo como un evento independiente, la acción se concibe como una introducción de Rauxa dentro de Studio Stereo: llevamos algunos de nuestros platos al espacio, generamos contenido y utilizamos la colaboración para comunicar en redes la llegada de Rauxa."
+        }
+      }
+    },
+    "home": {
+      "eyebrow": "CAPÍTULO 05",
+      "marker": "OCTUBRE 2026",
+      "title": "UNA <hl>CASA</hl> PARA RAUXA",
+      "p1": "El siguiente paso era darle una casa.",
+      "p2": "Así nace <lab>RAUXA LAB</lab>, nuestro primer restaurante y laboratorio creativo en Sant Cugat del Vallès.",
+      "p3": "Y Sant Cugat no es casualidad. Es donde nació RAUXA y es una ciudad con muchísima gente y muchísima vida, pero que por su proximidad a Barcelona ha visto cómo gran parte de su ocio termina desplazándose allí.",
+      "p4": "Queremos aportar nuestro granito de arena para cambiar eso. Crear motivos para quedarse en Sant Cugat: para comer, beber, escuchar música, conocer gente, descubrir cosas nuevas y vivir propuestas que hasta ahora parecía que solo podían encontrarse en Barcelona.",
+      "book": "Reservar mesa"
+    },
+    "why": {
+      "eyebrow": "CAPÍTULO 06",
+      "title": "¿POR QUÉ RAUXA?",
+      "p1": "Todo esto parte también de algo que queremos defender: nuestra cultura.",
+      "p2": "Rauxa es una palabra profundamente catalana. Representa el impulso, la espontaneidad, la creatividad y esa pequeña dosis de locura que tradicionalmente se contrapone al <seny>seny</seny>: la cordura y el sentido común.",
+      "p3": "Esa dualidad representa nuestra manera de hacer las cosas.",
+      "p4": "Queremos defender y proyectar la cultura catalana mirando hacia delante. No entendemos preservar una cultura únicamente como conservar lo que ya existe. También significa transformarla, reinterpretarla y conseguir que una nueva generación quiera formar parte de ella.",
+      "p5": "Nuestra ambición es aportar nuestra pequeña parte para construir una nueva vanguardia catalana de la hostelería y la gastronomía: contemporánea, creativa, abierta al mundo y orgullosa de dónde viene.",
+      "p6": "RAUXA es nuestra forma de desarrollar todas esas ideas y convertirlas en <hl>experiencias reales</hl>."
+    },
+    "closing": {
+      "line1": "Y LA HISTORIA CONTINÚA.",
+      "line2": "¿QUIERES SER PARTE DE ELLA?"
+    },
+    "join": {
+      "eyebrow": "ÚLTIMO CAPÍTULO",
+      "title": "<hl>FORMA PARTE</hl> DE RAUXA",
+      "intro": "RAUXA acaba de empezar. Si quieres trabajar con nosotros, colaborar, invertir en alguno de nuestros proyectos o simplemente tienes algo que proponernos, queremos escucharte.",
+      "options": {
+        "work": "Quiero trabajar con RAUXA",
+        "collaborate": "Quiero colaborar / tengo una propuesta",
+        "invest": "Me interesa invertir",
+        "other": "Otra cosa"
+      },
+      "labels": {
+        "name": "Nombre",
+        "email": "Email",
+        "phone": "Teléfono (opcional)",
+        "intent": "¿Cómo quieres formar parte?",
+        "message": "Cuéntanos brevemente"
       }
     }
   },
@@ -261,6 +405,9 @@
         },
         "service": {
           "required": "Elige un servicio"
+        },
+        "intent": {
+          "required": "Elige una opción"
         },
         "acceptPrivacy": "Debes aceptar la política de privacidad"
       },

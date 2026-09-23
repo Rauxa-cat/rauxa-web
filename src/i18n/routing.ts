@@ -12,7 +12,7 @@ export const routing = defineRouting({
     '/': '/',
     '/services': { es: '/servicios', ca: '/serveis' },
     '/rauxa-lab': { es: '/rauxa-lab', ca: '/rauxa-lab' },
-    '/team': { es: '/equipo', ca: '/equip' },
+    '/about': { es: '/quienes-somos', ca: '/qui-som' },
     '/contact': { es: '/contacto', ca: '/contacte' },
     '/privacy': { es: '/privacidad', ca: '/privacitat' },
     '/cookies': { es: '/cookies', ca: '/cookies' },
