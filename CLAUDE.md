@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Rauxa (`rauxa.cat`) is the website for **RAUXA**, a gastronomic and cultural community based in Barcelona. They organize experiential events where gastronomy, music, and art converge. They also run **RAUXA LAB**, their restaurant in Sant Cugat del Vallès (`/rauxa-lab`). It is a place, not a service: it has its own nav link and a band on the home (`LabTeaser`), and stays out of the service lists. The services are the dessert show (*Show del postre*), collaborations with brands and artists, full event production, and catering.
+Rauxa (`rauxa.cat`) is the website for **RAUXA**, a gastronomic and cultural community based in Barcelona. They organize experiential events where gastronomy, music, and art converge. They also run **RAUXA LAB**, their restaurant in Sant Cugat del Vallès (`/rauxa-lab`). It is a place, not a service: it has its own nav link and a band on the home and on `/about` (`LabTeaser`, in `sections/shared/`), and stays out of the service lists. The services are the dessert show (*Show del postre*), collaborations with brands and artists, full event production, and catering.
 
 The site is a Next.js 16 app with two locales — **`es`** (default) and **`ca`** (Catalan) — deployed to Vercel. Service requests go through an on-site dialog (see "Service request flow"); the service ids live in `src/lib/content/services.ts`. Contact email is `info@rauxa.cat`.
 
@@ -65,6 +65,9 @@ src/components/
   icons/       # custom SVG icon components
 ```
 
+`sections/shared/RowIndex` is the VT323 index label for editorial rows (the service lists and the
+`/about` projects); number a new row list with it rather than styling the digits again.
+
 Static content (nav links, services, team members, the RAUXA LAB address) is defined as data in `src/lib/content/`.
 Hooks live in `src/hooks/` (`useContactSubmit`, `useReducedMotion`).
 
@@ -80,22 +83,24 @@ ones, which belong to the first paint (see "The hero hold").
 `LazyMotion` with `domAnimation` and `strict`. **Use `m.*`, never `motion.*`**:
 `strict` throws on the latter, which is what keeps the full bundle out.
 
-Shared easing and spring tokens live in `src/lib/motion.ts`; read from those rather
-than hardcoding a curve.
+Shared easing and spring tokens live in `src/lib/motion.ts`, along with `maskIn`, the
+mask-wipe variant; read from those rather than hardcoding a curve or a variant.
 
 Primitives in `src/components/motion/`:
 
 | Component | Use for |
 |---|---|
 | `Reveal` | `RevealList` / `RevealItem` (clip-path wipe from the left), `FadeIn` |
-| `MaskReveal` | Top-to-bottom mask reveal for headings |
+| `MaskReveal` | Top-to-bottom mask reveal for headings; `delay` staggers stacked lines |
 | `Parallax` | `ParallaxScene` + `ParallaxLayer` for scroll-linked `y` / `scale` / `opacity` |
 | `Stagger` | `Stagger` / `StaggerItem`, plus `staggerContainer` for non-div containers |
+| `Sequence` | `Sequence` + `SequenceFade` / `SequenceMask`: one viewport trigger for parts that sit apart in the layout (a chapter's date rail and its column). `SectionHeader` is built on it |
+| `Details` | `Details` + `DetailsBody`: a `<details>` whose body eases open and closed in CSS alone (grid rows plus a `::details-content` transition); native toggle without JS |
 
 Button hover/press is not a Motion primitive: it lives in the base of
 `buttonVariants`, gated behind `motion-safe:`, so every `<Button>` gets it for free.
 
-Anything that clips while it moves (`RevealItem`, `MaskReveal`, `SectionHeader`,
+Anything that clips while it moves (`RevealItem`, `MaskReveal`, `SequenceMask`,
 `HeroBands`) has to stop clipping when the move lands: Motion leaves its last frame
 in place, and a mask that stays on shears tall glyphs and cuts the glows callers
 hang off the revealed element. `useUnclip` is the shared switch.
@@ -197,8 +202,9 @@ scripts, and the browser then submits it natively: as a GET it would put the vis
 in the URL, history and logs. It still sends nothing without JS. The service request form needs
 no such attribute, because its dialog only ever renders after hydration.
 
-Both API routes run through `handleFormPost` (`src/lib/http/`), so they share the rate
-limit bucket, the honeypot and the error keys under `contact.form`.
+All three API routes (`/api/contact`, `/api/service-request`, `/api/join`) run through
+`handleFormPost` (`src/lib/http/`), so they share the rate limit bucket, the honeypot and the
+error keys under `contact.form`.
 
 The email HTML lives only in Brevo, not in the repo. What the code owns is the `params`
 each template reads, so renaming or adding a field means editing the template in Brevo too:
@@ -207,9 +213,18 @@ each template reads, so renaming or adding a field means editing the template in
 |---|---|
 | `BREVO_CONTACT_TEMPLATE_ID` | `name`, `email`, `phone` (`-` when empty), `subject`, `message` |
 | `BREVO_SERVICE_TEMPLATE_ID` | `name`, `email`, `phone` (`-` when empty), `service` (Spanish title), `message` |
+| `BREVO_JOIN_TEMPLATE_ID` | `name`, `email`, `phone` (`-` when empty), `intent` (Spanish label), `message` |
 
-Both templates share one look (black header with an electric rule, pearl message block);
+The templates share one look (black header with an electric rule, pearl message block);
 change them together.
+
+### Join form flow
+
+`JoinForm` (the "Forma parte de RAUXA" section closing `/about`) → `useContactSubmit` →
+`POST /api/join` → Brevo via `BREVO_JOIN_TEMPLATE_ID`. The four intents live in
+`src/lib/content/join.ts`; their labels, in `about.join.options`, go to the email in Spanish.
+Unlike the other two forms it shows visible labels instead of placeholders. It declares
+`method="post"` for the same reason as `ContactForm` (see "Contact form flow").
 
 ### Service request flow
 
@@ -286,6 +301,7 @@ Use `generatePageMetadata()` from `src/lib/metadata.ts` for per-page SEO. It han
 BREVO_API_KEY
 BREVO_CONTACT_TEMPLATE_ID
 BREVO_SERVICE_TEMPLATE_ID
+BREVO_JOIN_TEMPLATE_ID
 BREVO_SENDER_EMAIL
 BREVO_SENDER_NAME      # optional, defaults to "RAUXA web"
 CONTACT_TO_EMAIL
