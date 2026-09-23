@@ -1,14 +1,9 @@
 'use client';
 
-import { m, type Variants } from 'motion/react';
+import { m } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { maskTransition, NOJS } from '@/lib/motion';
+import { maskIn, NOJS } from '@/lib/motion';
 import { useUnclip } from './useUnclip';
-
-const inner: Variants = {
-  hidden: { opacity: 0, y: '110%' },
-  show: { opacity: 1, y: 0, transition: maskTransition() },
-};
 
 // Same top-to-bottom mask reveal as the hero bands, for section headings below the fold.
 // The OUTER span drives whileInView (it sits at its real position); the inner span carries
@@ -16,9 +11,11 @@ const inner: Variants = {
 export function MaskReveal({
   children,
   className,
+  delay = 0,
 }: {
   children: React.ReactNode;
   className?: string;
+  delay?: number;
 }) {
   const [unclipped, unclip] = useUnclip();
 
@@ -36,7 +33,7 @@ export function MaskReveal({
       <m.span
         {...NOJS.reset}
         className="block"
-        variants={inner}
+        variants={maskIn(delay)}
         onAnimationComplete={unclip}
       >
         {children}
