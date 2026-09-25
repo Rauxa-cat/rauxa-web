@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { WhatIsRauxa } from '@/components/sections/home/WhatIsRauxa';
-import { LabTeaser } from '@/components/sections/home/LabTeaser';
+import { LabTeaser } from '@/components/sections/shared/LabTeaser';
 import { GallerySection } from '@/components/sections/home/GallerySection';
 import { ServicesTicker } from '@/components/site/ServicesTicker';
 import { CtaBand } from '@/components/sections/shared/CtaBand';

@@ -1,3 +1,5 @@
+import type { Variants } from 'motion/react';
+
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
 export const MASK_DURATION = 0.8;
@@ -12,6 +14,11 @@ export const maskTransition = (delay = 0) =>
     delay,
     opacity: { duration: 0.3, delay },
   }) as const;
+
+export const maskIn = (delay = 0): Variants => ({
+  hidden: { opacity: 0, y: '110%' },
+  show: { opacity: 1, y: 0, transition: maskTransition(delay) },
+});
 
 export const STAGGER_GAP = 0.12;
 

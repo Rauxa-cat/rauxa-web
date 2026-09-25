@@ -59,7 +59,6 @@ export function RevealItem({
   );
 }
 
-// Subtle block entrance for team members / standalone sections.
 export function FadeIn({
   children,
   className,
