@@ -16,5 +16,4 @@ export const PROJECTS = [
   { id: 'villa-formentera' },
   { id: 'and-friends' },
   { id: 'mercantic-nits' },
-  { id: 'studio-stereo' },
 ] as const satisfies readonly Project[];
