@@ -61,7 +61,7 @@ src/components/
   motion/      # animation primitives (see Animations)
   contact/     # contact details and social links, shared by the contact page and the footer
   forms/       # form parts shared by the contact form and the service request form
-  service-request/  # the service request dialog, its trigger and the lightning entrance
+  service-request/  # the service request dialog, its trigger and the detonation entrance
   icons/       # custom SVG icon components
 ```
 
@@ -236,15 +236,27 @@ transactional email via `BREVO_SERVICE_TEMPLATE_ID`, with the service title in S
   the whole row is the trigger.
 - The trigger is a real `Link` to `/contact`. It only turns into a dialog opener once
   hydrated and inside the provider, so no-JS visitors and modified clicks still reach a form.
-- The dialog chunk (form, Zod, the strike) is `next/dynamic` with `ssr: false`, preloaded on
-  the trigger's hover or focus. After the first open it stays mounted, which is what keeps
-  a closed dialog's draft; each open only swaps the preselected service.
+- The dialog chunk (form, Zod, the detonation) is a plain dynamic `import()` whose component
+  the provider keeps in state. Not `next/dynamic`: a lazy component suspends on its first
+  render even with the chunk loaded, and React holds that reveal for ~300ms. It is preloaded
+  on the trigger's hover or focus and, since a phone has neither before the tap, when a row
+  nears the viewport, at idle. If the chunk fails, the tap falls through to `/contact`. After
+  the first open the dialog stays mounted, which is what keeps a closed dialog's draft; each
+  open only swaps the preselected service.
 - `useContactSubmit` returns the error message instead of toasting it: Radix hides
   everything outside a modal from assistive tech, so the dialog shows errors inline and
   raises the success toast only after its exit animation completes.
-- The lightning bolt, the screen flash and the panel flicker do not mount under reduced
-  motion (the dialog only renders after hydration, so the preference is real by then);
-  the frame and the panel keep an opacity leg and degrade to a fade.
+- The entrance is a detonation of the isotype (`IsotypeIcon`, traced from `design/isotip.png`):
+  it charges at the centre, bursts over the panel with a shockwave and sparks, and leaves the
+  panel behind. Its glows are gradients, never `filter: drop-shadow`: a filter on a layer that
+  scales is recomputed every frame at the scaled size, and it cost a third of the frames on a
+  mid-range phone. Each growing layer is laid out at its largest size and scaled *down* with
+  `will-change`, so it is rasterised once; scaled up, Chrome repaints it at every new scale.
+  Below `sm` it mounts half the sparks and one shockwave, peaks at 4.5x instead of 8x, and the
+  overlay drops its backdrop blur, which is redone every frame the blast moves over it. The
+  panel lands at `PANEL`, a beat after `IMPACT`, so their heaviest frames do not coincide.
+  The blast, the screen flash and the panel flicker do not mount under reduced motion (the dialog only renders after hydration, so the preference is real by then); the
+  frame and the panel keep an opacity leg and degrade to a fade.
 
 ### RAUXA LAB map
 
