@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { AnimatePresence, m } from 'motion/react';
-import { X, Zap } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
@@ -14,13 +14,13 @@ import type { ServiceId } from '@/lib/content/services';
 import { EASE } from '@/lib/motion';
 import { serviceRequestSchema } from '@/lib/validation/serviceRequest.schema';
 import {
+  Blast,
+  BlastFlash,
   ChargedFrame,
-  ElectricFlash,
-  IMPACT,
-  LightningBolt,
+  PANEL,
   PanelFlicker,
   PanelGlow,
-} from './ElectricStrike';
+} from './Detonation';
 import {
   ServiceRequestForm,
   type ServiceRequestValues,
@@ -90,18 +90,15 @@ export function ServiceRequestDialog({
             >
               <m.div
                 aria-hidden
-                className="fixed inset-0 bg-[var(--rauxa-black)]/85 backdrop-blur-sm"
+                // A backdrop blur is redone every frame the blast moves over it,
+                // which on a phone GPU costs more than the blur is worth.
+                className="fixed inset-0 bg-[var(--rauxa-black)]/85 backdrop-blur-sm max-sm:bg-[var(--rauxa-black)]/92 max-sm:backdrop-blur-none"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, ease: EASE }}
               />
-              {!reducedMotion && (
-                <>
-                  <ElectricFlash />
-                  <LightningBolt />
-                </>
-              )}
+              {!reducedMotion && <BlastFlash />}
 
               <div className="relative flex min-h-full items-center justify-center px-4 py-16">
                 <div className="relative w-full max-w-xl">
@@ -132,7 +129,7 @@ export function ServiceRequestDialog({
                     <m.div
                       ref={panelRef}
                       className="relative bg-background text-foreground outline-none"
-                      initial={{ opacity: 0, scale: 0.94 }}
+                      initial={{ opacity: 0, scale: 0.82 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{
                         opacity: 0,
@@ -140,10 +137,11 @@ export function ServiceRequestDialog({
                         transition: { duration: 0.2, ease: EASE },
                       }}
                       transition={{
-                        delay: IMPACT,
-                        duration: 0.7,
-                        ease: EASE,
-                        opacity: { delay: IMPACT, duration: 0.25 },
+                        delay: PANEL,
+                        duration: 0.6,
+                        // Overshoots, so the panel lands with the kick of the blast.
+                        ease: [0.34, 1.4, 0.64, 1],
+                        opacity: { delay: PANEL, duration: 0.2 },
                       }}
                     >
                       <ChargedFrame />
@@ -151,22 +149,12 @@ export function ServiceRequestDialog({
 
                       <m.div
                         className="relative px-6 pt-12 pb-8 sm:px-10 sm:pb-10"
-                        variants={staggerContainer(IMPACT + 0.18, 0.05)}
+                        variants={staggerContainer(PANEL + 0.1, 0.05)}
                         initial="hidden"
                         animate="show"
                       >
-                        <StaggerItem className="flex items-center gap-3">
-                          <Zap
-                            aria-hidden
-                            className="size-4 fill-current text-blue-ink"
-                          />
-                          <span className="font-accent tracking-[0.35em] text-foreground/60">
-                            {t('eyebrow')}
-                          </span>
-                        </StaggerItem>
-
                         <StaggerItem>
-                          <Dialog.Title className="mt-4 text-[clamp(2.25rem,7vw,3.25rem)] leading-[1.05] font-normal tracking-tight">
+                          <Dialog.Title className="text-[clamp(2.25rem,7vw,3.25rem)] leading-[1.05] font-normal tracking-tight">
                             {t('title')}{' '}
                             <span className="text-primary [text-shadow:0_0_40px_--alpha(var(--color-primary)/60%)]">
                               {t('titleHighlight')}
@@ -191,6 +179,9 @@ export function ServiceRequestDialog({
                   </Dialog.Content>
                 </div>
               </div>
+
+              {/* Over the panel, so the panel is what the blast leaves behind. */}
+              {!reducedMotion && <Blast />}
             </Dialog.Overlay>
           </Dialog.Portal>
         )}
