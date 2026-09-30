@@ -13,7 +13,11 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return generatePageMetadata({ locale, namespace: 'metadata.home' });
+  return generatePageMetadata({
+    locale,
+    namespace: 'metadata.home',
+    absoluteTitle: true,
+  });
 }
 
 export default async function HomePage() {

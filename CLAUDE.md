@@ -301,7 +301,18 @@ extract: no key, and no visitor request leaves the domain. Everything it loads l
 
 ### Metadata
 
-Use `generatePageMetadata()` from `src/lib/metadata.ts` for per-page SEO. It handles canonical URLs and `hreflang` alternates for both locales automatically.
+Use `generatePageMetadata()` from `src/lib/metadata.ts` for per-page SEO. It builds the title,
+canonical, `hreflang` alternates, Open Graph (with `og:url` and `og:locale`) and Twitter tags from
+`metadata.<page>` in the messages; `ogTitle` and `ogDescription` are optional there. A page must
+emit all of them itself, because Next replaces a parent's `openGraph` whole instead of merging it.
+Pass `absoluteTitle` when the title already carries the brand, or the `%s — RAUXA` template repeats it.
+
+Structured data (JSON-LD) is built in `src/lib/structuredData.ts` and rendered with
+`components/seo/JsonLd`: the `Organization` and `WebSite` graph in the locale layout, a
+`Restaurant` on `/rauxa-lab` and the service `ItemList` on `/services`. Page nodes point at the
+organization by `@id` rather than repeating it. The restaurant's phone and hours come from
+`LAB` in `src/lib/content/lab.ts`, copied from its Google Maps listing; change them there and on
+Google together. Its `image` is the generic OG image until the restaurant photos arrive.
 
 ### Cron
 

@@ -15,33 +15,10 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata.about' });
-
   return generatePageMetadata({
     locale,
     namespace: 'metadata.about',
     path: { es: '/quienes-somos', ca: '/qui-som' },
-    overrides: {
-      openGraph: {
-        title: t('ogTitle'),
-        description: t('ogDescription'),
-        type: 'website',
-        images: [
-          {
-            url: '/images/og/og.jpg',
-            width: 1200,
-            height: 630,
-            alt: t('ogTitle'),
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: t('ogTitle'),
-        description: t('ogDescription'),
-        images: ['/images/og/og.jpg'],
-      },
-    },
   });
 }
 
