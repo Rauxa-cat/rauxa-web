@@ -7,6 +7,8 @@ import { LabLocation } from '@/components/sections/lab/LabLocation';
 import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { LAB } from '@/lib/content/lab';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { restaurant } from '@/lib/structuredData';
 
 // Stands in for the photo until the space has one; once there is a
 // `backgroundImage`, drop it.
@@ -17,41 +19,22 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata.lab' });
-
   return generatePageMetadata({
     locale,
     namespace: 'metadata.lab',
     path: { es: '/rauxa-lab', ca: '/rauxa-lab' },
-    overrides: {
-      openGraph: {
-        title: t('ogTitle'),
-        description: t('ogDescription'),
-        type: 'website',
-        images: [
-          {
-            url: '/images/og/og.jpg',
-            width: 1200,
-            height: 630,
-            alt: t('ogTitle'),
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: t('ogTitle'),
-        description: t('ogDescription'),
-        images: ['/images/og/og.jpg'],
-      },
-    },
+    absoluteTitle: true,
   });
 }
 
-export default async function RauxaLabPage() {
+export default async function RauxaLabPage({ params }: PageProps) {
+  const { locale } = await params;
   const t = await getTranslations('lab.hero');
+  const tMeta = await getTranslations('metadata.lab');
 
   return (
     <>
+      <JsonLd data={restaurant(locale, tMeta('description'))} />
       <HeroSection
         className={PHOTO_STAND_IN}
         eyebrow={t('eyebrow')}

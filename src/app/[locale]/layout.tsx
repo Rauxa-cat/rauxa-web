@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
-import { BASE_URL } from '@/lib/metadata';
+import { BASE_URL, OG_IMAGE } from '@/lib/metadata';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { siteGraph } from '@/lib/structuredData';
 import { NextIntlClientProvider } from 'next-intl';
 import { hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
@@ -31,30 +33,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       siteName: t('siteName'),
       title: t('title'),
       description: t('description'),
-      locale: locale,
-      alternateLocale: routing.locales.filter((l) => l !== locale),
-      images: [
-        {
-          url: '/images/og/og.jpg',
-          width: 1200,
-          height: 630,
-          alt: `${t('siteName')} — Open Graph image`,
-        },
-      ],
+      images: [{ ...OG_IMAGE, alt: t('title') }],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['/images/og/og.jpg'],
-    },
-    alternates: {
-      canonical: `${BASE_URL}/${locale}`,
-      languages: {
-        es: `${BASE_URL}/es`,
-        ca: `${BASE_URL}/ca`,
-        'x-default': `${BASE_URL}/es`,
-      },
+      images: [OG_IMAGE.url],
     },
   };
 }
@@ -70,9 +55,11 @@ export default async function Layout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+  const t = await getTranslations({ locale, namespace: 'metadata' });
 
   return (
     <>
+      <JsonLd data={siteGraph(locale, t('description'))} />
       <NextIntlClientProvider locale={locale}>
         <MotionProvider>
           <ServiceRequestProvider>

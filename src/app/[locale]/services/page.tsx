@@ -4,45 +4,35 @@ import { ServicesOverview } from '@/components/sections/services/ServicesOvervie
 import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, PageProps } from '@/lib/metadata';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { serviceList } from '@/lib/structuredData';
+import { SERVICE_IDS } from '@/lib/content/services';
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata.services' });
-
   return generatePageMetadata({
     locale,
     namespace: 'metadata.services',
     path: { es: '/servicios', ca: '/serveis' },
-    overrides: {
-      openGraph: {
-        title: t('ogTitle'),
-        description: t('ogDescription'),
-        type: 'website',
-        images: [
-          {
-            url: '/images/og/og.jpg',
-            width: 1200,
-            height: 630,
-            alt: `${t('ogTitle')} — Open Graph image`,
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: t('ogTitle'),
-        description: t('ogDescription'),
-        images: ['/images/og/og.jpg'],
-      },
-    },
   });
 }
 
-export default async function ServicesPage() {
+export default async function ServicesPage({ params }: PageProps) {
+  const { locale } = await params;
   const t = await getTranslations('services');
   return (
     <>
+      <JsonLd
+        data={serviceList(
+          locale,
+          SERVICE_IDS.map((id) => ({
+            name: t(`items.${id}.title`),
+            description: t(`items.${id}.desc`),
+          })),
+        )}
+      />
       <HeroSection
         backgroundImage="/images/rauxa-services-hero-bg-v2.webp"
         eyebrow={t('hero.eyebrow')}

@@ -13,14 +13,14 @@ const pageConfig: Record<
     priority: number;
   }
 > = {
-  '/': { lastModified: '2026-09-22', changeFrequency: 'weekly', priority: 1 },
+  '/': { lastModified: '2026-09-30', changeFrequency: 'weekly', priority: 1 },
   '/services': {
-    lastModified: '2026-09-22',
+    lastModified: '2026-09-30',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
   '/rauxa-lab': {
-    lastModified: '2026-09-22',
+    lastModified: '2026-09-30',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
