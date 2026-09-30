@@ -31,8 +31,7 @@ export const LAB = {
   )}&destination_place_id=ChIJhd8wPQCXpBIRC6hbzdjyf40`,
   phoneE164: '+34647250728',
   googleMapsUrl: 'https://maps.app.goo.gl/2h1L8gqj5xnxW64d6',
-  // Copied from the Google Maps listing and still to be confirmed by the
-  // client; keep both in sync.
+  // Must match the Google Maps listing; change both together.
   openingHours: [
     {
       days: ['Wednesday', 'Thursday', 'Friday', 'Saturday'],
