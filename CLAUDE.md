@@ -25,7 +25,7 @@ No test suite is configured.
 
 All pages live under `src/app/[locale]/`. Locale detection and redirect is handled by next-intl's middleware in `src/proxy.ts` (Next 16's name for `middleware.ts`; it is the default export). Localized pathnames are defined in `src/i18n/routing.ts`, e.g. `/services` → `/es/servicios` or `/ca/serveis`. When adding a new page, register its localized paths there.
 
-`localePrefix` is `'always'`, so an unprefixed path only works if the proxy sees it: `/rauxa-lab?utm_source=...` gets a 307 to `/es/rauxa-lab` (or `/ca/...` from the `NEXT_LOCALE` cookie or `Accept-Language`) with the query kept. The matcher therefore runs on every path except `api`, `_next`, `_vercel` and anything with a dot. Do not narrow it back to `/` plus `/(es|ca)/:path*`: links shared without a prefix, like the ones posted on Instagram, then 404. The 307 is deliberate, because the target depends on the visitor and a cached 308 would pin the first locale.
+`localePrefix` is `'always'`, so an unprefixed path only works if the proxy sees it: `/rauxa-lab?utm_source=...` gets a 307 to `/es/rauxa-lab` (or `/ca/...` from the `rauxa_locale` cookie or `Accept-Language`) with the query kept. The matcher therefore runs on every path except `api`, `_next`, `_vercel` and anything with a dot. Do not narrow it back to `/` plus `/(es|ca)/:path*`: links shared without a prefix, like the ones posted on Instagram, then 404. The 307 is deliberate, because the target depends on the visitor and a cached 308 would pin the first locale.
 
 Navigation and links must use `@/i18n/navigation` (`Link`, `useRouter`, etc.) — never Next.js's built-in ones — so locale is preserved automatically.
 

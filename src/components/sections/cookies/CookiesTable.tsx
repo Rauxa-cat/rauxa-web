@@ -28,7 +28,7 @@ export async function CookiesTable() {
             <tr className="border-b">
               <td className="py-4 px-4">
                 <code className="bg-muted px-2 py-1 rounded text-sm">
-                  NEXT_LOCALE
+                  rauxa_locale
                 </code>
               </td>
               <td className="py-4 px-4 text-muted-foreground">
