@@ -5,7 +5,7 @@ export const routing = defineRouting({
   defaultLocale: 'es',
   localePrefix: 'always',
   localeCookie: {
-    name: 'NEXT_LOCALE',
+    name: 'rauxa_locale',
     maxAge: 60 * 60 * 24 * 365,
   },
   pathnames: {
