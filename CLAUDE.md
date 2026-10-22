@@ -314,6 +314,11 @@ organization by `@id` rather than repeating it. The restaurant's phone and hours
 `LAB` in `src/lib/content/lab.ts`, copied from its Google Maps listing; change them there and on
 Google together. Its `image` is the generic OG image until the restaurant photos arrive.
 
+`src/app/sitemap.ts` keeps a hand-set `lastModified` per page. **Any change a visitor or a crawler
+can see on a page (a section, its copy, its metadata or its JSON-LD) must bump that page's date in
+the same PR**, including changes to shared parts, which bump every page that renders them. It has
+been forgotten more than once. A new page also needs its entry there, besides `routing.ts`.
+
 ### Cron
 
 `/api/cron/keep-alive` runs daily (see `vercel.json`) to keep the Upstash Redis instance warm. It is secured with a `Bearer` token from `CRON_SECRET`.

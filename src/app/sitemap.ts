@@ -20,7 +20,7 @@ const pageConfig: Record<
     priority: 0.8,
   },
   '/rauxa-lab': {
-    lastModified: '2026-09-30',
+    lastModified: '2026-10-22',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
