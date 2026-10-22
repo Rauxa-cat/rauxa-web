@@ -28,6 +28,25 @@ const rauxaBody = Inter({
   display: 'swap',
 });
 
+export const metadata: Metadata = {
+  icons: {
+    icon: [
+      {
+        url: '/favicon-light.svg',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/favicon-dark.svg',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
+  },
+};
+
 export default async function RootLayout({
   children,
 }: {
