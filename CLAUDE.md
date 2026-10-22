@@ -68,7 +68,7 @@ src/components/
 `sections/shared/RowIndex` is the VT323 index label for editorial rows (the service lists and the
 `/about` projects); number a new row list with it rather than styling the digits again.
 
-Static content (nav links, services, team members, the RAUXA LAB address) is defined as data in `src/lib/content/`.
+Static content (nav links, services, team members, the RAUXA LAB address and menu) is defined as data in `src/lib/content/`.
 Hooks live in `src/hooks/` (`useContactSubmit`, `useReducedMotion`).
 
 ### Animations
