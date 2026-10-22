@@ -40,7 +40,7 @@ export const LAB = {
     },
     { days: ['Sunday'], opens: '12:00', closes: '18:00' },
   ],
-  anchors: { booking: 'reservar', location: 'ubicacion' },
+  anchors: { menu: 'carta', booking: 'reservar', location: 'ubicacion' },
   bookingUrl: (locale: string) =>
     `https://www.covermanager.com/reserve/module_restaurant/restaurante-rauxa-lab/${
       BOOKING_LANGUAGE[

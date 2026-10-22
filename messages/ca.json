@@ -159,11 +159,118 @@
       "bandPunch": "RAUXA LAB",
       "subtitle": "Tapes d'autor i vins naturals a Sant Cugat del Vallès.",
       "ctaBooking": "RESERVAR TAULA",
-      "ctaLocation": "VEURE UBICACIÓ"
+      "ctaMenu": "VEURE LA CARTA"
     },
     "intro": {
       "eyebrow": "QUÈ ÉS RAUXA LAB",
       "text": "RAUXA LAB és el nostre restaurant i laboratori creatiu a Sant Cugat del Vallès. Una proposta de tapes d'autor i vins naturals on <em>gastronomia, música, art i comunitat</em> conviuen sota un mateix sostre."
+    },
+    "menu": {
+      "eyebrow": "CARTA",
+      "title": "Tapes d'autor",
+      "titleHighlight": "i vins naturals",
+      "description": "Plats per compartir i vins per acompanyar-los.",
+      "allergens": "Si tens alguna al·lèrgia o intolerància alimentària, consulta-ho al nostre equip.",
+      "perUnit": "{price}/u.",
+      "wines": "Vins",
+      "sections": {
+        "appetizers": "Aperitius",
+        "classics": "Els nostres clàssics",
+        "tapas": "Tapes i platets",
+        "desserts": "Postres",
+        "white": "Blancs",
+        "red": "Negres",
+        "orange": "Orange",
+        "rose": "Rosats",
+        "sparkling": "Escumosos"
+      },
+      "dishes": {
+        "anchovySkewer": {
+          "name": "Gilda d'anxova i codonyat"
+        },
+        "olives": {
+          "name": "Olives marinades"
+        },
+        "curedBeef": {
+          "name": "Cecina de vedella amb grisines"
+        },
+        "carbonaraCroquette": {
+          "name": "Croqueta de carbonara",
+          "desc": "Croqueta de cansalada de la Selva al pebre, amb el seu vel i rovell d'ou texturitzat."
+        },
+        "spicyPotatoes": {
+          "name": "Braves XA",
+          "desc": "Patates braves amb les seves dues salses: allioli i salsa brava de chipotle en adob."
+        },
+        "prawnTartare": {
+          "name": "Tàrtar de gamba",
+          "desc": "Tàrtar de gamba amb el suc dels seus corals, gamba cristall fregida, allioli i coriandre, sobre un lingot de brioix."
+        },
+        "pastramiBrioche": {
+          "name": "Brioix de pastrami",
+          "desc": "Brioix amb cogombrets en vinagre, mostassa de Dijon, mel de canya, kimtxi i pastrami fumat de Rooftop Smokehouse."
+        },
+        "scallop": {
+          "name": "«Zamburiña» mar i muntanya",
+          "desc": "Zamburiña amb demi-glace, cansalada ibèrica i alga còdium."
+        },
+        "anchovyToast": {
+          "name": "Torrada d'anxova i mantega fumada",
+          "desc": "Torrada d'anxova «00», mantega fumada artesanalment i raïm."
+        },
+        "butterBread": {
+          "name": "Pa amb mantega fumada",
+          "desc": "Pa de massa mare amb mantega fumada artesanalment i sal marina."
+        },
+        "tomatoBread": {
+          "name": "Pa de coca amb tomàquet",
+          "desc": "Pa de vidre amb tomàquet de ramellet, oli d'oliva verge extra i sal marina."
+        },
+        "oyster": {
+          "name": "Ostra núm. 3 alinyada",
+          "desc": "Ostra núm. 3 Amélie amb granissat de cogombre, poma verda i esfera d'oliva negra."
+        },
+        "amberjack": {
+          "name": "Tiradito de peix llimona",
+          "desc": "Peix llimona cru, salpicó de pebrots i ceba, blat de moro fregit i oli picant."
+        },
+        "tunaToast": {
+          "name": "Montadito de tonyina Balfegó i foie caramel·litzat",
+          "desc": "Tàrtar de tonyina vermella Balfegó sobre una torrada de pa, amb una escalopa de foie caramel·litzat."
+        },
+        "steakTartare": {
+          "name": "Steak tàrtar amb carxofa fregida",
+          "desc": "Tàrtar de vedella de Girona amb carxofa fregida, servit amb torradetes."
+        },
+        "aubergine": {
+          "name": "Albergínia glacejada",
+          "desc": "Albergínia glacejada amb miso, puré de pebrot del piquillo i emulsió d'alfàbrega."
+        },
+        "friedChicken": {
+          "name": "Pollastre fregit a la catalana",
+          "desc": "Pollastre fregit a l'estil «KFC» amb salsa catalana amb orellanes i pinyons."
+        },
+        "tomatoSalad": {
+          "name": "Tomàquets amb fruita de la passió",
+          "desc": "Amanida de tomàquets de temporada amb vinagreta de fruita de la passió fresca, tija de ceba tendra i alfàbrega."
+        },
+        "sirloin": {
+          "name": "Llom baix amb crema de rossinyols",
+          "desc": "Llom baix d'Angus amb crema de rossinyols i patates fregides."
+        },
+        "flan": {
+          "name": "Flam"
+        },
+        "frenchToast": {
+          "name": "Torrija amb gelat de crema catalana"
+        },
+        "chocolate": {
+          "name": "Xocolata, oli i sal"
+        },
+        "rumBaba": {
+          "name": "Babà al rom"
+        }
+      }
     },
     "booking": {
       "eyebrow": "RESERVES",
