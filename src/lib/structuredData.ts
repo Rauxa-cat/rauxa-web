@@ -1,5 +1,6 @@
 import { CONTACT } from '@/components/sections/contact/contact.constants';
 import { LAB } from '@/lib/content/lab';
+import type { Menu } from '@/components/sections/lab/loadMenu';
 import { BASE_URL, OG_IMAGE, localeUrl } from '@/lib/metadata';
 
 // Stable ids let the per-page nodes point back at the organization and the
@@ -38,7 +39,7 @@ export function siteGraph(locale: string, description: string) {
   };
 }
 
-export function restaurant(locale: string, description: string) {
+export function restaurant(locale: string, description: string, menu: Menu) {
   const url = localeUrl(locale, { es: '/rauxa-lab', ca: '/rauxa-lab' });
   const [longitude, latitude] = LAB.coordinates;
 
@@ -71,6 +72,30 @@ export function restaurant(locale: string, description: string) {
     ),
     hasMap: LAB.googleMapsUrl,
     acceptsReservations: LAB.bookingUrl(locale),
+    hasMenu: {
+      '@type': 'Menu',
+      url: `${url}#${LAB.anchors.menu}`,
+      inLanguage: IN_LANGUAGE[locale],
+      hasMenuSection: [
+        ...menu.kitchen.map((section) => ({
+          name: section.name,
+          items: section.dishes,
+        })),
+        ...menu.wines.map((group) => ({
+          name: group.name,
+          items: group.wines.map(({ name, price }) => ({ name, price })),
+        })),
+      ].map(({ name, items }) => ({
+        '@type': 'MenuSection',
+        name,
+        hasMenuItem: items.map((item) => ({
+          '@type': 'MenuItem',
+          name: item.name,
+          description: 'description' in item ? item.description : undefined,
+          offers: { '@type': 'Offer', price: item.price, priceCurrency: 'EUR' },
+        })),
+      })),
+    },
     parentOrganization: { '@id': ORGANIZATION_ID },
   };
 }

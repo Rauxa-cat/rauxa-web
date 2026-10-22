@@ -159,11 +159,118 @@
       "bandPunch": "RAUXA LAB",
       "subtitle": "Tapas de autor y vinos naturales en Sant Cugat del Vallès.",
       "ctaBooking": "RESERVAR MESA",
-      "ctaLocation": "VER UBICACIÓN"
+      "ctaMenu": "MENÚS"
     },
     "intro": {
       "eyebrow": "QUÉ ES RAUXA LAB",
       "text": "RAUXA LAB es nuestro restaurante y laboratorio creativo en Sant Cugat del Vallès. Una propuesta de tapas de autor y vinos naturales donde <em>gastronomía, música, arte y comunidad</em> conviven bajo un mismo techo."
+    },
+    "menu": {
+      "eyebrow": "CARTA",
+      "title": "Tapas de autor",
+      "titleHighlight": "y vinos naturales",
+      "description": "Platos para compartir y vinos para acompañarlos.",
+      "allergens": "Si tienes alguna alergia o intolerancia alimentaria, consulta a nuestro equipo.",
+      "perUnit": "{price}/ud.",
+      "wines": "Vinos",
+      "sections": {
+        "appetizers": "Aperitivos",
+        "classics": "Nuestros clásicos",
+        "tapas": "Tapas y platillos",
+        "desserts": "Postres",
+        "white": "Blancos",
+        "red": "Tintos",
+        "orange": "Orange",
+        "rose": "Rosados",
+        "sparkling": "Espumosos"
+      },
+      "dishes": {
+        "anchovySkewer": {
+          "name": "Gilda de anchoa y membrillo"
+        },
+        "olives": {
+          "name": "Aceitunas marinadas"
+        },
+        "curedBeef": {
+          "name": "Cecina de ternera con grissini"
+        },
+        "carbonaraCroquette": {
+          "name": "Croqueta de carbonara",
+          "desc": "Croqueta de panceta de la Selva a la pimienta, con su velo y yema de huevo texturizada."
+        },
+        "spicyPotatoes": {
+          "name": "Bravas XA",
+          "desc": "Patatas bravas con sus dos salsas: alioli y salsa brava de chipotle en adobo."
+        },
+        "prawnTartare": {
+          "name": "Tartar de gamba",
+          "desc": "Tartar de gamba con el jugo de sus corales, gamba cristal frita, alioli y cilantro, sobre un lingote de brioche."
+        },
+        "pastramiBrioche": {
+          "name": "Brioche de pastrami",
+          "desc": "Brioche con pepinillos en vinagre, mostaza de Dijon, miel de caña, kimchi y pastrami ahumado de Rooftop Smokehouse."
+        },
+        "scallop": {
+          "name": "Zamburiña mar y montaña",
+          "desc": "Zamburiña con demi-glace, panceta ibérica y alga codium."
+        },
+        "anchovyToast": {
+          "name": "Tostada de anchoa y mantequilla ahumada",
+          "desc": "Tostada de anchoa «00», mantequilla ahumada artesanalmente y uva."
+        },
+        "butterBread": {
+          "name": "Pan con mantequilla ahumada",
+          "desc": "Pan de masa madre con mantequilla ahumada artesanalmente y sal marina."
+        },
+        "tomatoBread": {
+          "name": "Pan de coca con tomate",
+          "desc": "Pan de cristal con tomate de colgar, aceite de oliva virgen extra y sal marina."
+        },
+        "oyster": {
+          "name": "Ostra n.º 3 aliñada",
+          "desc": "Ostra n.º 3 Amélie con granizado de pepino, manzana verde y esfera de aceituna negra."
+        },
+        "amberjack": {
+          "name": "Tiradito de pez limón",
+          "desc": "Pez limón crudo, salpicón de pimientos y cebolla, maíz frito y aceite picante."
+        },
+        "tunaToast": {
+          "name": "Montadito de atún Balfegó y foie caramelizado",
+          "desc": "Tartar de atún rojo Balfegó sobre una tostada de pan, con un escalope de foie caramelizado."
+        },
+        "steakTartare": {
+          "name": "Steak tartar con alcachofa frita",
+          "desc": "Tartar de ternera de Girona con alcachofa frita, servido con tostaditas."
+        },
+        "aubergine": {
+          "name": "Berenjena glaseada",
+          "desc": "Berenjena glaseada con miso, puré de pimiento del piquillo y emulsión de albahaca."
+        },
+        "friedChicken": {
+          "name": "Pollo frito a la catalana",
+          "desc": "Pollo frito al estilo «KFC» con salsa catalana de orejones y piñones."
+        },
+        "tomatoSalad": {
+          "name": "Tomates con fruta de la pasión",
+          "desc": "Ensalada de tomates de temporada con vinagreta de fruta de la pasión fresca, tallo de cebolla tierna y albahaca."
+        },
+        "sirloin": {
+          "name": "Lomo bajo con crema de rebozuelos",
+          "desc": "Lomo bajo de Angus con crema de rebozuelos y patatas fritas."
+        },
+        "flan": {
+          "name": "Flan"
+        },
+        "frenchToast": {
+          "name": "Torrija con helado de crema catalana"
+        },
+        "chocolate": {
+          "name": "Chocolate, aceite y sal"
+        },
+        "rumBaba": {
+          "name": "Babá al ron"
+        }
+      }
     },
     "booking": {
       "eyebrow": "RESERVAS",

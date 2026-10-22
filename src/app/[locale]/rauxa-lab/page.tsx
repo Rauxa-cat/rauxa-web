@@ -4,6 +4,8 @@ import { HeroSection } from '@/components/sections/hero/HeroSection';
 import { LabBooking } from '@/components/sections/lab/LabBooking';
 import { LabIntro } from '@/components/sections/lab/LabIntro';
 import { LabLocation } from '@/components/sections/lab/LabLocation';
+import { LabMenu } from '@/components/sections/lab/LabMenu';
+import { loadMenu } from '@/components/sections/lab/loadMenu';
 import { CtaBand } from '@/components/sections/shared/CtaBand';
 import { LAB } from '@/lib/content/lab';
 import { generatePageMetadata, type PageProps } from '@/lib/metadata';
@@ -29,12 +31,15 @@ export async function generateMetadata({
 
 export default async function RauxaLabPage({ params }: PageProps) {
   const { locale } = await params;
-  const t = await getTranslations('lab.hero');
-  const tMeta = await getTranslations('metadata.lab');
+  const [t, tMeta, menu] = await Promise.all([
+    getTranslations('lab.hero'),
+    getTranslations('metadata.lab'),
+    loadMenu(),
+  ]);
 
   return (
     <>
-      <JsonLd data={restaurant(locale, tMeta('description'))} />
+      <JsonLd data={restaurant(locale, tMeta('description'), menu)} />
       <HeroSection
         className={PHOTO_STAND_IN}
         eyebrow={t('eyebrow')}
@@ -50,13 +55,14 @@ export default async function RauxaLabPage({ params }: PageProps) {
             href: { pathname: '/rauxa-lab', hash: LAB.anchors.booking },
           },
           {
-            label: t('ctaLocation'),
-            href: { pathname: '/rauxa-lab', hash: LAB.anchors.location },
+            label: t('ctaMenu'),
+            href: { pathname: '/rauxa-lab', hash: LAB.anchors.menu },
             variant: 'outline',
           },
         ]}
       />
       <LabIntro />
+      <LabMenu menu={menu} />
       <LabBooking />
       <LabLocation />
       <CtaBand />
