@@ -1,9 +1,9 @@
 export const CONTACT = {
   email: 'info@rauxa.cat',
-  phoneDisplay: '+34 684 481 333',
-  phoneE164: '+34684481333',
+  phoneDisplay: '+34 647 25 07 28',
+  phoneE164: '+34647250728',
   location: 'Barcelona, Catalunya',
-  whatsappUrl: 'https://wa.me/34684481333',
+  whatsappUrl: 'https://wa.me/34647250728',
   instagramUrl: 'https://instagram.com/rauxa___',
 };
 

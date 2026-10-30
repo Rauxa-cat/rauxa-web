@@ -13,39 +13,39 @@ const pageConfig: Record<
     priority: number;
   }
 > = {
-  '/': { lastModified: '2026-09-30', changeFrequency: 'weekly', priority: 1 },
+  '/': { lastModified: '2026-10-30', changeFrequency: 'weekly', priority: 1 },
   '/services': {
-    lastModified: '2026-09-30',
+    lastModified: '2026-10-30',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
   '/rauxa-lab': {
-    lastModified: '2026-10-22',
+    lastModified: '2026-10-30',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
   '/about': {
-    lastModified: '2026-09-23',
+    lastModified: '2026-10-30',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
   '/contact': {
-    lastModified: '2026-09-22',
+    lastModified: '2026-10-30',
     changeFrequency: 'monthly',
     priority: 0.8,
   },
   '/privacy': {
-    lastModified: '2026-09-22',
+    lastModified: '2026-10-30',
     changeFrequency: 'yearly',
     priority: 0.3,
   },
   '/cookies': {
-    lastModified: '2026-09-22',
+    lastModified: '2026-10-30',
     changeFrequency: 'yearly',
     priority: 0.3,
   },
   '/legal-notice': {
-    lastModified: '2026-03-03',
+    lastModified: '2026-10-30',
     changeFrequency: 'yearly',
     priority: 0.3,
   },
