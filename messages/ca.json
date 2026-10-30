@@ -701,5 +701,19 @@
       "content": "Les presents condicions es regeixen per la legislació espanyola. Per a qualsevol controvèrsia que pogués derivar-se de l'accés o ús d'aquest lloc web, les parts se sotmeten expressament als Jutjats i Tribunals de Espanya."
     },
     "lastUpdated": "Última actualització: 3 de març de 2026"
+  },
+  "notFound": {
+    "metadata": "Pàgina no trobada",
+    "eyebrow": "Error 404",
+    "title": "Fora de carta",
+    "body": "La pàgina que cerques no és a la nostra carta. Potser l'enllaç està mal escrit o l'hem retirada.",
+    "menuTitle": "El que sí que servim",
+    "links": {
+      "/": "Tornar al principi",
+      "/services": "El que podem fer pel teu esdeveniment",
+      "/rauxa-lab": "El nostre restaurant a Sant Cugat",
+      "/about": "La comunitat darrere de RAUXA",
+      "/contact": "Escriu-nos i en parlem"
+    }
   }
 }
