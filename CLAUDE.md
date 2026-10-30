@@ -27,6 +27,23 @@ All pages live under `src/app/[locale]/`. Locale detection and redirect is handl
 
 `localePrefix` is `'always'`, so an unprefixed path only works if the proxy sees it: `/rauxa-lab?utm_source=...` gets a 307 to `/es/rauxa-lab` (or `/ca/...` from the `rauxa_locale` cookie or `Accept-Language`) with the query kept. The matcher therefore runs on every path except `api`, `_next`, `_vercel` and anything with a dot. Do not narrow it back to `/` plus `/(es|ca)/:path*`: links shared without a prefix, like the ones posted on Instagram, then 404. The 307 is deliberate, because the target depends on the visitor and a cached 308 would pin the first locale.
 
+The 404 is `NotFoundSection` (`sections/not-found/`). An unknown path under a locale only
+reaches `[locale]/not-found.tsx`, with the header, footer and its language, because
+`[locale]/[...rest]` matches it and calls `notFound()`; without that catch-all it falls through
+to `app/not-found.tsx`, which only serves the paths the proxy skips and mounts the providers
+itself. Those paths (`/foo.php`) reach it because the `[locale]` layout calls `notFound()` for a
+segment that is not a locale, and a segment's own `not-found.tsx` does not catch what its layout
+throws. Both files are needed: dropping the root one serves Next's unbranded 404 there, and
+folding everything into it loses the locale layout without fixing the empty HTML below.
+
+Next 16.2.6 does not server-render a 404 raised by `notFound()`: it sends a bare
+`<html id="__next_error__">` shell with the 404 status and the `noindex`, and React builds the
+whole tree in the browser, so without JS the page is blank. A minimal app reproduces it. Two dev
+console errors follow from it and are expected: "Encountered a script tag" (the hero hold
+script, created client-side) and "'CatchAll' cannot have a negative time stamp" (a bug in
+React's Server Components performance track, absent from production builds). After a Next
+upgrade, `curl` a 404 to check whether the HTML now arrives rendered.
+
 Navigation and links must use `@/i18n/navigation` (`Link`, `useRouter`, etc.) — never Next.js's built-in ones — so locale is preserved automatically.
 
 ### Layout layers
