@@ -158,19 +158,23 @@ finished hero.
 Because it starts on style resolution alone, it can spend its whole travel on an
 empty frame and be over before the photo arrives. So it is paused, via
 `data-hero-hold` on `<html>`, until the photo can be painted. There are **two ways
-into a hero page** and both need the hold, but there is only one implementation of
-it, the inline script, which publishes itself as `window.__rauxaHeroHold`:
+into a hero page** and both need the hold. Each one has its own implementation, both
+in `sections/hero/hold.ts`: the inline script (`HERO_HOLD_SCRIPT`) and
+`holdUntilDecoded`. They share the attribute, the 4s stall budget and the `heroHeld`
+expando, so a change to one has to be mirrored in the other.
 
 | Entry | Arms the hold | Why the other one cannot do it |
 |---|---|---|
 | Cold document | the script, at parse | An effect only runs at hydration, long after the first paint. |
-| Client navigation | `HeroHold` layout effect, calling back into the script | A `<script>` only executes when the parser reaches it. React creates the node without running it, and dev-warns. |
+| Client navigation | `HeroHoldProvider` layout effect, calling `holdUntilDecoded` | A `<script>` only executes when the parser reaches it. React creates the node without running it, and dev-warns. |
 
-Every call joins the hold already in flight instead of arming a second one. On a
-cold load the parse-time call and the hydrating provider would otherwise each run
-their own `decode()` and their own stall timer, and release the photo and the copy
-at different moments. Keep it that way: a second hand-written copy of the algorithm
-in TypeScript is what drifted last time.
+On a cold load the provider also runs `holdUntilDecoded` when it hydrates. If the
+script has already released, the expando makes it release at once; if the hold is
+still in flight, it joins the script's release (the `heroRelease` expando, or
+`window.__rauxaHeroHold` before `DOMContentLoaded`) instead of arming a second
+`decode()` and stall timer. A second timer would count from hydration, and in a stall
+the copy would then land seconds after the photo. The script's release runs once, so
+a `decode()` landing after the stall cannot lift a later page's hold.
 
 The script lives in the root layout, not in the hero, because Next does not
 re-render layouts across a client navigation; move it back into `HeroAperture` and
