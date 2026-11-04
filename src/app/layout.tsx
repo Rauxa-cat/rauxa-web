@@ -1,6 +1,7 @@
 import { headers } from 'next/headers';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import './globals.css';
@@ -8,6 +9,11 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { HERO_HOLD_SCRIPT } from '@/components/sections/hero/hold';
 import { NO_JS_CSS } from '@/lib/motion';
+import {
+  CONSENT_DEFAULT_SCRIPT,
+  GTM_ID,
+  gtmScript,
+} from '@/lib/analytics/gtm';
 
 const rauxaPrimary = localFont({
   src: './fonts/AlfredinoSemirounded.ttf',
@@ -73,6 +79,16 @@ export default async function RootLayout({
         <noscript>
           <style>{NO_JS_CSS}</style>
         </noscript>
+        {GTM_ID && (
+          <>
+            <script
+              dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }}
+            />
+            <Script id="gtm" strategy="afterInteractive">
+              {gtmScript(GTM_ID)}
+            </Script>
+          </>
+        )}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
