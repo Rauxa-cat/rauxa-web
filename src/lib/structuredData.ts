@@ -1,4 +1,4 @@
-import { CONTACT } from '@/components/sections/contact/contact.constants';
+import { CONTACT } from '@/lib/content/contact';
 import { LAB } from '@/lib/content/lab';
 import type { Menu } from '@/components/sections/lab/loadMenu';
 import { BASE_URL, OG_IMAGE, localeUrl } from '@/lib/metadata';

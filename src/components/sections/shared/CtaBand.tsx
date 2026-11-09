@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { CONTACT } from '@/components/sections/contact/contact.constants';
+import { CONTACT } from '@/lib/content/contact';
 import { CtaBackdrop } from './CtaBackdrop';
 import { MaskReveal } from '@/components/motion/MaskReveal';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';

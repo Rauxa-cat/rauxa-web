@@ -1,5 +1,5 @@
 import { NAV_ITEMS } from '@/lib/content/nav';
-import { CONTACT } from '@/components/sections/contact/contact.constants';
+import { CONTACT } from '@/lib/content/contact';
 
 export const FOOTER_NAV = NAV_ITEMS;
 

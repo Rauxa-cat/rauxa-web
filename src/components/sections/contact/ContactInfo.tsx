@@ -1,4 +1,4 @@
-import { CONTACT } from './contact.constants';
+import { CONTACT } from '@/lib/content/contact';
 import { ContactDetails } from '@/components/contact/ContactDetails';
 import { getTranslations } from 'next-intl/server';
 import { SectionHeader } from '../shared/SectionHeader';
