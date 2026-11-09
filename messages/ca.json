@@ -280,7 +280,7 @@
       "description": "Tria el dia, l'hora i quants sereu.",
       "frameTitle": "Reserva de taula a RAUXA LAB",
       "openExternal": "Reservar en una pestanya nova",
-      "consentNotice": "Les reserves es gestionen a través de CoverManager, que fa servir cookies pròpies i de tercers (New Relic i Stripe). En prémer «Reservar», acceptes aquestes cookies i el motor de reserves es carrega només en aquesta visita a la pàgina, sense desar la teva elecció. Més informació a la <link>política de cookies</link>.",
+      "consentNotice": "Les reserves es gestionen a través de CoverManager, que fa servir cookies pròpies i de tercers (Google, New Relic i Stripe). En prémer «Reservar», acceptes aquestes cookies i el motor de reserves es carrega només en aquesta visita a la pàgina, sense desar la teva elecció. Més informació a la <link>política de cookies</link>.",
       "load": "Reservar"
     },
     "location": {
@@ -538,153 +538,204 @@
     "close": "Tancar"
   },
   "company": {
-    "name": "Titular",
-    "nif": "NIF",
-    "address": "Adreça",
-    "email": "Email"
+    "name": "Raó social",
+    "taxId": "NIF",
+    "address": "Domicili social",
+    "addressValue": "Carrer Valldaura 60, 08195 Sant Cugat del Vallès (Barcelona)",
+    "registry": "Inscripció registral",
+    "registryValue": "Registre Mercantil de Barcelona, full B-655261, inscripció 1a, de 20 d'abril de 2026",
+    "email": "Correu electrònic"
   },
   "privacy": {
     "title": "Política de Privacitat",
-    "intro": "En compliment del Reglament General de Protecció de Dades (RGPD) i la Llei Orgànica 3/2018 de Protecció de Dades Personals i garantia dels drets digitals, informem sobre el tractament de dades personals que realitzem.",
+    "intro": "Aquesta política explica com RAUXA MAG SL tracta les dades personals que recull a través de rauxa.cat, d'acord amb el Reglament (UE) 2016/679, General de Protecció de Dades (RGPD), i la Llei Orgànica 3/2018, de Protecció de Dades Personals i garantia dels drets digitals.",
     "responsible": {
       "title": "Responsable del tractament",
-      "intro": "El responsable del tractament de les seves dades personals és:",
-      "name": "Responsable",
-      "nif": "NIF",
-      "address": "Adreça",
-      "email": "Email de contacte"
+      "intro": "El responsable del tractament de les teves dades personals és:"
     },
-    "dataCollected": {
-      "title": "Dades que recopilem",
-      "intro": "Recopilem i tractem les següents dades personals:",
-      "contact": {
-        "title": "Formulari de contacte",
-        "content": "Nom, correu electrònic i missatge. Aquestes dades s'envien directament a info@rauxa.cat i s'utilitzen únicament per respondre a la seva consulta."
+    "treatments": {
+      "title": "Quines dades tractem i per a què",
+      "intro": "Aquests són els tractaments que fem a través del lloc web. No prenem decisions automatitzades ni elaborem perfils amb les teves dades.",
+      "fields": {
+        "data": "Dades",
+        "purpose": "Finalitat",
+        "basis": "Base jurídica",
+        "retention": "Conservació"
       },
-      "serviceRequest": {
-        "title": "Formulari de sol·licitud de serveis",
-        "content": "Nom, correu electrònic, telèfon (opcional), servei d'interès i missatge. Aquestes dades s'envien a info@rauxa.cat i s'utilitzen únicament per gestionar la seva sol·licitud."
+      "forms": {
+        "title": "Formularis de contacte, sol·licitud de servei i «Forma part de RAUXA»",
+        "data": "Nom, correu electrònic, telèfon (opcional) i missatge, juntament amb l'assumpte al formulari de contacte, el servei que t'interessa a la sol·licitud de servei o el tipus de col·laboració a «Forma part de RAUXA».",
+        "purpose": "Respondre la teva consulta, preparar la proposta del servei que sol·licites o valorar la teva proposta de col·laboració. Les dades s'envien per correu electrònic a info@rauxa.cat i no es desen en cap base de dades del lloc web.",
+        "basis": "El teu consentiment, que dones en acceptar aquesta política abans d'enviar el formulari (art. 6.1.a RGPD). En la sol·licitud d'un servei, a més, l'aplicació de mesures precontractuals a petició teva (art. 6.1.b RGPD).",
+        "retention": "Mentre gestionem la teva consulta o sol·licitud i, si després ens contractes, durant la relació comercial. Un cop finalitzada, les conservem bloquejades durant els terminis de prescripció de les responsabilitats que se'n puguin derivar."
       },
       "booking": {
         "title": "Reserves a RAUXA LAB",
-        "content": "Nom, cognoms, correu electrònic, telèfon, data, hora i nombre de persones i, si decideix indicar-los, comentaris sobre la reserva i intoleràncies o al·lèrgies alimentàries. Es recullen a través del motor de reserves de CoverManager integrat a la pàgina de RAUXA LAB i s'utilitzen per gestionar la seva reserva i avisar-lo de qualsevol canvi. Les dades sobre al·lèrgies només s'utilitzen per preparar la seva visita."
+        "data": "Nom, cognoms, correu electrònic, telèfon, data, hora i nombre de persones i, si decideixes indicar-los, comentaris sobre la reserva i intoleràncies o al·lèrgies alimentàries. Es recullen a través del motor de reserves de CoverManager integrat a la pàgina de RAUXA LAB.",
+        "purpose": "Gestionar la teva reserva i avisar-te de qualsevol canvi. Les dades sobre al·lèrgies i intoleràncies només s'utilitzen per preparar la teva visita.",
+        "basis": "La gestió de la reserva que sol·licites (art. 6.1.b RGPD) i, per a les dades sobre al·lèrgies o intoleràncies, el teu consentiment explícit en facilitar-les (art. 9.2.a RGPD).",
+        "retention": "El temps necessari per gestionar la reserva i, després, durant els terminis de prescripció de les responsabilitats que se'n puguin derivar."
+      },
+      "hosting": {
+        "title": "Allotjament, seguretat i estadístiques del lloc web",
+        "data": "Adreça IP i dades tècniques de cada petició, com ara la pàgina sol·licitada, la data i l'hora i el navegador.",
+        "purpose": "Servir el lloc web, garantir-ne la seguretat, evitar l'ús abusiu dels formularis limitant els enviaments des d'una mateixa adreça IP i elaborar estadístiques agregades d'ús i rendiment, sense cookies i sense identificar-te.",
+        "basis": "El nostre interès legítim a oferir un lloc web segur i disponible i a millorar-lo (art. 6.1.f RGPD).",
+        "retention": "L'adreça IP que s'utilitza per limitar els enviaments s'elimina automàticament al cap de pocs minuts; els registres tècnics, després d'un breu període fixat pel proveïdor d'allotjament, i les estadístiques només es conserven de manera agregada."
+      },
+      "analytics": {
+        "title": "Google Analytics",
+        "data": "Identificador aleatori del navegador, pàgines visitades, interaccions amb el lloc, procedència de la visita, ubicació aproximada i dades tècniques del dispositiu i del navegador.",
+        "purpose": "Elaborar estadístiques sobre l'ús del lloc amb Google Analytics 4. Només s'activa si acceptes les cookies d'Anàlisi, tal com es detalla a la <cookies>política de cookies</cookies>.",
+        "basis": "El teu consentiment (art. 6.1.a RGPD i art. 22.2 de la Llei 34/2002), que pots retirar en qualsevol moment des de «Configurar cookies».",
+        "retention": "14 mesos."
       }
     },
-    "purpose": {
-      "title": "Finalitat del tractament",
-      "intro": "Tractem les seves dades personals per a les següents finalitats:",
-      "point1": "Respondre a les seves consultes i sol·licituds d'informació",
-      "point2": "Gestionar sol·licituds de serveis i esdeveniments",
-      "point3": "Gestionar les seves reserves a RAUXA LAB",
-      "point4": "Enviar comunicacions relacionades amb els nostres serveis (només si ha donat el seu consentiment)"
-    },
-    "legal": {
-      "title": "Base legal",
-      "content": "La base legal per al tractament de les seves dades és el consentiment que ens atorga en enviar-nos les seves dades a través dels formularis de contacte o en acceptar expressament les nostres condicions. En el cas de les reserves, la base legal és la gestió de la reserva que vostè sol·licita (art. 6.1.b RGPD) i, per a les dades sobre al·lèrgies o intoleràncies, el seu consentiment explícit en facilitar-les."
-    },
-    "retention": {
-      "title": "Conservació de dades",
-      "content": "Conservarem les seves dades personals durant el temps necessari per gestionar la seva sol·licitud o consulta, i posteriorment durant el termini legalment establert per atendre possibles responsabilitats. Un cop finalitzat aquest període, les seves dades seran eliminades de forma segura."
-    },
     "recipients": {
-      "title": "Destinataris de les dades",
-      "intro": "Les seves dades poden ser comunicades als següents destinataris:",
-      "brevo": "Proveïdor d'enviament de correu electrònic a través del qual els missatges dels formularis arriben a info@rauxa.cat. Brevo compleix amb el RGPD i compta amb mesures de seguretat adequades.",
-      "vercel": "Proveïdor d'hosting i analytics. Vercel Analytics no utilitza cookies ni emmagatzema dades personals identificables.",
-      "coverManager": "Plataforma de gestió de reserves de RAUXA LAB, operada per Restaurant Booking & Distribution Services S.L. Tracta les dades de les reserves com a encarregat del tractament, en virtut d'un contracte amb RAUXA. Segons les condicions de CoverManager, les dades també es poden compartir amb altres restaurants que utilitzen el mateix programari, únicament per detectar reserves duplicades. Si una reserva requereix targeta de garantia, les dades de la targeta les tracta directament la passarel·la de pagament integrada a CoverManager, sense passar per RAUXA. Pot consultar la seva <link>política de privacitat</link>."
+      "title": "Destinataris i encarregats del tractament",
+      "intro": "No cedim les teves dades a tercers, tret d'obligació legal. Per prestar el servei, els proveïdors següents tracten dades per compte de RAUXA com a encarregats del tractament, amb un contracte que els obliga a protegir-les i a utilitzar-les només segons les nostres instruccions:",
+      "brevo": "Sendinblue SAS (França). Envia a info@rauxa.cat els missatges dels formularis.",
+      "upstash": "Upstash, Inc. (Estats Units). Desa temporalment l'adreça IP per limitar els enviaments dels formularis.",
+      "vercel": "Vercel Inc. (Estats Units). Allotja el lloc web i proporciona les estadístiques sense cookies.",
+      "google": "Google Ireland Limited (Irlanda). Allotja el correu electrònic (Google Workspace) en què es reben els missatges dels formularis i proporciona Google Analytics 4, aquest últim només si acceptes les cookies d'Anàlisi.",
+      "coverManager": "Restaurant Booking & Distribution Services S.L. (Espanya). Gestiona les reserves de RAUXA LAB. Segons les seves condicions, les dades de les reserves també es poden compartir amb altres restaurants que utilitzen el mateix programari, únicament per detectar reserves duplicades. Si una reserva requereix targeta de garantia, les dades de la targeta les tracta directament la passarel·la de pagament integrada a CoverManager, sense passar per RAUXA. Pots consultar la seva <coverManager>política de privacitat</coverManager>."
+    },
+    "transfers": {
+      "title": "Transferències internacionals",
+      "content": "Vercel, Upstash i Google poden tractar dades als Estats Units. Les tres empreses estan adherides al Marc de Privacitat de Dades UE-EUA (EU-U.S. Data Privacy Framework), que la Comissió Europea reconeix com a garantia d'un nivell de protecció adequat."
     },
     "rights": {
-      "title": "Els seus drets",
-      "intro": "Com a titular de les dades, té dret a:",
-      "access": "Accés",
-      "accessDesc": "Sol·licitar informació sobre les dades que tractem",
-      "rectification": "Rectificació",
-      "rectificationDesc": "Corregir dades inexactes o incompletes",
-      "deletion": "Supressió",
-      "deletionDesc": "Sol·licitar l'eliminació de les seves dades",
-      "opposition": "Oposició",
-      "oppositionDesc": "Oposar-se al tractament de les seves dades",
-      "portability": "Portabilitat",
-      "portabilityDesc": "Rebre les seves dades en format estructurat",
-      "contact": "Per exercir aquests drets, pot contactar-nos a cserranobiosca@gmail.com. També té dret a presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (www.aepd.es)."
+      "title": "Els teus drets",
+      "intro": "Pots exercir en qualsevol moment els drets següents:",
+      "access": {
+        "label": "Accés",
+        "content": "Saber si tractem les teves dades i obtenir-ne una còpia."
+      },
+      "rectification": {
+        "label": "Rectificació",
+        "content": "Corregir les dades inexactes o incompletes."
+      },
+      "deletion": {
+        "label": "Supressió",
+        "content": "Demanar que eliminem les teves dades quan ja no siguin necessàries."
+      },
+      "opposition": {
+        "label": "Oposició",
+        "content": "Oposar-te als tractaments basats en el nostre interès legítim."
+      },
+      "limitation": {
+        "label": "Limitació",
+        "content": "Demanar que suspenguem el tractament mentre es resol una reclamació o una sol·licitud teva."
+      },
+      "portability": {
+        "label": "Portabilitat",
+        "content": "Rebre les dades que ens has facilitat en un format estructurat i d'ús comú."
+      },
+      "withdrawal": {
+        "label": "Retirada del consentiment",
+        "content": "Retirar el consentiment que hagis donat, sense que això afecti la licitud del tractament anterior."
+      },
+      "contact": "Per exercir-los, escriu-nos a <email>info@rauxa.cat</email> indicant el dret que vols exercir. Et respondrem en el termini d'un mes.",
+      "complaint": "Si consideres que no hem atès correctament la teva sol·licitud, pots presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (<aepd>www.aepd.es</aepd>)."
     },
     "security": {
       "title": "Seguretat de les dades",
-      "content": "Hem adoptat les mesures tècniques i organitzatives necessàries per garantir la seguretat de les seves dades personals i evitar la seva alteració, pèrdua, tractament o accés no autoritzat."
+      "content": "Hem adoptat les mesures tècniques i organitzatives necessàries per garantir la seguretat de les teves dades personals i evitar-ne l'alteració, la pèrdua, el tractament o l'accés no autoritzats."
     },
     "updates": {
       "title": "Modificacions",
-      "content": "Ens reservem el dret a modificar aquesta Política de Privacitat per adaptar-la a canvis legislatius o en els nostres serveis. Li recomanem revisar aquesta pàgina periòdicament."
+      "content": "Podem modificar aquesta política per adaptar-la a canvis legislatius o en els nostres serveis. Publicarem qualsevol canvi en aquesta pàgina juntament amb la seva data d'actualització."
     },
-    "lastUpdated": "Última actualització: 15 de setembre de 2026"
+    "lastUpdated": "Última actualització: 9 de novembre de 2026"
   },
   "cookies": {
     "title": "Política de Cookies",
-    "intro": "A RAUXA utilitzem cookies i tecnologies similars per millorar l'experiència de navegació i analitzar el rendiment del nostre lloc web. A continuació expliquem quines cookies utilitzem i per a què.",
+    "intro": "Aquesta política explica quines cookies i tecnologies similars s'utilitzen a rauxa.cat, qui les instal·la, per a què serveixen, quant de temps es conserven i com pots acceptar-les, rebutjar-les o retirar el teu consentiment.",
     "whatAreCookies": {
       "title": "Què són les cookies?",
-      "content": "Les cookies són petits fitxers de text que s'emmagatzemen al teu dispositiu quan visites un lloc web. Permeten que el lloc recordi les teves preferències i milloren la teva experiència de navegació."
+      "content": "Les cookies són petits fitxers que un lloc web desa al teu navegador per recordar informació entre pàgines o entre visites. Altres tecnologies, com l'emmagatzematge local o de sessió del navegador, compleixen la mateixa funció, per la qual cosa aquesta política les tracta com a cookies. Les cookies pròpies les instal·la RAUXA des de rauxa.cat, i les de tercers, altres empreses des dels seus propis dominis."
     },
     "cookiesWeUse": {
       "title": "Cookies que utilitzem",
-      "intro": "A RAUXA utilitzem únicament les següents cookies i eines d'anàlisi:",
-      "essential": {
-        "title": "Cookies essencials",
-        "nextLocale": "Emmagatzema la teva preferència d'idioma (espanyol o català) per mostrar el lloc en l'idioma seleccionat en futures visites."
+      "intro": "Les cookies d'aquest lloc s'agrupen en dues categories: les tècniques, que estan sempre actives, i les d'anàlisi, que només s'instal·len si les acceptes. No utilitzem cookies publicitàries ni de xarxes socials."
+    },
+    "groups": {
+      "technical": {
+        "title": "Tècniques",
+        "content": "Són necessàries perquè el lloc funcioni i recordi les teves preferències, per la qual cosa no requereixen el teu consentiment.",
+        "cookies": {
+          "consent": "Desa la teva elecció sobre les cookies d'anàlisi i la data en què la vas fer, per no tornar-te a preguntar a cada visita.",
+          "locale": "Recorda l'idioma del lloc (castellà o català) que has triat."
+        }
       },
       "analytics": {
-        "title": "Eines d'anàlisi",
-        "content": "Utilitzem eines de Vercel que ens ajuden a entendre com s'utilitza el nostre lloc web. Aquestes eines respecten la teva privacitat:",
-        "vercelAnalytics": "Recull dades anònimes i agregades sobre visites a la web (pàgines vistes, país, dispositiu). No utilitza cookies ni rastreja usuaris individuals.",
-        "vercelInsights": "Mesura el rendiment tècnic del lloc (velocitat de càrrega, mètriques web). No utilitza cookies ni emmagatzema informació personal."
+        "title": "Anàlisi: Google Analytics",
+        "content": "Només s'instal·len si acceptes les cookies d'Anàlisi. Les utilitza Google Analytics 4, que ens permet conèixer de manera estadística quantes persones visiten el lloc i com l'utilitzen. Google Analytics conserva aquestes dades durant 14 mesos i després les elimina.",
+        "cookies": {
+          "ga": "Assigna al teu navegador un identificador aleatori per distingir els visitants a les estadístiques.",
+          "gaSession": "Manté l'estat de la visita per a les mateixes estadístiques."
+        }
       },
-      "thirdParty": {
-        "title": "Cookies de tercers a RAUXA LAB",
-        "content": "La pàgina de RAUXA LAB inclou el motor de reserves de CoverManager. Quan es carrega, CoverManager i els serveis que integra poden desar les seves pròpies cookies o dades a l'emmagatzematge local del teu navegador. RAUXA no controla ni accedeix a aquesta informació:",
-        "coverManager": "Funcionament del motor de reserves i del procés de reserva.",
-        "stripe": "Prevenció del frau en els pagaments amb targeta (cookie m).",
-        "newRelic": "Monitoratge tècnic del rendiment i dels errors del motor de reserves (emmagatzematge local).",
-        "more": "Més informació a la <link>política de cookies de CoverManager</link>."
+      "booking": {
+        "title": "Anàlisi: motor de reserves de RAUXA LAB",
+        "content": "La pàgina de RAUXA LAB integra el motor de reserves de CoverManager, que es carrega si acceptes Anàlisi o, si no, en prémer «Reservar», només en aquesta visita a la pàgina i sense que es desi la teva elecció. En carregar-se, CoverManager i els serveis que integra, la passarel·la de pagament Stripe i l'eina de monitoratge New Relic, desen les dades següents als seus propis dominis i sota la seva responsabilitat. El motor carrega a més Google Tag Manager i Google Analytics per compte de CoverManager. Més informació a la <link>política de cookies de CoverManager</link>.",
+        "cookies": {
+          "coverManagerSession": "Manté la sessió del procés de reserva.",
+          "newRelic": "Mesura el rendiment tècnic i els errors del motor de reserves.",
+          "stripe": "Ajuda a prevenir el frau en els pagaments amb targeta.",
+          "stripeSession": "Completa la prevenció del frau durant la sessió de pagament."
+        }
       }
     },
     "table": {
       "name": "Nom",
+      "owner": "Titular",
       "purpose": "Finalitat",
       "duration": "Durada"
     },
-    "duration": {
-      "1year": "1 any"
+    "owner": {
+      "own": "Pròpia (RAUXA)",
+      "google": "Tercer (Google)",
+      "coverManager": "Tercer (CoverManager)",
+      "stripe": "Tercer (Stripe)",
+      "newRelic": "Tercer (New Relic)"
     },
-    "manage": {
-      "title": "Configurar les cookies",
-      "content": "Pots revisar o canviar en qualsevol moment si permets les cookies d'anàlisi.",
+    "storage": {
+      "local": "Emmagatzematge local",
+      "session": "Emmagatzematge de sessió"
+    },
+    "duration": {
+      "months12": "12 mesos",
+      "years2": "2 anys",
+      "days14": "14 dies",
+      "hours4": "4 hores com a màxim",
+      "tab": "Fins que tanquis la pestanya"
+    },
+    "consent": {
+      "title": "Canviar o retirar el teu consentiment",
+      "content": "Desem la teva elecció durant 12 mesos, tant si acceptes com si rebutges. Pots canviar-la o retirar-la en qualsevol moment des de «Configurar cookies», al peu de pàgina o al botó següent. Si retires el consentiment, eliminem les cookies de Google Analytics i recarreguem la pàgina. Les cookies del motor de reserves són en dominis de tercers, per la qual cosa només les pots eliminar des del teu navegador, tal com s'explica a continuació.",
       "button": "Configurar cookies"
     },
-    "disableCookies": {
-      "title": "Com desactivar les cookies",
-      "content": "Pots configurar el teu navegador per bloquejar o eliminar les galetes en qualsevol moment. Tingues en compte que desactivar les galetes pot afectar la funcionalitat del lloc i la teva experiència de navegació, com ara l'idioma que has seleccionat."
+    "transfers": {
+      "title": "Transferències internacionals",
+      "content": "Google, Stripe i New Relic poden tractar als Estats Units les dades que obtenen a través d'aquestes cookies. Les tres empreses estan adherides al Marc de Privacitat de Dades UE-EUA (EU-U.S. Data Privacy Framework), que la Comissió Europea reconeix com a garantia d'un nivell de protecció adequat."
     },
-    "moreInfo": {
-      "title": "Més informació",
-      "content": "Per saber més sobre com gestionar les cookies al teu navegador, consulta l'ajuda de:"
+    "browser": {
+      "title": "Com eliminar o bloquejar les cookies des del navegador",
+      "content": "Des de la configuració del teu navegador pots eliminar les cookies ja instal·lades, incloses les de tercers, i bloquejar les noves. Si bloqueges les cookies tècniques, és possible que el lloc no recordi el teu idioma ni la teva elecció sobre les cookies. Consulta l'ajuda del teu navegador:"
     },
-    "lastUpdated": "Última actualització: 15 de setembre de 2026"
+    "lastUpdated": "Última actualització: 9 de novembre de 2026"
   },
   "legal-notice": {
     "title": "Avís Legal",
-    "intro": "En compliment de la Llei 34/2002, d'11 de juliol, de serveis de la societat de la informació i de comerç electrònic, s'informa de les següents dades:",
+    "intro": "En compliment de l'article 10 de la Llei 34/2002, d'11 de juliol, de serveis de la societat de la informació i de comerç electrònic, es faciliten les dades següents del titular d'aquest lloc web.",
     "ownership": {
-      "title": "Titularitat del lloc web",
-      "intro": "El present lloc web és titularitat de:",
-      "name": "Titular",
-      "nif": "NIF",
-      "address": "Adreça",
-      "email": "Email",
-      "website": "Lloc web"
+      "title": "Titular del lloc web",
+      "intro": "El lloc web rauxa.cat és titularitat de la societat següent:"
     },
     "purpose": {
       "title": "Objecte",
-      "content": "Aquest lloc web té com a objectiu proporcionar informació sobre RAUXA, una comunitat gastronòmica i cultural que crea experiències on la gastronomia, la música i l'art es troben. A través d'aquest lloc, oferim informació sobre els nostres serveis, esdeveniments i formes de contacte."
+      "content": "Aquest lloc web informa sobre RAUXA, una comunitat gastronòmica i cultural que crea experiències on la gastronomia, la música i l'art es troben, i sobre RAUXA LAB, el seu restaurant a Sant Cugat del Vallès. A través seu es poden consultar els seus serveis i esdeveniments, sol·licitar informació o un servei i reservar taula a RAUXA LAB."
     },
     "terms": {
       "title": "Condicions d'ús",
@@ -692,23 +743,23 @@
     },
     "intellectualProperty": {
       "title": "Propietat intel·lectual i industrial",
-      "content1": "Tots els continguts d'aquest lloc web (textos, imatges, disseny gràfic, codi font, logotips, marques i qualsevol altre element) són propietat de RAUXA o de tercers que han autoritzat el seu ús, i estan protegits per drets de propietat intel·lectual i industrial.",
+      "content1": "Tots els continguts d'aquest lloc web (textos, imatges, disseny gràfic, codi font, logotips, marques i qualsevol altre element) són propietat de RAUXA MAG SL o de tercers que n'han autoritzat l'ús, i estan protegits per drets de propietat intel·lectual i industrial.",
       "content2": "Queda prohibida la reproducció, distribució, comunicació pública o transformació d'aquests continguts sense autorització expressa del titular dels drets."
     },
     "liability": {
       "title": "Limitació de responsabilitat",
-      "content1": "RAUXA no es responsabilitza dels danys i perjudicis que puguin derivar-se de l'ús de la informació continguda en aquest lloc web, ni de la falta de disponibilitat o continuïtat del mateix.",
-      "content2": "RAUXA es reserva el dret a modificar, suspendre o interrompre, temporal o permanentment, l'accés al lloc web sense necessitat de previ avís."
+      "content1": "RAUXA MAG SL no es responsabilitza dels danys i perjudicis que puguin derivar-se de l'ús de la informació continguda en aquest lloc web, ni de la manca de disponibilitat o de continuïtat d'aquest.",
+      "content2": "RAUXA MAG SL es reserva el dret de modificar, suspendre o interrompre, temporalment o permanentment, l'accés al lloc web sense necessitat d'avís previ."
     },
     "links": {
       "title": "Enllaços externs",
-      "content": "Aquest lloc web pot contenir enllaços a llocs web de tercers. RAUXA no es responsabilitza del contingut d'aquests llocs ni de les condicions d'ús i polítiques de privacitat que apliquin."
+      "content": "Aquest lloc web pot contenir enllaços a llocs web de tercers. RAUXA MAG SL no es responsabilitza del contingut d'aquests llocs ni de les condicions d'ús i polítiques de privacitat que hi siguin aplicables."
     },
     "applicable": {
       "title": "Legislació aplicable",
-      "content": "Les presents condicions es regeixen per la legislació espanyola. Per a qualsevol controvèrsia que pogués derivar-se de l'accés o ús d'aquest lloc web, les parts se sotmeten expressament als Jutjats i Tribunals de Espanya."
+      "content": "Aquestes condicions es regeixen per la legislació espanyola. Per a qualsevol controvèrsia que pugui derivar-se de l'accés o l'ús d'aquest lloc web, les parts se sotmeten expressament als jutjats i tribunals d'Espanya."
     },
-    "lastUpdated": "Última actualització: 3 de març de 2026"
+    "lastUpdated": "Última actualització: 9 de novembre de 2026"
   },
   "notFound": {
     "metadata": "Pàgina no trobada",
