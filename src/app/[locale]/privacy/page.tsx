@@ -3,10 +3,13 @@ import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, PageProps } from '@/lib/metadata';
 import { Link } from '@/i18n/navigation';
 import { LegalHeader } from '@/components/sections/shared/LegalHeader';
-import { LegalSection } from '@/components/sections/shared/LegalSection';
+import {
+  LEGAL_LINK,
+  LegalSection,
+} from '@/components/sections/shared/LegalSection';
 import { CompanyInfo } from '@/components/sections/shared/CompanyInfo';
 import { COVERMANAGER } from '@/lib/content/lab';
-import { COMPANY } from '@/lib/content/company';
+import { CONTACT } from '@/lib/content/contact';
 
 const TREATMENTS = ['forms', 'booking', 'hosting', 'analytics'] as const;
 
@@ -30,8 +33,6 @@ const RIGHTS = [
   'withdrawal',
 ] as const;
 
-const linkClass = 'text-primary hover:underline underline-offset-4';
-
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
@@ -48,7 +49,7 @@ export default async function PrivacyPage() {
 
   const richLinks = {
     cookies: (chunks: React.ReactNode) => (
-      <Link href="/cookies" className={linkClass}>
+      <Link href="/cookies" className={LEGAL_LINK}>
         {chunks}
       </Link>
     ),
@@ -57,13 +58,13 @@ export default async function PrivacyPage() {
         href={COVERMANAGER.privacyUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={linkClass}
+        className={LEGAL_LINK}
       >
         {chunks}
       </a>
     ),
     email: (chunks: React.ReactNode) => (
-      <a href={`mailto:${COMPANY.email}`} className={linkClass}>
+      <a href={`mailto:${CONTACT.email}`} className={LEGAL_LINK}>
         {chunks}
       </a>
     ),
@@ -72,7 +73,7 @@ export default async function PrivacyPage() {
         href="https://www.aepd.es"
         target="_blank"
         rel="noopener noreferrer"
-        className={linkClass}
+        className={LEGAL_LINK}
       >
         {chunks}
       </a>

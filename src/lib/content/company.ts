@@ -3,5 +3,4 @@
 export const COMPANY = {
   legalName: 'RAUXA MAG SL',
   taxId: 'B27588391',
-  email: 'info@rauxa.cat',
 };

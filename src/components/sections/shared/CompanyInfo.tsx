@@ -1,5 +1,7 @@
+import { LEGAL_LINK } from './LegalSection';
 import { getTranslations } from 'next-intl/server';
 import { COMPANY } from '@/lib/content/company';
+import { CONTACT } from '@/lib/content/contact';
 
 export async function CompanyInfo({
   withRegistry = false,
@@ -26,11 +28,8 @@ export async function CompanyInfo({
       )}
       <li>
         <strong>{t('email')}:</strong>{' '}
-        <a
-          href={`mailto:${COMPANY.email}`}
-          className="text-primary hover:underline underline-offset-4"
-        >
-          {COMPANY.email}
+        <a href={`mailto:${CONTACT.email}`} className={LEGAL_LINK}>
+          {CONTACT.email}
         </a>
       </li>
     </ul>

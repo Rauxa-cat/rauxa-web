@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
 
+export const LEGAL_LINK = 'text-primary hover:underline underline-offset-4';
+
 interface LegalSectionProps {
   title: string;
   children: ReactNode;

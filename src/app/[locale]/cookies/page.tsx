@@ -2,15 +2,16 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, PageProps } from '@/lib/metadata';
 import { LegalHeader } from '@/components/sections/shared/LegalHeader';
-import { LegalSection } from '@/components/sections/shared/LegalSection';
+import {
+  LEGAL_LINK,
+  LegalSection,
+} from '@/components/sections/shared/LegalSection';
 import { CookiesTable } from '@/components/sections/cookies/CookiesTable';
 import { BrowserLinks } from '@/components/sections/cookies/BrowserLinks';
 import { CookieSettingsButton } from '@/components/consent/CookieSettingsButton';
 import { buttonVariants } from '@/components/ui/button';
 import { COOKIE_GROUPS } from '@/lib/content/cookies';
 import { COVERMANAGER } from '@/lib/content/lab';
-
-const linkClass = 'text-primary hover:underline underline-offset-4';
 
 export async function generateMetadata({
   params,
@@ -54,7 +55,7 @@ export default async function CookiesPage() {
                       href={COVERMANAGER.cookiesUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={linkClass}
+                      className={LEGAL_LINK}
                     >
                       {chunks}
                     </a>
