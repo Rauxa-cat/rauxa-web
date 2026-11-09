@@ -48,7 +48,9 @@ export const COOKIE_GROUPS = [
         duration: 'years2',
       },
       {
-        name: '_ga_<ID>',
+        // The GA4 measurement ID (G-NL6WN66QM9) without its `G-`; it changes
+        // with the GA4 property the GTM tag sends to.
+        name: '_ga_NL6WN66QM9',
         owner: 'google',
         storage: 'cookie',
         key: 'gaSession',
