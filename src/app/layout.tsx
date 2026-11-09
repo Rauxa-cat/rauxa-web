@@ -84,7 +84,7 @@ export default async function RootLayout({
             />
             {consent?.analytics && (
               <Script id="gtm" strategy="afterInteractive">
-                {gtmScript(GTM_ID)}
+                {`${consentScript(consent)}\n${gtmScript(GTM_ID)}`}
               </Script>
             )}
           </>

@@ -13,14 +13,19 @@ const GTM_SRC = 'https://www.googletagmanager.com/gtm.js?id=';
 // as granted. gtm.js itself only loads once Análisis is granted (here for a
 // stored choice, `loadGtm` for one made mid-visit), so its Initialization
 // always sees the final state and tags fire there exactly once.
+//
+// Guarded so it can run more than once: a 404 is rendered in the browser,
+// where React never executes the inline copy in the root layout, so the GTM
+// script and `bootConsent` carry it as well.
 export const consentScript = (stored: ConsentCategories | null) =>
   [
+    'if(!window.gtag){',
     'window.dataLayer=window.dataLayer||[];',
-    'function gtag(){dataLayer.push(arguments);}',
-    'window.gtag=gtag;',
+    'window.gtag=function(){dataLayer.push(arguments);};',
     `gtag('consent','default',${JSON.stringify(consentSignals(NO_CONSENT))});`,
     stored &&
       `gtag('consent','update',${JSON.stringify(consentSignals(stored))});`,
+    '}',
   ]
     .filter(Boolean)
     .join('\n');
@@ -34,5 +39,13 @@ export function loadGtm() {
   const script = document.createElement('script');
   script.async = true;
   script.src = GTM_SRC + GTM_ID;
+  document.head.append(script);
+}
+
+// A script element created here runs on insertion, unlike one React renders.
+export function bootConsent() {
+  if (!GTM_ID || window.gtag) return;
+  const script = document.createElement('script');
+  script.textContent = consentScript(null);
   document.head.append(script);
 }
