@@ -376,6 +376,12 @@ does not exist. Adding one means a new category, its cookies in the policy and a
   requires; keep them equal. The dialog's three buttons share a variant too. Both openers
   outside the banner (footer, `/cookies`) are `CookieSettingsButton`. The banner and those
   buttons carry `NOJS.hide`: without scripts there is no choice to make.
+- **Booking engine.** CoverManager's iframe on `/rauxa-lab` sets cookies that are not
+  technical (CoverManager, New Relic), so `BookingGate` only mounts it under Análisis, read
+  from `useConsent()`. The provider is seeded from the cookie on the server, so a visitor who
+  granted it gets the iframe in the HTML. Otherwise it shows a notice and a «Reservar» button
+  that loads the frame for that page view only, without touching `rauxa_consent`. Without JS
+  the panel is hidden (`NOJS.hide`) and the external CoverManager link stays the way to book.
 - **For the next branch.** Gate anything that needs Análisis on `useConsent().categories`
   in the client or `getConsent()` on the server.
 - **GTM side.** The GA4 tag requires `analytics_storage` as additional consent and fires
