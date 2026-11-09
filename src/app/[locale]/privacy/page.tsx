@@ -1,10 +1,37 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { generatePageMetadata, PageProps } from '@/lib/metadata';
+import { Link } from '@/i18n/navigation';
 import { LegalHeader } from '@/components/sections/shared/LegalHeader';
-import { LegalSection } from '@/components/sections/shared/LegalSection';
+import {
+  LEGAL_LINK,
+  LegalSection,
+} from '@/components/sections/shared/LegalSection';
 import { CompanyInfo } from '@/components/sections/shared/CompanyInfo';
 import { COVERMANAGER } from '@/lib/content/lab';
+import { CONTACT } from '@/lib/content/contact';
+
+const TREATMENTS = ['forms', 'booking', 'hosting', 'analytics'] as const;
+
+const TREATMENT_FIELDS = ['data', 'purpose', 'basis', 'retention'] as const;
+
+const RECIPIENTS = [
+  { name: 'Brevo', key: 'brevo' },
+  { name: 'Upstash', key: 'upstash' },
+  { name: 'Vercel', key: 'vercel' },
+  { name: 'Google', key: 'google' },
+  { name: 'CoverManager', key: 'coverManager' },
+] as const;
+
+const RIGHTS = [
+  'access',
+  'rectification',
+  'deletion',
+  'opposition',
+  'limitation',
+  'portability',
+  'withdrawal',
+] as const;
 
 export async function generateMetadata({
   params,
@@ -20,6 +47,39 @@ export async function generateMetadata({
 export default async function PrivacyPage() {
   const t = await getTranslations('privacy');
 
+  const richLinks = {
+    cookies: (chunks: React.ReactNode) => (
+      <Link href="/cookies" className={LEGAL_LINK}>
+        {chunks}
+      </Link>
+    ),
+    coverManager: (chunks: React.ReactNode) => (
+      <a
+        href={COVERMANAGER.privacyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={LEGAL_LINK}
+      >
+        {chunks}
+      </a>
+    ),
+    email: (chunks: React.ReactNode) => (
+      <a href={`mailto:${CONTACT.email}`} className={LEGAL_LINK}>
+        {chunks}
+      </a>
+    ),
+    aepd: (chunks: React.ReactNode) => (
+      <a
+        href="https://www.aepd.es"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={LEGAL_LINK}
+      >
+        {chunks}
+      </a>
+    ),
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-6 py-16 md:py-24">
       <LegalHeader title={t('title')} intro={t('intro')} />
@@ -32,106 +92,72 @@ export default async function PrivacyPage() {
           <CompanyInfo />
         </LegalSection>
 
-        <LegalSection title={t('dataCollected.title')}>
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            {t('dataCollected.intro')}
-          </p>
-          <ul className="space-y-2 text-muted-foreground list-disc list-inside">
-            <li>
-              <strong>{t('dataCollected.contact.title')}:</strong>{' '}
-              {t('dataCollected.contact.content')}
-            </li>
-            <li>
-              <strong>{t('dataCollected.serviceRequest.title')}:</strong>{' '}
-              {t('dataCollected.serviceRequest.content')}
-            </li>
-            <li>
-              <strong>{t('dataCollected.booking.title')}:</strong>{' '}
-              {t('dataCollected.booking.content')}
-            </li>
-          </ul>
-        </LegalSection>
-
-        <LegalSection title={t('purpose.title')}>
-          <p className="text-muted-foreground leading-relaxed mb-3">
-            {t('purpose.intro')}
-          </p>
-          <ul className="space-y-2 text-muted-foreground list-disc list-inside">
-            <li>{t('purpose.point1')}</li>
-            <li>{t('purpose.point2')}</li>
-            <li>{t('purpose.point3')}</li>
-            <li>{t('purpose.point4')}</li>
-          </ul>
-        </LegalSection>
-
-        <LegalSection title={t('legal.title')}>
+        <LegalSection title={t('treatments.title')}>
           <p className="text-muted-foreground leading-relaxed">
-            {t('legal.content')}
+            {t('treatments.intro')}
           </p>
-        </LegalSection>
-
-        <LegalSection title={t('retention.title')}>
-          <p className="text-muted-foreground leading-relaxed">
-            {t('retention.content')}
-          </p>
+          {TREATMENTS.map((treatment) => (
+            <div key={treatment} className="mt-8">
+              <h3 className="font-sans text-xl font-semibold mb-3">
+                {t(`treatments.${treatment}.title`)}
+              </h3>
+              <dl className="space-y-2 text-muted-foreground leading-relaxed">
+                {TREATMENT_FIELDS.map((field) => (
+                  <div key={field}>
+                    <dt className="inline font-semibold text-foreground">
+                      {t(`treatments.fields.${field}`)}:
+                    </dt>{' '}
+                    <dd className="inline">
+                      {t.rich(`treatments.${treatment}.${field}`, richLinks)}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
         </LegalSection>
 
         <LegalSection title={t('recipients.title')}>
           <p className="text-muted-foreground leading-relaxed mb-4">
             {t('recipients.intro')}
           </p>
-          <ul className="space-y-2 text-muted-foreground list-disc list-inside">
-            <li>
-              <strong>Brevo:</strong> {t('recipients.brevo')}
-            </li>
-            <li>
-              <strong>Vercel:</strong> {t('recipients.vercel')}
-            </li>
-            <li>
-              <strong>CoverManager:</strong>{' '}
-              {t.rich('recipients.coverManager', {
-                link: (chunks) => (
-                  <a
-                    href={COVERMANAGER.privacyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline underline-offset-4"
-                  >
-                    {chunks}
-                  </a>
-                ),
-              })}
-            </li>
+          <ul className="space-y-3 text-muted-foreground leading-relaxed">
+            {RECIPIENTS.map(({ name, key }) => (
+              <li key={key}>
+                <strong className="font-semibold text-foreground">
+                  {name}:
+                </strong>{' '}
+                {t.rich(`recipients.${key}`, richLinks)}
+              </li>
+            ))}
           </ul>
+        </LegalSection>
+
+        <LegalSection title={t('transfers.title')}>
+          <p className="text-muted-foreground leading-relaxed">
+            {t('transfers.content')}
+          </p>
         </LegalSection>
 
         <LegalSection title={t('rights.title')}>
           <p className="text-muted-foreground leading-relaxed mb-3">
             {t('rights.intro')}
           </p>
-          <ul className="space-y-2 text-muted-foreground list-disc list-inside">
-            <li>
-              <strong>{t('rights.access')}:</strong> {t('rights.accessDesc')}
-            </li>
-            <li>
-              <strong>{t('rights.rectification')}:</strong>{' '}
-              {t('rights.rectificationDesc')}
-            </li>
-            <li>
-              <strong>{t('rights.deletion')}:</strong>{' '}
-              {t('rights.deletionDesc')}
-            </li>
-            <li>
-              <strong>{t('rights.opposition')}:</strong>{' '}
-              {t('rights.oppositionDesc')}
-            </li>
-            <li>
-              <strong>{t('rights.portability')}:</strong>{' '}
-              {t('rights.portabilityDesc')}
-            </li>
+          <ul className="space-y-2 text-muted-foreground leading-relaxed">
+            {RIGHTS.map((right) => (
+              <li key={right}>
+                <strong className="font-semibold text-foreground">
+                  {t(`rights.${right}.label`)}:
+                </strong>{' '}
+                {t(`rights.${right}.content`)}
+              </li>
+            ))}
           </ul>
           <p className="text-muted-foreground leading-relaxed mt-4">
-            {t('rights.contact')}
+            {t.rich('rights.contact', richLinks)}
+          </p>
+          <p className="text-muted-foreground leading-relaxed mt-4">
+            {t.rich('rights.complaint', richLinks)}
           </p>
         </LegalSection>
 

@@ -9,6 +9,7 @@ import { routing } from '@/i18n/routing';
 import { SiteHeader } from '@/components/site/Header';
 import { Footer } from '@/components/site/footer/Footer';
 import { MotionProvider } from '@/components/motion/MotionProvider';
+import { Consent } from '@/components/consent/Consent';
 import { ServiceRequestProvider } from '@/components/service-request/ServiceRequestProvider';
 import { Toaster } from 'sonner';
 import { getTranslations } from 'next-intl/server';
@@ -62,11 +63,15 @@ export default async function Layout({
       <JsonLd data={siteGraph(locale, t('description'))} />
       <NextIntlClientProvider locale={locale}>
         <MotionProvider>
-          <ServiceRequestProvider>
-            <SiteHeader />
-            <main> {children} </main>
-            <Footer />
-          </ServiceRequestProvider>
+          <Consent>
+            <ServiceRequestProvider>
+              <SiteHeader />
+              <main tabIndex={-1} className="outline-none">
+                {children}
+              </main>
+              <Footer />
+            </ServiceRequestProvider>
+          </Consent>
           <Toaster position="top-right" richColors />
         </MotionProvider>
       </NextIntlClientProvider>

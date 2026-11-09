@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { SiteHeader } from '@/components/site/Header';
 import { Footer } from '@/components/site/footer/Footer';
 import { MotionProvider } from '@/components/motion/MotionProvider';
+import { Consent } from '@/components/consent/Consent';
 import { NotFoundSection } from '@/components/sections/not-found/NotFoundSection';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,11 +21,13 @@ export default async function RootNotFound() {
   return (
     <NextIntlClientProvider locale={locale}>
       <MotionProvider>
-        <SiteHeader />
-        <main>
-          <NotFoundSection />
-        </main>
-        <Footer />
+        <Consent>
+          <SiteHeader />
+          <main tabIndex={-1} className="outline-none">
+            <NotFoundSection />
+          </main>
+          <Footer />
+        </Consent>
       </MotionProvider>
     </NextIntlClientProvider>
   );

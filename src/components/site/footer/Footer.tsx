@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { Logo } from '@/components/site/Logo';
@@ -5,6 +6,7 @@ import { FOOTER_NAV, FOOTER_CONTACT, FOOTER_LEGAL } from './footer.constants';
 import { FooterSocial } from './FooterSocial';
 import { ContactDetails } from '@/components/contact/ContactDetails';
 import { getTranslations } from 'next-intl/server';
+import { CookieSettingsButton } from '@/components/consent/CookieSettingsButton';
 
 export async function Footer() {
   const tFooter = await getTranslations('footer');
@@ -53,13 +55,19 @@ export async function Footer() {
 
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             {FOOTER_LEGAL.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className=" underline-offset-4  hover:underline"
-              >
-                {tLegal(item.href)}
-              </Link>
+              <Fragment key={item.href}>
+                <Link
+                  href={item.href}
+                  className=" underline-offset-4  hover:underline"
+                >
+                  {tLegal(item.href)}
+                </Link>
+                {item.href === '/cookies' && (
+                  <CookieSettingsButton className="cursor-pointer underline-offset-4 hover:underline">
+                    {tLegal('cookieSettings')}
+                  </CookieSettingsButton>
+                )}
+              </Fragment>
             ))}
           </div>
         </div>

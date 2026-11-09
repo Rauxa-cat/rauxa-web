@@ -1,3 +1,4 @@
+import { LEGAL_LINK } from '@/components/sections/shared/LegalSection';
 import { getTranslations } from 'next-intl/server';
 
 const BROWSERS = [
@@ -25,7 +26,7 @@ export async function BrowserLinks() {
   return (
     <>
       <p className="text-muted-foreground leading-relaxed mb-4">
-        {t('moreInfo.content')}
+        {t('browser.content')}
       </p>
       <ul className="space-y-2">
         {BROWSERS.map((browser) => (
@@ -34,7 +35,7 @@ export async function BrowserLinks() {
               href={browser.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline underline-offset-4"
+              className={LEGAL_LINK}
             >
               {browser.name}
             </a>

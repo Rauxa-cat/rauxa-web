@@ -80,7 +80,8 @@
   "legal": {
     "/privacy": "Privacidad",
     "/cookies": "Cookies",
-    "/legal-notice": "Aviso legal"
+    "/legal-notice": "Aviso legal",
+    "cookieSettings": "Configurar cookies"
   },
   "home": {
     "hero": {
@@ -278,7 +279,9 @@
       "titleHighlight": "mesa",
       "description": "Elige el día, la hora y cuántos seréis.",
       "frameTitle": "Reserva de mesa en RAUXA LAB",
-      "openExternal": "Reservar en una pestaña nueva"
+      "openExternal": "Reservar en una pestaña nueva",
+      "consentNotice": "Las reservas se gestionan a través de CoverManager, que utiliza cookies propias y de terceros (Google, New Relic y Stripe). Al pulsar «Reservar», aceptas esas cookies y el motor de reservas se carga solo en esta visita a la página, sin guardar tu elección. Más información en la <link>política de cookies</link>.",
+      "load": "Reservar"
     },
     "location": {
       "eyebrow": "UBICACIÓN",
@@ -535,148 +538,206 @@
     "close": "Cerrar"
   },
   "company": {
-    "name": "Titular",
-    "nif": "NIF",
-    "address": "Dirección",
-    "email": "Email"
+    "name": "Razón social",
+    "taxId": "NIF",
+    "address": "Domicilio social",
+    "addressValue": "Calle Valldaura 60, 08195 Sant Cugat del Vallès (Barcelona)",
+    "registry": "Inscripción registral",
+    "registryValue": "Registro Mercantil de Barcelona, hoja B-655261, inscripción 1.ª, de 20 de abril de 2026",
+    "email": "Correo electrónico"
   },
   "privacy": {
     "title": "Política de Privacidad",
-    "intro": "En cumplimiento del Reglamento General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos Personales y garantía de los derechos digitales, informamos sobre el tratamiento de datos personales que realizamos.",
+    "intro": "Esta política explica cómo RAUXA MAG SL trata los datos personales que recoge a través de rauxa.cat, de acuerdo con el Reglamento (UE) 2016/679, General de Protección de Datos (RGPD), y la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales.",
     "responsible": {
       "title": "Responsable del tratamiento",
-      "intro": "El responsable del tratamiento de sus datos personales es:",
-      "name": "Responsable",
-      "nif": "NIF",
-      "address": "Dirección",
-      "email": "Email de contacto"
+      "intro": "El responsable del tratamiento de tus datos personales es:"
     },
-    "dataCollected": {
-      "title": "Datos que recopilamos",
-      "intro": "Recopilamos y tratamos los siguientes datos personales:",
-      "contact": {
-        "title": "Formulario de contacto",
-        "content": "Nombre, correo electrónico y mensaje. Estos datos se envían directamente a info@rauxa.cat y se utilizan únicamente para responder a su consulta."
+    "treatments": {
+      "title": "Qué datos tratamos y para qué",
+      "intro": "Estos son los tratamientos que realizamos a través del sitio web. No tomamos decisiones automatizadas ni elaboramos perfiles con tus datos.",
+      "fields": {
+        "data": "Datos",
+        "purpose": "Finalidad",
+        "basis": "Base jurídica",
+        "retention": "Conservación"
       },
-      "serviceRequest": {
-        "title": "Formulario de solicitud de servicios",
-        "content": "Nombre, correo electrónico, teléfono (opcional), servicio de interés y mensaje. Estos datos se envían a info@rauxa.cat y se utilizan únicamente para gestionar su solicitud."
+      "forms": {
+        "title": "Formularios de contacto, solicitud de servicio y «Forma parte de RAUXA»",
+        "data": "Nombre, correo electrónico, teléfono (opcional) y mensaje, junto con el asunto en el formulario de contacto, el servicio que te interesa en la solicitud de servicio o el tipo de colaboración en «Forma parte de RAUXA».",
+        "purpose": "Responder a tu consulta, preparar la propuesta del servicio que solicitas o valorar tu propuesta de colaboración. Los datos se envían por correo electrónico a info@rauxa.cat y no se guardan en ninguna base de datos del sitio web.",
+        "basis": "Tu consentimiento, que prestas al aceptar esta política antes de enviar el formulario (art. 6.1.a RGPD). En la solicitud de un servicio, además, la aplicación de medidas precontractuales a petición tuya (art. 6.1.b RGPD).",
+        "retention": "Mientras gestionamos tu consulta o solicitud y, si después nos contratas, durante la relación comercial. Una vez finalizada, los conservamos bloqueados durante los plazos de prescripción de las responsabilidades que pudieran derivarse."
       },
       "booking": {
         "title": "Reservas en RAUXA LAB",
-        "content": "Nombre, apellidos, correo electrónico, teléfono, fecha, hora y número de personas y, si decide indicarlos, comentarios sobre la reserva e intolerancias o alergias alimentarias. Se recogen a través del motor de reservas de CoverManager integrado en la página de RAUXA LAB y se utilizan para gestionar su reserva y avisarle de cualquier cambio. Los datos sobre alergias solo se utilizan para preparar su visita."
+        "data": "Nombre, apellidos, correo electrónico, teléfono, fecha, hora y número de personas y, si decides indicarlos, comentarios sobre la reserva e intolerancias o alergias alimentarias. Se recogen a través del motor de reservas de CoverManager integrado en la página de RAUXA LAB.",
+        "purpose": "Gestionar tu reserva y avisarte de cualquier cambio. Los datos sobre alergias e intolerancias solo se utilizan para preparar tu visita.",
+        "basis": "La gestión de la reserva que solicitas (art. 6.1.b RGPD) y, para los datos sobre alergias o intolerancias, tu consentimiento explícito al facilitarlos (art. 9.2.a RGPD).",
+        "retention": "El tiempo necesario para gestionar la reserva y, después, durante los plazos de prescripción de las responsabilidades que pudieran derivarse."
+      },
+      "hosting": {
+        "title": "Alojamiento, seguridad y estadísticas del sitio web",
+        "data": "Dirección IP y datos técnicos de cada petición, como la página solicitada, la fecha y la hora y el navegador.",
+        "purpose": "Servir el sitio web, garantizar su seguridad, evitar el uso abusivo de los formularios limitando los envíos desde una misma dirección IP y elaborar estadísticas agregadas de uso y rendimiento, sin cookies y sin identificarte.",
+        "basis": "Nuestro interés legítimo en ofrecer un sitio web seguro y disponible y en mejorarlo (art. 6.1.f RGPD).",
+        "retention": "La dirección IP que se usa para limitar los envíos se elimina automáticamente a los pocos minutos; los registros técnicos, tras un breve periodo fijado por el proveedor de alojamiento, y las estadísticas solo se conservan de forma agregada."
+      },
+      "analytics": {
+        "title": "Google Analytics",
+        "data": "Identificador aleatorio del navegador, páginas visitadas, interacciones con el sitio, procedencia de la visita, ubicación aproximada y datos técnicos del dispositivo y del navegador.",
+        "purpose": "Elaborar estadísticas sobre el uso del sitio con Google Analytics 4. Solo se activa si aceptas las cookies de Análisis, como se detalla en la <cookies>política de cookies</cookies>.",
+        "basis": "Tu consentimiento (art. 6.1.a RGPD y art. 22.2 de la Ley 34/2002), que puedes retirar en cualquier momento desde «Configurar cookies».",
+        "retention": "14 meses."
       }
     },
-    "purpose": {
-      "title": "Finalidad del tratamiento",
-      "intro": "Tratamos sus datos personales para las siguientes finalidades:",
-      "point1": "Responder a sus consultas y solicitudes de información",
-      "point2": "Gestionar solicitudes de servicios y eventos",
-      "point3": "Gestionar sus reservas en RAUXA LAB",
-      "point4": "Enviar comunicaciones relacionadas con nuestros servicios (solo si ha dado su consentimiento)"
-    },
-    "legal": {
-      "title": "Base legal",
-      "content": "La base legal para el tratamiento de sus datos es el consentimiento que nos otorga al enviarnos sus datos a través de los formularios de contacto o al aceptar expresamente nuestras condiciones. En el caso de las reservas, la base legal es la gestión de la reserva que usted solicita (art. 6.1.b RGPD) y, para los datos sobre alergias o intolerancias, su consentimiento explícito al facilitarlos."
-    },
-    "retention": {
-      "title": "Conservación de datos",
-      "content": "Conservaremos sus datos personales durante el tiempo necesario para gestionar su solicitud o consulta, y posteriormente durante el plazo legalmente establecido para atender posibles responsabilidades. Una vez finalizado este periodo, sus datos serán eliminados de forma segura."
-    },
     "recipients": {
-      "title": "Destinatarios de los datos",
-      "intro": "Sus datos pueden ser comunicados a los siguientes destinatarios:",
-      "brevo": "Proveedor de envío de correo electrónico a través del cual los mensajes de los formularios llegan a info@rauxa.cat. Brevo cumple con el RGPD y cuenta con medidas de seguridad adecuadas.",
-      "vercel": "Proveedor de hosting y analytics. Vercel Analytics no utiliza cookies ni almacena datos personales identificables.",
-      "coverManager": "Plataforma de gestión de reservas de RAUXA LAB, operada por Restaurant Booking & Distribution Services S.L. Trata los datos de las reservas como encargado del tratamiento, en virtud de un contrato con RAUXA. Según las condiciones de CoverManager, los datos también pueden compartirse con otros restaurantes que usan el mismo software, únicamente para detectar reservas duplicadas. Si una reserva requiere tarjeta de garantía, los datos de la tarjeta los trata directamente la pasarela de pago integrada en CoverManager, sin pasar por RAUXA. Puede consultar su <link>política de privacidad</link>."
+      "title": "Destinatarios y encargados del tratamiento",
+      "intro": "No cedemos tus datos a terceros, salvo obligación legal. Para prestar el servicio, los siguientes proveedores tratan datos por cuenta de RAUXA como encargados del tratamiento, con un contrato que les obliga a protegerlos y a usarlos solo según nuestras instrucciones:",
+      "brevo": "Sendinblue SAS (Francia). Envía a info@rauxa.cat los mensajes de los formularios.",
+      "upstash": "Upstash, Inc. (Estados Unidos). Guarda temporalmente la dirección IP para limitar los envíos de los formularios.",
+      "vercel": "Vercel Inc. (Estados Unidos). Aloja el sitio web y proporciona las estadísticas sin cookies.",
+      "google": "Google Ireland Limited (Irlanda). Aloja el correo electrónico (Google Workspace) en el que se reciben los mensajes de los formularios y proporciona Google Analytics 4, este último solo si aceptas las cookies de Análisis.",
+      "coverManager": "Restaurant Booking & Distribution Services S.L. (España). Gestiona las reservas de RAUXA LAB. Según sus condiciones, los datos de las reservas también pueden compartirse con otros restaurantes que usan el mismo software, únicamente para detectar reservas duplicadas. Si una reserva requiere tarjeta de garantía, los datos de la tarjeta los trata directamente la pasarela de pago integrada en CoverManager, sin pasar por RAUXA. Puedes consultar su <coverManager>política de privacidad</coverManager>."
+    },
+    "transfers": {
+      "title": "Transferencias internacionales",
+      "content": "Vercel, Upstash y Google pueden tratar datos en Estados Unidos. Las tres empresas están adheridas al Marco de Privacidad de Datos UE-EE. UU. (EU-U.S. Data Privacy Framework), que la Comisión Europea reconoce como garantía de un nivel de protección adecuado."
     },
     "rights": {
-      "title": "Sus derechos",
-      "intro": "Como titular de los datos, tiene derecho a:",
-      "access": "Acceso",
-      "accessDesc": "Solicitar información sobre los datos que tratamos",
-      "rectification": "Rectificación",
-      "rectificationDesc": "Corregir datos inexactos o incompletos",
-      "deletion": "Supresión",
-      "deletionDesc": "Solicitar la eliminación de sus datos",
-      "opposition": "Oposición",
-      "oppositionDesc": "Oponerse al tratamiento de sus datos",
-      "portability": "Portabilidad",
-      "portabilityDesc": "Recibir sus datos en formato estructurado",
-      "contact": "Para ejercer estos derechos, puede contactarnos en cserranobiosca@gmail.com. También tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es)."
+      "title": "Tus derechos",
+      "intro": "Puedes ejercer en cualquier momento los siguientes derechos:",
+      "access": {
+        "label": "Acceso",
+        "content": "Saber si tratamos tus datos y obtener una copia."
+      },
+      "rectification": {
+        "label": "Rectificación",
+        "content": "Corregir los datos inexactos o incompletos."
+      },
+      "deletion": {
+        "label": "Supresión",
+        "content": "Pedir que eliminemos tus datos cuando ya no sean necesarios."
+      },
+      "opposition": {
+        "label": "Oposición",
+        "content": "Oponerte a los tratamientos basados en nuestro interés legítimo."
+      },
+      "limitation": {
+        "label": "Limitación",
+        "content": "Pedir que suspendamos el tratamiento mientras se resuelve una reclamación o una solicitud tuya."
+      },
+      "portability": {
+        "label": "Portabilidad",
+        "content": "Recibir los datos que nos has facilitado en un formato estructurado y de uso común."
+      },
+      "withdrawal": {
+        "label": "Retirada del consentimiento",
+        "content": "Retirar el consentimiento que hayas prestado, sin que ello afecte a la licitud del tratamiento anterior."
+      },
+      "contact": "Para ejercerlos, escríbenos a <email>info@rauxa.cat</email> indicando el derecho que quieres ejercer. Te responderemos en el plazo de un mes.",
+      "complaint": "Si consideras que no hemos atendido correctamente tu solicitud, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (<aepd>www.aepd.es</aepd>)."
     },
     "security": {
       "title": "Seguridad de los datos",
-      "content": "Hemos adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad de sus datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizado."
+      "content": "Hemos adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad de tus datos personales y evitar su alteración, pérdida, tratamiento o acceso no autorizados."
     },
     "updates": {
       "title": "Modificaciones",
-      "content": "Nos reservamos el derecho a modificar esta Política de Privacidad para adaptarla a cambios legislativos o en nuestros servicios. Le recomendamos revisar esta página periódicamente."
+      "content": "Podemos modificar esta política para adaptarla a cambios legislativos o en nuestros servicios. Publicaremos cualquier cambio en esta página junto con su fecha de actualización."
     },
-    "lastUpdated": "Última actualización: 15 de septiembre de 2026"
+    "lastUpdated": "Última actualización: 9 de noviembre de 2026"
   },
   "cookies": {
     "title": "Política de Cookies",
-    "intro": "En RAUXA utilizamos cookies y tecnologías similares para mejorar la experiencia de navegación y analizar el rendimiento de nuestro sitio web. A continuación explicamos qué cookies utilizamos y para qué.",
+    "intro": "Esta política explica qué cookies y tecnologías similares se utilizan en rauxa.cat, quién las instala, para qué sirven, cuánto tiempo se conservan y cómo puedes aceptarlas, rechazarlas o retirar tu consentimiento.",
     "whatAreCookies": {
       "title": "¿Qué son las cookies?",
-      "content": "Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Permiten que el sitio recuerde tus preferencias y mejoran tu experiencia de navegación."
+      "content": "Las cookies son pequeños archivos que un sitio web guarda en tu navegador para recordar información entre páginas o entre visitas. Otras tecnologías, como el almacenamiento local o de sesión del navegador, cumplen la misma función, por lo que esta política las trata como cookies. Las cookies propias las instala RAUXA desde rauxa.cat, y las de terceros, otras empresas desde sus propios dominios."
     },
     "cookiesWeUse": {
       "title": "Cookies que utilizamos",
-      "intro": "En RAUXA utilizamos únicamente las siguientes cookies y herramientas de análisis:",
-      "essential": {
-        "title": "Cookies esenciales",
-        "nextLocale": "Almacena tu preferencia de idioma (español o catalán) para mostrar el sitio en el idioma seleccionado en futuras visitas."
+      "intro": "Las cookies de este sitio se agrupan en dos categorías: las técnicas, que están siempre activas, y las de análisis, que solo se instalan si las aceptas. No utilizamos cookies publicitarias ni de redes sociales."
+    },
+    "groups": {
+      "technical": {
+        "title": "Técnicas",
+        "content": "Son necesarias para que el sitio funcione y recuerde tus preferencias, por lo que no requieren tu consentimiento.",
+        "cookies": {
+          "consent": "Guarda tu elección sobre las cookies de análisis y la fecha en que la hiciste, para no volver a preguntarte en cada visita.",
+          "locale": "Recuerda el idioma del sitio (español o catalán) que has elegido.",
+          "theme": "Recuerda el tema de color (claro, oscuro o el del sistema) que has elegido con el selector."
+        }
       },
       "analytics": {
-        "title": "Herramientas de análisis",
-        "content": "Utilizamos herramientas de Vercel que nos ayudan a entender cómo se usa nuestro sitio web. Estas herramientas son respetuosas con tu privacidad:",
-        "vercelAnalytics": "Recoge datos anónimos y agregados sobre visitas a la web (páginas vistas, país, dispositivo). No utiliza cookies ni rastrea usuarios individuales.",
-        "vercelInsights": "Mide el rendimiento técnico del sitio (velocidad de carga, métricas web). No utiliza cookies ni almacena información personal."
+        "title": "Análisis: Google Analytics",
+        "content": "Solo se instalan si aceptas las cookies de Análisis. Las utiliza Google Analytics 4, que nos permite conocer de forma estadística cuántas personas visitan el sitio y cómo lo usan. Google Analytics conserva estos datos durante 14 meses y después los elimina.",
+        "cookies": {
+          "ga": "Asigna a tu navegador un identificador aleatorio para distinguir a los visitantes en las estadísticas.",
+          "gaSession": "Mantiene el estado de la visita para las mismas estadísticas."
+        }
       },
-      "thirdParty": {
-        "title": "Cookies de terceros en RAUXA LAB",
-        "content": "La página de RAUXA LAB incluye el motor de reservas de CoverManager. Cuando se carga, CoverManager y los servicios que integra pueden guardar sus propias cookies o datos en el almacenamiento local de tu navegador. RAUXA no controla ni accede a esta información:",
-        "coverManager": "Funcionamiento del motor de reservas y del proceso de reserva.",
-        "stripe": "Prevención del fraude en los pagos con tarjeta (cookie m).",
-        "newRelic": "Monitorización técnica del rendimiento y de los errores del motor de reservas (almacenamiento local).",
-        "more": "Más información en la <link>política de cookies de CoverManager</link>."
+      "booking": {
+        "title": "Análisis: motor de reservas de RAUXA LAB",
+        "content": "La página de RAUXA LAB integra el motor de reservas de CoverManager, que se carga si aceptas Análisis o, si no, al pulsar «Reservar», solo en esa visita a la página y sin que se guarde tu elección. Al cargarse, CoverManager y los servicios que integra, la pasarela de pago Stripe y la herramienta de monitorización New Relic, guardan los siguientes datos en sus propios dominios y bajo su responsabilidad. El motor carga además Google Tag Manager y Google Analytics por cuenta de CoverManager. Más información en la <link>política de cookies de CoverManager</link>.",
+        "cookies": {
+          "coverManagerSession": "Mantiene la sesión del proceso de reserva.",
+          "newRelic": "Mide el rendimiento técnico y los errores del motor de reservas.",
+          "stripe": "Ayuda a prevenir el fraude en los pagos con tarjeta.",
+          "stripeSession": "Completa la prevención del fraude durante la sesión de pago."
+        }
       }
     },
     "table": {
       "name": "Nombre",
+      "owner": "Titular",
       "purpose": "Finalidad",
       "duration": "Duración"
     },
+    "owner": {
+      "own": "Propia (RAUXA)",
+      "google": "Propia (gestionada por Google)",
+      "coverManager": "Tercero (CoverManager)",
+      "stripe": "Tercero (Stripe)",
+      "newRelic": "Tercero (New Relic)"
+    },
+    "storage": {
+      "local": "Almacenamiento local",
+      "session": "Almacenamiento de sesión"
+    },
     "duration": {
-      "1year": "1 año"
+      "months12": "12 meses",
+      "years2": "2 años",
+      "days14": "14 días",
+      "hours4": "4 horas como máximo",
+      "tab": "Hasta cerrar la pestaña",
+      "untilDeleted": "Hasta que lo elimines"
     },
-    "disableCookies": {
-      "title": "Cómo desactivar las cookies",
-      "content": "Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento. Ten en cuenta que desactivar las cookies puede afectar a la funcionalidad del sitio y a tu experiencia de navegación, como por ejemplo el idioma que has seleccionado."
+    "consent": {
+      "title": "Cambiar o retirar tu consentimiento",
+      "content": "Guardamos tu elección durante 12 meses, tanto si aceptas como si rechazas. Puedes cambiarla o retirarla en cualquier momento desde «Configurar cookies», en el pie de página o en el botón siguiente. Si retiras el consentimiento, eliminamos las cookies de Google Analytics y recargamos la página. Las cookies del motor de reservas están en dominios de terceros, por lo que solo puedes eliminarlas desde tu navegador, como se explica a continuación.",
+      "button": "Configurar cookies"
     },
-    "moreInfo": {
-      "title": "Más información",
-      "content": "Para saber más sobre cómo gestionar las cookies en tu navegador, consulta la ayuda de:"
+    "transfers": {
+      "title": "Transferencias internacionales",
+      "content": "Google, Stripe y New Relic pueden tratar en Estados Unidos los datos que obtienen a través de estas cookies. Las tres empresas están adheridas al Marco de Privacidad de Datos UE-EE. UU. (EU-U.S. Data Privacy Framework), que la Comisión Europea reconoce como garantía de un nivel de protección adecuado."
     },
-    "lastUpdated": "Última actualización: 15 de septiembre de 2026"
+    "browser": {
+      "title": "Cómo eliminar o bloquear las cookies desde el navegador",
+      "content": "Desde la configuración de tu navegador puedes eliminar las cookies ya instaladas, incluidas las de terceros, y bloquear las nuevas. Si bloqueas las cookies técnicas, es posible que el sitio no recuerde tu idioma ni tu elección sobre las cookies. Consulta la ayuda de tu navegador:"
+    },
+    "lastUpdated": "Última actualización: 9 de noviembre de 2026"
   },
   "legal-notice": {
     "title": "Aviso Legal",
-    "intro": "En cumplimiento de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, se informa de los siguientes datos:",
+    "intro": "En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, se facilitan los siguientes datos del titular de este sitio web.",
     "ownership": {
-      "title": "Titularidad del sitio web",
-      "intro": "El presente sitio web es titularidad de:",
-      "name": "Titular",
-      "nif": "NIF",
-      "address": "Dirección",
-      "email": "Email",
-      "website": "Sitio web"
+      "title": "Titular del sitio web",
+      "intro": "El sitio web rauxa.cat es titularidad de la siguiente sociedad:"
     },
     "purpose": {
       "title": "Objeto",
-      "content": "Este sitio web tiene como objetivo proporcionar información sobre RAUXA, una comunidad gastronómica y cultural que crea experiencias donde la gastronomía, la música y el arte se encuentran. A través de este sitio, ofrecemos información sobre nuestros servicios, eventos y formas de contacto."
+      "content": "Este sitio web informa sobre RAUXA, una comunidad gastronómica y cultural que crea experiencias donde la gastronomía, la música y el arte se encuentran, y sobre RAUXA LAB, su restaurante en Sant Cugat del Vallès. A través de él se pueden consultar sus servicios y eventos, solicitar información o un servicio y reservar mesa en RAUXA LAB."
     },
     "terms": {
       "title": "Condiciones de uso",
@@ -684,23 +745,23 @@
     },
     "intellectualProperty": {
       "title": "Propiedad intelectual e industrial",
-      "content1": "Todos los contenidos de este sitio web (textos, imágenes, diseño gráfico, código fuente, logotipos, marcas y cualquier otro elemento) son propiedad de RAUXA o de terceros que han autorizado su uso, y están protegidos por derechos de propiedad intelectual e industrial.",
+      "content1": "Todos los contenidos de este sitio web (textos, imágenes, diseño gráfico, código fuente, logotipos, marcas y cualquier otro elemento) son propiedad de RAUXA MAG SL o de terceros que han autorizado su uso, y están protegidos por derechos de propiedad intelectual e industrial.",
       "content2": "Queda prohibida la reproducción, distribución, comunicación pública o transformación de estos contenidos sin autorización expresa del titular de los derechos."
     },
     "liability": {
       "title": "Limitación de responsabilidad",
-      "content1": "RAUXA no se responsabiliza de los daños y perjuicios que puedan derivarse del uso de la información contenida en este sitio web, ni de la falta de disponibilidad o continuidad del mismo.",
-      "content2": "RAUXA se reserva el derecho a modificar, suspender o interrumpir, temporal o permanentemente, el acceso al sitio web sin necesidad de previo aviso."
+      "content1": "RAUXA MAG SL no se responsabiliza de los daños y perjuicios que puedan derivarse del uso de la información contenida en este sitio web, ni de la falta de disponibilidad o continuidad de este.",
+      "content2": "RAUXA MAG SL se reserva el derecho a modificar, suspender o interrumpir, temporal o permanentemente, el acceso al sitio web sin necesidad de previo aviso."
     },
     "links": {
       "title": "Enlaces externos",
-      "content": "Este sitio web puede contener enlaces a sitios web de terceros. RAUXA no se responsabiliza del contenido de estos sitios ni de las condiciones de uso y políticas de privacidad que apliquen."
+      "content": "Este sitio web puede contener enlaces a sitios web de terceros. RAUXA MAG SL no se responsabiliza del contenido de estos sitios ni de las condiciones de uso y políticas de privacidad que apliquen."
     },
     "applicable": {
       "title": "Legislación aplicable",
       "content": "Las presentes condiciones se rigen por la legislación española. Para cualquier controversia que pudiera derivarse del acceso o uso de este sitio web, las partes se someten expresamente a los Juzgados y Tribunales de España."
     },
-    "lastUpdated": "Última actualización: 3 de marzo de 2026"
+    "lastUpdated": "Última actualización: 9 de noviembre de 2026"
   },
   "notFound": {
     "metadata": "Página no encontrada",
@@ -714,6 +775,35 @@
       "/rauxa-lab": "Nuestro restaurante en Sant Cugat",
       "/about": "La comunidad detrás de RAUXA",
       "/contact": "Escríbenos y lo hablamos"
+    }
+  },
+  "consent": {
+    "banner": {
+      "title": "Cookies",
+      "text": "En RAUXA utilizamos cookies propias y de terceros para analizar el uso de la web. Puedes aceptarlas, rechazarlas o gestionar tus preferencias en el panel de configuración. Consulta más información en la <link>política de cookies</link>.",
+      "accept": "Aceptar",
+      "reject": "Rechazar",
+      "configure": "Configurar"
+    },
+    "settings": {
+      "title": "Configuración de cookies",
+      "description": "Elige qué cookies permites. Puedes cambiar tu elección en cualquier momento desde el enlace «Configurar cookies» del pie de página.",
+      "categories": {
+        "technical": {
+          "title": "Técnicas",
+          "description": "Son necesarias para que la web funcione y para recordar tu idioma y tu elección sobre las cookies, por lo que no se pueden desactivar."
+        },
+        "analytics": {
+          "title": "Análisis",
+          "description": "Nos permiten medir las visitas y el uso de la web con Google Analytics. También las utilizan el motor de reservas de CoverManager y su monitorización técnica con New Relic."
+        },
+        "alwaysActive": "Siempre activas"
+      },
+      "save": "Guardar selección",
+      "acceptAll": "Aceptar todo",
+      "rejectAll": "Rechazar todo",
+      "policy": "Política de cookies",
+      "close": "Cerrar"
     }
   }
 }
