@@ -28,7 +28,7 @@ export default async function LegalNoticePage() {
           <p className="text-muted-foreground leading-relaxed mb-4">
             {t('ownership.intro')}
           </p>
-          <CompanyInfo />
+          <CompanyInfo withRegistry />
         </LegalSection>
 
         <LegalSection title={t('purpose.title')}>
