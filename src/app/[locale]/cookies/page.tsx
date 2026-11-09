@@ -7,6 +7,8 @@ import { CookiesTable } from '@/components/sections/cookies/CookiesTable';
 import { AnalyticsTools } from '@/components/sections/cookies/AnalyticsTools';
 import { ThirdPartyCookies } from '@/components/sections/cookies/ThirdPartyCookies';
 import { BrowserLinks } from '@/components/sections/cookies/BrowserLinks';
+import { CookieSettingsButton } from '@/components/consent/CookieSettingsButton';
+import { buttonVariants } from '@/components/ui/button';
 
 export async function generateMetadata({
   params,
@@ -40,6 +42,15 @@ export default async function CookiesPage() {
           <CookiesTable />
           <AnalyticsTools />
           <ThirdPartyCookies />
+        </LegalSection>
+
+        <LegalSection title={t('manage.title')}>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            {t('manage.content')}
+          </p>
+          <CookieSettingsButton className={buttonVariants()}>
+            {t('manage.button')}
+          </CookieSettingsButton>
         </LegalSection>
 
         <LegalSection title={t('disableCookies.title')}>

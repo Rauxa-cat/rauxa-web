@@ -80,7 +80,8 @@
   "legal": {
     "/privacy": "Privacidad",
     "/cookies": "Cookies",
-    "/legal-notice": "Aviso legal"
+    "/legal-notice": "Aviso legal",
+    "cookieSettings": "Configurar cookies"
   },
   "home": {
     "hero": {
@@ -652,6 +653,11 @@
     "duration": {
       "1year": "1 año"
     },
+    "manage": {
+      "title": "Configurar cookies",
+      "content": "Puedes revisar o cambiar en cualquier momento si permites las cookies de análisis.",
+      "button": "Configurar cookies"
+    },
     "disableCookies": {
       "title": "Cómo desactivar las cookies",
       "content": "Puedes configurar tu navegador para bloquear o eliminar cookies en cualquier momento. Ten en cuenta que desactivar las cookies puede afectar a la funcionalidad del sitio y a tu experiencia de navegación, como por ejemplo el idioma que has seleccionado."
@@ -714,6 +720,35 @@
       "/rauxa-lab": "Nuestro restaurante en Sant Cugat",
       "/about": "La comunidad detrás de RAUXA",
       "/contact": "Escríbenos y lo hablamos"
+    }
+  },
+  "consent": {
+    "banner": {
+      "title": "Cookies",
+      "text": "En RAUXA utilizamos cookies propias y de terceros para analizar el uso de la web. Puedes aceptarlas, rechazarlas o gestionar tus preferencias en el panel de configuración. Consulta más información en la <link>política de cookies</link>.",
+      "accept": "Aceptar",
+      "reject": "Rechazar",
+      "configure": "Configurar"
+    },
+    "settings": {
+      "title": "Configuración de cookies",
+      "description": "Elige qué cookies permites. Puedes cambiar tu elección en cualquier momento desde el enlace «Configurar cookies» del pie de página.",
+      "categories": {
+        "technical": {
+          "title": "Técnicas",
+          "description": "Son necesarias para que la web funcione y para recordar tu idioma y tu elección sobre las cookies, por lo que no se pueden desactivar."
+        },
+        "analytics": {
+          "title": "Análisis",
+          "description": "Nos permiten medir las visitas y el uso de la web con Google Analytics. También las utilizan el motor de reservas de CoverManager y su monitorización técnica con New Relic."
+        },
+        "alwaysActive": "Siempre activas"
+      },
+      "save": "Guardar selección",
+      "acceptAll": "Aceptar todo",
+      "rejectAll": "Rechazar todo",
+      "policy": "Política de cookies",
+      "close": "Cerrar"
     }
   }
 }

@@ -340,6 +340,49 @@ can see on a page (a section, its copy, its metadata or its JSON-LD) must bump t
 the same PR**, including changes to shared parts, which bump every page that renders them. It has
 been forgotten more than once. A new page also needs its entry there, besides `routing.ts`.
 
+### Cookie consent
+
+GTM only loads once Análisis is granted: nothing reaches Google before consent, not even
+the request for `gtm.js`. With `NEXT_PUBLIC_GTM_ID` set, the inline script in the root
+layout (`consentScript`, `src/lib/analytics/gtm.ts`) always writes the `default` (all four
+signals `denied`) and, for a stored choice, the `update`. `gtm.js` then comes from the root
+layout when the stored choice grants Análisis, or from `loadGtm()` when the visitor grants
+it mid-visit. Either way GTM starts with the final consent state, so its Initialization is
+the one place tags fire. Without the variable there is no GTM and no signals; the banner
+still works.
+
+The choice lives in the first-party cookie `rauxa_consent` (`src/lib/consent/consent.ts`):
+JSON with `version`, `date` and `analytics`, kept 12 months whether the visitor accepts or
+rejects. Nothing is stored on the server. A stored `version` other than `CONSENT_VERSION`
+counts as undecided, so bumping it brings the banner back for everyone.
+
+There are two categories, Técnicas (always on) and Análisis (GA4, CoverManager, New
+Relic). There is no Publicidad: marketing runs no ad tag on the site (no Meta pixel, no
+Google Ads conversions or remarketing), and consent must not be asked for a purpose that
+does not exist. Adding one means a new category, its cookies in the policy and a bumped
+`CONSENT_VERSION`.
+
+- **Server decides.** `Consent` (in both the locale layout and the root `not-found`) reads
+  the cookie with `getConsent()` (`src/lib/consent/server.ts`) and seeds
+  `ConsentProvider`, so a visitor who already chose never receives the banner. The root
+  layout reads it too, to write the stored `update` and decide whether to load GTM.
+- **Signals.** `analytics_storage` comes from Análisis; `ad_storage`, `ad_user_data` and
+  `ad_personalization` are always `denied` (`consentSignals`).
+- **Client.** `useConsent()` exposes `decided`, `categories`, `save` and `openSettings`.
+  `save` writes the cookie, sends `gtag('consent','update')` and, when the choice turns
+  Análisis on, loads GTM. Withdrawing it also deletes `_ga`, `_ga_*` and `_gid` on the host and
+  every parent domain, then reloads, since the tags that already ran stay in the page.
+- **Banner and dialog.** «Aceptar» and «Rechazar» share variant and size, as the AEPD
+  requires; keep them equal. The dialog's three buttons share a variant too. Both openers
+  outside the banner (footer, `/cookies`) are `CookieSettingsButton`. The banner and those
+  buttons carry `NOJS.hide`: without scripts there is no choice to make.
+- **For the next branch.** Gate anything that needs Análisis on `useConsent().categories`
+  in the client or `getConsent()` on the server.
+- **GTM side.** The GA4 tag requires `analytics_storage` as additional consent and fires
+  on "Initialization - All Pages" only, once per page. No custom consent event is needed.
+  Loading GTM before consent would need one, and with "Once per page" GA4 did not fire on
+  it in Tag Assistant once its Initialization attempt had been blocked.
+
 ### Cron
 
 `/api/cron/keep-alive` runs daily (see `vercel.json`) to keep the Upstash Redis instance warm. It is secured with a `Bearer` token from `CRON_SECRET`.
@@ -357,6 +400,7 @@ CONTACT_TO_EMAIL
 UPSTASH_REDIS_REST_URL
 UPSTASH_REDIS_REST_TOKEN
 CRON_SECRET
+NEXT_PUBLIC_GTM_ID     # optional, GTM-TN24N474; without it GTM is not loaded
 ```
 
 ## Skills
