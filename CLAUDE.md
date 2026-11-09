@@ -85,7 +85,7 @@ src/components/
 `sections/shared/RowIndex` is the VT323 index label for editorial rows (the service lists and the
 `/about` projects); number a new row list with it rather than styling the digits again.
 
-Static content (nav links, services, team members, the RAUXA LAB address and menu) is defined as data in `src/lib/content/`.
+Static content (nav links, services, team members, contact details, the company, the RAUXA LAB address and menu) is defined as data in `src/lib/content/`.
 Hooks live in `src/hooks/` (`useContactSubmit`, `useReducedMotion`).
 
 ### Animations
@@ -348,12 +348,15 @@ layout (`consentScript`, `src/lib/analytics/gtm.ts`) always writes the `default`
 signals `denied`) and, for a stored choice, the `update`. `gtm.js` then comes from the root
 layout when the stored choice grants Análisis, or from `loadGtm()` when the visitor grants
 it mid-visit. Either way GTM starts with the final consent state, so its Initialization is
-the one place tags fire. Without the variable there is no GTM and no signals; the banner
+the one place tags fire. On a 404 the root layout is built in the browser and its inline script
+never runs, so `consentScript` is guarded to run once and also travels with the GTM
+script and `bootConsent()`. Without the variable there is no GTM and no signals; the banner
 still works.
 
 The choice lives in the first-party cookie `rauxa_consent` (`src/lib/consent/consent.ts`):
 JSON with `version`, `date` and `analytics`, kept 12 months whether the visitor accepts or
-rejects. Nothing is stored on the server. A stored `version` other than `CONSENT_VERSION`
+rejects. Nothing is stored on the server. It is written from script and then set again by
+`POST /api/consent`, because Safari caps a cookie written from script at 7 days. A stored `version` other than `CONSENT_VERSION`
 counts as undecided, so bumping it brings the banner back for everyone.
 
 There are two categories, Técnicas (always on) and Análisis (GA4, CoverManager, New
@@ -370,8 +373,9 @@ does not exist. Adding one means a new category, its cookies in the policy and a
   `ad_personalization` are always `denied` (`consentSignals`).
 - **Client.** `useConsent()` exposes `decided`, `categories`, `save` and `openSettings`.
   `save` writes the cookie, sends `gtag('consent','update')` and, when the choice turns
-  Análisis on, loads GTM. Withdrawing it also deletes `_ga`, `_ga_*` and `_gid` on the host and
-  every parent domain, then reloads, since the tags that already ran stay in the page.
+  Análisis on, loads GTM. Any rejection deletes `_ga`, `_ga_*` and `_gid` on the host and
+  every parent domain; withdrawing a grant also reloads, since the tags that already ran stay
+  in the page. The choice reaches the site's other open tabs over a `BroadcastChannel`.
 - **Banner and dialog.** «Aceptar» and «Rechazar» share variant and size, as the AEPD
   requires; keep them equal. The dialog's three buttons share a variant too. Both openers
   outside the banner (footer, `/cookies`) are `CookieSettingsButton`. The banner and those
