@@ -25,7 +25,7 @@ export async function BrowserLinks() {
   return (
     <>
       <p className="text-muted-foreground leading-relaxed mb-4">
-        {t('moreInfo.content')}
+        {t('browser.content')}
       </p>
       <ul className="space-y-2">
         {BROWSERS.map((browser) => (

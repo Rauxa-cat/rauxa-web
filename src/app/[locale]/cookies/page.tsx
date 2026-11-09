@@ -4,11 +4,13 @@ import { generatePageMetadata, PageProps } from '@/lib/metadata';
 import { LegalHeader } from '@/components/sections/shared/LegalHeader';
 import { LegalSection } from '@/components/sections/shared/LegalSection';
 import { CookiesTable } from '@/components/sections/cookies/CookiesTable';
-import { AnalyticsTools } from '@/components/sections/cookies/AnalyticsTools';
-import { ThirdPartyCookies } from '@/components/sections/cookies/ThirdPartyCookies';
 import { BrowserLinks } from '@/components/sections/cookies/BrowserLinks';
 import { CookieSettingsButton } from '@/components/consent/CookieSettingsButton';
 import { buttonVariants } from '@/components/ui/button';
+import { COOKIE_GROUPS } from '@/lib/content/cookies';
+import { COVERMANAGER } from '@/lib/content/lab';
+
+const linkClass = 'text-primary hover:underline underline-offset-4';
 
 export async function generateMetadata({
   params,
@@ -36,30 +38,50 @@ export default async function CookiesPage() {
         </LegalSection>
 
         <LegalSection title={t('cookiesWeUse.title')}>
-          <p className="text-muted-foreground leading-relaxed mb-8">
+          <p className="text-muted-foreground leading-relaxed">
             {t('cookiesWeUse.intro')}
           </p>
-          <CookiesTable />
-          <AnalyticsTools />
-          <ThirdPartyCookies />
+
+          {COOKIE_GROUPS.map(({ key, cookies }) => (
+            <div key={key} className="mt-10">
+              <h3 className="font-sans text-xl font-semibold mb-3">
+                {t(`groups.${key}.title`)}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                {t.rich(`groups.${key}.content`, {
+                  link: (chunks) => (
+                    <a
+                      href={COVERMANAGER.cookiesUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={linkClass}
+                    >
+                      {chunks}
+                    </a>
+                  ),
+                })}
+              </p>
+              <CookiesTable group={key} cookies={cookies} />
+            </div>
+          ))}
         </LegalSection>
 
-        <LegalSection title={t('manage.title')}>
+        <LegalSection title={t('transfers.title')}>
+          <p className="text-muted-foreground leading-relaxed">
+            {t('transfers.content')}
+          </p>
+        </LegalSection>
+
+        <LegalSection title={t('consent.title')}>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            {t('manage.content')}
+            {t('consent.content')}
           </p>
           <CookieSettingsButton className={buttonVariants()}>
-            {t('manage.button')}
+            {t('consent.button')}
           </CookieSettingsButton>
         </LegalSection>
 
-        <LegalSection title={t('disableCookies.title')}>
-          <p className="text-muted-foreground leading-relaxed">
-            {t('disableCookies.content')}
-          </p>
-        </LegalSection>
-
-        <LegalSection title={t('moreInfo.title')}>
+        <LegalSection title={t('browser.title')}>
           <BrowserLinks />
         </LegalSection>
 
