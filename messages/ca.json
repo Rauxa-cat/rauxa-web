@@ -80,7 +80,8 @@
   "legal": {
     "/privacy": "Privacitat",
     "/cookies": "Cookies",
-    "/legal-notice": "Avís legal"
+    "/legal-notice": "Avís legal",
+    "cookieSettings": "Configurar cookies"
   },
   "home": {
     "hero": {
@@ -652,6 +653,11 @@
     "duration": {
       "1year": "1 any"
     },
+    "manage": {
+      "title": "Configurar les cookies",
+      "content": "Pots revisar o canviar en qualsevol moment si permets les cookies d'anàlisi.",
+      "button": "Configurar cookies"
+    },
     "disableCookies": {
       "title": "Com desactivar les cookies",
       "content": "Pots configurar el teu navegador per bloquejar o eliminar les galetes en qualsevol moment. Tingues en compte que desactivar les galetes pot afectar la funcionalitat del lloc i la teva experiència de navegació, com ara l'idioma que has seleccionat."
@@ -714,6 +720,35 @@
       "/rauxa-lab": "El nostre restaurant a Sant Cugat",
       "/about": "La comunitat darrere de RAUXA",
       "/contact": "Escriu-nos i en parlem"
+    }
+  },
+  "consent": {
+    "banner": {
+      "title": "Cookies",
+      "text": "A RAUXA fem servir cookies pròpies i de tercers per analitzar l'ús del web. Pots acceptar-les, rebutjar-les o gestionar les teves preferències al panell de configuració. Consulta més informació a la <link>política de cookies</link>.",
+      "accept": "Acceptar",
+      "reject": "Rebutjar",
+      "configure": "Configurar"
+    },
+    "settings": {
+      "title": "Configuració de cookies",
+      "description": "Tria quines cookies permets. Pots canviar la teva elecció en qualsevol moment des de l'enllaç «Configurar cookies» del peu de pàgina.",
+      "categories": {
+        "technical": {
+          "title": "Tècniques",
+          "description": "Són necessàries perquè el web funcioni i per recordar el teu idioma i la teva elecció sobre les cookies, per la qual cosa no es poden desactivar."
+        },
+        "analytics": {
+          "title": "Anàlisi",
+          "description": "Ens permeten mesurar les visites i l'ús del web amb Google Analytics. També les fan servir el motor de reserves de CoverManager i la seva monitorització tècnica amb New Relic."
+        },
+        "alwaysActive": "Sempre actives"
+      },
+      "save": "Desar la selecció",
+      "acceptAll": "Acceptar-ho tot",
+      "rejectAll": "Rebutjar-ho tot",
+      "policy": "Política de cookies",
+      "close": "Tancar"
     }
   }
 }
