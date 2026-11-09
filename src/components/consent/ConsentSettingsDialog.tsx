@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -20,28 +20,49 @@ import {
   type ConsentCategories,
 } from '@/lib/consent/consent';
 import { useConsent } from './ConsentProvider';
+import { BANNER_ATTR } from './CookieBanner';
 
 type Category = 'technical' | keyof ConsentCategories;
 
 export function ConsentSettingsDialog({
   open,
+  session,
   onOpenChange,
   returnFocusRef,
 }: {
   open: boolean;
+  session: number;
   onOpenChange: (open: boolean) => void;
   returnFocusRef: React.RefObject<HTMLElement | null>;
 }) {
   const t = useTranslations('consent.settings');
+  const navigatingRef = useRef(false);
+  const { decided } = useConsent();
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
         onCloseAutoFocus={(event) => {
-          // The opener is a plain button, not a Radix trigger, and the
-          // banner's own may be gone by now.
+          // After the policy link the opener belongs to the page left behind:
+          // the footer one survives the navigation, and focusing it would
+          // scroll the new page down to it.
+          if (navigatingRef.current) {
+            navigatingRef.current = false;
+            event.preventDefault();
+            return;
+          }
+          // A choice saved from the banner's «Configurar» sends the banner
+          // out with its opener. Left there, focus would drop to <body> once
+          // it unmounts, and the next Tab would leave the page, since the
+          // banner is last in the DOM.
           const trigger = returnFocusRef.current;
+          if (decided && trigger?.closest(`[${BANNER_ATTR}]`)) {
+            event.preventDefault();
+            document.querySelector('main')?.focus({ preventScroll: true });
+            return;
+          }
+          // The opener is a plain button, not a Radix trigger.
           if (trigger?.isConnected) {
             event.preventDefault();
             trigger.focus();
@@ -56,9 +77,16 @@ export function ConsentSettingsDialog({
           <DialogDescription>{t('description')}</DialogDescription>
         </DialogHeader>
 
-        {/* Mounted per open, so the switches start from the stored choice
-            every time instead of from a draft that was never saved. */}
-        {open && <ConsentSettingsForm onNavigate={() => onOpenChange(false)} />}
+        {/* Keyed per open, so the switches start from the stored choice every
+            time instead of from a draft that was never saved, while the form
+            stays in place through the closing animation. */}
+        <ConsentSettingsForm
+          key={session}
+          onNavigate={() => {
+            navigatingRef.current = true;
+            onOpenChange(false);
+          }}
+        />
 
         <DialogClose className="absolute top-3 right-3 grid size-10 cursor-pointer place-items-center rounded-md text-foreground/60 transition-colors outline-none hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50">
           <X aria-hidden className="size-5" />

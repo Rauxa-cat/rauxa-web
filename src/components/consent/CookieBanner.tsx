@@ -8,6 +8,8 @@ import { ALL_CONSENT, NO_CONSENT } from '@/lib/consent/consent';
 import { EASE, NOJS } from '@/lib/motion';
 import { useConsent } from './ConsentProvider';
 
+export const BANNER_ATTR = 'data-cookie-banner';
+
 export function CookieBanner() {
   const t = useTranslations('consent.banner');
   const { save, openSettings } = useConsent();
@@ -15,11 +17,14 @@ export function CookieBanner() {
   return (
     <m.section
       aria-labelledby="cookie-banner-title"
-      className="fixed inset-x-0 bottom-0 z-40 border-t bg-background/95 text-foreground shadow-[0_-8px_30px_rgb(0_0_0/0.12)] backdrop-blur"
+      {...{ [BANNER_ATTR]: '' }}
+      className="sticky bottom-0 z-40 border-t bg-background/95 text-foreground shadow-[0_-8px_30px_rgb(0_0_0/0.12)] backdrop-blur"
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 24 }}
       transition={{ duration: 0.4, ease: EASE }}
+      // Sticky rather than fixed: it closes the page, so once scrolled to the
+      // end it sits below the footer instead of covering its legal links.
       // The buttons only work once hydrated; without scripts the banner would
       // ask for a choice nobody can make.
       {...NOJS.hide}

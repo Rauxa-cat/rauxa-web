@@ -66,7 +66,9 @@ export default async function Layout({
           <Consent>
             <ServiceRequestProvider>
               <SiteHeader />
-              <main> {children} </main>
+              <main tabIndex={-1} className="outline-none">
+                {children}
+              </main>
               <Footer />
             </ServiceRequestProvider>
           </Consent>

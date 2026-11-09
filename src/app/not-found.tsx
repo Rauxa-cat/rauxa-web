@@ -23,7 +23,7 @@ export default async function RootNotFound() {
       <MotionProvider>
         <Consent>
           <SiteHeader />
-          <main>
+          <main tabIndex={-1} className="outline-none">
             <NotFoundSection />
           </main>
           <Footer />
