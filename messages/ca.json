@@ -665,7 +665,8 @@
         "content": "Són necessàries perquè el lloc funcioni i recordi les teves preferències, per la qual cosa no requereixen el teu consentiment.",
         "cookies": {
           "consent": "Desa la teva elecció sobre les cookies d'anàlisi i la data en què la vas fer, per no tornar-te a preguntar a cada visita.",
-          "locale": "Recorda l'idioma del lloc (castellà o català) que has triat."
+          "locale": "Recorda l'idioma del lloc (castellà o català) que has triat.",
+          "theme": "Recorda el tema de color (clar, fosc o el del sistema) que has triat amb el selector."
         }
       },
       "analytics": {
@@ -695,7 +696,7 @@
     },
     "owner": {
       "own": "Pròpia (RAUXA)",
-      "google": "Tercer (Google)",
+      "google": "Pròpia (gestionada per Google)",
       "coverManager": "Tercer (CoverManager)",
       "stripe": "Tercer (Stripe)",
       "newRelic": "Tercer (New Relic)"
@@ -709,7 +710,8 @@
       "years2": "2 anys",
       "days14": "14 dies",
       "hours4": "4 hores com a màxim",
-      "tab": "Fins que tanquis la pestanya"
+      "tab": "Fins que tanquis la pestanya",
+      "untilDeleted": "Fins que l'eliminis"
     },
     "consent": {
       "title": "Canviar o retirar el teu consentiment",

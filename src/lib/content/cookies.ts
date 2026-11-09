@@ -35,6 +35,14 @@ export const COOKIE_GROUPS = [
         key: 'locale',
         duration: 'months12',
       },
+      {
+        // next-themes writes it only once the visitor uses the theme toggle.
+        name: 'theme',
+        owner: 'own',
+        storage: 'local',
+        key: 'theme',
+        duration: 'untilDeleted',
+      },
     ],
   },
   {

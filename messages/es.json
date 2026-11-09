@@ -665,7 +665,8 @@
         "content": "Son necesarias para que el sitio funcione y recuerde tus preferencias, por lo que no requieren tu consentimiento.",
         "cookies": {
           "consent": "Guarda tu elección sobre las cookies de análisis y la fecha en que la hiciste, para no volver a preguntarte en cada visita.",
-          "locale": "Recuerda el idioma del sitio (español o catalán) que has elegido."
+          "locale": "Recuerda el idioma del sitio (español o catalán) que has elegido.",
+          "theme": "Recuerda el tema de color (claro, oscuro o el del sistema) que has elegido con el selector."
         }
       },
       "analytics": {
@@ -695,7 +696,7 @@
     },
     "owner": {
       "own": "Propia (RAUXA)",
-      "google": "Tercero (Google)",
+      "google": "Propia (gestionada por Google)",
       "coverManager": "Tercero (CoverManager)",
       "stripe": "Tercero (Stripe)",
       "newRelic": "Tercero (New Relic)"
@@ -709,7 +710,8 @@
       "years2": "2 años",
       "days14": "14 días",
       "hours4": "4 horas como máximo",
-      "tab": "Hasta cerrar la pestaña"
+      "tab": "Hasta cerrar la pestaña",
+      "untilDeleted": "Hasta que lo elimines"
     },
     "consent": {
       "title": "Cambiar o retirar tu consentimiento",
