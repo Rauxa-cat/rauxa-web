@@ -1,11 +1,9 @@
 import {
-  CONSENT_COOKIE,
-  CONSENT_MAX_AGE,
+  consentCookie,
   consentSignals,
-  serializeConsent,
   type ConsentCategories,
 } from './consent';
-import { loadGtm } from '@/lib/analytics/gtm';
+import { bootConsent, loadGtm } from '@/lib/analytics/gtm';
 
 declare global {
   interface Window {
@@ -14,15 +12,24 @@ declare global {
   }
 }
 
+// Written here so the very next request, a reload included, already carries
+// it. Safari caps a cookie written from script at 7 days, though, so the
+// server sets it again to make the 12 months stick.
 export function storeConsent(categories: ConsentCategories) {
-  const secure = location.protocol === 'https:' ? '; Secure' : '';
-  document.cookie = `${CONSENT_COOKIE}=${serializeConsent(categories)}; Path=/; Max-Age=${CONSENT_MAX_AGE}; SameSite=Lax${secure}`;
+  document.cookie = consentCookie(categories, location.protocol === 'https:');
+  fetch('/api/consent', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(categories),
+    keepalive: true,
+  }).catch(() => {});
 }
 
 export function signalConsent(
   next: ConsentCategories,
   previous: ConsentCategories,
 ) {
+  bootConsent();
   // Only exists when GTM is configured; without it there is nobody to tell.
   window.gtag?.('consent', 'update', consentSignals(next));
   if (next.analytics && !previous.analytics) loadGtm();

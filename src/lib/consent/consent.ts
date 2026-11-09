@@ -51,6 +51,9 @@ export function serializeConsent(categories: ConsentCategories): string {
   return encodeURIComponent(JSON.stringify(stored));
 }
 
+export const consentCookie = (categories: ConsentCategories, secure: boolean) =>
+  `${CONSENT_COOKIE}=${serializeConsent(categories)}; Path=/; Max-Age=${CONSENT_MAX_AGE}; SameSite=Lax${secure ? '; Secure' : ''}`;
+
 export const consentSignals = ({ analytics }: ConsentCategories) =>
   ({
     analytics_storage: analytics ? 'granted' : 'denied',
