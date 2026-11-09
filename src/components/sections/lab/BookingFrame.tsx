@@ -7,13 +7,24 @@ type BookingFrameProps = {
   src: string;
   title: string;
   className?: string;
+  focusOnMount?: boolean;
 };
 
 // CoverManager ships iframe-resizer's child script (v3) in its booking page,
 // so the host half is all it takes for the frame to follow each booking step
 // instead of scrolling inside itself. v5 no longer talks to that child.
-export function BookingFrame({ src, title, className }: BookingFrameProps) {
+export function BookingFrame({
+  src,
+  title,
+  className,
+  focusOnMount = false,
+}: BookingFrameProps) {
   const ref = useRef<HTMLIFrameElement>(null);
+
+  // Mounted by a click on the button it replaces, which takes focus with it.
+  useEffect(() => {
+    if (focusOnMount) ref.current?.focus({ preventScroll: true });
+  }, [focusOnMount]);
 
   useEffect(() => {
     const iframe = ref.current;

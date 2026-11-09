@@ -279,7 +279,9 @@
       "titleHighlight": "taula",
       "description": "Tria el dia, l'hora i quants sereu.",
       "frameTitle": "Reserva de taula a RAUXA LAB",
-      "openExternal": "Reservar en una pestanya nova"
+      "openExternal": "Reservar en una pestanya nova",
+      "consentNotice": "Les reserves es gestionen a través de CoverManager, que fa servir cookies pròpies i de tercers (New Relic i Stripe). En prémer «Reservar», acceptes aquestes cookies i el motor de reserves es carrega només en aquesta visita a la pàgina, sense desar la teva elecció. Més informació a la <link>política de cookies</link>.",
+      "load": "Reservar"
     },
     "location": {
       "eyebrow": "UBICACIÓ",

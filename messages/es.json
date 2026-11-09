@@ -279,7 +279,9 @@
       "titleHighlight": "mesa",
       "description": "Elige el día, la hora y cuántos seréis.",
       "frameTitle": "Reserva de mesa en RAUXA LAB",
-      "openExternal": "Reservar en una pestaña nueva"
+      "openExternal": "Reservar en una pestaña nueva",
+      "consentNotice": "Las reservas se gestionan a través de CoverManager, que utiliza cookies propias y de terceros (New Relic y Stripe). Al pulsar «Reservar», aceptas esas cookies y el motor de reservas se carga solo en esta visita a la página, sin guardar tu elección. Más información en la <link>política de cookies</link>.",
+      "load": "Reservar"
     },
     "location": {
       "eyebrow": "UBICACIÓN",
