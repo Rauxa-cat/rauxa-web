@@ -9,11 +9,8 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { HERO_HOLD_SCRIPT } from '@/components/sections/hero/hold';
 import { NO_JS_CSS } from '@/lib/motion';
-import {
-  CONSENT_DEFAULT_SCRIPT,
-  GTM_ID,
-  gtmScript,
-} from '@/lib/analytics/gtm';
+import { GTM_ID, consentScript, gtmScript } from '@/lib/analytics/gtm';
+import { getConsent } from '@/lib/consent/server';
 
 const rauxaPrimary = localFont({
   src: './fonts/AlfredinoSemirounded.ttf',
@@ -60,6 +57,7 @@ export default async function RootLayout({
 }) {
   const headersList = await headers();
   const locale = headersList.get('x-next-intl-locale') ?? 'es';
+  const consent = GTM_ID ? await getConsent() : null;
 
   return (
     <html
@@ -82,11 +80,13 @@ export default async function RootLayout({
         {GTM_ID && (
           <>
             <script
-              dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULT_SCRIPT }}
+              dangerouslySetInnerHTML={{ __html: consentScript(consent) }}
             />
-            <Script id="gtm" strategy="afterInteractive">
-              {gtmScript(GTM_ID)}
-            </Script>
+            {consent?.analytics && (
+              <Script id="gtm" strategy="afterInteractive">
+                {gtmScript(GTM_ID)}
+              </Script>
+            )}
           </>
         )}
         <ThemeProvider
