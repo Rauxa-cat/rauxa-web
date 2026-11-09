@@ -3,7 +3,7 @@ import { LAB } from '@/lib/content/lab';
 import { SectionHeader } from '../shared/SectionHeader';
 import { SectionShell } from '../shared/SectionShell';
 import { ArrowIcon } from '@/components/icons/ArrowIcon';
-import { BookingFrame } from './BookingFrame';
+import { BookingGate } from './BookingGate';
 
 export async function LabBooking() {
   const [t, locale] = await Promise.all([
@@ -52,10 +52,9 @@ export async function LabBooking() {
         <div className="-mx-6 mt-12 md:mx-0 md:mt-16">
           {/* Heights of the first step at each width, so the section does
               not jump when the resizer takes over. */}
-          <BookingFrame
+          <BookingGate
             src={bookingUrl}
-            title={t('frameTitle')}
-            className="h-[740px] md:h-[566px]"
+            frameClassName="h-[740px] md:h-[566px]"
           />
         </div>
       </div>
